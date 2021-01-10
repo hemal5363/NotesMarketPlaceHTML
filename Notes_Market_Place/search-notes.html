@@ -1,0 +1,1022 @@
+<html>
+
+<head>
+
+    <!-- important meta tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0 ,user-scalable=no">
+
+    <title> Notes - MarketPlace </title>
+    <link rel="shortcut icon" type="image/jpg" href="images/images/favicon.ico" />
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link href="css/Bootstrap/bootstrap.min.css" rel="stylesheet">
+
+    <!-- CSS -->
+    <link href="css/css.css" rel="stylesheet">
+
+    <!-- Responsive CSS -->
+    <link href="css/responsive.css" rel="stylesheet">
+
+</head>
+
+<body class="sticky-header">
+
+    <!-- Header -->
+    <div class="wrapper">
+        <header class="site-header">
+            <div class="header-wrapper">
+                <div class="logo-wrapper">
+                    <a href="home.html" title="Site Logo">
+                        <img src="images/images/logo.png" alt="logo">
+                    </a>
+                </div>
+                <div class="navigation-wrapper">
+                    <nav class="main-nav">
+                        <ul class="menu-navigation">
+                            <li>
+                                <a href="search-notes.html" class="active-section">Search Notes</a>
+                            </li>
+                            <li>
+                                <a href="login-page.html">Sell Your Notes</a>
+                            </li>
+                            <li>
+                                <a href="FAQ.html">FAQ</a>
+                            </li>
+                            <li>
+                                <a href="contact-us.html">Contact Us</a>
+                            </li>
+                            <li>
+                                <div id="login-button">
+                                    <a class="btn login-btn" href="login-page.html" title="Login" role="button"> Login </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- mobile menu -->
+
+            <!-- mobile menu btn -->
+            <div id="mobile-menu-box">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div id="mobile-img">
+                                <div class="logo-wrapper">
+                                    <a href="home.html" title="Site Logo">
+                                        <img src="images/images/logo.png" alt="logo">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div id="menu-icon">
+                                <img src="images/images/dots.png">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- mobile menu page -->
+            <div id="mobile-menu-page">
+                <div id="mobile-page">
+                    <div id="mobile-close">
+                        <img src="images/images/close.png">
+                    </div>
+                    <div id="mobile-items">
+                        <a href="search-notes.html" class="active-menu">Search Notes</a>
+                        <a href="login-page.html">Sell Your Notes</a>
+                        <a href="FAQ.html">FAQ</a>
+                        <a href="contact-us.html">Contact Us</a>
+                        <a href="login-page.html" title="Login" role="button"> Login </a>
+                    </div>
+                </div>
+            </div>
+            <!-- mobile menu Ends -->
+
+        </header>
+    </div>
+    <!-- Header Ends -->
+
+    <!-- Search Notes -->
+    <section id="search-notes">
+
+        <!-- Search Content -->
+        <div class="search-content">
+            <div class="main-heading-center">
+                <h1> Search Notes </h1>
+            </div>
+        </div>
+
+        <div class="content-box-md">
+
+            <!-- Search Filter -->
+            <div id="search-filter">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="filter-heading" class="heading-md">
+                                <h3> Search and Filter notes </h3>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div id="filter-content">
+                                <div class="login-form">
+                                    <form>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="search">
+                                                    <div class="form-group">
+                                                        <div class="search-bar">
+                                                            <input type="text" class="form-control search-bar" id="search-input" placeholder="       Search Notes Here...">
+                                                            <div class="search-icon">
+                                                                <img src="images/images/search-icon.png">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <select class="form-control" id="select-type">
+                                                        <option>Select type</option>
+                                                        <option>Handwritten notes</option>
+                                                        <option>University notes</option>
+                                                        <option>Notebook</option>
+                                                        <option>Novel</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <select class="form-control" id="select-category">
+                                                        <option>Select category </option>
+                                                        <option>IT</option>
+                                                        <option>CA</option>
+                                                        <option>CS</option>
+                                                        <option>MBA</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <select class="form-control" id="select-university">
+                                                        <option>Select university </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <select class="form-control" id="select-course">
+                                                        <option>Select course </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <select class="form-control" id="select-country">
+                                                        <option>Select country </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <select class="form-control" id="select-reting">
+                                                        <option>Select reting </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Total notes -->
+            <div id="total-notes">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="total-notes-heading" class="heading-md">
+                                <h3> Total 18 notes </h3>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <table id="pager" class="wp-list-table widefat striped posts">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="book-detials">
+                                                <div class="book-img">
+                                                    <img src="images/images/search1.png" alt="books" class="img-responsive img-fluid">
+                                                </div>
+                                                <div class="book-detial">
+                                                    <div class="book-heading">
+                                                        <h5> <a href="notes-details.html">Computer Operating System - Final Exam Book With paper Solution </a></h5>
+                                                    </div>
+                                                    <div class="book-det">
+                                                        <p> <img src="images/images/university.png"> &nbsp;&nbsp;University of California, US </p>
+                                                        <p> <img src="images/images/pages.png"> &nbsp;&nbsp;204 Pages </p>
+                                                        <p> <img src="images/images/date.png"> &nbsp;&nbsp;&nbsp;Thu, Nov 26 2020 </p>
+                                                        <p> <img src="images/images/flag.png"> <span class="marked"> &nbsp;&nbsp;&nbsp;&nbsp;5 Users Marked this note as inappropriate </span></p>
+                                                    </div>
+                                                    <div class="book-rate">
+                                                        <div class="container">
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="rate">
+                                                                        <input type="radio" id="star5" name="rate1" value="5" checked/>
+                                                                        <label for="star5" title="text">5 stars</label>
+                                                                        <input type="radio" id="star4" name="rate1" value="4" />
+                                                                        <label for="star4" title="text">4 stars</label>
+                                                                        <input type="radio" id="star3" name="rate1" value="3" />
+                                                                        <label for="star3" title="text">3 stars</label>
+                                                                        <input type="radio" id="star2" name="rate1" value="2" />
+                                                                        <label for="star2" title="text">2 stars</label>
+                                                                        <input type="radio" id="star1" name="rate1" value="1" />
+                                                                        <label for="star1" title="text">1 star</label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <p> 100 reviews </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="book-detials">
+                                                <div class="book-img">
+                                                    <img src="images/images/search2.png" alt="books" class="img-responsive img-fluid">
+                                                </div>
+                                                <div class="book-detial">
+                                                    <div class="book-heading">
+                                                        <h5> <a href="notes-details.html">Computer Science </a></h5>
+                                                    </div>
+                                                    <div class="book-det">
+                                                        <p> <img src="images/images/university.png"> &nbsp;&nbsp;University of California, US </p>
+                                                        <p> <img src="images/images/pages.png"> &nbsp;&nbsp;204 Pages </p>
+                                                        <p> <img src="images/images/date.png"> &nbsp;&nbsp;&nbsp;Thu, Nov 26 2020 </p>
+                                                        <p> <img src="images/images/flag.png"> <span class="marked"> &nbsp;&nbsp;&nbsp;&nbsp;5 Users Marked this note as inappropriate </span></p>
+                                                    </div>
+                                                    <div class="book-rate">
+                                                        <div class="container">
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="rate">
+                                                                        <input type="radio" id="star5" name="rate2" value="5" />
+                                                                        <label for="star5" title="text">5 stars</label>
+                                                                        <input type="radio" id="star4" name="rate2" value="4" />
+                                                                        <label for="star4" title="text">4 stars</label>
+                                                                        <input type="radio" id="star3" name="rate2" value="3" checked/>
+                                                                        <label for="star3" title="text">3 stars</label>
+                                                                        <input type="radio" id="star2" name="rate2" value="2" />
+                                                                        <label for="star2" title="text">2 stars</label>
+                                                                        <input type="radio" id="star1" name="rate2" value="1" />
+                                                                        <label for="star1" title="text">1 star</label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <p> 100 reviews </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="book-detials">
+                                                <div class="book-img">
+                                                    <img src="images/images/search3.png" alt="books" class="img-responsive img-fluid">
+                                                </div>
+                                                <div class="book-detial">
+                                                    <div class="book-heading">
+                                                        <h5> <a href="notes-details.html">Basic Computer Engineering tech India Publication Series </a></h5>
+                                                    </div>
+                                                    <div class="book-det">
+                                                        <p> <img src="images/images/university.png"> &nbsp;&nbsp;University of California, US </p>
+                                                        <p> <img src="images/images/pages.png"> &nbsp;&nbsp;204 Pages </p>
+                                                        <p> <img src="images/images/date.png"> &nbsp;&nbsp;&nbsp;Thu, Nov 26 2020 </p>
+                                                        <p> <img src="images/images/flag.png"> <span class="marked"> &nbsp;&nbsp;&nbsp;&nbsp;5 Users Marked this note as inappropriate </span></p>
+                                                    </div>
+                                                    <div class="book-rate">
+                                                        <div class="container">
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="rate">
+                                                                        <input type="radio" id="star5" name="rate3" value="5" />
+                                                                        <label for="star5" title="text">5 stars</label>
+                                                                        <input type="radio" id="star4" name="rate3" value="4" checked/>
+                                                                        <label for="star4" title="text">4 stars</label>
+                                                                        <input type="radio" id="star3" name="rate3" value="3" />
+                                                                        <label for="star3" title="text">3 stars</label>
+                                                                        <input type="radio" id="star2" name="rate3" value="2" />
+                                                                        <label for="star2" title="text">2 stars</label>
+                                                                        <input type="radio" id="star1" name="rate3" value="1" />
+                                                                        <label for="star1" title="text">1 star</label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <p> 100 reviews </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="book-detials">
+                                                <div class="book-img">
+                                                    <img src="images/images/search4.png" alt="books" class="img-responsive img-fluid">
+                                                </div>
+                                                <div class="book-detial">
+                                                    <div class="book-heading">
+                                                        <h5> <a href="notes-details.html">Computer Science Illuminted - Seventh Edition </a></h5>
+                                                    </div>
+                                                    <div class="book-det">
+                                                        <p> <img src="images/images/university.png"> &nbsp;&nbsp;University of California, US </p>
+                                                        <p> <img src="images/images/pages.png"> &nbsp;&nbsp;204 Pages </p>
+                                                        <p> <img src="images/images/date.png"> &nbsp;&nbsp;&nbsp;Thu, Nov 26 2020 </p>
+                                                        <p> <img src="images/images/flag.png"> <span class="marked"> &nbsp;&nbsp;&nbsp;&nbsp;5 Users Marked this note as inappropriate </span></p>
+                                                    </div>
+                                                    <div class="book-rate">
+                                                        <div class="container">
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="rate">
+                                                                        <input type="radio" id="star5" name="rate4" value="5" />
+                                                                        <label for="star5" title="text">5 stars</label>
+                                                                        <input type="radio" id="star4" name="rate4" value="4" checked/>
+                                                                        <label for="star4" title="text">4 stars</label>
+                                                                        <input type="radio" id="star3" name="rate4" value="3" />
+                                                                        <label for="star3" title="text">3 stars</label>
+                                                                        <input type="radio" id="star2" name="rate4" value="2" />
+                                                                        <label for="star2" title="text">2 stars</label>
+                                                                        <input type="radio" id="star1" name="rate4" value="1" />
+                                                                        <label for="star1" title="text">1 star</label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <p> 100 reviews </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="book-detials">
+                                                <div class="book-img">
+                                                    <img src="images/images/search5.png" alt="books" class="img-responsive img-fluid">
+                                                </div>
+                                                <div class="book-detial">
+                                                    <div class="book-heading">
+                                                        <h5> <a href="notes-details.html">The Principles of Computer Hardware - Oxford </a></h5>
+                                                    </div>
+                                                    <div class="book-det">
+                                                        <p> <img src="images/images/university.png"> &nbsp;&nbsp;University of California, US </p>
+                                                        <p> <img src="images/images/pages.png"> &nbsp;&nbsp;204 Pages </p>
+                                                        <p> <img src="images/images/date.png"> &nbsp;&nbsp;&nbsp;Thu, Nov 26 2020 </p>
+                                                        <p> <img src="images/images/flag.png"> <span class="marked"> &nbsp;&nbsp;&nbsp;&nbsp;5 Users Marked this note as inappropriate </span></p>
+                                                    </div>
+                                                    <div class="book-rate">
+                                                        <div class="container">
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="rate">
+                                                                        <input type="radio" id="star5" name="rate5" value="5" />
+                                                                        <label for="star5" title="text">5 stars</label>
+                                                                        <input type="radio" id="star4" name="rate5" value="4" />
+                                                                        <label for="star4" title="text">4 stars</label>
+                                                                        <input type="radio" id="star3" name="rate5" value="3" />
+                                                                        <label for="star3" title="text">3 stars</label>
+                                                                        <input type="radio" id="star2" name="rate5" value="2" checked/>
+                                                                        <label for="star2" title="text">2 stars</label>
+                                                                        <input type="radio" id="star1" name="rate5" value="1" />
+                                                                        <label for="star1" title="text">1 star</label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <p> 100 reviews </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="book-detials">
+                                                <div class="book-img">
+                                                    <img src="images/images/search6.png" alt="books" class="img-responsive img-fluid">
+                                                </div>
+                                                <div class="book-detial">
+                                                    <div class="book-heading">
+                                                        <h5> <a href="notes-details.html">The Computer Book </a></h5>
+                                                    </div>
+                                                    <div class="book-det">
+                                                        <p> <img src="images/images/university.png"> &nbsp;&nbsp;University of California, US </p>
+                                                        <p> <img src="images/images/pages.png"> &nbsp;&nbsp;204 Pages </p>
+                                                        <p> <img src="images/images/date.png"> &nbsp;&nbsp;&nbsp;Thu, Nov 26 2020 </p>
+                                                        <p> <img src="images/images/flag.png"> <span class="marked"> &nbsp;&nbsp;&nbsp;&nbsp;5 Users Marked this note as inappropriate </span></p>
+                                                    </div>
+                                                    <div class="book-rate">
+                                                        <div class="container">
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="rate">
+                                                                        <input type="radio" id="star5" name="rate6" value="5" />
+                                                                        <label for="star5" title="text">5 stars</label>
+                                                                        <input type="radio" id="star4" name="rate6" value="4" checked/>
+                                                                        <label for="star4" title="text">4 stars</label>
+                                                                        <input type="radio" id="star3" name="rate6" value="3" />
+                                                                        <label for="star3" title="text">3 stars</label>
+                                                                        <input type="radio" id="star2" name="rate6" value="2" />
+                                                                        <label for="star2" title="text">2 stars</label>
+                                                                        <input type="radio" id="star1" name="rate6" value="1" />
+                                                                        <label for="star1" title="text">1 star</label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <p> 100 reviews </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="book-detials">
+                                                <div class="book-img">
+                                                    <img src="images/images/search1.png" alt="books" class="img-responsive img-fluid">
+                                                </div>
+                                                <div class="book-detial">
+                                                    <div class="book-heading">
+                                                        <h5> <a href="notes-details.html">Computer Operating System - Final Exam Book With paper Solution </a></h5>
+                                                    </div>
+                                                    <div class="book-det">
+                                                        <p> <img src="images/images/university.png"> &nbsp;&nbsp;University of California, US </p>
+                                                        <p> <img src="images/images/pages.png"> &nbsp;&nbsp;204 Pages </p>
+                                                        <p> <img src="images/images/date.png"> &nbsp;&nbsp;&nbsp;Thu, Nov 26 2020 </p>
+                                                        <p> <img src="images/images/flag.png"> <span class="marked"> &nbsp;&nbsp;&nbsp;&nbsp;5 Users Marked this note as inappropriate </span></p>
+                                                    </div>
+                                                    <div class="book-rate">
+                                                        <div class="container">
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="rate">
+                                                                        <input type="radio" id="star5" name="rate7" value="5" />
+                                                                        <label for="star5" title="text">5 stars</label>
+                                                                        <input type="radio" id="star4" name="rate7" value="4" />
+                                                                        <label for="star4" title="text">4 stars</label>
+                                                                        <input type="radio" id="star3" name="rate7" value="3" checked/>
+                                                                        <label for="star3" title="text">3 stars</label>
+                                                                        <input type="radio" id="star2" name="rate7" value="2" />
+                                                                        <label for="star2" title="text">2 stars</label>
+                                                                        <input type="radio" id="star1" name="rate7" value="1" />
+                                                                        <label for="star1" title="text">1 star</label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <p> 100 reviews </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="book-detials">
+                                                <div class="book-img">
+                                                    <img src="images/images/search2.png" alt="books" class="img-responsive img-fluid">
+                                                </div>
+                                                <div class="book-detial">
+                                                    <div class="book-heading">
+                                                        <h5> <a href="notes-details.html">Computer Science </a></h5>
+                                                    </div>
+                                                    <div class="book-det">
+                                                        <p> <img src="images/images/university.png"> &nbsp;&nbsp;University of California, US </p>
+                                                        <p> <img src="images/images/pages.png"> &nbsp;&nbsp;204 Pages </p>
+                                                        <p> <img src="images/images/date.png"> &nbsp;&nbsp;&nbsp;Thu, Nov 26 2020 </p>
+                                                        <p> <img src="images/images/flag.png"> <span class="marked"> &nbsp;&nbsp;&nbsp;&nbsp;5 Users Marked this note as inappropriate </span></p>
+                                                    </div>
+                                                    <div class="book-rate">
+                                                        <div class="container">
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="rate">
+                                                                        <input type="radio" id="star5" name="rate8" value="5" checked/>
+                                                                        <label for="star5" title="text">5 stars</label>
+                                                                        <input type="radio" id="star4" name="rate8" value="4" />
+                                                                        <label for="star4" title="text">4 stars</label>
+                                                                        <input type="radio" id="star3" name="rate8" value="3" />
+                                                                        <label for="star3" title="text">3 stars</label>
+                                                                        <input type="radio" id="star2" name="rate8" value="2" />
+                                                                        <label for="star2" title="text">2 stars</label>
+                                                                        <input type="radio" id="star1" name="rate8" value="1" />
+                                                                        <label for="star1" title="text">1 star</label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <p> 100 reviews </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="book-detials">
+                                                <div class="book-img">
+                                                    <img src="images/images/search3.png" alt="books" class="img-responsive img-fluid">
+                                                </div>
+                                                <div class="book-detial">
+                                                    <div class="book-heading">
+                                                        <h5> <a href="notes-details.html">Basic Computer Engineering Tech India Publication Series </a></h5>
+                                                    </div>
+                                                    <div class="book-det">
+                                                        <p> <img src="images/images/university.png"> &nbsp;&nbsp;University of California, US </p>
+                                                        <p> <img src="images/images/pages.png"> &nbsp;&nbsp;204 Pages </p>
+                                                        <p> <img src="images/images/date.png"> &nbsp;&nbsp;&nbsp;Thu, Nov 26 2020 </p>
+                                                        <p> <img src="images/images/flag.png"> <span class="marked"> &nbsp;&nbsp;&nbsp;&nbsp;5 Users Marked this note as inappropriate </span></p>
+                                                    </div>
+                                                    <div class="book-rate">
+                                                        <div class="container">
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="rate">
+                                                                        <input type="radio" id="star5" name="rate9" value="5" checked/>
+                                                                        <label for="star5" title="text">5 stars</label>
+                                                                        <input type="radio" id="star4" name="rate9" value="4" />
+                                                                        <label for="star4" title="text">4 stars</label>
+                                                                        <input type="radio" id="star3" name="rate9" value="3" />
+                                                                        <label for="star3" title="text">3 stars</label>
+                                                                        <input type="radio" id="star2" name="rate9" value="2" />
+                                                                        <label for="star2" title="text">2 stars</label>
+                                                                        <input type="radio" id="star1" name="rate9" value="1" />
+                                                                        <label for="star1" title="text">1 star</label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <p> 100 reviews </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="book-detials">
+                                                <div class="book-img">
+                                                    <img src="images/images/search1.png" alt="books" class="img-responsive img-fluid">
+                                                </div>
+                                                <div class="book-detial">
+                                                    <div class="book-heading">
+                                                        <h5> <a href="notes-details.html">Computer Operating System - Final Exam Book With paper Solution </a></h5>
+                                                    </div>
+                                                    <div class="book-det">
+                                                        <p> <img src="images/images/university.png"> &nbsp;&nbsp;University of California, US </p>
+                                                        <p> <img src="images/images/pages.png"> &nbsp;&nbsp;204 Pages </p>
+                                                        <p> <img src="images/images/date.png"> &nbsp;&nbsp;&nbsp;Thu, Nov 26 2020 </p>
+                                                        <p> <img src="images/images/flag.png"> <span class="marked"> &nbsp;&nbsp;&nbsp;&nbsp;5 Users Marked this note as inappropriate </span></p>
+                                                    </div>
+                                                    <div class="book-rate">
+                                                        <div class="container">
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="rate">
+                                                                        <input type="radio" id="star5" name="rate10" value="5" />
+                                                                        <label for="star5" title="text">5 stars</label>
+                                                                        <input type="radio" id="star4" name="rate10" value="4" checked/>
+                                                                        <label for="star4" title="text">4 stars</label>
+                                                                        <input type="radio" id="star3" name="rate10" value="3" />
+                                                                        <label for="star3" title="text">3 stars</label>
+                                                                        <input type="radio" id="star2" name="rate10" value="2" />
+                                                                        <label for="star2" title="text">2 stars</label>
+                                                                        <input type="radio" id="star1" name="rate10" value="1" />
+                                                                        <label for="star1" title="text">1 star</label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <p> 100 reviews </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="book-detials">
+                                                <div class="book-img">
+                                                    <img src="images/images/search2.png" alt="books" class="img-responsive img-fluid">
+                                                </div>
+                                                <div class="book-detial">
+                                                    <div class="book-heading">
+                                                        <h5> <a href="notes-details.html">Computer Science </a></h5>
+                                                    </div>
+                                                    <div class="book-det">
+                                                        <p> <img src="images/images/university.png"> &nbsp;&nbsp;University of California, US </p>
+                                                        <p> <img src="images/images/pages.png"> &nbsp;&nbsp;204 Pages </p>
+                                                        <p> <img src="images/images/date.png"> &nbsp;&nbsp;&nbsp;Thu, Nov 26 2020 </p>
+                                                        <p> <img src="images/images/flag.png"> <span class="marked"> &nbsp;&nbsp;&nbsp;&nbsp;5 Users Marked this note as inappropriate </span></p>
+                                                    </div>
+                                                    <div class="book-rate">
+                                                        <div class="container">
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="rate">
+                                                                        <input type="radio" id="star5" name="rate11" value="5" checked/>
+                                                                        <label for="star5" title="text">5 stars</label>
+                                                                        <input type="radio" id="star4" name="rate11" value="4" />
+                                                                        <label for="star4" title="text">4 stars</label>
+                                                                        <input type="radio" id="star3" name="rate11" value="3" />
+                                                                        <label for="star3" title="text">3 stars</label>
+                                                                        <input type="radio" id="star2" name="rate11" value="2" />
+                                                                        <label for="star2" title="text">2 stars</label>
+                                                                        <input type="radio" id="star1" name="rate11" value="1" />
+                                                                        <label for="star1" title="text">1 star</label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <p> 100 reviews </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="book-detials">
+                                                <div class="book-img">
+                                                    <img src="images/images/search3.png" alt="books" class="img-responsive img-fluid">
+                                                </div>
+                                                <div class="book-detial">
+                                                    <div class="book-heading">
+                                                        <h5> <a href="notes-details.html">Basic Computer Engineering tech India Publication Series </a></h5>
+                                                    </div>
+                                                    <div class="book-det">
+                                                        <p> <img src="images/images/university.png"> &nbsp;&nbsp;University of California, US </p>
+                                                        <p> <img src="images/images/pages.png"> &nbsp;&nbsp;204 Pages </p>
+                                                        <p> <img src="images/images/date.png"> &nbsp;&nbsp;&nbsp;Thu, Nov 26 2020 </p>
+                                                        <p> <img src="images/images/flag.png"> <span class="marked"> &nbsp;&nbsp;&nbsp;&nbsp;5 Users Marked this note as inappropriate </span></p>
+                                                    </div>
+                                                    <div class="book-rate">
+                                                        <div class="container">
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="rate">
+                                                                        <input type="radio" id="star5" name="rate12" value="5" />
+                                                                        <label for="star5" title="text">5 stars</label>
+                                                                        <input type="radio" id="star4" name="rate12" value="4" checked/>
+                                                                        <label for="star4" title="text">4 stars</label>
+                                                                        <input type="radio" id="star3" name="rate12" value="3" />
+                                                                        <label for="star3" title="text">3 stars</label>
+                                                                        <input type="radio" id="star2" name="rate12" value="2" />
+                                                                        <label for="star2" title="text">2 stars</label>
+                                                                        <input type="radio" id="star1" name="rate12" value="1" />
+                                                                        <label for="star1" title="text">1 star</label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <p> 100 reviews </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="book-detials">
+                                                <div class="book-img">
+                                                    <img src="images/images/search1.png" alt="books" class="img-responsive img-fluid">
+                                                </div>
+                                                <div class="book-detial">
+                                                    <div class="book-heading">
+                                                        <h5> <a href="notes-details.html">Computer Operating System - Final Exam Book With paper Solution </a></h5>
+                                                    </div>
+                                                    <div class="book-det">
+                                                        <p> <img src="images/images/university.png"> &nbsp;&nbsp;University of California, US </p>
+                                                        <p> <img src="images/images/pages.png"> &nbsp;&nbsp;204 Pages </p>
+                                                        <p> <img src="images/images/date.png"> &nbsp;&nbsp;&nbsp;Thu, Nov 26 2020 </p>
+                                                        <p> <img src="images/images/flag.png"> <span class="marked"> &nbsp;&nbsp;&nbsp;&nbsp;5 Users Marked this note as inappropriate </span></p>
+                                                    </div>
+                                                    <div class="book-rate">
+                                                        <div class="container">
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="rate">
+                                                                        <input type="radio" id="star5" name="rate13" value="5" />
+                                                                        <label for="star5" title="text">5 stars</label>
+                                                                        <input type="radio" id="star4" name="rate13" value="4" checked/>
+                                                                        <label for="star4" title="text">4 stars</label>
+                                                                        <input type="radio" id="star3" name="rate13" value="3" />
+                                                                        <label for="star3" title="text">3 stars</label>
+                                                                        <input type="radio" id="star2" name="rate13" value="2" />
+                                                                        <label for="star2" title="text">2 stars</label>
+                                                                        <input type="radio" id="star1" name="rate13" value="1" />
+                                                                        <label for="star1" title="text">1 star</label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <p> 100 reviews </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="book-detials">
+                                                <div class="book-img">
+                                                    <img src="images/images/search2.png" alt="books" class="img-responsive img-fluid">
+                                                </div>
+                                                <div class="book-detial">
+                                                    <div class="book-heading">
+                                                        <h5> <a href="notes-details.html">Computer Science </a></h5>
+                                                    </div>
+                                                    <div class="book-det">
+                                                        <p> <img src="images/images/university.png"> &nbsp;&nbsp;University of California, US </p>
+                                                        <p> <img src="images/images/pages.png"> &nbsp;&nbsp;204 Pages </p>
+                                                        <p> <img src="images/images/date.png"> &nbsp;&nbsp;&nbsp;Thu, Nov 26 2020 </p>
+                                                        <p> <img src="images/images/flag.png"> <span class="marked"> &nbsp;&nbsp;&nbsp;&nbsp;5 Users Marked this note as inappropriate </span></p>
+                                                    </div>
+                                                    <div class="book-rate">
+                                                        <div class="container">
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="rate">
+                                                                        <input type="radio" id="star5" name="rate14" value="5" />
+                                                                        <label for="star5" title="text">5 stars</label>
+                                                                        <input type="radio" id="star4" name="rate14" value="4" />
+                                                                        <label for="star4" title="text">4 stars</label>
+                                                                        <input type="radio" id="star3" name="rate14" value="3" checked/>
+                                                                        <label for="star3" title="text">3 stars</label>
+                                                                        <input type="radio" id="star2" name="rate14" value="2" />
+                                                                        <label for="star2" title="text">2 stars</label>
+                                                                        <input type="radio" id="star1" name="rate14" value="1" />
+                                                                        <label for="star1" title="text">1 star</label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <p> 100 reviews </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="book-detials">
+                                                <div class="book-img">
+                                                    <img src="images/images/search3.png" alt="books" class="img-responsive img-fluid">
+                                                </div>
+                                                <div class="book-detial">
+                                                    <div class="book-heading">
+                                                        <h5> <a href="notes-details.html">Basic Computer Engineering Tech India Publication Series </a></h5>
+                                                    </div>
+                                                    <div class="book-det">
+                                                        <p> <img src="images/images/university.png"> &nbsp;&nbsp;University of California, US </p>
+                                                        <p> <img src="images/images/pages.png"> &nbsp;&nbsp;204 Pages </p>
+                                                        <p> <img src="images/images/date.png"> &nbsp;&nbsp;&nbsp;Thu, Nov 26 2020 </p>
+                                                        <p> <img src="images/images/flag.png"> <span class="marked"> &nbsp;&nbsp;&nbsp;&nbsp;5 Users Marked this note as inappropriate </span></p>
+                                                    </div>
+                                                    <div class="book-rate">
+                                                        <div class="container">
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="rate">
+                                                                        <input type="radio" id="star5" name="rate15" value="5" checked/>
+                                                                        <label for="star5" title="text">5 stars</label>
+                                                                        <input type="radio" id="star4" name="rate15" value="4" />
+                                                                        <label for="star4" title="text">4 stars</label>
+                                                                        <input type="radio" id="star3" name="rate15" value="3" />
+                                                                        <label for="star3" title="text">3 stars</label>
+                                                                        <input type="radio" id="star2" name="rate15" value="2" />
+                                                                        <label for="star2" title="text">2 stars</label>
+                                                                        <input type="radio" id="star1" name="rate15" value="1" />
+                                                                        <label for="star1" title="text">1 star</label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <p> 100 reviews </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="book-detials">
+                                                <div class="book-img">
+                                                    <img src="images/images/search4.png" alt="books" class="img-responsive img-fluid">
+                                                </div>
+                                                <div class="book-detial">
+                                                    <div class="book-heading">
+                                                        <h5> <a href="notes-details.html">Computer Science Illuminted - Seventh Edition </a></h5>
+                                                    </div>
+                                                    <div class="book-det">
+                                                        <p> <img src="images/images/university.png"> &nbsp;&nbsp;University of California, US </p>
+                                                        <p> <img src="images/images/pages.png"> &nbsp;&nbsp;204 Pages </p>
+                                                        <p> <img src="images/images/date.png"> &nbsp;&nbsp;&nbsp;Thu, Nov 26 2020 </p>
+                                                        <p> <img src="images/images/flag.png"> <span class="marked"> &nbsp;&nbsp;&nbsp;&nbsp;5 Users Marked this note as inappropriate </span></p>
+                                                    </div>
+                                                    <div class="book-rate">
+                                                        <div class="container">
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="rate">
+                                                                        <input type="radio" id="star5" name="rate16" value="5" checked/>
+                                                                        <label for="star5" title="text">5 stars</label>
+                                                                        <input type="radio" id="star4" name="rate16" value="4" />
+                                                                        <label for="star4" title="text">4 stars</label>
+                                                                        <input type="radio" id="star3" name="rate16" value="3" />
+                                                                        <label for="star3" title="text">3 stars</label>
+                                                                        <input type="radio" id="star2" name="rate16" value="2" />
+                                                                        <label for="star2" title="text">2 stars</label>
+                                                                        <input type="radio" id="star1" name="rate16" value="1" />
+                                                                        <label for="star1" title="text">1 star</label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <p> 100 reviews </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="book-detials">
+                                                <div class="book-img">
+                                                    <img src="images/images/search5.png" alt="books" class="img-responsive img-fluid">
+                                                </div>
+                                                <div class="book-detial">
+                                                    <div class="book-heading">
+                                                        <h5> <a href="notes-details.html">The Principles of Computer Hardware - Oxford </a></h5>
+                                                    </div>
+                                                    <div class="book-det">
+                                                        <p> <img src="images/images/university.png"> &nbsp;&nbsp;University of California, US </p>
+                                                        <p> <img src="images/images/pages.png"> &nbsp;&nbsp;204 Pages </p>
+                                                        <p> <img src="images/images/date.png"> &nbsp;&nbsp;&nbsp;Thu, Nov 26 2020 </p>
+                                                        <p> <img src="images/images/flag.png"> <span class="marked"> &nbsp;&nbsp;&nbsp;&nbsp;5 Users Marked this note as inappropriate </span></p>
+                                                    </div>
+                                                    <div class="book-rate">
+                                                        <div class="container">
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="rate">
+                                                                        <input type="radio" id="star5" name="rate17" value="5" checked/>
+                                                                        <label for="star5" title="text">5 stars</label>
+                                                                        <input type="radio" id="star4" name="rate17" value="4" />
+                                                                        <label for="star4" title="text">4 stars</label>
+                                                                        <input type="radio" id="star3" name="rate17" value="3" />
+                                                                        <label for="star3" title="text">3 stars</label>
+                                                                        <input type="radio" id="star2" name="rate17" value="2" />
+                                                                        <label for="star2" title="text">2 stars</label>
+                                                                        <input type="radio" id="star1" name="rate17" value="1" />
+                                                                        <label for="star1" title="text">1 star</label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <p> 100 reviews </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="book-detials">
+                                                <div class="book-img">
+                                                    <img src="images/images/search6.png" alt="books" class="img-responsive img-fluid">
+                                                </div>
+                                                <div class="book-detial">
+                                                    <div class="book-heading">
+                                                        <h5> <a href="notes-details.html">The Computer Book </a></h5>
+                                                    </div>
+                                                    <div class="book-det">
+                                                        <p> <img src="images/images/university.png"> &nbsp;&nbsp;University of California, US </p>
+                                                        <p> <img src="images/images/pages.png"> &nbsp;&nbsp;204 Pages </p>
+                                                        <p> <img src="images/images/date.png"> &nbsp;&nbsp;&nbsp;Thu, Nov 26 2020 </p>
+                                                        <p> <img src="images/images/flag.png"> <span class="marked"> &nbsp;&nbsp;&nbsp;&nbsp;5 Users Marked this note as inappropriate </span></p>
+                                                    </div>
+                                                    <div class="book-rate">
+                                                        <div class="container">
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="rate">
+                                                                        <input type="radio" id="star5" name="rate18" value="5" />
+                                                                        <label for="star5" title="text">5 stars</label>
+                                                                        <input type="radio" id="star4" name="rate18" value="4" checked/>
+                                                                        <label for="star4" title="text">4 stars</label>
+                                                                        <input type="radio" id="star3" name="rate18" value="3" />
+                                                                        <label for="star3" title="text">3 stars</label>
+                                                                        <input type="radio" id="star2" name="rate18" value="2" />
+                                                                        <label for="star2" title="text">2 stars</label>
+                                                                        <input type="radio" id="star1" name="rate18" value="1" />
+                                                                        <label for="star1" title="text">1 star</label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <p> 100 reviews </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-md-12">
+                            <div id="pageNavPosition" class="pager-nav"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <!-- search Notes Ends -->
+
+    <!-- Footer -->
+    <footer id="site-footer">
+
+        <div id="footer-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div id="footer-text">
+                            Copyright &copy; TatvaSoft All rights reserved.
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="social-list">
+                            <li> <a href="#"> <img src="images/images/facebook.png"> </a> </li>
+                            <li> <a href="#"> <img src="images/images/twitter.png"> </a> </li>
+                            <li> <a href="#"> <img src="images/images/linkedin.png"> </a> </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+    <!-- Footer Ends -->
+
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="js/Bootstrap/bootstrap.min.js"></script>
+
+    <!-- Script -->
+    <script src="js/script.js"></script>
+
+</body></html>

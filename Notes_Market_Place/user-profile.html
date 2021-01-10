@@ -1,0 +1,355 @@
+<html>
+
+<head>
+
+    <!-- important meta tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0 ,user-scalable=no">
+
+    <title> Notes - MarketPlace </title>
+    <link rel="shortcut icon" type="image/jpg" href="images/images/favicon.ico" />
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link href="css/Bootstrap/bootstrap.min.css" rel="stylesheet">
+
+    <!-- CSS -->
+    <link href="css/css.css" rel="stylesheet">
+
+    <!-- Responsive CSS -->
+    <link href="css/responsive.css" rel="stylesheet">
+
+</head>
+
+<body class="sticky-header">
+
+    <!-- Header -->
+    <div class="wrapper">
+        <header class="site-header">
+            <div class="header-wrapper">
+                <div class="logo-wrapper">
+                    <a href="home.html" title="Site Logo">
+                        <img src="images/images/logo.png" alt="logo">
+                    </a>
+                </div>
+                <div class="navigation-wrapper">
+                    <nav class="main-nav">
+                        <ul class="menu-navigation">
+                            <li>
+                                <a href="search-notes.html">Search Notes</a>
+                            </li>
+                            <li>
+                                <a href="login-page.html">Sell Your Notes</a>
+                            </li>
+                            <li>
+                                <a href="buyer-requests.html">Buyer Requests</a>
+                            </li>
+                            <li>
+                                <a href="FAQ.html">FAQ</a>
+                            </li>
+                            <li>
+                                <a href="contact-us.html">Contact Us</a>
+                            </li>
+                            <li>
+                                <div class="user-dropdown user-menu" target=".user-menu-bar">
+                                    <a class="" role="button" id="dropdownMenuLink" aria-haspopup="true" aria-expanded="false">
+                                        <div class="user-img">
+                                            <img src="images/images/user-img.png">
+                                        </div>
+                                        <div class="user-menu-bar" aria-labelledby="dropdownMenuLink">
+                                            <a class="user-item" href="user-profile.html">My Profile</a>
+                                            <a class="user-item" href="my-downloads.html">My Downloads</a>
+                                            <a class="user-item" href="my-sold-notes.html">My Sold Notes</a>
+                                            <a class="user-item" href="my-rejected-notes.html">My Rejected Notes</a>
+                                            <a class="user-item" href="change-password-page.html">Change Password</a>
+                                            <a class="user-item" href="login-page.html"><span> Logout </span></a>
+                                        </div>
+                                    </a>
+                                </div>
+                            </li>
+                            <li>
+                                <div id="login-button">
+                                    <a class="btn login-btn" href="login-page.html" title="Login" role="button"> Logout </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- mobile menu -->
+
+            <!-- mobile menu btn -->
+            <div id="mobile-menu-box">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div id="mobile-img">
+                                <div class="logo-wrapper">
+                                    <a href="home.html" title="Site Logo">
+                                        <img src="images/images/logo.png" alt="logo">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div id="menu-icon">
+                                <img src="images/images/dots.png">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- mobile menu page -->
+            <div id="mobile-menu-page">
+                <div id="mobile-page">
+                    <div id="mobile-close">
+                        <img src="images/images/close.png">
+                    </div>
+                    <div id="mobile-items">
+                        <a href="search-notes.html">Search Notes</a>
+                        <a href="login-page.html">Sell Your Notes</a>
+                        <a href="buyer-requests.html">Buyer Requests</a>
+                        <a href="FAQ.html">FAQ</a>
+                        <a href="contact-us.html">Contact Us</a>
+                        <a class="sub-menu" target="#user">User</a>
+                        <div class="mobile-item" id="user">
+                            <a class="user-item" href="user-profile.html">My Profile</a>
+                            <a class="user-item" href="my-downloads.html">My Downloads</a>
+                            <a class="user-item" href="my-sold-notes.html">My Sold Notes</a>
+                            <a class="user-item" href="my-rejected-notes.html">My Rejected Notes</a>
+                            <a class="user-item" href="change-password-page.html">Change Password</a>
+                            <a class="user-item" href="login-page.html"><span> Logout </span></a>
+                        </div>
+                        <a href="login-page.html" title="Login" role="button"> Logout </a>
+                    </div>
+                </div>
+            </div>
+            <!-- mobile menu Ends -->
+
+        </header>
+    </div>
+    <!-- Header Ends -->
+
+    <!-- User Profile -->
+    <section id="user-profile">
+
+        <!-- User Profile Content -->
+        <div class="search-content">
+            <div class="main-heading-center">
+                <h1> User Profile </h1>
+            </div>
+        </div>
+
+        <!-- User Profile Details -->
+        <div class="content-box-md">
+            <div class="add-note-details">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="left-heading">
+                                <h2> Basic Profile Details </h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="login-form">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="first-name">First Name *</label>
+                                        <input type="text" class="form-control" id="first-name" name="first-name" aria- placeholder="Enter your first name">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="last-name">Last Name *</label>
+                                        <input type="text" class="form-control" id="last-name" name="last-name" aria- placeholder="Enter your last name">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="email">Email *</label>
+                                        <input type="email" class="form-control" id="email" name="email" aria- placeholder="Enter your email">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="date-of-birth">Date of Birth</label>
+                                        <input type="date" class="form-control" id="date-of-birth" name="date-of-birth" aria- placeholder="Enter your date of birth">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="gender">Gender</label>
+                                        <select class="form-control" id="select-gender">
+                                            <option>Select your gender </option>
+                                            <option>Male </option>
+                                            <option>Female </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="phone-number">Phone Number</label>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <select class="form-control" id="select-phone-number-code">
+                                                    <option>+91 </option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" id="phone-number" name="phone-number" aria- placeholder="Enter your phone number">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="profile-picture">Profile Picture</label><br>
+                                        <label class="file-uploader">
+                                            <img src="images/images/upload-file.png">
+                                            <p> Upload a picture</p>
+                                            <input type="file" class="form-control" id="profile-picture" name="profile-picture">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="add-note-details">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="left-heading">
+                                <h2> Address Details </h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="login-form">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="address-line-1">Address Line 1 *</label>
+                                        <input type="text" class="form-control" id="address-line-1" name="address-line-1" aria- placeholder="Enter your address">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="address-line-2">Address Line 2</label>
+                                        <input type="text" class="form-control" id="address-line-2" name="address-line-2" aria- placeholder="Enter your address">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="city">City *</label>
+                                        <input type="text" class="form-control" id="city" name="city" aria- placeholder="Enter your city">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="state">State *</label>
+                                        <input type="text" class="form-control" id="state" name="state" aria- placeholder="Enter your state">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="zipcode">ZipCode *</label>
+                                        <input type="text" class="form-control" id="zipcode" name="zipcode" aria- placeholder="Enter your zipcode">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="country">Country *</label>
+                                        <input type="text" class="form-control" id="country" name="country" aria- placeholder="Enter your country">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="add-note-details">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="left-heading">
+                                <h2> University and College Information </h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="login-form">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="university">University</label>
+                                        <input type="text" class="form-control" id="university" name="university" aria- placeholder="Enter your university">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="college">College</label>
+                                        <input type="text" class="form-control" id="college" name="college" aria- placeholder="Enter your college">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="work-btn">
+                            <a class="btn blue-btn" href="#search-notes" title="Download" role="button"> SUBMIT </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- User Profile Ends -->
+
+    <!-- Footer -->
+    <footer id="site-footer">
+
+        <div id="footer-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div id="footer-text">
+                            Copyright &copy; TatvaSoft All rights reserved.
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="social-list">
+                            <li> <a href="#"> <img src="images/images/facebook.png"> </a> </li>
+                            <li> <a href="#"> <img src="images/images/twitter.png"> </a> </li>
+                            <li> <a href="#"> <img src="images/images/linkedin.png"> </a> </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+    <!-- Footer Ends -->
+
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="js/Bootstrap/bootstrap.min.js"></script>
+
+    <!-- Script -->
+    <script src="js/script.js"></script>
+
+</body></html>

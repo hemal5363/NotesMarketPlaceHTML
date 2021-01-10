@@ -1,0 +1,372 @@
+<html>
+
+<head>
+
+    <!-- important meta tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0 ,user-scalable=no">
+
+    <title> Notes - MarketPlace </title>
+    <link rel="shortcut icon" type="image/jpg" href="images/images/favicon.ico" />
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link href="css/Bootstrap/bootstrap.min.css" rel="stylesheet">
+
+    <!-- CSS -->
+    <link href="css/css.css" rel="stylesheet">
+
+    <!-- Responsive CSS -->
+    <link href="css/responsive.css" rel="stylesheet">
+
+</head>
+
+<body class="sticky-header">
+
+    <!-- Header -->
+    <div class="wrapper">
+        <header class="site-header">
+            <div class="header-wrapper">
+                <div class="logo-wrapper">
+                    <a href="home.html" title="Site Logo">
+                        <img src="images/images/logo.png" alt="logo">
+                    </a>
+                </div>
+                <div class="navigation-wrapper">
+                    <nav class="main-nav">
+                        <ul class="menu-navigation">
+                            <li>
+                                <a href="search-notes.html">Search Notes</a>
+                            </li>
+                            <li>
+                                <a href="login-page.html">Sell Your Notes</a>
+                            </li>
+                            <li>
+                                <a href="buyer-requests.html">Buyer Requests</a>
+                            </li>
+                            <li>
+                                <a href="FAQ.html">FAQ</a>
+                            </li>
+                            <li>
+                                <a href="contact-us.html">Contact Us</a>
+                            </li>
+                            <li>
+                                <div class="user-dropdown user-menu" target=".user-menu-bar">
+                                    <a class="" role="button" id="dropdownMenuLink" aria-haspopup="true" aria-expanded="false">
+                                        <div class="user-img">
+                                            <img src="images/images/user-img.png">
+                                        </div>
+                                        <div class="user-menu-bar" aria-labelledby="dropdownMenuLink">
+                                            <a class="user-item" href="user-profile.html">My Profile</a>
+                                            <a class="user-item" href="my-downloads.html">My Downloads</a>
+                                            <a class="user-item" href="my-sold-notes.html">My Sold Notes</a>
+                                            <a class="user-item" href="my-rejected-notes.html">My Rejected Notes</a>
+                                            <a class="user-item" href="change-password-page.html">Change Password</a>
+                                            <a class="user-item" href="home.html"><span> Logout </span></a>
+                                        </div>
+                                    </a>
+                                </div>
+                            </li>
+                            <li>
+                                <div id="login-button">
+                                    <a class="btn login-btn" href="login-page.html" title="Login" role="button"> Login </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- mobile menu -->
+
+            <!-- mobile menu btn -->
+            <div id="mobile-menu-box">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div id="mobile-img">
+                                <div class="logo-wrapper">
+                                    <a href="home.html" title="Site Logo">
+                                        <img src="images/images/logo.png" alt="logo">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div id="menu-icon">
+                                <img src="images/images/dots.png">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- mobile menu page -->
+            <div id="mobile-menu-page">
+                <div id="mobile-page">
+                    <div id="mobile-close">
+                        <img src="images/images/close.png">
+                    </div>
+                    <div id="mobile-items">
+                        <a href="search-notes.html">Search Notes</a>
+                        <a href="login-page.html">Sell Your Notes</a>
+                        <a href="buyer-requests.html">Buyer Requests</a>
+                        <a href="FAQ.html">FAQ</a>
+                        <a href="contact-us.html">Contact Us</a>
+                        <a class="sub-menu" target="#user">User</a>
+                        <div class="mobile-item" id="user">
+                            <a class="user-item" href="user-profile.html">My Profile</a>
+                            <a class="user-item" href="my-downloads.html">My Downloads</a>
+                            <a class="user-item" href="my-sold-notes.html">My Sold Notes</a>
+                            <a class="user-item" href="my-rejected-notes.html">My Rejected Notes</a>
+                            <a class="user-item" href="change-password-page.html">Change Password</a>
+                            <a class="user-item" href="login-page.html"><span> Logout </span></a>
+                        </div>
+                        <a href="login-page.html" title="Login" role="button"> Logout </a>
+                    </div>
+                </div>
+            </div>
+            <!-- mobile menu Ends -->
+
+        </header>
+    </div>
+    <!-- Header Ends -->
+
+    <!-- My Rejected Notes -->
+    <section id="my-rejected-notes">
+
+        <div class="content-box">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="left-heading">
+                            <h2> My Rejected Notes </h2>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="search">
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <div class="search-bar">
+                                        <input type="text" class="form-control" id="search-input" aria- placeholder="        search">
+                                    </div>
+                                    <div class="search-icon">
+                                        <img src="images/images/search-icon.png">
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="search-btn">
+                                        <button class="btn blue-btn" title="Add Note" onclick="myFunction()" role="button"> SEARCH </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="table-format">
+                            <table id="pager" class="table wp-list-table widefat striped posts tablesorter sort-table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col"> SR. NO. </th>
+                                        <th scope="col"> NOTE TITLE </th>
+                                        <th scope="col"> CATEGORY </th>
+                                        <th scope="col"> REMARKS </th>
+                                        <th scope="col"> CLONE </th>
+                                        <th scope="col"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th>1</th>
+                                        <td> <a href="notes-details.html">Data Science</a></td>
+                                        <td> Science </td>
+                                        <td> Lorem Ipsum is simpley dummy text </td>
+                                        <td> <a href="#">Clone</a></td>
+                                        <td>
+                                            <div class="menu-popup"><a class="menu-check" target="#mp1"><img src="images/images/dots.png"></a>
+                                                <div id="mp1" class="menu-popup-show">
+                                                    <p><a href="#">Download Note</a></p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>2</th>
+                                        <td> <a href="notes-details.html">Accounts</a></td>
+                                        <td> Commerce </td>
+                                        <td> Lorem Ipsum is simpley dummy text </td>
+                                        <td> <a href="#">Clone</a></td>
+                                        <td>
+                                            <div class="menu-popup"><a class="menu-check" target="#mp2"><img src="images/images/dots.png"></a>
+                                                <div id="mp2" class="menu-popup-show">
+                                                    <p><a href="#">Download Note</a></p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>3</th>
+                                        <td> <a href="notes-details.html">Social Studies</a></td>
+                                        <td> Social </td>
+                                        <td> Lorem Ipsum is simpley dummy text </td>
+                                        <td> <a href="#">Clone</a></td>
+                                        <td>
+                                            <div class="menu-popup"><a class="menu-check" target="#mp3"><img src="images/images/dots.png"></a>
+                                                <div id="mp3" class="menu-popup-show">
+                                                    <p><a href="#">Download Note</a></p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>4</th>
+                                        <td> <a href="notes-details.html">AI</a></td>
+                                        <td> IT </td>
+                                        <td> Lorem Ipsum is simpley dummy text </td>
+                                        <td> <a href="#">Clone</a></td>
+                                        <td>
+                                            <div class="menu-popup"><a class="menu-check" target="#mp4"><img src="images/images/dots.png"></a>
+                                                <div id="mp4" class="menu-popup-show">
+                                                    <p><a href="#">Download Note</a></p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>5</th>
+                                        <td> <a href="notes-details.html">Lorem Ipsum</a></td>
+                                        <td> Lorem </td>
+                                        <td> Lorem Ipsum is simpley dummy text </td>
+                                        <td> <a href="#">Clone</a></td>
+                                        <td>
+                                            <div class="menu-popup"><a class="menu-check" target="#mp5"><img src="images/images/dots.png"></a>
+                                                <div id="mp5" class="menu-popup-show">
+                                                    <p><a href="#">Download Note</a></p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>6</th>
+                                        <td> <a href="notes-details.html">Data Science</a></td>
+                                        <td> Science </td>
+                                        <td> Lorem Ipsum is simpley dummy text </td>
+                                        <td> <a href="#">Clone</a></td>
+                                        <td>
+                                            <div class="menu-popup"><a class="menu-check" target="#mp6"><img src="images/images/dots.png"></a>
+                                                <div id="mp6" class="menu-popup-show">
+                                                    <p><a href="#">Download Note</a></p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>7</th>
+                                        <td> <a href="notes-details.html">Accounts</a></td>
+                                        <td> Commerce </td>
+                                        <td> Lorem Ipsum is simpley dummy text </td>
+                                        <td> <a href="#">Clone</a></td>
+                                        <td>
+                                            <div class="menu-popup"><a class="menu-check" target="#mp7"><img src="images/images/dots.png"></a>
+                                                <div id="mp7" class="menu-popup-show">
+                                                    <p><a href="#">Download Note</a></p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>8</th>
+                                        <td> <a href="notes-details.html">Social Studies</a></td>
+                                        <td> Social </td>
+                                        <td> Lorem Ipsum is simpley dummy text </td>
+                                        <td> <a href="#">Clone</a></td>
+                                        <td>
+                                            <div class="menu-popup"><a class="menu-check" target="#mp8"><img src="images/images/dots.png"></a>
+                                                <div id="mp8" class="menu-popup-show">
+                                                    <p><a href="#">Download Note</a></p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>9</th>
+                                        <td> <a href="notes-details.html">AI</a></td>
+                                        <td> IT </td>
+                                        <td> Lorem Ipsum is simpley dummy text </td>
+                                        <td> <a href="#">Clone</a></td>
+                                        <td>
+                                            <div class="menu-popup"><a class="menu-check" target="#mp9"><img src="images/images/dots.png"></a>
+                                                <div id="mp9" class="menu-popup-show">
+                                                    <p><a href="#">Download Note</a></p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>10</th>
+                                        <td> <a href="notes-details.html">Lorem Ipsum</a></td>
+                                        <td> Lorem </td>
+                                        <td> Lorem Ipsum is simpley dummy text </td>
+                                        <td> <a href="#">Clone</a></td>
+                                        <td>
+                                            <div class="menu-popup"><a class="menu-check" target="#mp10"><img src="images/images/dots.png"></a>
+                                                <div id="mp10" class="menu-popup-show">
+                                                    <p><a href="#">Download Note</a></p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div id="pageNavPosition" class="pager-nav"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- My Rejected Notes Ends -->
+
+    <!-- Footer -->
+    <footer id="site-footer">
+
+        <div id="footer-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div id="footer-text">
+                            Copyright &copy; TatvaSoft All rights reserved.
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="social-list">
+                            <li> <a href="#"> <img src="images/images/facebook.png"> </a> </li>
+                            <li> <a href="#"> <img src="images/images/twitter.png"> </a> </li>
+                            <li> <a href="#"> <img src="images/images/linkedin.png"> </a> </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+    <!-- Footer Ends -->
+
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="js/Bootstrap/bootstrap.min.js"></script>
+
+    <!-- Table Sorter -->
+    <script src="js/Table-sorter/jquery.tablesorter.js"></script>
+
+    <!-- Script -->
+    <script src="js/script.js"></script>
+
+</body></html>

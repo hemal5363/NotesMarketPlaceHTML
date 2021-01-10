@@ -1,0 +1,466 @@
+<html>
+
+<head>
+
+    <!-- important meta tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0 ,user-scalable=no">
+
+    <title> Notes - MarketPlace </title>
+    <link rel="shortcut icon" type="image/jpg" href="images/images/favicon.ico" />
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link href="css/Bootstrap/bootstrap.min.css" rel="stylesheet">
+
+    <!-- CSS -->
+    <link href="css/css.css" rel="stylesheet">
+
+    <!-- Responsive CSS -->
+    <link href="css/responsive.css" rel="stylesheet">
+
+</head>
+
+<body class="sticky-header">
+
+    <!-- Header -->
+    <div class="wrapper">
+        <header class="site-header">
+            <div class="header-wrapper">
+                <div class="logo-wrapper">
+                    <a href="dashboard.html" title="Site Logo">
+                        <img src="images/images/logo.png" alt="logo">
+                    </a>
+                </div>
+                <div class="navigation-wrapper">
+                    <nav class="main-nav">
+                        <ul class="menu-navigation">
+                            <li>
+                                <a href="search-notes.html">Search Notes</a>
+                            </li>
+                            <li>
+                                <a href="login-page.html">Sell Your Notes</a>
+                            </li>
+                            <li>
+                                <a href="buyer-requests.html">Buyer Requests</a>
+                            </li>
+                            <li>
+                                <a href="FAQ.html">FAQ</a>
+                            </li>
+                            <li>
+                                <a href="contact-us.html">Contact Us</a>
+                            </li>
+                            <li>
+                                <div class="user-dropdown user-menu" target=".user-menu-bar">
+                                    <a class="" role="button" id="dropdownMenuLink" aria-haspopup="true" aria-expanded="false">
+                                        <div class="user-img">
+                                            <img src="images/images/user-img.png">
+                                        </div>
+                                        <div class="user-menu-bar" aria-labelledby="dropdownMenuLink">
+                                            <a class="user-item" href="user-profile.html">My Profile</a>
+                                            <a class="user-item" href="my-downloads.html">My Downloads</a>
+                                            <a class="user-item" href="my-sold-notes.html">My Sold Notes</a>
+                                            <a class="user-item" href="my-rejected-notes.html">My Rejected Notes</a>
+                                            <a class="user-item" href="change-password-page.html">Change Password</a>
+                                            <a class="user-item" href="login-page.html"><span> Logout </span></a>
+                                        </div>
+                                    </a>
+                                </div>
+                            </li>
+                            <li>
+                                <div id="login-button">
+                                    <a class="btn login-btn" href="login-page.html" title="Login" role="button"> Logout </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- mobile menu -->
+
+            <!-- mobile menu btn -->
+            <div id="mobile-menu-box">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div id="mobile-img">
+                                <div class="logo-wrapper">
+                                    <a href="dashboard.html" title="Site Logo">
+                                        <img src="images/images/logo.png" alt="logo">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div id="menu-icon">
+                                <img src="images/images/dots.png">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- mobile menu page -->
+            <div id="mobile-menu-page">
+                <div id="mobile-page">
+                    <div id="mobile-close">
+                        <img src="images/images/close.png">
+                    </div>
+                    <div id="mobile-items">
+                        <a href="search-notes.html">Search Notes</a>
+                        <a href="login-page.html">Sell Your Notes</a>
+                        <a href="buyer-requests.html">Buyer Requests</a>
+                        <a href="FAQ.html">FAQ</a>
+                        <a href="contact-us.html">Contact Us</a>
+                        <a class="sub-menu" target="#user">User</a>
+                        <div class="mobile-item" id="user">
+                            <a class="user-item" href="user-profile.html">My Profile</a>
+                            <a class="user-item" href="my-downloads.html">My Downloads</a>
+                            <a class="user-item" href="my-sold-notes.html">My Sold Notes</a>
+                            <a class="user-item" href="my-rejected-notes.html">My Rejected Notes</a>
+                            <a class="user-item" href="change-password-page.html">Change Password</a>
+                            <a class="user-item" href="login-page.html"><span> Logout </span></a>
+                        </div>
+                        <a href="login-page.html" title="Login" role="button"> Logout </a>
+                    </div>
+                </div>
+            </div>
+            <!-- mobile menu Ends -->
+
+        </header>
+    </div>
+    <!-- Header Ends -->
+
+    <!-- Dashboard -->
+    <section id="dashboard">
+
+        <div class="content-box">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="left-heading">
+                            <h2> Dashboard </h2>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div id="dashboard-add-note-btn">
+                            <a class="btn blue-btn" href="add-notes.html" title="Add Note" role="button"> ADD NOTE </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div id="dashboard-my-earning">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div id="my-earning">
+                                                <div class="my-earning-block">
+                                                    <div id="icon">
+                                                        <img src="images/images/my-earning.png">
+                                                    </div>
+                                                    <div class="my-earning-heading">
+                                                        <div id="earning-heading">
+                                                            <h2> My Earning</h2>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="my-earning-block">
+                                                <table>
+                                                    <tr>
+                                                        <td>
+                                                            <div id="notes-money">
+                                                                <a href="my-sold-notes.html">
+                                                                    <div class="my-earning-heading">
+                                                                        <h2> 100 </h2>
+                                                                    </div>
+                                                                    <div class="my-earning-text">
+                                                                        <p> Number of Notes Sold </p>
+                                                                    </div>
+                                                                </a>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div id="money-earned">
+                                                                <a href="my-sold-notes.html">
+                                                                    <div class="my-earning-heading">
+                                                                        <h2> $10,00,000 </h2>
+                                                                    </div>
+                                                                    <div class="my-earning-text">
+                                                                        <p> Money Earned </p>
+                                                                    </div>
+                                                                </a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div id="my-downloads-earning">
+                                                <div class="my-earning-block">
+                                                    <a href="my-downloads.html">
+                                                        <div class="my-earning-heading">
+                                                            <h2> 38 </h2>
+                                                        </div>
+                                                        <div class="my-earning-text">
+                                                            <p> My Downloads </p>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div id="my-rejected-earning">
+                                                <div class="my-earning-block">
+                                                    <a href="my-rejected-notes.html">
+                                                        <div class="my-earning-heading">
+                                                            <h2> 12 </h2>
+                                                        </div>
+                                                        <div class="my-earning-text">
+                                                            <p> My Rejected Notes </p>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div id="buyer-requests-earning">
+                                                <div class="my-earning-block">
+                                                    <a href="buyer-requests.html">
+                                                        <div class="my-earning-heading">
+                                                            <h2> 102 </h2>
+                                                        </div>
+                                                        <div class="my-earning-text">
+                                                            <p> Buyer Requests </p>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="heading-md">
+                            <h3> In Progress Notes </h3>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="search">
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <div class="search-bar">
+                                        <input type="text" class="form-control" id="search-input" aria- placeholder="        search">
+                                        <div class="search-icon">
+                                            <img src="images/images/search-icon.png">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="search-btn">
+                                        <button class="btn blue-btn" title="Add Note" onclick="myFunction()" role="button"> SEARCH </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="table-format">
+                            <table id="pager" class="table wp-list-table widefat striped posts tablesorter sort-table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Added Date </th>
+                                        <th scope="col"> Title </th>
+                                        <th scope="col"> Category </th>
+                                        <th scope="col"> Status </th>
+                                        <th scope="col"> Actions </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>09-10-2020</td>
+                                        <td> Data Science</td>
+                                        <td> Science </td>
+                                        <td> Draft </td>
+                                        <td> <a href="add-notes.html" alt="edit"><img src="images/images/edit.png"></a> <a href="#" alt="edit"> <img src="images/images/delete.png"> </a> </td>
+                                    </tr>
+                                    <tr>
+                                        <td>10-10-2020</td>
+                                        <td> Accounts </td>
+                                        <td> Commerce </td>
+                                        <td> In Review </td>
+                                        <td> <a href="notes-details.html" alt="edit"><img src="images/images/eye.png"></a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>11-10-2020</td>
+                                        <td> Social Studies </td>
+                                        <td> Social </td>
+                                        <td> Submitted </td>
+                                        <td> <a href="notes-details.html" alt="edit"><img src="images/images/eye.png"></a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>12-10-2020</td>
+                                        <td> AI </td>
+                                        <td> IT </td>
+                                        <td> Submitted </td>
+                                        <td> <a href="notes-details.html" alt="edit"><img src="images/images/eye.png"></a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>13-10-2020</td>
+                                        <td> Lorem ipsum dolor sit ametsectetur</td>
+                                        <td> Lorem </td>
+                                        <td> Draft </td>
+                                        <td> <a href="add-notes.html" alt="edit"><img src="images/images/edit.png"></a> <a href="#" alt="edit"> <img src="images/images/delete.png"> </a> </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div id="pageNavPosition" class="pager-nav"></div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="heading-md">
+                            <h3> Published Notes </h3>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="search">
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <div class="search-bar">
+                                        <input type="text" class="form-control" id="search-input1" aria- placeholder="        search">
+                                        <div class="search-icon">
+                                            <img src="images/images/search-icon.png">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="search-btn">
+                                        <button class="btn blue-btn" title="Add Note" onclick="myFunction1()" role="button"> SEARCH </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="table-format">
+                            <table id="pager1" class="table wp-list-table widefat striped posts tablesorter sort-table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Added Date </th>
+                                        <th scope="col"> Title </th>
+                                        <th scope="col"> Category </th>
+                                        <th scope="col"> Sellk Type </th>
+                                        <th scope="col"> Price </th>
+                                        <th scope="col"> Actions </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>09-10-2020</td>
+                                        <td> Data Science</td>
+                                        <td> Science </td>
+                                        <td> Paid </td>
+                                        <td> $575 </td>
+                                        <td> <a href="notes-details.html" alt="edit"><img src="images/images/eye.png"></a> </td>
+                                    </tr>
+                                    <tr>
+                                        <td>10-10-2020</td>
+                                        <td> Accounts </td>
+                                        <td> Commerce </td>
+                                        <td> Free </td>
+                                        <td> $0 </td>
+                                        <td> <a href="notes-details.html" alt="edit"><img src="images/images/eye.png"></a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>11-10-2020</td>
+                                        <td> Social Studies </td>
+                                        <td> Social </td>
+                                        <td> Free </td>
+                                        <td> $0 </td>
+                                        <td> <a href="notes-details.html" alt="edit"><img src="images/images/eye.png"></a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>12-10-2020</td>
+                                        <td> AI </td>
+                                        <td> IT </td>
+                                        <td> Paid </td>
+                                        <td> $3542 </td>
+                                        <td> <a href="notes-details.html" alt="edit"><img src="images/images/eye.png"></a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>13-10-2020</td>
+                                        <td> Lorem ipsum dolor sit ametsectetur</td>
+                                        <td> Lorem </td>
+                                        <td> Free </td>
+                                        <td> $0 </td>
+                                        <td> <a href="notes-details.html" alt="edit"><img src="images/images/eye.png"></a> </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div id="pageNavPosition1" class="pager-nav"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <!-- Dashboard Ends -->
+
+    <!-- Footer -->
+    <footer id="site-footer">
+
+        <div id="footer-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div id="footer-text">
+                            Copyright &copy; TatvaSoft All rights reserved.
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="social-list">
+                            <li> <a href="#"> <img src="images/images/facebook.png"> </a> </li>
+                            <li> <a href="#"> <img src="images/images/twitter.png"> </a> </li>
+                            <li> <a href="#"> <img src="images/images/linkedin.png"> </a> </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+    <!-- Footer Ends -->
+
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="js/Bootstrap/bootstrap.min.js"></script>
+
+    <!-- Table Sorter -->
+    <script src="js/Table-sorter/jquery.tablesorter.js"></script>
+
+    <!-- Script -->
+    <script src="js/script.js"></script>
+
+</body></html>

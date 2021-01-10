@@ -1,0 +1,378 @@
+<html>
+
+<head>
+
+    <!-- important meta tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0 ,user-scalable=no">
+
+    <title> Notes - MarketPlace </title>
+    <link rel="shortcut icon" type="image/jpg" href="images/images/favicon.ico" />
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link href="css/Bootstrap/bootstrap.min.css" rel="stylesheet">
+
+    <!-- CSS -->
+    <link href="css/css.css" rel="stylesheet">
+
+    <!-- Responsive CSS -->
+    <link href="css/responsive.css" rel="stylesheet">
+
+</head>
+
+<body class="sticky-header">
+
+    <!-- Header -->
+    <div class="wrapper">
+        <header class="site-header">
+            <div class="header-wrapper">
+                <div class="logo-wrapper">
+                    <a href="admin-dashboard.html" title="Site Logo">
+                        <img src="images/images/logo.png" alt="logo">
+                    </a>
+                </div>
+                <div class="navigation-wrapper">
+                    <nav class="main-nav">
+                        <ul class="menu-navigation">
+                            <li>
+                                <a href="admin-dashboard.html">Dashboard</a>
+                            </li>
+                            <li>
+                                <!--                                <a href="admin-notes.html">Notes</a>-->
+                                <div class="user-dropdown user-menu" target="#notes-menu">
+                                    <a class="" role="button" id="dropdownMenuLink" aria-haspopup="true" aria-expanded="false">
+                                        Notes
+                                        <div id="notes-menu" class="user-menu-bar" aria-labelledby="dropdownMenuLink">
+                                            <a class="user-item" href="admin-notes-under-review.html">Notes Under Review </a>
+                                            <a class="user-item" href="admin-published-notes.html">Published Notes</a>
+                                            <a class="user-item" href="admin-downloaded-notes.html">Downloaded Notes</a>
+                                            <a class="user-item" href="admin-rejected-notes.html">Rejected Notes</a>
+                                        </div>
+                                    </a>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="admin-members.html" class="active-section">Members</a>
+                            </li>
+                            <li>
+                                <!--                                <a href="admin-reports.html">Reports</a>-->
+                                <div class="user-dropdown user-menu" target="#reports-menu">
+                                    <a class="" role="button" id="dropdownMenuLink" aria-haspopup="true" aria-expanded="false">
+                                        Reports
+                                        <div id="reports-menu" class="user-menu-bar" aria-labelledby="dropdownMenuLink">
+                                            <a class="user-item" href="admin-spam-reports.html"> Spam Reports </a>
+                                        </div>
+                                    </a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="user-dropdown user-menu" target="#setting-menu">
+                                    <a class="" role="button" id="dropdownMenuLink" aria-haspopup="true" aria-expanded="false">
+                                        Settings
+                                        <div id="setting-menu" class="user-menu-bar" aria-labelledby="dropdownMenuLink">
+                                            <a class="user-item" href="admin-manage-system-configuration.html"> Manage System Configuration </a>
+                                            <a class="user-item" href="admin-manage-administrator.html"> Manage Administrator </a>
+                                            <a class="user-item" href="admin-manage-category.html"> Manage Category </a>
+                                            <a class="user-item" href="admin-manage-type.html"> Manage Type </a>
+                                            <a class="user-item" href="admin-manage-country.html"> Manage Country </a>
+                                        </div>
+                                    </a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="user-dropdown user-menu" target="#user-menu-img">
+                                    <a class="" role="button" id="dropdownMenuLink" aria-haspopup="true" aria-expanded="false">
+                                        <div class="user-img">
+                                            <img src="images/images/user-img.png">
+                                        </div>
+                                        <div id="user-menu-img" class="user-menu-bar" aria-labelledby="dropdownMenuLink">
+                                            <a class="user-item" href="admin-user-profile.html">Update Profile</a>
+                                            <a class="user-item" href="change-password-page.html">Change Password</a>
+                                            <a class="user-item" href="login-page.html"><span> Logout </span></a>
+                                        </div>
+                                    </a>
+                                </div>
+                            </li>
+                            <li>
+                                <div id="login-button">
+                                    <a class="btn login-btn" href="login-page.html" title="Login" role="button"> Logout </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- mobile menu -->
+
+            <!-- mobile menu btn -->
+            <div id="mobile-menu-box">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div id="mobile-img">
+                                <div class="logo-wrapper">
+                                    <a href="home.html" title="Site Logo">
+                                        <img src="images/images/logo.png" alt="logo">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div id="menu-icon">
+                                <img src="images/images/dots.png">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- mobile menu page -->
+            <div id="mobile-menu-page">
+                <div id="mobile-page">
+                    <div id="mobile-close">
+                        <img src="images/images/close.png">
+                    </div>
+                    <div id="mobile-items">
+                        <a href="admin-dashboard.html">Dashboard</a>
+                        <a class="sub-menu" target="#notes">Notes</a>
+                        <div class="mobile-item" id="notes">
+                            <a class="user-item" href="admin-notes-under-review.html">Notes Under Review </a>
+                            <a class="user-item" href="admin-published-notes.html">Published Notes</a>
+                            <a class="user-item" href="admin-downloaded-notes.html">Downloaded Notes</a>
+                            <a class="user-item" href="admin-rejected-notes.html">Rejected Notes</a>
+                        </div>
+                        <a href="admin-members.html">Members</a>
+                        <a class="sub-menu" target="#reports">Reports</a>
+                        <div class="mobile-item" id="reports">
+                            <a class="user-item" href="admin-spam-reports.html"> Spam Reports </a>
+                        </div>
+                        <a class="sub-menu" target="#settings">Settings</a>
+                        <div class="mobile-item" id="settings">
+                            <a class="user-item" href="admin-manage-system-configuration.html"> Manage System Configuration </a>
+                            <a class="user-item" href="admin-manage-administrator.html"> Manage Administrator </a>
+                            <a class="user-item" href="admin-manage-category.html"> Manage Category </a>
+                            <a class="user-item" href="admin-manage-type.html"> Manage Type </a>
+                            <a class="user-item" href="admin-manage-country.html"> Manage Country </a>
+                        </div>
+                        <a class="sub-menu" target="#user">User</a>
+                        <div class="mobile-item" id="user">
+                            <a class="user-item" href="admin-user-profile.html">Update Profile</a>
+                            <a class="user-item" href="change-password-page.html">Change Password</a>
+                            <a class="user-item" href="login-page.html"><span> Logout </span></a>
+                        </div>
+                        <a href="login-page.html" title="Login" role="button"> Logout </a>
+                    </div>
+                </div>
+            </div>
+            <!-- mobile menu Ends -->
+
+        </header>
+    </div>
+    <!-- Header Ends -->
+
+    <!-- Admin Members -->
+    <section id="admin-members">
+        <div class="content-box">
+            <div class="add-note-details">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="left-heading">
+                                <h2> Members </h2>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="search">
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        <div class="search-bar">
+                                            <input type="text" class="form-control" id="search-input" aria- placeholder="        search">
+                                        </div>
+                                        <div class="search-icon">
+                                            <img src="images/images/search-icon.png">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="search-btn">
+                                            <button class="btn blue-btn" title="Add Note" onclick="myFunction()" role="button"> SEARCH </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="table-format">
+                                <table id="pager" class="table wp-list-table widefat striped posts tablesorter sort-table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col"> SR NO. </th>
+                                            <th scope="col"> FIRST NAME </th>
+                                            <th scope="col"> LAST NAME </th>
+                                            <th scope="col"> EMAIL </th>
+                                            <th scope="col"> JOINING DATE </th>
+                                            <th scope="col"> UNDER REVIEW NOTES </th>
+                                            <th scope="col"> PUBLISHED NOTES </th>
+                                            <th scope="col"> DOWNLOAED NOTES </th>
+                                            <th scope="col"> TOTAL EXPENSES </th>
+                                            <th scope="col"> TOTAL EARNINGS </th>
+                                            <th scope="col"> </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th>1</th>
+                                            <td> Khayati </td>
+                                            <td> Patel </td>
+                                            <td> khayatipatel@gmail.com </td>
+                                            <td> 09-10-2020, 10:10 </td>
+                                            <td> <a href="admin-notes-under-review.html">19</a> </td>
+                                            <td> <a href="admin-published-notes.html">10</a> </td>
+                                            <td> <a href="admin-downloaded-notes.html">22</a> </td>
+                                            <td> <a href="admin-downloaded-notes.html">$220</a></td>
+                                            <td> $177 </td>
+                                            <td>
+                                                <div class="menu-popup"><a class="menu-check" target="#mp1"><img src="images/images/dots.png"> </a>
+                                                    <div id="mp1" class="menu-popup-show">
+                                                        <p><a href="admin-member-details.html"> View More Details </a></p>
+                                                        <p><a href="#"> Deactivate </a></p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>2</th>
+                                            <td> Rahul </td>
+                                            <td> Shah </td>
+                                            <td> rahulshah@gmail.com </td>
+                                            <td> 10-10-2020, 12:30 </td>
+                                            <td> <a href="admin-notes-under-review.html">4</a> </td>
+                                            <td> <a href="admin-published-notes.html">5</a> </td>
+                                            <td> <a href="admin-downloaded-notes.html">4</a> </td>
+                                            <td> <a href="admin-downloaded-notes.html">$150</a></td>
+                                            <td> $250 </td>
+                                            <td>
+                                                <div class="menu-popup"><a class="menu-check" target="#mp2"><img src="images/images/dots.png"></a>
+                                                    <div id="mp2" class="menu-popup-show">
+                                                        <p><a href="admin-member-details.html"> View More Details </a></p>
+                                                        <p><a href="#"> Deactivate </a></p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>3</th>
+                                            <td> Suman </td>
+                                            <td> Trivedi </td>
+                                            <td> sumantrivedi@gmail.com </td>
+                                            <td> 11-10-2020, 01:00 </td>
+                                            <td> <a href="admin-notes-under-review.html">12</a> </td>
+                                            <td> <a href="admin-published-notes.html">11</a> </td>
+                                            <td> <a href="admin-downloaded-notes.html">17</a> </td>
+                                            <td> <a href="admin-downloaded-notes.html">$886</a></td>
+                                            <td> $978 </td>
+                                            <td>
+                                                <div class="menu-popup"><a class="menu-check" target="#mp3"><img src="images/images/dots.png"></a>
+                                                    <div id="mp3" class="menu-popup-show">
+                                                        <p><a href="admin-member-details.html"> View More Details </a></p>
+                                                        <p><a href="#"> Deactivate </a></p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>4</th>
+                                            <td> Raj </td>
+                                            <td> Malhotra </td>
+                                            <td> rajmalhotr77@gmail.com </td>
+                                            <td> 12-10-2020, 10:10 </td>
+                                            <td> <a href="admin-notes-under-review.html">2</a> </td>
+                                            <td> <a href="admin-published-notes.html">123</a> </td>
+                                            <td> <a href="admin-downloaded-notes.html">28</a> </td>
+                                            <td> <a href="admin-downloaded-notes.html">$1284</a></td>
+                                            <td> $15254 </td>
+                                            <td>
+                                                <div class="menu-popup"><a class="menu-check" target="#mp4"><img src="images/images/dots.png"></a>
+                                                    <div id="mp4" class="menu-popup-show">
+                                                        <p><a href="admin-member-details.html"> View More Details </a></p>
+                                                        <p><a href="#"> Deactivate </a></p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>5</th>
+                                            <td> Niya </td>
+                                            <td> Patel </td>
+                                            <td> niyapatel12@gmail.com </td>
+                                            <td> 13-10-2020, 13:25 </td>
+                                            <td> <a href="admin-notes-under-review.html">20</a> </td>
+                                            <td> <a href="admin-published-notes.html">1</a> </td>
+                                            <td> <a href="admin-downloaded-notes.html">0</a> </td>
+                                            <td> <a href="admin-downloaded-notes.html">$0</a></td>
+                                            <td> $69 </td>
+                                            <td>
+                                                <div class="menu-popup"><a class="menu-check" target="#mp5"><img src="images/images/dots.png"></a>
+                                                    <div id="mp5" class="menu-popup-show">
+                                                        <p><a href="admin-member-details.html"> View More Details </a></p>
+                                                        <p><a href="#"> Deactivate </a></p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div id="pageNavPosition" class="pager-nav"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Admin Members Ends -->
+
+    <!-- Footer -->
+    <footer id="site-footer">
+
+        <div id="admin-footer">
+            <div id="footer-content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div id="footer-version">
+                                Version : 1.1.24
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div id="footer-text">
+                                Copyright &copy; TatvaSoft All rights reserved.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+    <!-- Footer Ends -->
+
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="js/Bootstrap/bootstrap.min.js"></script>
+
+    <!-- Table Sorter -->
+    <script src="js/Table-sorter/jquery.tablesorter.js"></script>
+
+    <!-- Script -->
+    <script src="js/script.js"></script>
+
+</body></html>
