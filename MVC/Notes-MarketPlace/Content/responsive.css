@@ -1,0 +1,2199 @@
+/* =====================================================
+                        Sign Up
+===================================================== */
+
+@media (max-height: 950px) {
+    #signup-page .login {
+        height: 110%;
+    }
+}
+
+@media (max-height: 850px) {
+    #signup-page .login {
+        height: 125%;
+    }
+}
+
+@media (max-width: 1199px) {
+
+    /* =====================================================
+                        Header
+===================================================== */
+
+    .site-header {
+        padding: 18px 0;
+    }
+
+    .sticky-header .logo-wrapper img {
+        margin: 0;
+    }
+
+    .sticky-header .site-header {
+        height: 60px;
+    }
+
+    .sticky-header .site-header .header-wrapper .navigation-wrapper .main-nav .menu-navigation > li a {
+        font-size: 12px;
+        margin-top: 10px;
+    }
+
+    .site-header .header-wrapper .logo-wrapper a {
+        font-size: 50px;
+    }
+
+    .site-header .header-wrapper .navigation-wrapper .main-nav .menu-navigation > li {
+        margin: 0 10px;
+    }
+
+    .site-header .header-wrapper .navigation-wrapper .main-nav .menu-navigation > li a {
+        font-size: 12px;
+    }
+
+    .site-header #login-button .login-btn {
+        width: 70px;
+        height: 30px;
+        font-size: 14px;
+        line-height: 22px;
+        padding-top: 2px;
+    }
+
+    .sticky-header #login-button .login-btn {
+        width: 70px;
+        height: 30px;
+        font-size: 14px;
+        line-height: 22px;
+        padding-top: 5px;
+    }
+
+    .user-img {
+        height: 30px;
+        width: 30px;
+    }
+
+    .user-img img {
+        height: 30px;
+    }
+
+    .user-menu-bar {
+        top: 45px;
+        width: 200px;
+        padding: 20px 0;
+    }
+
+    .user-menu-bar a {
+        width: 200px;
+        padding: 7px 30px 7px 30px;
+    }
+
+    .user-menu-bar a span {
+        font-size: 16px;
+    }
+
+    /* =====================================================
+                        Footer
+===================================================== */
+
+    #footer-version,
+    #footer-text {
+        padding: 20px 0;
+        font-size: 12px;
+    }
+
+    /* =====================================================
+                        Social Icons
+===================================================== */
+
+    ul.social-list {
+        padding: 10px 0 5px 0;
+        margin: 0
+    }
+
+    ul.social-list li a {
+        width: 26px;
+        height: 26px;
+        padding-top: 6px;
+    }
+
+    ul.social-list li a img {
+        width: 10px;
+        height: 10px;
+    }
+
+    /* =====================================================
+                    Content Box
+===================================================== */
+
+    .search-content {
+        height: 200px;
+        margin-top: 60px;
+    }
+
+    .content-box-md {
+        margin-top: 50px;
+        margin-bottom: 100px;
+    }
+
+    .content-box {
+        margin-top: 100px;
+        margin-bottom: 100px;
+    }
+
+    /* =====================================================
+                        Headings
+===================================================== */
+
+    .main-heading-center h1 {
+        font-size: 38px;
+    }
+
+    .left-heading h2 {
+        font-size: 28px;
+    }
+
+    .left-heading {
+        margin-bottom: 25px;
+    }
+
+    #home-heading h1 {
+        font-size: 35px;
+    }
+
+    #home-heading {
+        margin-top: 140px;
+    }
+
+    .heading-center h1 {
+        font-size: 34px;
+    }
+
+    .heading-md h3 {
+        font-size: 22px;
+    }
+
+    /* =====================================================
+                        Forms
+===================================================== */
+
+    .login-form .form-group label {
+        font-size: 14px;
+        margin-bottom: 7px;
+    }
+
+    .login-form .form-group .form-control {
+        height: 40px;
+    }
+
+    .login-form .form-group .col-md-9 .form-control {
+        height: 40px;
+    }
+
+    /* Show Password */
+    .show-pass {
+        top: 38px;
+    }
+
+    .login-form .form-group select {
+        height: 40px;
+    }
+
+    .login-form .form-group .file-uploader {
+        height: 110px;
+    }
+
+    .search-icon {
+        left: 110px;
+        top: 13px;
+    }
+
+    .search-bar input {
+        height: 40px;
+        margin-left: 80px;
+    }
+
+    .login-form .form-group textarea {
+        height: 130px !important;
+    }
+
+    /* =====================================================
+                        Button
+===================================================== */
+
+    .login-page-button button {
+        width: 400px;
+    }
+
+    .blue-btn {
+        width: 100px;
+        height: 40px;
+        font-size: 14px;
+        padding-top: 5px;
+    }
+
+    #add-any-btn .blue-btn {
+        width: 200px;
+    }
+
+    /* =====================================================
+                    Admin Dashboard
+===================================================== */
+
+    #dashboard-my-earning {
+        margin-bottom: 40px;
+    }
+
+    #admin-dashboard .search-bar input {
+        height: 40px;
+    }
+
+    #admin-dashboard .search-icon {
+        left: 70px;
+        top: 12px;
+    }
+
+    #admin-dashboard .search-btn button {
+        height: 40px;
+    }
+
+    #admin-dashboard select {
+        height: 40px;
+    }
+
+    /* =====================================================
+                        Tables
+===================================================== */
+
+    .table-format table {
+        font-size: 12px;
+    }
+
+    .table-format table thead th {
+        padding-bottom: 20px;
+    }
+
+    .table-format table tbody td,
+    .table-format table tbody th {
+        padding-top: 20px;
+    }
+
+    /* =====================================================
+                    Pager Nav
+===================================================== */
+
+    .pager-nav {
+        margin-top: 30px;
+    }
+
+    .pager-nav span {
+        padding-top: 3px;
+        width: 26px;
+        height: 26px;
+        margin: 0 10px;
+        font-size: 12px;
+    }
+
+    /* =====================================================
+                    My Downloads
+===================================================== */
+
+    /* Menu Popup */
+    .menu-popup .menu-popup-show {
+        width: 200px;
+        padding: 10px;
+    }
+
+    .menu-popup .menu-popup-show p {
+        margin: 10px;
+    }
+
+    /* =====================================================
+                    Add reviews
+===================================================== */
+
+    #add-review-bg {
+        height: 155%;
+    }
+
+    #add-review-box {
+        top: 150px;
+        padding: 25px 40px;
+    }
+
+    #close-btn img {
+        width: 15px;
+    }
+
+    #close-btn {
+        height: 15px;
+        width: 15px;
+    }
+
+    #rates .rate {
+        margin: 0;
+        margin-top: 25px;
+    }
+
+    #comments {
+        margin-top: 110px;
+        width: 400px;
+    }
+
+    /* =====================================================
+                Admin Notes Under Review
+===================================================== */
+
+    .select-any label {
+        margin: 0;
+    }
+
+    .select-any select {
+        height: 40px;
+    }
+
+    .review-btn {
+        width: 258px;
+    }
+
+    .approve-btn {
+        height: 30px;
+        font-size: 14px;
+        padding-top: 0px;
+    }
+
+    .reject-btn {
+        height: 30px;
+        font-size: 14px !important;
+        padding-top: 0px;
+    }
+
+    .inreview-btn {
+        height: 30px;
+        font-size: 14px;
+        padding-top: 0px;
+    }
+
+    #remarks label {
+        margin-top: 20px;
+        width: 350px;
+    }
+
+    #remarks #review-btn {
+        margin-top: 30px;
+    }
+
+    /* =====================================================
+                Admin Member Details
+===================================================== */
+
+    #admin-member-details #notes-detail-img img {
+        width: 130px;
+    }
+
+    #admin-member-details #member-detail-det {
+        font-size: 14px;
+        line-height: 25px;
+    }
+
+    #admin-member-details hr {
+        margin: 25px 0 30px 0;
+    }
+
+    #vertical-line {
+        top: 70px;
+        height: 150px;
+    }
+
+    #admin-member-details .heading-md {
+        margin-bottom: 25px;
+    }
+
+    /* =====================================================
+                        Notes Details
+===================================================== */
+
+    #notes-detail .col-md-7 {
+        margin-bottom: 25px;
+    }
+
+    #notes-detail #notes-detail-img img {
+        width: 200px;
+    }
+
+    #notes-detail .left-heading {
+        margin-bottom: 15px;
+    }
+
+    #notes-detail #notes-detail-line h6 {
+        font-size: 14px;
+    }
+
+    #notes-detail #notes-detail-line {
+        margin-bottom: 15px;
+    }
+
+    #notes-detail #notes-detail-text {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+
+    #download-book a {
+        width: 160px;
+    }
+
+    #notes-detail #notes-detail-det {
+        font-size: 13px;
+        line-height: 25px;
+    }
+
+    #notes-detail .rate:not(:checked) > label {
+        margin-left: -2px;
+    }
+
+    #notes-detail #notes-detail-det .col-md-12 {
+        font-size: 11px;
+    }
+
+    #notes-priview-reviews {
+        margin-top: 40px;
+    }
+
+    #costomer-reviews {
+        padding: 20px;
+    }
+
+    .c-r-hd h4 {
+        font-size: 18px;
+    }
+
+    #costomer-reviews .c-r-text {
+        font-size: 13px;
+        line-height: 18px;
+    }
+
+    #costomer-reviews hr {
+        margin: 10px 0;
+    }
+
+    /* Thank You Popup */
+    #thank-you-popup {
+        height: 150%;
+    }
+
+    #thanks-popup {
+        top: 100px;
+        padding: 40px 45px 20px 30px;
+        width: 500px;
+    }
+
+    #right-img img {
+        width: 50px;
+    }
+
+    #right-img {
+        margin-bottom: 20px;
+    }
+
+    #thank-heading h3 {
+        font-size: 24px;
+    }
+
+    #thank-heading {
+        margin-bottom: 30px;
+    }
+
+    #thank-you-popup .text p {
+        font-size: 13px;
+        margin-bottom: 20px;
+    }
+
+    #thank-you-popup .text p:nth-child(1) {
+        font-size: 14px;
+        margin-bottom: 5px;
+    }
+
+    /* =====================================================
+                        Contact Us
+===================================================== */
+
+    #contect-us-heading {
+        margin-bottom: 30px;
+    }
+
+    #contect-us-heading #contect-us-text {
+        font-size: 14px;
+    }
+
+    #contact-us .login-form .form-group textarea {
+        height: 220px !important;
+    }
+
+    /* =====================================================
+                    Dashboard
+===================================================== */
+
+    #dashboard #dashboard-my-earning #my-earning {
+        width: 180px;
+    }
+
+    #dashboard #dashboard-my-earning .col-md-8 .my-earning-block {
+        margin-left: 19px;
+    }
+
+    .my-earning-block {
+        height: 151px;
+    }
+
+    .my-earning-block h2 {
+        font-size: 26px;
+    }
+
+    .my-earning-block p {
+        font-size: 14px;
+        margin-top: 10px;
+    }
+
+    #dashboard .heading-md,
+    #dashboard .search {
+        margin-top: 30px;
+    }
+
+    /* =====================================================
+                Email Verification
+===================================================== */
+
+    #email-verification {
+        padding: 25px;
+        width: 450px;
+    }
+
+    #email-verification-logo {
+        margin-bottom: 30px;
+    }
+
+    #email-verification-heading h1 {
+        font-size: 26px;
+    }
+
+    #email-verification-heading {
+        margin-bottom: 25px;
+    }
+
+    #email-verification-text h4 {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+
+    #email-verification-text p {
+        font-size: 12px;
+        margin-bottom: 8px;
+    }
+
+    #email-verification-text {
+        margin-bottom: 30px;
+    }
+
+    #email-btn button {
+        width: 100%;
+    }
+
+    /* =====================================================
+                        FAQ
+===================================================== */
+
+    .FAQ-box {
+        margin-bottom: 10px;
+        padding: 15px;
+    }
+
+    #g3 .FAQ-box {
+        margin-bottom: 40px;
+    }
+
+    #u2 .FAQ-box {
+        margin-bottom: 40px;
+    }
+
+    .FAQ-question h6 {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+
+    .FAQ-text {
+        font-size: 12px;
+    }
+
+    .FAQ-box-add .FAQ-box {
+        margin-bottom: 10px;
+        padding: 10px;
+    }
+
+
+
+    /* =====================================================
+                        Home
+===================================================== */
+
+    #home-content {
+        height: 500px;
+    }
+
+    #home-text {
+        font-size: 16px;
+    }
+
+    /* =====================================================
+                            About
+===================================================== */
+
+    #about {
+        margin-bottom: 40px;
+    }
+
+    #about-text p:first-child {
+        margin-bottom: 30px;
+    }
+
+    /* =====================================================
+                            Works
+===================================================== */
+
+    #works {
+        padding: 40px;
+    }
+
+    .works-download {
+        margin-top: 20px;
+    }
+
+    .icons {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 25px;
+    }
+
+    .icon img {
+        width: 40px;
+    }
+
+    .icon {
+        width: 100px;
+        height: 100px;
+    }
+
+    #works .text {
+        margin: 10px 0 20px 0;
+    }
+
+    /* =====================================================
+                            Customers
+===================================================== */
+
+    #customers {
+        margin: 40px;
+    }
+
+    .coustomer {
+        padding: 30px;
+        margin-top: 25px;
+    }
+
+    .coustomer img {
+        margin-bottom: 25px;
+        width: 70px;
+    }
+
+    .coustomer h2 {
+        font-size: 20px;
+        margin-left: 0px;
+    }
+
+    .coustomer h6 {
+        font-size: 12px;
+        margin-left: 0px;
+    }
+
+    .coustomer p {
+        line-height: 24px;
+    }
+
+    /* =====================================================
+                        Texts
+===================================================== */
+
+    .text {
+        font-size: 14px;
+    }
+
+    /* =====================================================
+                        Login page
+===================================================== */
+
+
+    .login-content {
+        padding: 30px;
+    }
+
+    .login-heading h1 {
+        font-size: 28px;
+        margin-bottom: 15px;
+    }
+
+    .login-text {
+        font-size: 13px;
+        margin-bottom: 25px;
+    }
+
+    #login-page .login-form .form-group p {
+        font-size: 11px;
+    }
+
+    .login-form .form-group input:nth-child(2) {
+        margin-bottom: 20px;
+    }
+
+    .login-form .form-group input:nth-child(1) {
+        width: 20px;
+        height: 20px;
+        margin-top: 25px;
+    }
+
+    .login-form .form-group label:nth-child(2) {
+        margin-left: 15px;
+    }
+
+    .dont-account {
+        margin-top: 15px;
+        font-size: 14px;
+    }
+
+    /* =====================================================
+                        Search Filter
+===================================================== */
+
+    #filter-content {
+        padding: 20px;
+        margin-bottom: 40px;
+    }
+
+    #filter-content input {
+        height: 40px;
+    }
+
+    /* =====================================================
+                        Total Notes
+===================================================== */
+
+    .book-detials {
+        width: 297px;
+        margin-top: 25px;
+    }
+
+    #search-notes td:nth-child(2) {
+        padding: 0 20px;
+    }
+
+    .book-detial {
+        padding: 20px;
+        height: 278px;
+    }
+
+    .book-heading h5 {
+        font-size: 16px;
+    }
+
+    .book-heading {
+        margin-bottom: 20px;
+    }
+
+    .book-det p,
+    .book-rate p {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+
+    .rate:not(:checked) > label {
+        margin: 1px;
+    }
+}
+
+@media (max-width: 992px) {
+
+    /* =====================================================
+                        Header
+===================================================== */
+
+    .site-header img {
+        height: 30px;
+    }
+
+    .site-header {
+        padding: 18px 0;
+    }
+
+    .sticky-header .logo-wrapper img {
+        margin-top: 10px;
+        height: 30px;
+    }
+
+    .sticky-header .site-header {
+        height: 60px;
+    }
+
+    .sticky-header .site-header .header-wrapper .navigation-wrapper .main-nav .menu-navigation > li a {
+        font-size: 9px;
+        margin-top: 10px;
+    }
+
+    .site-header .header-wrapper .logo-wrapper a {
+        font-size: 50px;
+    }
+
+    .site-header .header-wrapper .navigation-wrapper .main-nav .menu-navigation > li {
+        margin: 0 5px;
+    }
+
+    .site-header .header-wrapper .navigation-wrapper .main-nav .menu-navigation > li a {
+        font-size: 9px;
+    }
+
+    .site-header #login-button .login-btn {
+        width: 50px;
+        height: 20px;
+        font-size: 10px;
+        line-height: 10px;
+        padding-top: 5px;
+        margin-top: 10px;
+    }
+
+    .sticky-header #login-button .login-btn {
+        width: 50px;
+        height: 20px;
+        font-size: 10px;
+        line-height: 10px;
+        padding-top: 5px;
+        padding-left: 8px;
+        margin-top: 20px;
+    }
+
+    .user-img {
+        height: 25px;
+        width: 25px;
+    }
+
+    .user-img img {
+        height: 25px;
+    }
+
+    .user-menu-bar {
+        top: 35px;
+        width: 150px;
+        padding: 15px 0;
+    }
+
+    .user-menu-bar a {
+        width: 150px;
+        padding: 7px 20px 7px 20px;
+    }
+
+    .user-menu-bar a span {
+        font-size: 14px;
+    }
+
+    /* =====================================================
+                        Footer
+===================================================== */
+
+    #footer-version,
+    #footer-text {
+        padding: 15px 0;
+        font-size: 10px;
+    }
+
+    /* =====================================================
+                        Social Icons
+===================================================== */
+
+    ul.social-list {
+        padding: 5px 0 5px 0;
+        margin: 0
+    }
+
+    ul.social-list li a {
+        width: 24px;
+        height: 24px;
+        padding-top: 6px;
+    }
+
+    ul.social-list li a img {
+        width: 8px;
+        height: 8px;
+    }
+
+    /* =====================================================
+                    Content Box
+===================================================== */
+
+    .search-content {
+        height: 160px;
+        margin-top: 60px;
+    }
+
+    .content-box-md {
+        margin-top: 40px;
+        margin-bottom: 70px;
+    }
+
+    .content-box {
+        margin-top: 80px;
+        margin-bottom: 70px;
+    }
+
+    /* =====================================================
+                        Headings
+===================================================== */
+
+    .main-heading-center h1 {
+        font-size: 32px;
+    }
+
+    .left-heading h2 {
+        font-size: 22px;
+    }
+
+    .left-heading {
+        margin-bottom: 18px;
+    }
+
+    #home-heading h1 {
+        font-size: 26px;
+    }
+
+    #home-heading {
+        margin-top: 140px;
+    }
+
+    .heading-center h1 {
+        font-size: 28px;
+    }
+
+    .heading-md h3 {
+        font-size: 16px;
+    }
+
+    /* =====================================================
+                        Forms
+===================================================== */
+
+    .login-form .form-group label {
+        font-size: 12px;
+        margin-bottom: 5px;
+    }
+
+    .login-form .form-group .form-control {
+        height: 30px;
+        font-size: 12px;
+    }
+
+    .login-form .form-group .col-md-9 .form-control {
+        height: 30px;
+    }
+
+    /* Show Password */
+    .show-pass img {
+        width: 18px;
+    }
+
+    .show-pass {
+        top: 33px;
+    }
+
+    .login-form .form-group select {
+        height: 30px;
+        padding: 5px;
+    }
+
+    .login-form .form-group .file-uploader img {
+        height: 30px;
+    }
+
+    .login-form .form-group .file-uploader p {
+        font-size: 15px;
+    }
+
+    .login-form .form-group .file-uploader {
+        height: 90px;
+    }
+
+    .search-icon img {
+        height: 15px;
+    }
+
+    .search-icon {
+        left: 90px;
+        top: 10px;
+    }
+
+    .search-bar input {
+        height: 30px;
+        margin-left: 55px;
+    }
+
+    .login-form .form-group textarea {
+        height: 90px !important;
+    }
+
+    .login-form label {
+        font-size: 12px;
+    }
+
+    .login-form .redio-btn label {
+        margin-top: 5px;
+        font-size: 12px;
+    }
+
+    /* =====================================================
+                        Button
+===================================================== */
+
+    .login-page-button button {
+        width: 330px;
+        height: 30px;
+        font-size: 16px;
+        padding-top: 3px;
+    }
+
+    .blue-btn {
+        width: 90px;
+        height: 30px;
+        font-size: 12px;
+        padding-top: 5px;
+    }
+
+    #add-any-btn .blue-btn {
+        width: 150px;
+    }
+
+    .home-button {
+        width: 130px;
+        height: 35px;
+        font-size: 14px;
+        line-height: 15px;
+    }
+
+    /* =====================================================
+                    Admin Dashboard
+===================================================== */
+
+    #dashboard-my-earning {
+        margin-bottom: 30px;
+    }
+
+    #admin-dashboard .search-bar input {
+        height: 30px;
+        margin-bottom: 10px;
+        font-size: 12px;
+    }
+
+    #admin-dashboard .search-icon img {
+        width: 15px;
+    }
+
+    #admin-dashboard .search-icon {
+        left: 70px;
+        top: 9px;
+    }
+
+    #admin-dashboard .search-btn button {
+        height: 30px;
+        padding-top: 5px;
+        padding-left: 8px;
+    }
+
+    #admin-dashboard select {
+        height: 30px;
+        font-size: 12px;
+    }
+
+    /* =====================================================
+                        Tables
+===================================================== */
+
+    .table-format table {
+        font-size: 12px;
+    }
+
+    /* =====================================================
+                    Pager Nav
+===================================================== */
+
+    .pager-nav {
+        margin-top: 25px;
+    }
+
+    .pager-nav span img {
+        height: 12px;
+    }
+
+    .pager-nav span {
+        padding-top: 2px;
+        width: 24px;
+        height: 24px;
+        margin: 0 10px;
+        font-size: 12px;
+    }
+
+    /* =====================================================
+                    My Downloads
+===================================================== */
+
+    /* Menu Popup */
+    .menu-popup .menu-popup-show {
+        width: 170px;
+        padding: 9px;
+    }
+
+    .menu-popup .menu-popup-show p {
+        margin: 10px;
+        font-size: 10px;
+    }
+
+    /* =====================================================
+                    Add reviews
+===================================================== */
+
+    #add-review-bg {
+        height: 150%;
+    }
+
+    #add-review-box {
+        top: 120px;
+        padding: 15px 30px;
+    }
+
+    #close-btn img {
+        width: 13px;
+    }
+
+    #close-btn {
+        height: 15px;
+        width: 15px;
+    }
+
+    #rates .rate {
+        margin: 0;
+        margin-top: 20px;
+    }
+
+    #rates .rate:not(:checked) > label {
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+    }
+
+    #rates .rate:not(:checked) > label:before {
+        content: url("../Images/star1.png");
+    }
+
+    #comments {
+        margin-top: 80px;
+        width: 300px;
+    }
+
+    /* =====================================================
+                Admin Notes Under Review
+===================================================== */
+
+    .select-any label {
+        margin: 0;
+        font-size: 12px;
+    }
+
+    .select-any select {
+        height: 30px;
+        font-size: 12px;
+    }
+
+    .review-btn {
+        width: 258px;
+    }
+
+    .approve-btn {
+        height: 30px;
+        font-size: 14px;
+        padding-top: 0px;
+    }
+
+    .reject-btn {
+        height: 30px;
+        font-size: 14px !important;
+        padding-top: 0px;
+    }
+
+    .inreview-btn {
+        height: 30px;
+        font-size: 14px;
+        padding-top: 0px;
+    }
+
+    #remarks label {
+        margin-top: 20px;
+        width: 250px;
+    }
+
+    #remarks #review-btn {
+        margin-top: 30px;
+    }
+
+    /* =====================================================
+                Admin Member Details
+===================================================== */
+
+    #admin-member-details #notes-detail-img img {
+        width: 100px;
+    }
+
+    #admin-member-details #member-detail-det {
+        font-size: 9px;
+        line-height: 20px;
+    }
+
+    #admin-member-details hr {
+        margin: 20px 0 25px 0;
+    }
+
+    #vertical-line {
+        top: 60px;
+        height: 100px;
+    }
+
+    #admin-member-details .heading-md {
+        margin-bottom: 20px;
+    }
+
+    /* =====================================================
+                Admin Rejected Notes
+===================================================== */
+
+    #admin-rejected-notes table tr td:nth-child(8) {
+        width: 300px;
+    }
+
+    /* =====================================================
+                        Notes Details
+===================================================== */
+
+    #notes-detail .col-md-7 {
+        margin-bottom: 20px;
+    }
+
+    #notes-detail #notes-detail-img img {
+        width: 150px;
+    }
+
+    #notes-detail .left-heading h2 {
+        font-size: 18px;
+    }
+
+    #notes-detail .left-heading {
+        margin-bottom: 10px;
+    }
+
+    #notes-detail #notes-detail-line h6 {
+        font-size: 11px;
+    }
+
+    #notes-detail #notes-detail-line {
+        margin-bottom: 10px;
+    }
+
+    #notes-detail #notes-detail-text {
+        font-size: 10px;
+        margin-bottom: 15px;
+    }
+
+    #download-book a {
+        width: 130px;
+    }
+
+    #notes-detail #notes-detail-det {
+        font-size: 9px;
+        line-height: 20px;
+    }
+
+    .rate:not(:checked) > label:before {
+        content: url("../Images/star1.png");
+    }
+
+    #notes-detail .rate {
+        margin-left: -30px;
+        height: 20px;
+    }
+
+    #notes-detail .rate:not(:checked) > label {
+        width: 20px;
+        height: 20px;
+    }
+
+    .rate:not(:checked) > label {
+        width: 20px;
+        height: 20px;
+    }
+
+    #notes-detail #notes-detail-det .col-md-12 {
+        font-size: 8px;
+    }
+
+    #notes-priview-reviews {
+        margin-top: 30px;
+    }
+
+    #costomer-reviews img {
+        height: 10px;
+    }
+
+    #costomer-reviews .c-r-img img {
+        height: 40px;
+    }
+
+    #costomer-reviews {
+        padding: 15px;
+    }
+
+    .c-r-hd h4 {
+        font-size: 14px;
+        margin: 0px;
+    }
+
+    #costomer-reviews .c-r-text p {
+        margin: 0px;
+    }
+
+    #costomer-reviews .c-r-text {
+        font-size: 10px;
+        line-height: 15px;
+    }
+
+    #costomer-reviews hr {
+        margin: 10px 0;
+    }
+
+    /* Thank You Popup */
+    #thank-you-popup {
+        height: 150%;
+    }
+
+    #thanks-popup {
+        top: 100px;
+        padding: 40px 45px 20px 30px;
+        width: 500px;
+    }
+
+    #right-img img {
+        width: 50px;
+    }
+
+    #right-img {
+        margin-bottom: 20px;
+    }
+
+    #thank-heading h3 {
+        font-size: 24px;
+    }
+
+    #thank-heading {
+        margin-bottom: 30px;
+    }
+
+    #thank-you-popup .text p {
+        font-size: 13px;
+        margin-bottom: 20px;
+    }
+
+    #thank-you-popup .text p:nth-child(1) {
+        font-size: 14px;
+        margin-bottom: 5px;
+    }
+
+    /* =====================================================
+                        Contact Us
+===================================================== */
+
+    #contect-us-heading {
+        margin-bottom: 20px;
+    }
+
+    #contact-us .login-form .form-group textarea {
+        height: 175px !important;
+    }
+
+    /* =====================================================
+                    Dashboard
+===================================================== */
+
+    #dashboard #dashboard-my-earning #my-earning {
+        width: 130px;
+    }
+
+    #dashboard #dashboard-my-earning .col-md-8 .my-earning-block {
+        margin-left: 10px;
+    }
+
+    .my-earning-block {
+        height: 100px;
+    }
+
+    .my-earning-block {
+        padding: 10px;
+    }
+
+    .my-earning-block img {
+        width: 25px;
+    }
+
+    .my-earning-block h2 {
+        font-size: 18px;
+    }
+
+    .my-earning-block p {
+        font-size: 9px;
+        margin-top: 10px;
+        line-height: 16px;
+        margin-bottom: 10px;
+    }
+
+    #dashboard .heading-md,
+    #dashboard .search {
+        margin-top: 20px;
+    }
+
+    /* =====================================================
+                Email Verification
+===================================================== */
+
+    #email-verification {
+        padding: 15px;
+        width: 350px;
+    }
+
+    #email-verification-logo img {
+        height: 30px;
+    }
+
+    #email-verification-logo {
+        margin-bottom: 20px;
+    }
+
+    #email-verification-heading h1 {
+        font-size: 20px;
+    }
+
+    #email-verification-heading {
+        margin-bottom: 18px;
+    }
+
+    #email-verification-text h4 {
+        font-size: 11px;
+        margin-bottom: 8px;
+    }
+
+    #email-verification-text p {
+        font-size: 10px;
+        margin-bottom: 5px;
+    }
+
+    #email-verification-text {
+        margin-bottom: 20px;
+    }
+
+    #email-btn button {
+        width: 100%;
+    }
+
+    /* =====================================================
+                        FAQ
+===================================================== */
+
+    .FAQ-box img {
+        width: 13px;
+    }
+
+    .FAQ-box {
+        margin-bottom: 10px;
+        padding: 15px;
+    }
+
+    #g3 .FAQ-box {
+        margin-bottom: 30px;
+    }
+
+    #u2 .FAQ-box {
+        margin-bottom: 30px;
+    }
+
+    .FAQ-question h6 {
+        font-size: 12px;
+        margin-bottom: 7px;
+    }
+
+    .FAQ-text {
+        font-size: 10px;
+        line-height: 15px;
+    }
+
+    .FAQ-box-add .FAQ-box {
+        margin-bottom: 10px;
+        padding: 5px;
+    }
+
+    /* =====================================================
+                        Home
+===================================================== */
+
+    #home-content {
+        height: 400px;
+    }
+
+    #home-text {
+        font-size: 12px;
+        line-height: 20px;
+        margin-bottom: 20px;
+        margin-top: 10px;
+    }
+
+    /* =====================================================
+                            About
+===================================================== */
+
+    #about {
+        margin-bottom: 40px;
+    }
+
+    #about-text p:first-child {
+        margin-bottom: 20px;
+    }
+
+    /* =====================================================
+                            Works
+===================================================== */
+
+    #works {
+        padding: 30px;
+    }
+
+    .works-download {
+        margin-top: 20px;
+    }
+
+    .icons {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 20px;
+    }
+
+    .icon img {
+        width: 40px;
+    }
+
+    .icon {
+        width: 100px;
+        height: 100px;
+    }
+
+    #works .text {
+        margin: 10px 0 20px 0;
+    }
+
+    /* =====================================================
+                            Customers
+===================================================== */
+
+    #customers {
+        margin: 30px;
+    }
+
+    .coustomer {
+        padding: 20px;
+        margin-top: 20px;
+    }
+
+    .coustomer img {
+        margin-bottom: 20px;
+        width: 60px;
+    }
+
+    .coustomer h2 {
+        font-size: 16px;
+        margin-left: 0px;
+    }
+
+    .coustomer h6 {
+        font-size: 10px;
+        margin-left: 0px;
+    }
+
+    .coustomer p {
+        line-height: 22px;
+    }
+
+    /* =====================================================
+                        Texts
+===================================================== */
+
+    .text {
+        font-size: 12px;
+        line-height: 20px;
+    }
+
+    /* =====================================================
+                        Login page
+===================================================== */
+
+    .login-content {
+        padding: 20px;
+    }
+
+    .login-heading h1 {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+
+    .login-text {
+        font-size: 10px;
+        margin-bottom: 18px;
+    }
+
+    #login-page .login-form .form-group p {
+        font-size: 9px;
+        margin: 0;
+    }
+
+    .login-form .form-group input:nth-child(2) {
+        margin-bottom: 15px;
+    }
+
+    .login-form .form-group input:nth-child(1) {
+        width: 20px;
+        height: 20px;
+        margin-top: 5px;
+    }
+
+    .login-form .form-group label:nth-child(2) {
+        margin-left: 15px;
+        margin-top: 5px;
+    }
+
+    .dont-account {
+        margin-top: 10px;
+        font-size: 12px;
+    }
+
+    /* =====================================================
+                        Search Filter
+===================================================== */
+
+    #filter-content {
+        padding: 20px;
+        margin-bottom: 30px;
+    }
+
+    #filter-content img {
+        height: 12px;
+    }
+
+    #filter-content input {
+        height: 30px;
+    }
+
+    /* =====================================================
+                        Total Notes
+===================================================== */
+
+    .book-detials {
+        width: 220px;
+        margin-top: 20px;
+    }
+
+    #search-notes td:nth-child(2) {
+        padding: 0 15px;
+    }
+
+    .book-detial {
+        padding: 15px;
+        height: 230px;
+    }
+
+    .book-heading h5 {
+        font-size: 14px;
+    }
+
+    .book-heading {
+        margin-bottom: 15px;
+    }
+
+    .book-det img {
+        height: 15px;
+    }
+
+    .book-det p,
+    .book-rate p {
+        font-size: 10px;
+        margin-bottom: 5px;
+    }
+
+    .rate:not(:checked) > label {
+        margin: 1px;
+    }
+
+    #admin-dashboard .my-earning-block {
+        height: 100px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    /* =====================================================
+                        mobile menu
+===================================================== */
+
+    .site-header #mobile-menu-box {
+        display: block;
+    }
+
+    .site-header .header-wrapper {
+        display: none;
+    }
+
+    #mobile-menu-box .logo-wrapper {
+        margin-left: -40px;
+    }
+
+    #mobile-menu-box .col-sm-6:last-child {
+        position: relative;
+    }
+
+    #menu-icon {
+        position: absolute;
+        right: 0px;
+        bottom: 0px;
+    }
+
+    /* =====================================================
+                        Footer
+===================================================== */
+
+    #footer-version,
+    #footer-text {
+        padding: 10px 0;
+        font-size: 8px;
+    }
+
+    #footer-content .col-md-6:last-child {
+        position: relative;
+        height: 0;
+    }
+
+    #footer-content .col-md-6:last-child #footer-text {
+        position: absolute;
+        top: -37px;
+        right: 15px;
+    }
+
+    /* =====================================================
+                        Social Icons
+===================================================== */
+
+    ul.social-list {
+        padding: 0;
+        margin: 0;
+        position: absolute;
+        top: -30px;
+        right: 10px;
+    }
+
+    ul.social-list li a {
+        width: 15px;
+        height: 15px;
+        padding-top: 4px;
+    }
+
+    ul.social-list li a img {
+        width: 5px;
+        height: 5px;
+    }
+
+    /* =====================================================
+                    Admin Dashboard
+===================================================== */
+
+    #admin-dashboard .my-earning-block {
+        height: 80px;
+        margin-bottom: 20px;
+    }
+
+    #dashboard-my-earning {
+        margin-bottom: 0px;
+    }
+
+    #admin-dashboard .search-bar input {
+        margin: 0px;
+        margin-bottom: 15px;
+    }
+
+    #admin-dashboard .search-icon {
+        left: 30px;
+    }
+
+    #admin-dashboard .search-btn button {
+        margin: 0;
+        margin-bottom: 15px;
+    }
+
+    /* =====================================================
+                    Add reviews
+===================================================== */
+
+    #add-review-bg {
+        height: 220%;
+    }
+
+    #close-btn img {
+        width: 13px;
+    }
+
+    #close-btn {
+        height: 15px;
+        width: 15px;
+    }
+
+    #rates .rate {
+        margin: 0;
+        margin-top: 20px;
+    }
+
+    #rates .rate:not(:checked) > label {
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+    }
+
+    #comments {
+        margin-top: 80px;
+        width: 240px;
+        margin-bottom: 0px;
+    }
+
+    /* =====================================================
+                        Forms
+===================================================== */
+
+    .search-icon {
+        left: 32px;
+        top: 8px;
+    }
+
+    .search-bar input {
+        margin-left: 0px;
+        margin-bottom: 15px;
+    }
+
+    .blue-btn {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+    #add-any-btn .blue-btn {
+        width: 100%;
+    }
+
+    /* =====================================================
+                Admin Member Details
+===================================================== */
+
+    #admin-member-details #notes-detail-img img {
+        width: 200px;
+    }
+
+    #admin-member-details #member-detail-det {
+        font-size: 9px;
+        line-height: 20px;
+    }
+
+    #vertical-line {
+        display: none;
+    }
+
+    #admin-member-details #member-detail-det p {
+        text-align: left;
+        margin: 0;
+    }
+
+    #admin-member-details #member-detail-det :nth-child(2n) {
+        height: 0px;
+        position: relative;
+    }
+
+    #admin-member-details #member-detail-det :nth-child(2n) p {
+        position: absolute;
+        bottom: 0;
+        left: 150px;
+    }
+
+    #admin-member-details hr {
+        margin: 20px 0 20px 0;
+    }
+
+    #admin-member-details .heading-md {
+        margin-bottom: 15px;
+    }
+
+    /* =====================================================
+                        Notes Details
+===================================================== */
+
+    #notes-detail .col-md-7 {
+        margin-bottom: 10px;
+    }
+
+    #notes-detail #notes-detail-img img {
+        margin-bottom: 15px;
+    }
+
+    #notes-detail #notes-detail-text {
+        line-height: 15px;
+    }
+
+    #download-book a {
+        width: 100%;
+    }
+
+    #notes-detail #notes-detail-det :nth-child(2n) {
+        height: 20px;
+        position: relative;
+    }
+
+    #notes-detail #notes-detail-det :nth-child(2n) p {
+        position: absolute;
+        bottom: 20px;
+        left: 200px;
+    }
+
+    #notes-detail #notes-detail-det .row .col-md-6:nth-child(16) p {
+        bottom: 20px;
+        left: 250px;
+    }
+
+    #notes-detail .rate {
+        margin-left: -30px;
+        height: 20px;
+        position: absolute;
+        top: -20px;
+        left: 180px;
+    }
+
+    #notes-detail .rate:not(:checked) > label {
+        width: 20px;
+        height: 20px;
+    }
+
+
+    #notes-priview-reviews {
+        margin-top: 15px;
+    }
+
+    .set-border-cicis-menu-to-go {
+        height: 92%;
+    }
+
+    .responsive-wrapper-padding-bottom-90pct {
+        padding-bottom: 100%;
+    }
+
+    #costomer-reviews img {
+        height: 10px;
+        position: absolute;
+        right: 20px;
+        top: -50px;
+    }
+
+    #costomer-reviews .c-r-img img {
+        height: 40px;
+        margin-bottom: 15px;
+        position: static;
+    }
+
+    #costomer-reviews {
+        padding: 15px;
+    }
+
+    .c-r-hd h4 {
+        position: absolute;
+        top: -55px;
+        left: 70px;
+    }
+
+    #costomer-reviews .rate {
+        position: absolute;
+        top: -40px;
+        left: 70px;
+    }
+
+    /* Thank You Popup */
+    #thank-you-popup {
+        height: 150%;
+    }
+
+    #thanks-popup {
+        top: 100px;
+        padding: 40px 45px 20px 30px;
+        width: 500px;
+    }
+
+    #right-img img {
+        width: 50px;
+    }
+
+    #right-img {
+        margin-bottom: 20px;
+    }
+
+    #thank-heading h3 {
+        font-size: 24px;
+    }
+
+    #thank-heading {
+        margin-bottom: 30px;
+    }
+
+    #thank-you-popup .text p {
+        font-size: 13px;
+        margin-bottom: 20px;
+    }
+
+    #thank-you-popup .text p:nth-child(1) {
+        font-size: 14px;
+        margin-bottom: 5px;
+    }
+
+    /* =====================================================
+                        Login page
+===================================================== */
+
+    #login-page .col-md-6:last-child {
+        position: relative;
+        height: 0px;
+    }
+
+    #forget-pass {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+    }
+
+    .login-page-button button {
+        width: 260px;
+    }
+
+    .login-content {
+        padding: 15px;
+    }
+
+    /* =====================================================
+                    Dashboard
+===================================================== */
+
+    #dashboard #dashboard-my-earning #my-earning {
+        width: 100%;
+    }
+
+    #dashboard #dashboard-my-earning .col-md-8 .my-earning-block {
+        margin-left: 0px;
+    }
+
+    .my-earning-block {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+    /* =====================================================
+                Email Verification
+===================================================== */
+
+    #email-verification {
+        width: 280px;
+    }
+
+    /* =====================================================
+                        FAQ
+===================================================== */
+
+    #FAQ .col-md-1 {
+        position: relative;
+        height: 0;
+    }
+
+    #FAQ .FAQ-pm {
+        position: absolute;
+        right: 10px;
+        top: -28px;
+    }
+
+    /* =====================================================
+                        Home
+===================================================== */
+
+    #home-heading {
+        margin-top: 120px;
+        text-align: center;
+    }
+
+    #home-text {
+        text-align: center;
+    }
+
+    #home-button1 {
+        text-align: center;
+    }
+
+    /* =====================================================
+                            About
+===================================================== */
+
+    #about {
+        margin-bottom: 40px;
+    }
+
+    #about .left-heading {
+        text-align: center;
+    }
+
+    /* =====================================================
+                            Works
+===================================================== */
+
+    #works {
+        padding: 15px;
+    }
+
+    .works-download {
+        margin-top: 15px;
+    }
+
+    /* =====================================================
+                            Customers
+===================================================== */
+
+    #customers {
+        margin: 15px;
+    }
+
+    .coustomer {
+        text-align: center;
+    }
+
+    /* =====================================================
+                        Texts
+===================================================== */
+
+    .text {
+        text-align: center;
+    }
+}

@@ -1,0 +1,79 @@
+﻿@model ProjectModels.Models.UserModel
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_AccountView.cshtml";
+}
+
+<!-- SignUp Page -->
+<section id="signup-page">
+    <div class="login">
+        <div class="content">
+            <img src="~/Images/top-logo.png" alt="logo" class="img-responsive">
+            <div class="login-content">
+                <div class="login-heading">
+                    <h1> Create an Account </h1>
+                </div>
+                <div class="login-text">
+                    <p> Enter your details to signup </p>
+                </div>
+                <div class="msg">
+                    <span class="success">@Html.DisplayFor(u => u.success)</span>
+                </div>
+                <div class="field-validation-error">
+                    @Html.DisplayFor(u => u.Error)
+                </div>
+                <div class="login-form">
+                    <form method="post" action="/Account/Create">
+                        <div class="form-group">
+                            @*<label for="first-name"> First Name *</label>*@
+                            @*<input type="text" class="form-control" id="first-name" name="first-name" aria- placeholder="Enter your first name">*@
+                            @Html.LabelFor(u => u.FirstName)
+                            @Html.TextBoxFor(u => u.FirstName, new { @class = "form-control", placeholder = "Enter your first name" })
+                            @Html.ValidationMessageFor(u => u.FirstName)
+                        </div>
+                        <div class="form-group">
+                            @*<label for="last-name">Last Name *</label>*@
+                            @*<input type="text" class="form-control" id="last-name" name="last-name" aria- placeholder="Enter your last name">*@
+                            @Html.LabelFor(u => u.LastName)
+                            @Html.TextBoxFor(u => u.LastName, new { @class = "form-control", placeholder = "Enter your last name" })
+                            @Html.ValidationMessageFor(u => u.LastName)
+                        </div>
+                        <div class="form-group">
+                            @*<label for="email">Email *</label>*@
+                            @*<input type="email" class="form-control" id="email" name="email" aria- placeholder="Enter your email">*@
+                            @Html.LabelFor(u => u.EmailID)
+                            @Html.TextBoxFor(u => u.EmailID, new { type = "email", @class = "form-control", placeholder = "Enter your email" })
+                            @Html.ValidationMessageFor(u => u.EmailID)
+
+                        </div>
+                        <div class="form-group">
+                            @*<?label for="password">Password</label>*@
+                            @*<input type="password" class="form-control" id="password" name="password" aria- placeholder="Enter your password">*@
+                            @Html.LabelFor(u => u.Password)
+                            @Html.TextBoxFor(u => u.Password, new { type = "password", @class = "form-control", placeholder = "Enter your password" })
+                            <span class="show-pass" target="#Password"> <img src="~/Images/eye.png"> </span>
+                            @Html.ValidationMessageFor(u => u.Password)
+                        </div>
+                        <div class="form-group">
+                            @*<label for="conform-password">Conform Password</label>*@
+                            @*<input type="password" class="form-control" id="conform-password" name="conform-password" aria- placeholder="Re-enter your password">*@
+                            @Html.LabelFor(u => u.ConformPassword)
+                            @Html.TextBoxFor(u => u.ConformPassword, new { type = "password", @class = "form-control", placeholder = "Re-enter your password" })
+                            <span class="show-pass" target="#ConformPassword"> <img src="~/Images/eye.png"> </span>
+                            @Html.ValidationMessageFor(u => u.ConformPassword)
+
+                        </div>
+                        <div class="login-page-button">
+                            <button type="submit" class="btn btn-primary">Sign up</button>
+                        </div>
+                        <div class="dont-account">
+                            <p> Already have an account? <a href="/Account/Login" alt="login">Login</a></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- SignUp Page Ends -->

@@ -1,0 +1,94 @@
+﻿@model IEnumerable<ProjectDB.SellerNote>
+
+<div class="table-format">
+    <table id="pager" class="table wp-list-table widefat striped posts tablesorter sort-table">
+        <thead>
+            <tr>
+                <th scope="col"> ADDED DATE </th>
+                <th scope="col"> TITLE </th>
+                <th scope="col"> CATEGORY </th>
+                <th scope="col"> STATUS </th>
+                <th scope="col"> ACTIONS </th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Count() == 0 || Model.Where(n => n.Status == 7 || n.Status == 8 || n.Status == 6).Count() == 0)
+            {
+                <tr>
+                    <td colspan="6">No Records Found</td>
+                </tr>
+            }
+            @foreach (var note in Model)
+            {
+                if (note.Status == 7 || note.Status == 8 || note.Status == 6)
+                {
+                    <tr>
+                        <td> @{ var date = note.CreatedDate?.ToShortDateString(); } @date </td>
+                        <td> @note.Title </td>
+                        <td> @note.NoteCategory.Name </td>
+                        @{
+                            var status = note.ReferenceData.Value;
+                        }
+                        <td> @status </td>
+                        @{
+                            if (status == "Draft")
+                            {
+                                var H = "/Home/Edit/" + note.ID.ToString();
+                                var J = "/Home/Delete/" + note.ID.ToString();
+                                <td> <a href=@H alt="edit"><img src="~/Images/edit.png"></a> <a href=@J alt="delete" onclick="return confirm('Are you sure to delete this record?')"> <img src="~/Images/delete.png"> </a> </td>
+                            }
+                            else
+                            {
+                                var H = "/Home/NoteDetails/" + note.ID.ToString();
+                                <td> <a href=@H alt="edit"><img src="~/Images/eye.png"></a></td>
+                            }
+                        }
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+<div class="pager-nav">
+    @{
+        if (!(Model.Count() == 0 || Model.Where(n => n.Status == 7 || n.Status == 8 || n.Status == 6).Count() == 0))
+        {
+            var totalPages = Math.Ceiling(ViewBag.totalCount / 5.0);
+
+            var fun = "getSellNoteInProgress(" + (ViewBag.activePageNumber - 1).ToString() + ")";
+
+            if (ViewBag.activePageNumber != 1)
+            {
+                <img src="~/Images/left-arrow.png" onclick=@fun />
+            }
+
+            for (var totalpage = 1; totalpage <= totalPages; totalpage++)
+            {
+                if (totalpage == ViewBag.activePageNumber)
+                {
+                    <span class="pg-selected">
+                        @{fun = "getSellNoteInProgress(" + totalpage.ToString() + ")";}
+                        @Html.Label(totalpage.ToString(), new { @class = "pageNumber", target = totalpage.ToString(), onclick = fun })
+                    </span>
+                }
+                else
+                {
+                    <span>
+                        @{fun = "getSellNoteInProgress(" + totalpage.ToString() + ")";}
+                        @Html.Label(totalpage.ToString(), new { @class = "pageNumber", target = totalpage.ToString(), onclick = fun })
+                    </span>
+                }
+            }
+
+            fun = "getSellNoteInProgress(" + (ViewBag.activePageNumber + 1).ToString() + ")";
+
+            if (totalPages != ViewBag.activePageNumber)
+            {
+                <img src="~/Images/right-arrow.png" onclick=@fun />
+            }
+        }
+    }
+</div>
+
+<script>funTableSorter();</script>

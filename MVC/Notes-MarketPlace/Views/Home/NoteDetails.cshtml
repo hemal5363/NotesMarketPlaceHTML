@@ -1,0 +1,375 @@
+﻿@model ProjectDB.SellerNote
+@using ProjectDB
+
+@{
+    ViewBag.Title = "NoteDetails";
+    Layout = "~/Views/Shared/_RagisterView.cshtml";
+}
+
+@{
+    MarketPlaceEntities market = new MarketPlaceEntities();
+
+
+    int id = 0;
+    string username = null;
+    if (User.Identity.IsAuthenticated)
+    {
+        id = Convert.ToInt32(User.Identity.Name);
+        username = market.Users.FirstOrDefault(u => u.ID == id).FirstName;
+
+    }
+
+    var sellerDetails = market.UserProfiles.FirstOrDefault(u => u.UserID == Model.SellerID);
+}
+
+<!-- Notes Details -->
+<section id="notes-details">
+
+    <div class="content-box">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="notes-detail">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="heading-md">
+                                    <h3> Notes Details</h3>
+                                </div>
+                            </div>
+                            <div class="col-md-7">
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <div id="notes-detail-img">
+                                            @{
+                                                if (Model.DisplayPicture == null)
+                                                {
+                                                    <img src="~/Images/computer-science.png">
+                                                }
+                                                else
+                                                {
+                                                    <img src='@Model.DisplayPicture'>
+                                                }
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <div class="left-heading">
+                                            <h2> @Model.Title </h2>
+                                        </div>
+                                        <div id="notes-detail-line">
+                                            <h6> @Model.NoteCategory.Name </h6>
+                                        </div>
+                                        <div id="notes-detail-text">
+                                            <p> @Model.Description </p>
+                                        </div>
+                                        <div id="download-book">
+                                            @{
+                                                if (id != Model.SellerID)
+                                                {
+                                                    if (!User.Identity.IsAuthenticated)
+                                                    {
+                                                        <a href="/Account/Login" class="btn blue-btn" title="Download" role="button" onclick="return confirm('Please sign in/register to download this note.')">
+
+                                                            @if (Model.IsPaid == true)
+                                                            {
+                                                                <text>Download / $@Model.SellingPrice</text>
+                                                            }
+                                                            else
+                                                            {
+                                                                <text>Download</text>
+                                                            }
+                                                        </a>
+                                                    }
+                                                    else if (Model.IsPaid == true)
+                                                    {
+                                                        @*var h = "/Home/NoteRequest/" + Model.ID.ToString();*@
+                                                        <a class="btn blue-btn" title="Download" role="button" onclick="RequestBtn(@Model.ID)">
+                                                            Download / $@Model.SellingPrice
+                                                        </a>
+                                                    }
+                                                    else
+                                                    {
+                                                        var h = "/Home/NoteDownload/" + Model.ID.ToString();
+                                                        <a href=@h class="btn blue-btn" title="Download" role="button">
+                                                            Download
+                                                        </a>
+                                                    }
+                                                }
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div id="notes-detail-det">
+                                    <div class="row">
+                                        @{
+                                            if (Model.UniversityName != null)
+                                            {
+                                                <div class="col-md-6">
+                                                    <p> Instituion: </p>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <p>@Model.UniversityName</p>
+                                                </div>
+                                            }
+                                            if (Model.Country != null)
+                                            {
+                                                <div class="col-md-6">
+                                                    <p> Country: </p>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <p> @Model.Country1.Name </p>
+                                                </div>
+                                            }
+                                            if (Model.Course != null)
+                                            {
+                                                <div class="col-md-6">
+                                                    <p> Course Name: </p>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <p> @Model.Course </p>
+                                                </div>
+                                            }
+                                            if (Model.CourseCode != null)
+                                            {
+                                                <div class="col-md-6">
+                                                    <p> Course Code: </p>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <p> @Model.CourseCode </p>
+                                                </div>
+                                            }
+                                            if (Model.Professor != null)
+                                            {
+                                                <div class="col-md-6">
+                                                    <p> Professor: </p>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <p> @Model.Professor </p>
+                                                </div>
+                                            }
+                                            if (Model.NumberofPages != null)
+                                            {
+                                                <div class="col-md-6">
+                                                    <p> Number of Pages: </p>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <p> @Model.NumberofPages </p>
+                                                </div>
+                                            }
+                                            if (Model.Status == 9)
+                                            {
+                                                <div class="col-md-6">
+                                                    <p> Approved Date: </p>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <p> @Model.PublishedDate.Value.ToString("MMMM dd yyyy") </p>
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <div class="col-md-6">
+                                                    <p> Added Date: </p>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <p> @Model.CreatedDate.Value.ToString("MMMM dd yyyy") </p>
+                                                </div>
+                                            }
+                                        }
+                                        <div class="col-md-6">
+                                            <p> Rating: </p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="rate">
+                                                <input type="radio" id="star5" name="rate" value="5" checked>
+                                                <label for="star5" title="text">5 stars</label>
+                                                <input type="radio" id="star4" name="rate" value="4">
+                                                <label for="star4" title="text">4 stars</label>
+                                                <input type="radio" id="star3" name="rate" value="3">
+                                                <label for="star3" title="text">3 stars</label>
+                                                <input type="radio" id="star2" name="rate" value="2">
+                                                <label for="star2" title="text">2 stars</label>
+                                                <input type="radio" id="star1" name="rate" value="1">
+                                                <label for="star1" title="text">1 star</label>
+                                            </div>
+                                            <p> 100 Reviews </p>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <p> 5 Users Marked this note as inappropriate </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
+                    <div id="notes-priview-reviews">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="heading-md">
+                                    <h3> Notes Preview </h3>
+                                </div>
+                            </div>
+                            <div class="col-md-7">
+                                <div class="heading-md">
+                                    <h3> Customer Reviews </h3>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div id="Iframe-Cicis-Menu-To-Go" class="set-margin-cicis-menu-to-go set-padding-cicis-menu-to-go set-border-cicis-menu-to-go set-box-shadow-cicis-menu-to-go center-block-horiz">
+                                    <div class="responsive-wrapper
+     responsive-wrapper-padding-bottom-90pct" style="-webkit-overflow-scrolling: touch; overflow: auto;">
+                                        @{
+
+                                            string ifs = null;
+                                            if (Model.IsPaid == true)
+                                            {
+                                                ifs = Model.NotesPreview;
+                                            }
+                                            else
+                                            {
+                                                ifs = market.SellerNotesAttachements.FirstOrDefault(a => a.NoteID == Model.ID).FilePath;
+                                            }
+                                            <iframe src='@ifs'>
+                                                <p style="font-size: 110%;">
+                                                    <em>
+                                                        <strong>ERROR: </strong>
+                                                        An &#105;frame should be displayed here but your browser version does not support &#105;frames.
+                                                    </em> Please update your browser to its most recent version and try again, or access the file <a href="http://unec.edu.az/application/uploads/2014/12/pdf-sample.pdf">with this link.</a>
+                                                </p>
+                                            </iframe>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-7">
+                                <div id="costomer-reviews">
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <div class="c-r-img">
+                                                <img src="~/Images/reviewer-1.png">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <div class="c-r-hd">
+                                                <h4> Richard Brown </h4>
+                                            </div>
+                                            <div class="rate">
+                                                <input type="radio" id="star5" name="rate1" value="5">
+                                                <label for="star5" title="text">5 stars</label>
+                                                <input type="radio" id="star4" name="rate1" value="4" checked>
+                                                <label for="star4" title="text">4 stars</label>
+                                                <input type="radio" id="star3" name="rate1" value="3">
+                                                <label for="star3" title="text">3 stars</label>
+                                                <input type="radio" id="star2" name="rate1" value="2">
+                                                <label for="star2" title="text">2 stars</label>
+                                                <input type="radio" id="star1" name="rate1" value="1">
+                                                <label for="star1" title="text">1 star</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2"></div>
+                                        <div class="col-md-10">
+                                            <div class="c-r-text">
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique eum unde reprehenderit, quasi.</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1"></div>
+                                        <div class="col-md-10">
+                                            <hr>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="c-r-img">
+                                                <img src="~/Images/reviewer-2.png">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <div class="c-r-hd">
+                                                <h4> Alice Ortiaz </h4>
+                                            </div>
+                                            <div class="rate">
+                                                <input type="radio" id="star5" name="rate2" value="5">
+                                                <label for="star5" title="text">5 stars</label>
+                                                <input type="radio" id="star4" name="rate2" value="4">
+                                                <label for="star4" title="text">4 stars</label>
+                                                <input type="radio" id="star3" name="rate2" value="3" checked>
+                                                <label for="star3" title="text">3 stars</label>
+                                                <input type="radio" id="star2" name="rate2" value="2">
+                                                <label for="star2" title="text">2 stars</label>
+                                                <input type="radio" id="star1" name="rate2" value="1">
+                                                <label for="star1" title="text">1 star</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2"></div>
+                                        <div class="col-md-10">
+                                            <div class="c-r-text">
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique eum unde reprehenderit!</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1"></div>
+                                        <div class="col-md-10">
+                                            <hr>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="c-r-img">
+                                                <img src="~/Images/reviewer-3.png">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <div class="c-r-hd">
+                                                <h4> Sara Passmore </h4>
+                                            </div>
+                                            <div class="rate">
+                                                <input type="radio" id="star5" name="rate3" value="5" checked>
+                                                <label for="star5" title="text">5 stars</label>
+                                                <input type="radio" id="star4" name="rate3" value="4">
+                                                <label for="star4" title="text">4 stars</label>
+                                                <input type="radio" id="star3" name="rate3" value="3">
+                                                <label for="star3" title="text">3 stars</label>
+                                                <input type="radio" id="star2" name="rate3" value="2">
+                                                <label for="star2" title="text">2 stars</label>
+                                                <input type="radio" id="star1" name="rate3" value="1">
+                                                <label for="star1" title="text">1 star</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2"></div>
+                                        <div class="col-md-10">
+                                            <div class="c-r-text">
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<!-- Notes Details Ends -->
+
+<!-- Thank You Popup -->
+<div id="thank-you-popup">
+    <div id="thanks-popup">
+        <div id="close-btn">
+            <img src="~/Images/close.png">
+        </div>
+        <div id="right-img">
+            <img src="~/Images/SUCCESS.png">
+        </div>
+        <div id="thank-heading">
+            <h3> Thank you for purchasing! </h3>
+        </div>
+        <div class="text">
+            <p> Dear @username, </p>
+            <p> As this is paid notes - you need to pay to seller <b> @Model.User.FirstName @Model.User.LastName </b> offline. We vill send him an email that you want to download this note. He may contact you further for payment process completion.</p>
+            <p> In case, you have urgency, <br> Please contact us on <b> +@market.SystemConfigurations.FirstOrDefault(s => s.Key == "Number").Value </b> </p>
+            <p> Once he receives the payment and acknowledge us - selected notes you can see over my downloads tab for download.</p>
+            <p> Have a good day.</p>
+        </div>
+    </div>
+</div>
+<!-- Thank You Popup Ends -->

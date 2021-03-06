@@ -1,0 +1,103 @@
+﻿@model Notes_MarketPlace.Models.ContactUsForm
+
+@{
+    ViewBag.Title = "ContactUs";
+    Layout = "~/Views/Shared/_RagisterView.cshtml";
+}
+
+<!-- Contact Us -->
+<section id="contact-us">
+
+    <!-- Contact Us Content -->
+    <div class="search-content">
+        <div class="main-heading-center">
+            <h1> Contact Us </h1>
+        </div>
+    </div>
+
+    <div class="content-box-md">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="contect-us-heading">
+                        <div class="left-heading">
+                            <h2> Get in Touch </h2>
+                        </div>
+                        <div id="contect-us-text">
+                            <p> Let us know how to get back to you </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="login-form">
+                        <form method="post" action="/Home/ContactUs">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                @*<label for="full-name">Full Name *</label>*@
+                                                @*<input type="text" class="form-control" id="full-name" name="full-name" aria- placeholder="Enter your full name">*@
+                                                @Html.LabelFor(f => f.FullName)
+                                                @if (!User.Identity.IsAuthenticated)
+                                                {
+                                                    @Html.TextBoxFor(f => f.FullName, new { @class = "form-control", placeholder = "Enter your full name" })
+                                                    @Html.ValidationMessageFor(f => f.FullName)
+                                                }
+                                                else
+                                                {
+                                                    @Html.TextBoxFor(f => f.FullName, new { @class = "form-control", placeholder = "Enter your full name", @readonly = "readonly" })
+                                                }
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                @*<label for="email">Email Address *</label>*@
+                                                @*<input type="email" class="form-control" id="email" name="email" aria- placeholder="Enter your email address">*@
+                                                @Html.LabelFor(f => f.Email)
+                                                @if (!User.Identity.IsAuthenticated)
+                                                {
+                                                    @Html.TextBoxFor(f => f.Email, new { type = "email", @class = "form-control", placeholder = "Enter your email address" })
+                                                    @Html.ValidationMessageFor(f => f.Email)
+                                                }
+                                                else
+                                                {
+                                                    @Html.TextBoxFor(f => f.Email, new { type = "email", @class = "form-control", placeholder = "Enter your email address", @readonly = "readonly" })
+
+                                                }
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                @*<label for="subject"> Subject * </label>*@
+                                                @*<input type="text" class="form-control" id="subject" name="subject" aria- placeholder="Enter your subject ">*@
+                                                @Html.LabelFor(f => f.Subject)
+                                                @Html.TextBoxFor(f => f.Subject, new { @class = "form-control", placeholder = "Enter your subject" })
+                                                @Html.ValidationMessageFor(f => f.Subject)
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @*<label for="comments-question"> Comments / Question *</label>*@
+                                        @*<textarea class="form-control" id="comments-question" name="comments-question" placeholder="Comments..."></textarea>*@
+                                        @Html.LabelFor(f => f.Comments)
+                                        @Html.TextAreaFor(f => f.Comments, new { @class = "form-control", placeholder = "Comments..." })
+                                        @Html.ValidationMessageFor(f => f.Comments)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="add-note-details">
+                                <button type="submit" class="btn blue-btn" href="#search-notes" title="Download" role="button"> SUBMIT </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<!-- Contact Us Ends -->

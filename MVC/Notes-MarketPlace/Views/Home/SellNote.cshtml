@@ -1,0 +1,210 @@
+﻿@model IEnumerable<ProjectDB.SellerNote>
+@using ProjectDB
+
+@{
+    ViewBag.Title = "SellNote";
+Layout = "~/Views/Shared/_RagisterView.cshtml";
+}
+
+<!-- Dashboard -->
+<section id="dashboard">
+
+    <div class="content-box">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="left-heading">
+                        <h2> Dashboard </h2>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div id="dashboard-add-note-btn">
+                        <a class="btn blue-btn" href="/Home/AddNote" title="Add Note" role="button"> ADD NOTE </a>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div id="dashboard-my-earning">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div id="my-earning">
+                                            <div class="my-earning-block">
+                                                <div id="icon">
+                                                    <img src="~/Images/my-earning.png">
+                                                </div>
+                                                <div class="my-earning-heading">
+                                                    <div id="earning-heading">
+                                                        <h2> My Earning</h2>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="my-earning-block">
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <div id="notes-money">
+                                                            <a href="my-sold-notes.html">
+                                                                <div class="my-earning-heading">
+                                                                    @{ 
+                                                                        var id = Convert.ToInt32(User.Identity.Name);
+
+                                                                        MarketPlaceEntities marketPlaceEntities = new MarketPlaceEntities();
+                                                                        var count = marketPlaceEntities.Downloads.Where(c => c.Seller == id).Count();
+                                                                    }
+                                                                    <h2> @count </h2>
+                                                                </div>
+                                                                <div class="my-earning-text">
+                                                                    <p> Number of Notes Sold </p>
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div id="money-earned">
+                                                            <a href="my-sold-notes.html">
+                                                                <div class="my-earning-heading">
+                                                                    @{
+                                                                        var moneysum = marketPlaceEntities.Downloads.Where(c => c.Seller == id).Sum(s => s.PurchasedPrice);
+                                                                        if (moneysum == null)
+                                                                        {
+                                                                            moneysum = 0;
+                                                                        }
+                                                                    }
+                                                                    <h2> $@moneysum </h2>
+                                                                </div>
+                                                                <div class="my-earning-text">
+                                                                    <p> Money Earned </p>
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div id="my-downloads-earning">
+                                            <div class="my-earning-block">
+                                                <a href="my-downloads.html">
+                                                    <div class="my-earning-heading">
+                                                        @{ 
+                                                            var DownloadNote = marketPlaceEntities.Downloads.Where(c => c.Downloader == id).Count();
+                                                        }
+                                                        <h2> @DownloadNote </h2>
+                                                    </div>
+                                                    <div class="my-earning-text">
+                                                        <p> My Downloads </p>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div id="my-rejected-earning">
+                                            <div class="my-earning-block">
+                                                <a href="my-rejected-notes.html">
+                                                    <div class="my-earning-heading">
+                                                        @{
+                                                            var RejectedNote = marketPlaceEntities.SellerNotes.Where(c => c.SellerID == id && c.ReferenceData.Value == "Rejected").Count();
+                                                        }
+                                                        <h2> @RejectedNote </h2>
+                                                    </div>
+                                                    <div class="my-earning-text">
+                                                        <p> My Rejected Notes </p>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div id="buyer-requests-earning">
+                                            <div class="my-earning-block">
+                                                <a href="/Transaction/BuyerRequest">
+                                                    <div class="my-earning-heading">
+                                                        @{
+                                                            var BuyerRequest = marketPlaceEntities.Downloads.Where(c => c.Seller == id && c.IsSellerHasAllowedDownload == false).Count();
+                                                        }
+                                                        <h2> @BuyerRequest </h2>
+                                                    </div>
+                                                    <div class="my-earning-text">
+                                                        <p> Buyer Requests </p>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="heading-md">
+                        <h3> In Progress Notes </h3>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="search">
+                        <div class="row">
+                            <div class="col-md-7">
+                                <div class="search-bar">
+                                    <input type="text" class="form-control" id="search-input-note" aria- placeholder="        search">
+                                    <div class="search-icon">
+                                        <img src="~/Images/search-icon.png">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="search-btn">
+                                    <button class="btn blue-btn" title="Add Note" onclick="getSellNoteInProgress()" role="button"> SEARCH </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div id="getSellInProgressNotes"></div>
+                </div>
+                <div class="col-md-6">
+                    <div class="heading-md">
+                        <h3> Published Notes </h3>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="search">
+                        <div class="row">
+                            <div class="col-md-7">
+                                <div class="search-bar">
+                                    <input type="text" class="form-control" id="search-input1" aria- placeholder="        search">
+                                    <div class="search-icon">
+                                        <img src="~/Images/search-icon.png">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="search-btn">
+                                    <button class="btn blue-btn" title="Add Note" onclick="getSellNotePublished()" role="button"> SEARCH </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div id="getSellPublishedNotes"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<!-- Dashboard Ends -->

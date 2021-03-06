@@ -1,0 +1,73 @@
+﻿@model ProjectModels.Models.UserModel
+
+@{
+    Layout = "~/Views/Shared/_AccountView.cshtml";
+}
+
+<!-- Login Page -->
+<section id="login-page">
+    <div class="login">
+        <div class="content">
+            <img src="~/Images/top-logo.png" alt="logo" class="img-responsive">
+            <div class="login-content">
+                <div class="login-heading">
+                    <h1> Login </h1>
+                </div>
+                <div class="login-text">
+                    <p> Enter your email address and password to login </p>
+                </div>
+                <div class="field-validation-error">
+                    @Html.DisplayFor(u => u.Error)
+                </div>
+                <div class="login-form">
+                    <form method="post" action="/Account/Login">
+                        <div class="form-group">
+                            @*<label for="email">Email</label>*@
+                            @*<input type="email" class="form-control" id="email" name="email" aria- placeholder="Enter your email">*@
+                            @Html.LabelFor(u => u.EmailID)
+                            @Html.TextBoxFor(u => u.EmailID, new { type = "email", @class = "form-control", placeholder = "Enter your email" })
+                            @*@Html.ValidationMessageFor(u => u.EmailID)*@
+                            <!--<div class="field-validation-error">-->
+                            @*@Html.DisplayFor(u => u.EmailTF)*@
+                            <!--</div>-->
+                        </div>
+                        <div class="form-group">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        @*<label for="password">Password</label>*@
+                                        @Html.LabelFor(u => u.Password)
+                                    </div>
+                                    <div class="col-md-6">
+                                        <span id="forget-pass">
+                                            <label for="forget-password"><a href="/Account/ForgotPassword" alt="forgot password">Forgot password? </a></label>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            @*<input type="password" class="form-control password" id="password" name="password" aria- placeholder="Enter your password">*@
+                            @Html.TextBoxFor(u => u.Password, new { type = "password", @class = "form-control password", placeholder = "Enter your password" })
+                            <span class="show-pass" target=".Password"> <img src="~/Images/eye.png"> </span>
+                            @*<p> The password that you've entered is incorrect </p>*@
+                            @*@Html.ValidationMessageFor(u => u.Password)*@
+                            <!--<div class="field-validation-error">-->
+                            @*@Html.DisplayFor(u => u.PasswordTF)*@
+                            <!--</div>-->
+                        </div>
+                        <div class="form-group form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck" name="exampleCheck">
+                            <label class="form-check-label" for="remember-me">Remember Me </label>
+                        </div>
+                        <div class="login-page-button">
+                            <button type="submit" class="btn btn-primary" alt="login">Login</button>
+                        </div>
+                        <div class="dont-account">
+                            <p> Don't have an account? <a href="/Account/Create" alt="sign up">Sign Up </a></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

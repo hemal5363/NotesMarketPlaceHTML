@@ -1,0 +1,133 @@
+﻿@model Notes_MarketPlace.Models.SearchNoteViewModel
+
+<!-- Total notes -->
+<div id="total-notes">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div id="total-notes-heading" class="heading-md">
+                    <h3> Total @Model.totalNotes notes </h3>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <table id="pager" class="wp-list-table widefat striped posts">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            @{
+                                int i = 1;
+                                foreach (var note in Model.sellerNotes)
+                                {
+                                    <td>
+                                        <div class="book-detials">
+                                            <div class="book-img">
+                                                <img src='@note.DisplayPicture' alt="books" class="img-responsive img-fluid">
+                                            </div>
+                                            <div class="book-detial">
+                                                <div class="book-heading">
+                                                    @{var h = "NoteDetails/" + note.ID.ToString();}
+                                                    <h5> <a href=@h>@note.Title </a></h5>
+                                                </div>
+                                                <div class="book-det">
+                                                    @if (note.Country != null)
+                                                    {
+                                                        <p> <img src="~/Images/university.png"> &nbsp;&nbsp;@note.UniversityName, @note.Country1.Name </p>
+                                                    }
+                                                    @if (note.NumberofPages != null)
+                                                    {
+                                                        <p> <img src="~/Images/pages.png"> &nbsp;&nbsp;@note.NumberofPages Pages </p>
+                                                    }
+                                                    <p> <img src="~/Images/date.png"> &nbsp;&nbsp;&nbsp;@note.PublishedDate.Value.ToString("dddd, dd MMMM yyyy") </p>
+                                                    <p> <img src="~/Images/flag.png"> <span class="marked"> &nbsp;&nbsp;&nbsp;&nbsp;5 Users Marked this note as inappropriate </span></p>
+                                                </div>
+                                                <div class="book-rate">
+                                                    <div class="container">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="rate">
+                                                                    <input type="radio" id="star5" name="rate1" value="5" checked />
+                                                                    <label for="star5" title="text">5 stars</label>
+                                                                    <input type="radio" id="star4" name="rate1" value="4" />
+                                                                    <label for="star4" title="text">4 stars</label>
+                                                                    <input type="radio" id="star3" name="rate1" value="3" />
+                                                                    <label for="star3" title="text">3 stars</label>
+                                                                    <input type="radio" id="star2" name="rate1" value="2" />
+                                                                    <label for="star2" title="text">2 stars</label>
+                                                                    <input type="radio" id="star1" name="rate1" value="1" />
+                                                                    <label for="star1" title="text">1 star</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <p> 100 reviews </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    i += 1;
+                                    if (i > 3)
+                                    {
+                                    <tr>
+                                        @{
+                                            i = 0;
+                                            continue;
+                                        }
+                                    </tr>
+                                }
+                            }
+                            }
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="pager-nav">
+                @{
+                    if(Model.totalNotes != 0)
+                    { 
+                        var totalPages = Math.Ceiling(Model.totalNotes / 9.0);
+
+                        var fun = "getNotes(" + (Model.activePageNumber - 1).ToString() + ")";
+
+                        if (Model.activePageNumber != 1)
+                        {
+                            <img src="~/Images/left-arrow.png" onclick=@fun />
+                        }
+
+                        for (var totalpage = 1; totalpage <= totalPages; totalpage++)
+                        {
+                            if (totalpage == Model.activePageNumber)
+                            {
+                                <span class="pg-selected">
+                                    @{fun = "getNotes(" + totalpage.ToString() + ")";}
+                                    @Html.Label(totalpage.ToString(), new { @class = "pageNumber", target = totalpage.ToString(), onclick = fun })
+                                </span>
+                            }
+                            else
+                            {
+                                <span>
+                                    @{fun = "getNotes(" + totalpage.ToString() + ")";}
+                                    @Html.Label(totalpage.ToString(), new { @class = "pageNumber", target = totalpage.ToString(), onclick = fun })
+                                </span>
+                            }
+                        }
+
+                        fun = "getNotes(" + (Model.activePageNumber + 1).ToString() + ")";
+
+                        if (totalPages != Model.activePageNumber)
+                        {
+                            <img src="~/Images/right-arrow.png" onclick=@fun />
+                        }
+                    }
+                }
+            </div>
+        </div>
+    </div>

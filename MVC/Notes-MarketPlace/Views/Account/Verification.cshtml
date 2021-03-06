@@ -1,0 +1,48 @@
+﻿@model ProjectDB.User
+
+@{
+    ViewBag.Title = "Verification";
+    Layout = "~/Views/Shared/_AccountView.cshtml";
+}
+
+<!-- Email Verification -->
+<div id="email-verification-page">
+    <div id="email-verification">
+        <form action="/Account/Verification" method="post">
+            @Html.HiddenFor(u => u.ID)
+            <table>
+                <tr>
+                    <td>
+                        <div id="email-verification-logo">
+                            <img src="~/Images/logo.png" />
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div id="email-verification-heading">
+                            <h1> Email Verification </h1>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div id="email-verification-text">
+                            <h4> Dear @Model.FirstName </h4>
+                            <p> Thanks for signing</p>
+                            <p> Simply click below for email verification. </p>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div id="email-btn">
+                            <button type="submit" class="btn blue-btn">Verify email address</button>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+<!-- Email Verification Ends-->

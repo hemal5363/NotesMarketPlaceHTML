@@ -1,0 +1,202 @@
+﻿<html>
+
+<head>
+
+    <!-- important meta tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0 ,user-scalable=no">
+
+    <title> Notes - MarketPlace </title>
+    <link rel="shortcut icon" type="image/jpg" href="~/favicon.ico" />
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet">
+
+    <!-- CSS -->
+    <link href="~/Content/css.css" rel="stylesheet">
+
+    <!-- Responsive CSS -->
+    <link href="~/Content/responsive.css" rel="stylesheet">
+
+</head>
+
+<body class="sticky-header">
+
+    <!-- Header -->
+    <div class="wrapper">
+        <header class="site-header">
+            <div class="header-wrapper">
+                <div class="logo-wrapper">
+                    <a href="home.html" title="Site Logo">
+                        <img src="~/Images/logo.png" alt="logo">
+                    </a>
+                </div>
+                <div class="navigation-wrapper">
+                    <nav class="main-nav">
+                        <ul class="menu-navigation">
+                            <li>
+                                <a href="/Home/SearchNote" id="search-notes1">Search Notes</a>
+                            </li>
+                            <li>
+                                <a href="/Home/SellNote" id="dashboard1">Sell Your Notes</a>
+                            </li>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <li>
+                                    <a href="/Transaction/BuyerRequest" id="buyer-requests1">Buyer Requests</a>
+                                </li>
+                            }
+                            <li>
+                                <a href="/Home/FAQ" id="FAQ1">FAQ</a>
+                            </li>
+                            <li>
+                                <a href="/Home/ContactUs" id="contact-us1">Contact Us</a>
+                            </li>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <li>
+                                    <div class="user-dropdown user-menu" target=".user-menu-bar">
+                                        <a class="" role="button" id="dropdownMenuLink" aria-haspopup="true" aria-expanded="false">
+                                            <div class="user-img">
+                                                <img src="~/Images/user-img.png">
+                                            </div>
+                                            <div class="user-menu-bar" aria-labelledby="dropdownMenuLink">
+                                                <a class="user-item" href="user-profile.html">My Profile</a>
+                                                <a class="user-item" href="my-downloads.html">My Downloads</a>
+                                                <a class="user-item" href="my-sold-notes.html">My Sold Notes</a>
+                                                <a class="user-item" href="my-rejected-notes.html">My Rejected Notes</a>
+                                                <a class="user-item" href="change-password-page.html">Change Password</a>
+                                                <a class="user-item" href="/Account/Logout"><span> Logout </span></a>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div id="login-button">
+                                        <a class="btn login-btn" href="/Account/Logout" title="Login" role="button"> Logout </a>
+                                    </div>
+                                </li>
+                            }
+                            else
+                            {
+                                <li>
+                                    <div id="login-button">
+                                        <a class="btn login-btn" href="/Account/Login" title="Login" role="button"> Login </a>
+                                    </div>
+                                </li>
+                            }
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- mobile menu -->
+            <!-- mobile menu btn -->
+            <div id="mobile-menu-box">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div id="mobile-img">
+                                <div class="logo-wrapper">
+                                    <a href="home.html" title="Site Logo">
+                                        <img src="~/Images/logo.png" alt="logo">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div id="menu-icon">
+                                <img src="~/Images/dots.png">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- mobile menu page -->
+            <div id="mobile-menu-page">
+                <div id="mobile-page">
+                    <div id="mobile-close">
+                        <img src="~/Images/close.png">
+                    </div>
+                    <div id="mobile-items">
+                        <a href="/Home/SearchNote" id="search-notes2">Search Notes</a>
+                        <a href="/Home/SellNote" id="dashboard2">Sell Your Notes</a>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <a href="/Transaction/Index" id="buyer-requests2">Buyer Requests</a>
+                        }
+                        <a href="/Home/FAQ" id="FAQ2">FAQ</a>
+                        <a href="/Home/ContactUs" id="contact-us2">Contact Us</a>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <a class="sub-menu" target="#user">User</a>
+                            <div class="mobile-item" id="user">
+                                <a class="user-item" href="user-profile.html">My Profile</a>
+                                <a class="user-item" href="my-downloads.html">My Downloads</a>
+                                <a class="user-item" href="my-sold-notes.html">My Sold Notes</a>
+                                <a class="user-item" href="my-rejected-notes.html">My Rejected Notes</a>
+                                <a class="user-item" href="change-password-page.html">Change Password</a>
+                                <a class="user-item" href="/Account/Logout"><span> Logout </span></a>
+                            </div>
+                            <a href="/Account/Logout" title="Logout" role="button"> Logout </a>
+                        }
+                        else
+                        {
+                            <a href="/Account/Login" title="Login" role="button"> Login </a>
+                        }
+                    </div>
+                </div>
+            </div>
+            <!-- mobile menu Ends -->
+
+        </header>
+    </div>
+    <!-- Header Ends -->
+
+    @RenderBody()
+
+    <!-- Footer -->
+    <footer id="site-footer">
+
+        <div id="footer-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div id="footer-text">
+                            Copyright &copy; TatvaSoft All rights reserved.
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="social-list">
+                            <li> <a href="#"> <img src="~/Images/facebook.png"> </a> </li>
+                            <li> <a href="#"> <img src="~/Images/twitter.png"> </a> </li>
+                            <li> <a href="#"> <img src="~/Images/linkedin.png"> </a> </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+    <!-- Footer Ends -->
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+    <!-- Table Sorter -->
+    <script src="~/Scripts/jquery.tablesorter.js"></script>
+
+    <!-- Script -->
+    <script src="~/Scripts/script.js"></script>
+    
+
+</body>
+</html>
+
