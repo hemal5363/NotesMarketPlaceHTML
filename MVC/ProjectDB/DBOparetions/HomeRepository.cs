@@ -130,29 +130,34 @@ namespace ProjectDB.DBOparetions
         {
             using (var context = new MarketPlaceEntities())
             {
-                var note = context.SellerNotes.FirstOrDefault(n => n.ID == id);
+                var downNote = context.Downloads.FirstOrDefault(n => n.NoteID == id && n.Downloader == did);
+                
+                if (downNote == null)
+                { 
+                    var note = context.SellerNotes.FirstOrDefault(n => n.ID == id);
 
-                var down = new Download()
-                {
-                    NoteID = note.ID,
-                    Seller = note.SellerID,
-                    Downloader = did,
-                    IsSellerHasAllowedDownload = true,
-                    AttachmentPath = fPath,
-                    IsAttachmentDownloaded = true,
-                    AttachmentDownloadedDate = DateTime.Now,
-                    IsPaid = note.IsPaid,
-                    PurchasedPrice = note.SellingPrice,
-                    NoteTitle = note.Title,
-                    NoteCategory = note.NoteCategory.Name,
-                    CreatedDate = DateTime.Now,
-                    CreatedBy = did,
-                    ModifiedDate = DateTime.Now,
-                    ModifiedBy = did
-                };
+                    var down = new Download()
+                    {
+                        NoteID = note.ID,
+                        Seller = note.SellerID,
+                        Downloader = did,
+                        IsSellerHasAllowedDownload = true,
+                        AttachmentPath = fPath,
+                        IsAttachmentDownloaded = true,
+                        AttachmentDownloadedDate = DateTime.Now,
+                        IsPaid = note.IsPaid,
+                        PurchasedPrice = note.SellingPrice,
+                        NoteTitle = note.Title,
+                        NoteCategory = note.NoteCategory.Name,
+                        CreatedDate = DateTime.Now,
+                        CreatedBy = did,
+                        ModifiedDate = DateTime.Now,
+                        ModifiedBy = did
+                    };
 
-                context.Downloads.Add(down);
-                context.SaveChanges();
+                    context.Downloads.Add(down);
+                    context.SaveChanges();
+                }
             }
         }
 
@@ -160,27 +165,32 @@ namespace ProjectDB.DBOparetions
         {
             using (var context = new MarketPlaceEntities())
             {
-                var note = context.SellerNotes.FirstOrDefault(n => n.ID == id);
+                var downNote = context.Downloads.FirstOrDefault(n => n.NoteID == id && n.Downloader == did);
 
-                var down = new Download()
+                if (downNote == null)
                 {
-                    NoteID = note.ID,
-                    Seller = note.SellerID,
-                    Downloader = did,
-                    IsSellerHasAllowedDownload = false,
-                    IsAttachmentDownloaded = false,
-                    IsPaid = note.IsPaid,
-                    PurchasedPrice = note.SellingPrice,
-                    NoteTitle = note.Title,
-                    NoteCategory = note.NoteCategory.Name,
-                    CreatedDate = DateTime.Now,
-                    CreatedBy = did,
-                    ModifiedDate = DateTime.Now,
-                    ModifiedBy = did
-                };
+                    var note = context.SellerNotes.FirstOrDefault(n => n.ID == id);
 
-                context.Downloads.Add(down);
-                context.SaveChanges();
+                    var down = new Download()
+                    {
+                        NoteID = note.ID,
+                        Seller = note.SellerID,
+                        Downloader = did,
+                        IsSellerHasAllowedDownload = false,
+                        IsAttachmentDownloaded = false,
+                        IsPaid = note.IsPaid,
+                        PurchasedPrice = note.SellingPrice,
+                        NoteTitle = note.Title,
+                        NoteCategory = note.NoteCategory.Name,
+                        CreatedDate = DateTime.Now,
+                        CreatedBy = did,
+                        ModifiedDate = DateTime.Now,
+                        ModifiedBy = did
+                    };
+
+                    context.Downloads.Add(down);
+                    context.SaveChanges();
+                }
             }
         }
     }

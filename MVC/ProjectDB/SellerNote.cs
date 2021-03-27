@@ -26,7 +26,6 @@ namespace ProjectDB
         public int SellerID { get; set; }
         public int Status { get; set; }
         public Nullable<int> ActionedBy { get; set; }
-        public string AdminRemards { get; set; }
         public Nullable<System.DateTime> PublishedDate { get; set; }
         public string Title { get; set; }
         public int Category { get; set; }
@@ -47,6 +46,7 @@ namespace ProjectDB
         public Nullable<System.DateTime> ModifiedDate { get; set; }
         public Nullable<int> ModifiedBy { get; set; }
         public bool IsActive { get; set; }
+        public string AdminRemarks { get; set; }
     
         public virtual Country Country1 { get; set; }
         public virtual ICollection<Download> Downloads { get; set; }

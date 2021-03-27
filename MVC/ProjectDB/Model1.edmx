@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="MarketPlaceDB.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="MarketPlaceDB.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Country">
           <Key>
             <PropertyRef Name="ID" />
@@ -87,7 +87,7 @@
           <Property Name="SellerID" Type="int" Nullable="false" />
           <Property Name="Status" Type="int" Nullable="false" />
           <Property Name="ActionedBy" Type="int" />
-          <Property Name="AdminRemards" Type="varchar(max)" />
+          <Property Name="AdminRemarks" Type="varchar(max)" />
           <Property Name="PublishedDate" Type="datetime" />
           <Property Name="Title" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Category" Type="int" Nullable="false" />
@@ -145,7 +145,7 @@
           <Property Name="NoteID" Type="int" Nullable="false" />
           <Property Name="ReviewedByID" Type="int" Nullable="false" />
           <Property Name="AgainstDownloadsID" Type="int" Nullable="false" />
-          <Property Name="Ratings" Type="decimal" Precision="1" Scale="1" Nullable="false" />
+          <Property Name="Ratings" Type="decimal" Precision="2" Scale="1" Nullable="false" />
           <Property Name="Comments" Type="varchar(max)" Nullable="false" />
           <Property Name="CreatedDate" Type="datetime" />
           <Property Name="CreatedBy" Type="int" />
@@ -182,7 +182,7 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserID" Type="int" Nullable="false" />
-          <Property Name="DOB" Type="datetime" />
+          <Property Name="DOB" Type="date" />
           <Property Name="Gender" Type="int" />
           <Property Name="SecondaryEmailAddress" Type="varchar" MaxLength="100" />
           <Property Name="PhoneNumber-CountryCode" Type="varchar" MaxLength="5" Nullable="false" />
@@ -551,8 +551,7 @@
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MarketPlaceDB" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -648,7 +647,6 @@
           <Property Name="SellerID" Type="Int32" Nullable="false" />
           <Property Name="Status" Type="Int32" Nullable="false" />
           <Property Name="ActionedBy" Type="Int32" />
-          <Property Name="AdminRemards" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="PublishedDate" Type="DateTime" Precision="3" />
           <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Category" Type="Int32" Nullable="false" />
@@ -679,6 +677,7 @@
           <NavigationProperty Name="SellerNotesAttachements" Relationship="Self.FK_SellerNotesAttachements_SellerNotes" FromRole="SellerNotes" ToRole="SellerNotesAttachements" />
           <NavigationProperty Name="SellerNotesReportedIssues" Relationship="Self.FK_SellerNotesReportedIssues_SellerNotes" FromRole="SellerNotes" ToRole="SellerNotesReportedIssues" />
           <NavigationProperty Name="SellerNotesReviews" Relationship="Self.FK_SellerNotesReviews_SellerNotes" FromRole="SellerNotes" ToRole="SellerNotesReviews" />
+          <Property Name="AdminRemarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="SellerNotesAttachement">
           <Key>
@@ -720,7 +719,7 @@
           <Property Name="NoteID" Type="Int32" Nullable="false" />
           <Property Name="ReviewedByID" Type="Int32" Nullable="false" />
           <Property Name="AgainstDownloadsID" Type="Int32" Nullable="false" />
-          <Property Name="Ratings" Type="Decimal" Precision="1" Scale="1" Nullable="false" />
+          <Property Name="Ratings" Type="Decimal" Precision="2" Scale="1" Nullable="false" />
           <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
           <Property Name="CreatedBy" Type="Int32" />
@@ -760,7 +759,7 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserID" Type="Int32" Nullable="false" />
-          <Property Name="DOB" Type="DateTime" Precision="3" />
+          <Property Name="DOB" Type="DateTime" Precision="0" />
           <Property Name="Gender" Type="Int32" />
           <Property Name="SecondaryEmailAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="PhoneNumber_CountryCode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
@@ -1228,11 +1227,11 @@
           <EntitySetMapping Name="SellerNotes">
             <EntityTypeMapping TypeName="MarketPlaceDB.SellerNote">
               <MappingFragment StoreEntitySet="SellerNotes">
+                <ScalarProperty Name="AdminRemarks" ColumnName="AdminRemarks" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="SellerID" ColumnName="SellerID" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="ActionedBy" ColumnName="ActionedBy" />
-                <ScalarProperty Name="AdminRemards" ColumnName="AdminRemards" />
                 <ScalarProperty Name="PublishedDate" ColumnName="PublishedDate" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Category" ColumnName="Category" />
