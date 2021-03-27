@@ -55,8 +55,10 @@
                             <!--</div>-->
                         </div>
                         <div class="form-group form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck" name="exampleCheck">
-                            <label class="form-check-label" for="remember-me">Remember Me </label>
+                            @*<input type="checkbox" class="form-check-input" id="exampleCheck" name="exampleCheck">*@
+                            @*@Html.TextBoxFor(u => u.RememberMe, "true", new { type = "checkbox", @class="form-check-input" })*@
+                            @Html.CheckBoxFor(u => u.RememberMe, new { @class = "form-check-input" })
+                            <label class="form-check-label" for="remember-me" id="remember-me">Remember Me </label>
                         </div>
                         <div class="login-page-button">
                             <button type="submit" class="btn btn-primary" alt="login">Login</button>

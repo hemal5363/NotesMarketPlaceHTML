@@ -1,18 +1,19 @@
-﻿
+﻿@model IEnumerable<ProjectDB.Download>
+
 @{
-    ViewBag.Title = "BuyerRequest";
+    ViewBag.Title = "MySoldNotes";
     Layout = "~/Views/Shared/_RagisterView.cshtml";
 }
 
-<!-- Buyer Requests -->
-<section id="buyer-requests" onload="funTableSorter()">
+<!-- My Sold notes -->
+<section id="my-sold-notes">
 
     <div class="content-box">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
                     <div class="left-heading">
-                        <h2> Buyer Requests </h2>
+                        <h2> My Sold Notes </h2>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -23,22 +24,22 @@
                                     <input type="text" class="form-control" id="search-input" aria- placeholder="        search">
                                 </div>
                                 <div class="search-icon">
-                                    <img src="~/Images/search-icon.png">
+                                    <img src="/Images/search-icon.png">
                                 </div>
                             </div>
                             <div class="col-md-5">
                                 <div class="search-btn">
-                                    <button class="btn blue-btn" title="Add Note" onclick="getRequest()" role="button"> SEARCH </button>
+                                    <button class="btn blue-btn" title="Add Note" onclick="getSoldNotes()" role="button"> SEARCH </button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-12">
-                    <div id="getBuyerRequest"></div>
+                    <div id="getSold"></div>
                 </div>
             </div>
         </div>
     </div>
 </section>
-<!-- Buyer Requests Ends -->
+<!-- My Sold Notes Ends -->

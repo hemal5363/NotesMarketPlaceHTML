@@ -48,7 +48,7 @@
                         @{ var h = "/Home/NoteDetails/" + request.NoteID.ToString();}
                         <td> <a href=@h>@request.NoteTitle</a></td>
                         <td> @request.NoteCategory </td>
-                        <td> @request.User1.EmailID </td>
+                        <td> @request.User1.FirstName @request.User1.LastName </td>
                         @if (request.User1.UserProfiles.FirstOrDefault() != null && request.User1.UserProfiles.FirstOrDefault() != null)
                         {
                             <td> +@request.User1.UserProfiles.FirstOrDefault().PhoneNumber_CountryCode @request.User1.UserProfiles.FirstOrDefault().PhoneNumber </td>
@@ -66,17 +66,16 @@
                         <td> $@request.PurchasedPrice </td>
                         <td> @request.CreatedDate </td>
                         <td>
-                            <form method="post" action="/Transaction/AllowedDownload">
-                                @*<input type="hidden" name="ID" id="ID" value="@request.ID" />*@
-                                <a href=@h alt="edit"><img src="~/Images/eye.png"></a>
-                                <div class="menu-popup">
-                                    <a class="menu-check"><img src="~/Images/dots.png" onclick=@fun1></a>
-                                    <div id=@tId class="menu-popup-show">
-                                        @*<p><a type="submit">Allow Download</a></p>*@
-                                        <p><button type="submit">Allow Download</button></p>
-                                    </div>
+                            @*<input type="hidden" name="ID" id="ID" value="@request.ID" />*@
+                            <a href=@h alt="edit"><img src="~/Images/eye.png"></a>
+                            <div class="menu-popup">
+                                <a class="menu-check"  onclick=@fun1><img src="~/Images/dots.png"></a>
+                                <div id=@tId class="menu-popup-show">
+                                    @*<p><a type="submit">Allow Download</a></p>*@
+                                    @{ h = "/Transaction/AllowedDownload/" + request.ID; }
+                                    <p><a href=@h>Allow Download</a></p>
                                 </div>
-                            </form>
+                            </div>
                         </td>
                     </tr>
 
@@ -90,7 +89,7 @@
     @{
         if (!(Model.Count() == 0))
         {
-            var totalPages = Math.Ceiling(ViewBag.totalCount / 5.0);
+            var totalPages = Math.Ceiling(ViewBag.totalCount / 10.0);
 
             var fun = "getRequest(" + (ViewBag.activePageNumber - 1).ToString() + ")";
 

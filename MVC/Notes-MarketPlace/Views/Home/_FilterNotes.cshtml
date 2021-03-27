@@ -1,4 +1,6 @@
 ﻿@model Notes_MarketPlace.Models.SearchNoteViewModel
+@using ProjectDB
+
 
 <!-- Total notes -->
 <div id="total-notes">
@@ -27,15 +29,22 @@
                                     <td>
                                         <div class="book-detials">
                                             <div class="book-img">
-                                                <img src='@note.DisplayPicture' alt="books" class="img-responsive img-fluid">
+                                                @if(note.DisplayPicture == null)
+                                                {
+                                                    <img src="~/Images/computer-science.png" alt="books" class="img-responsive img-fluid">
+                                                }
+                                                else
+                                                {
+                                                    <img src='@note.DisplayPicture' alt="books" class="img-responsive img-fluid">
+                                                }
                                             </div>
                                             <div class="book-detial">
                                                 <div class="book-heading">
                                                     @{var h = "NoteDetails/" + note.ID.ToString();}
-                                                    <h5> <a href=@h>@note.Title </a></h5>
+                                                    <h5> <a href=@h>@note.Title - @note.NoteCategory.Name</a></h5>
                                                 </div>
                                                 <div class="book-det">
-                                                    @if (note.Country != null)
+                                                    @if (note.Country != null && note.UniversityName != null)
                                                     {
                                                         <p> <img src="~/Images/university.png"> &nbsp;&nbsp;@note.UniversityName, @note.Country1.Name </p>
                                                     }
@@ -44,27 +53,41 @@
                                                         <p> <img src="~/Images/pages.png"> &nbsp;&nbsp;@note.NumberofPages Pages </p>
                                                     }
                                                     <p> <img src="~/Images/date.png"> &nbsp;&nbsp;&nbsp;@note.PublishedDate.Value.ToString("dddd, dd MMMM yyyy") </p>
-                                                    <p> <img src="~/Images/flag.png"> <span class="marked"> &nbsp;&nbsp;&nbsp;&nbsp;5 Users Marked this note as inappropriate </span></p>
+                                                    @{ 
+                                                        MarketPlaceEntities market = new MarketPlaceEntities();
+                                                        var issues = market.SellerNotesReportedIssues.Where(r => r.NoteID == note.ID).ToList();
+                                                    }
+                                                    @if(issues.Count() != 0)
+                                                    { 
+                                                        <p> <img src="~/Images/flag.png"> <span class="marked"> &nbsp;&nbsp;&nbsp;&nbsp;@issues.Count() Users Marked this note as inappropriate </span></p>
+                                                    }
                                                 </div>
+                                                @{ 
+                                                    var ratings = market.SellerNotesReviews.Where(r => r.NoteID == note.ID).ToList();
+                                                    int rating = 0;
+                                                    if (ratings.Count() != 0)
+                                                    {
+                                                        rating = (int)Math.Ceiling(ratings.Select(r => r.Ratings).Average());
+                                                    }
+                                                }
                                                 <div class="book-rate">
                                                     <div class="container">
                                                         <div class="row">
-                                                            <div class="col-md-6">
-                                                                <div class="rate">
-                                                                    <input type="radio" id="star5" name="rate1" value="5" checked />
-                                                                    <label for="star5" title="text">5 stars</label>
-                                                                    <input type="radio" id="star4" name="rate1" value="4" />
-                                                                    <label for="star4" title="text">4 stars</label>
-                                                                    <input type="radio" id="star3" name="rate1" value="3" />
-                                                                    <label for="star3" title="text">3 stars</label>
-                                                                    <input type="radio" id="star2" name="rate1" value="2" />
-                                                                    <label for="star2" title="text">2 stars</label>
-                                                                    <input type="radio" id="star1" name="rate1" value="1" />
-                                                                    <label for="star1" title="text">1 star</label>
+                                                            <div class="col-md-12">
+                                                                <div class="rate" id="rateing-star">
+                                                                    @for(var j=1;j<=5;j++)
+                                                                    {
+                                                                        if(j<=rating)
+                                                                        {
+                                                                            <img src="~/Images/star.png" />
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <img src="~/Images/star-white.png" />
+                                                                        }
+                                                                    }
+                                                                <p> @ratings.Count() reviews </p>
                                                                 </div>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <p> 100 reviews </p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -72,9 +95,9 @@
                                             </div>
                                         </div>
                                     </td>
-                                    i += 1;
-                                    if (i > 3)
-                                    {
+                                                    i += 1;
+                                                    if (i > 3)
+                                                    {
                                     <tr>
                                         @{
                                             i = 0;

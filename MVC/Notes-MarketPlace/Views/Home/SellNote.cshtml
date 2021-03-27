@@ -47,13 +47,13 @@ Layout = "~/Views/Shared/_RagisterView.cshtml";
                                                 <tr>
                                                     <td>
                                                         <div id="notes-money">
-                                                            <a href="my-sold-notes.html">
+                                                            <a href="/Transaction/MySoldNotes">
                                                                 <div class="my-earning-heading">
                                                                     @{ 
                                                                         var id = Convert.ToInt32(User.Identity.Name);
 
                                                                         MarketPlaceEntities marketPlaceEntities = new MarketPlaceEntities();
-                                                                        var count = marketPlaceEntities.Downloads.Where(c => c.Seller == id).Count();
+                                                                        var count = marketPlaceEntities.Downloads.Where(c => c.Seller == id && c.IsAttachmentDownloaded == true).Count();
                                                                     }
                                                                     <h2> @count </h2>
                                                                 </div>
@@ -65,10 +65,10 @@ Layout = "~/Views/Shared/_RagisterView.cshtml";
                                                     </td>
                                                     <td>
                                                         <div id="money-earned">
-                                                            <a href="my-sold-notes.html">
+                                                            <a href="/Transaction/MySoldNotes">
                                                                 <div class="my-earning-heading">
                                                                     @{
-                                                                        var moneysum = marketPlaceEntities.Downloads.Where(c => c.Seller == id).Sum(s => s.PurchasedPrice);
+                                                                        var moneysum = marketPlaceEntities.Downloads.Where(c => c.Seller == id && c.IsSellerHasAllowedDownload == true).Sum(s => s.PurchasedPrice);
                                                                         if (moneysum == null)
                                                                         {
                                                                             moneysum = 0;
@@ -93,7 +93,7 @@ Layout = "~/Views/Shared/_RagisterView.cshtml";
                                     <div class="col-md-4">
                                         <div id="my-downloads-earning">
                                             <div class="my-earning-block">
-                                                <a href="my-downloads.html">
+                                                <a href="/Transaction/MyDownloads">
                                                     <div class="my-earning-heading">
                                                         @{ 
                                                             var DownloadNote = marketPlaceEntities.Downloads.Where(c => c.Downloader == id).Count();
@@ -110,7 +110,7 @@ Layout = "~/Views/Shared/_RagisterView.cshtml";
                                     <div class="col-md-4">
                                         <div id="my-rejected-earning">
                                             <div class="my-earning-block">
-                                                <a href="my-rejected-notes.html">
+                                                <a href="/Transaction/MyRejectedNotes">
                                                     <div class="my-earning-heading">
                                                         @{
                                                             var RejectedNote = marketPlaceEntities.SellerNotes.Where(c => c.SellerID == id && c.ReferenceData.Value == "Rejected").Count();

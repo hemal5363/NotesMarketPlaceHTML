@@ -1,4 +1,6 @@
-﻿<html>
+﻿@using ProjectDB
+
+<html>
 
 <head>
 
@@ -31,7 +33,7 @@
         <header class="site-header">
             <div class="header-wrapper">
                 <div class="logo-wrapper">
-                    <a href="home.html" title="Site Logo">
+                    <a href="/Home/Index" title="Site Logo">
                         <img src="~/Images/logo.png" alt="logo">
                     </a>
                 </div>
@@ -62,22 +64,37 @@
                                     <div class="user-dropdown user-menu" target=".user-menu-bar">
                                         <a class="" role="button" id="dropdownMenuLink" aria-haspopup="true" aria-expanded="false">
                                             <div class="user-img">
-                                                <img src="~/Images/user-img.png">
+                                                @{
+                                                    string h = "/Images/user-img.png";
+
+                                                    MarketPlaceEntities market = new MarketPlaceEntities();
+                                                    var id = Convert.ToInt32(User.Identity.Name);
+
+                                                    var details = market.UserProfiles.FirstOrDefault(u => u.UserID == id);
+                                                    if (details != null)
+                                                    {
+                                                        if (details.ProfilePicture != null)
+                                                        {
+                                                            h = details.ProfilePicture;
+                                                        }
+                                                    }
+                                                }
+                                                <img src='@h'>
                                             </div>
                                             <div class="user-menu-bar" aria-labelledby="dropdownMenuLink">
-                                                <a class="user-item" href="user-profile.html">My Profile</a>
-                                                <a class="user-item" href="my-downloads.html">My Downloads</a>
-                                                <a class="user-item" href="my-sold-notes.html">My Sold Notes</a>
-                                                <a class="user-item" href="my-rejected-notes.html">My Rejected Notes</a>
-                                                <a class="user-item" href="change-password-page.html">Change Password</a>
-                                                <a class="user-item" href="/Account/Logout"><span> Logout </span></a>
+                                                <a class="user-item" href="/Account/UserProfile">My Profile</a>
+                                                <a class="user-item" href="/Transaction/MyDownloads">My Downloads</a>
+                                                <a class="user-item" href="/Transaction/MySoldNotes">My Sold Notes</a>
+                                                <a class="user-item" href="/Transaction/MyRejectedNotes">My Rejected Notes</a>
+                                                <a class="user-item" href="/Account/ChangePassword">Change Password</a>
+                                                <a class="user-item" href="/Account/Logout" onclick="return confirm('Are you sure, you want to logout?')"><span> Logout </span></a>
                                             </div>
                                         </a>
                                     </div>
                                 </li>
                                 <li>
                                     <div id="login-button">
-                                        <a class="btn login-btn" href="/Account/Logout" title="Login" role="button"> Logout </a>
+                                        <a class="btn login-btn" href="/Account/Logout" title="Login" role="button" onclick="return confirm('Are you sure, you want to logout?')"> Logout </a>
                                     </div>
                                 </li>
                             }
@@ -102,7 +119,7 @@
                         <div class="col-sm-6">
                             <div id="mobile-img">
                                 <div class="logo-wrapper">
-                                    <a href="home.html" title="Site Logo">
+                                    <a href="/Home/Index" title="Site Logo">
                                         <img src="~/Images/logo.png" alt="logo">
                                     </a>
                                 </div>
@@ -134,13 +151,17 @@
                         <a href="/Home/ContactUs" id="contact-us2">Contact Us</a>
                         @if (User.Identity.IsAuthenticated)
                         {
-                            <a class="sub-menu" target="#user">User</a>
+                            MarketPlaceEntities market = new MarketPlaceEntities();
+                            var id = Convert.ToInt32(User.Identity.Name);
+
+                            var details = market.Users.FirstOrDefault(u => u.ID == id);
+                            <a class="sub-menu" target="#user">@details.FirstName @details.LastName</a>
                             <div class="mobile-item" id="user">
-                                <a class="user-item" href="user-profile.html">My Profile</a>
-                                <a class="user-item" href="my-downloads.html">My Downloads</a>
-                                <a class="user-item" href="my-sold-notes.html">My Sold Notes</a>
-                                <a class="user-item" href="my-rejected-notes.html">My Rejected Notes</a>
-                                <a class="user-item" href="change-password-page.html">Change Password</a>
+                                <a class="user-item" href="/Account/UserProfile">My Profile</a>
+                                <a class="user-item" href="/Transaction/MyDownloads">My Downloads</a>
+                                <a class="user-item" href="/Transaction/MySoldNotes">My Sold Notes</a>
+                                <a class="user-item" href="/Transaction/MyRejectedNotes">My Rejected Notes</a>
+                                <a class="user-item" href="/Account/ChangePassword">Change Password</a>
                                 <a class="user-item" href="/Account/Logout"><span> Logout </span></a>
                             </div>
                             <a href="/Account/Logout" title="Logout" role="button"> Logout </a>
@@ -195,7 +216,7 @@
 
     <!-- Script -->
     <script src="~/Scripts/script.js"></script>
-    
+
 
 </body>
 </html>

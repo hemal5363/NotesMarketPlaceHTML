@@ -28,6 +28,12 @@ namespace Notes_MarketPlace.Controllers
         }
 
         [AllowAnonymous]
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        [AllowAnonymous]
         public ActionResult FAQ()
         {
             return View();
@@ -40,7 +46,7 @@ namespace Notes_MarketPlace.Controllers
             {
                 var id = Convert.ToInt32(User.Identity.Name);
                 var result = marketPlaceEntities.Users.FirstOrDefault(u => u.ID == id);
-                var newResult = new ContactUsForm()
+                var newResult = new ContactUsFormViewModel()
                 {
                     FullName = result.FirstName + " " + result.LastName,
                     Email = result.EmailID
@@ -65,18 +71,20 @@ namespace Notes_MarketPlace.Controllers
         }
 
         [AllowAnonymous]
-        public PartialViewResult FilterNote(string search, string univarsity, string course, int? type=0, int? category=0, int? country=0, int pageNumber = 1)
+        public PartialViewResult FilterNote(string search, string univarsity, string course, int? type=0, int? category=0, int? country=0, int ratings=0, int pageNumber = 1)
         {
             var notes = marketPlaceEntities.SellerNotes.Where(s => s.Status == 9 && s.IsActive == true).ToList();
 
+            if (ratings != 0)
+                notes = notes.Where(s => s.SellerNotesReviews.Count != 0 ? (int)Math.Ceiling(s.SellerNotesReviews.Average(r => r.Ratings)) >= ratings : false).ToList();
             if (type != 0)
                 notes = notes.Where(s => s.NoteType == type).ToList();
             if (category != 0)
                 notes = notes.Where(s => s.Category == category).ToList();
             if (!string.IsNullOrEmpty(univarsity))
-                notes = notes.Where(s => s.UniversityName.Contains(univarsity)).ToList();
+                notes = notes.Where(s => s.UniversityName == null ? false : s.UniversityName.Contains(univarsity)).ToList();
             if (!string.IsNullOrEmpty(course))
-                notes = notes.Where(s => s.Course.Contains(course)).ToList();
+                notes = notes.Where(s => s.Course == null ? false : s.Course.Contains(course)).ToList();
             if (country != 0)
                 notes = notes.Where(s => s.Country == country).ToList();
             if (!string.IsNullOrEmpty(search))
@@ -95,7 +103,7 @@ namespace Notes_MarketPlace.Controllers
         }
 
         [HttpPost]
-        public ActionResult ContactUs(ContactUsForm form)
+        public ActionResult ContactUs(ContactUsFormViewModel form)
         {
             if (!ModelState.IsValid)
             {
@@ -108,7 +116,7 @@ namespace Notes_MarketPlace.Controllers
         }
 
         [NonAction]
-        public void SendContactUsEmail(ContactUsForm form)
+        public void SendContactUsEmail(ContactUsFormViewModel form)
         {
             MarketPlaceEntities marketPlaceEntities = new MarketPlaceEntities();
             var toEmail = new MailAddress(marketPlaceEntities.SystemConfigurations.Where(s => s.Key == "Email").FirstOrDefault().Value);
@@ -138,7 +146,7 @@ namespace Notes_MarketPlace.Controllers
             var result = marketPlaceEntities.SellerNotes.Where(n => n.SellerID == id && n.IsActive == true).ToList();
 
             if (search != null)
-                result = result.Where(s => s.Title.ToUpper().Contains(search) || s.Title.ToLower().Contains(search) || s.NoteCategory.Name.ToUpper().Contains(search) || s.NoteCategory.Name.ToLower().Contains(search)).ToList();
+                result = result.Where(s => s.Title.ToUpper().Contains(search) || s.Title.ToLower().Contains(search) || s.NoteCategory.Name.ToUpper().Contains(search) || s.NoteCategory.Name.ToLower().Contains(search) || s.SellingPrice.ToString().ToUpper().Contains(search) || s.SellingPrice.ToString().ToLower().Contains(search)).ToList();
 
             ViewBag.totalCount = result.Count();
             ViewBag.activePageNumber = pageNumber;
@@ -157,7 +165,7 @@ namespace Notes_MarketPlace.Controllers
             var result = marketPlaceEntities.SellerNotes.Where(n => n.SellerID == id && n.IsActive == true).ToList();
 
             if (search != null)
-                result = result.Where(s => s.Title.ToUpper().Contains(search) || s.Title.ToLower().Contains(search) || s.NoteCategory.Name.ToUpper().Contains(search) || s.NoteCategory.Name.ToLower().Contains(search)).ToList();
+                result = result.Where(s => s.Title.ToUpper().Contains(search) || s.Title.ToLower().Contains(search) || s.NoteCategory.Name.ToUpper().Contains(search) || s.NoteCategory.Name.ToLower().Contains(search) || s.ReferenceData.Value.ToUpper().Contains(search) || s.ReferenceData.Value.ToLower().Contains(search)).ToList();
 
             ViewBag.totalCount = result.Count();
             ViewBag.activePageNumber = pageNumber;
@@ -226,7 +234,7 @@ namespace Notes_MarketPlace.Controllers
                 addNoteView.SellerNote.ID = nid;
 
                 var triggerNote = marketPlaceEntities.SellerNotes.Where(n => n.ID == nid).FirstOrDefault();
-                string trigger = "../Members/" + triggerNote.SellerID.ToString() + "/" + triggerNote.ID.ToString();
+                string trigger = "/Members/" + triggerNote.SellerID.ToString() + "/" + triggerNote.ID.ToString();
 
                 if (addNoteView.SellerNote.DisplayPicture != null)
                 {
@@ -238,7 +246,7 @@ namespace Notes_MarketPlace.Controllers
 
                     addNoteView.SellerNote.DisplayPicture.SaveAs(fullPath);
 
-                    triggerNote.DisplayPicture = "../" + trigger + "/" + fileName;
+                    triggerNote.DisplayPicture = trigger + "/" + fileName;
                 }
 
                 if (addNoteView.SellerNote.NotesPreview != null)
@@ -251,7 +259,7 @@ namespace Notes_MarketPlace.Controllers
 
                     addNoteView.SellerNote.NotesPreview.SaveAs(fullPath);
 
-                    triggerNote.NotesPreview = "../" + trigger + "/" + fileName;
+                    triggerNote.NotesPreview = trigger + "/" + fileName;
                 }
 
                 trigger = trigger + "/Attachements";
@@ -267,7 +275,7 @@ namespace Notes_MarketPlace.Controllers
                 var triggerPdf = new SellerNotesAttachement();
                 triggerPdf.NoteID = triggerNote.ID;
                 triggerPdf.FileName = fileName;
-                triggerPdf.FilePath = "../" + trigger + "/" + fileName;
+                triggerPdf.FilePath = trigger + "/" + fileName;
                 triggerPdf.CreatedDate = triggerNote.CreatedDate;
                 triggerPdf.CreatedBy = triggerNote.SellerID;
                 triggerPdf.ModifiedDate = triggerNote.ModifiedDate;
@@ -278,7 +286,7 @@ namespace Notes_MarketPlace.Controllers
             }
             else
             {
-                string trigger = "../Members/" + addNoteView.SellerNote.SellerID.ToString() + "/" + addNoteView.SellerNote.ID.ToString();
+                string trigger = "/Members/" + addNoteView.SellerNote.SellerID.ToString() + "/" + addNoteView.SellerNote.ID.ToString();
 
                 if (addNoteView.SellerNote.DisplayPicture != null)
                 {
@@ -290,7 +298,7 @@ namespace Notes_MarketPlace.Controllers
 
                     addNoteView.SellerNote.DisplayPicture.SaveAs(fullPath);
 
-                    addNoteView.SellerNote.Picture = "../" + trigger + "/" + fileName;
+                    addNoteView.SellerNote.Picture = trigger + "/" + fileName;
                 }
 
                 if (addNoteView.SellerNote.NotesPreview != null)
@@ -303,7 +311,7 @@ namespace Notes_MarketPlace.Controllers
 
                     addNoteView.SellerNote.NotesPreview.SaveAs(fullPath);
 
-                    addNoteView.SellerNote.Preview = "../" + trigger + "/" + fileName;
+                    addNoteView.SellerNote.Preview = trigger + "/" + fileName;
                 }
 
                 var triggerPdf = marketPlaceEntities.SellerNotesAttachements.FirstOrDefault(n => n.NoteID == addNoteView.SellerNote.ID);
@@ -319,7 +327,7 @@ namespace Notes_MarketPlace.Controllers
                 addNoteView.SellerNotesAttachement.FilePath.SaveAs(fullPath);
 
                 triggerPdf.FileName = fileName;
-                triggerPdf.FilePath = "../" + trigger + "/" + fileName;
+                triggerPdf.FilePath = trigger + "/" + fileName;
                 triggerPdf.ModifiedDate = addNoteView.SellerNote.ModifiedDate;
                 triggerPdf.ModifiedBy = addNoteView.SellerNote.SellerID;
 
@@ -363,7 +371,7 @@ namespace Notes_MarketPlace.Controllers
                 SellerID = note.SellerID,
                 Status = note.Status,
                 ActionedBy = note.ActionedBy,
-                AdminRemards = note.AdminRemards,
+                AdminRemarks = note.AdminRemarks,
                 PublishedDate = note.PublishedDate,
                 Title = note.Title,
                 Category = note.Category,
@@ -408,14 +416,14 @@ namespace Notes_MarketPlace.Controllers
 
             var did = Convert.ToInt32(User.Identity.Name);
 
-
             repository.AddDownload(id, did, result.FilePath);
-
 
             var path = Server.MapPath(result.FilePath);
             var fullPath = Path.Combine(path);
 
-            return File(fullPath, ".pdf", result.FileName);
+            var fName = result.SellerNote.Title + ".pdf";
+
+            return File(fullPath, ".pdf", fName);
         }
 
         public void NoteRequest(int id)

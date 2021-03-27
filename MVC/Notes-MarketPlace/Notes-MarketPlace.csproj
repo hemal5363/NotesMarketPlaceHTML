@@ -110,12 +110,18 @@
     <Content Include="Global.asax" />
     <Content Include="Images\banner-with-overlay.jpg" />
     <Content Include="Images\banner-with-overlay1.jpg" />
+    <Content Include="Images\banner-with-overlay2.jpg" />
     <Content Include="Images\check-circle-solid.png" />
     <Content Include="Images\close.png" />
     <Content Include="Images\computer-science.png" />
+    <Content Include="Images\customer-1.png" />
+    <Content Include="Images\customer-2.png" />
+    <Content Include="Images\customer-3.png" />
+    <Content Include="Images\customer-4.png" />
     <Content Include="Images\date.png" />
     <Content Include="Images\delete.png" />
     <Content Include="Images\dots.png" />
+    <Content Include="Images\download.png" />
     <Content Include="Images\edit.png" />
     <Content Include="Images\eye.png" />
     <Content Include="Images\facebook.png" />
@@ -132,6 +138,7 @@
     <Content Include="Images\reviewer-3.png" />
     <Content Include="Images\right-arrow.png" />
     <Content Include="Images\search-icon.png" />
+    <Content Include="Images\seller.png" />
     <Content Include="Images\university.png" />
     <Content Include="Images\star-white.png" />
     <Content Include="Images\star.png" />
@@ -157,9 +164,12 @@
     </Compile>
     <Compile Include="Models\AddNoteViewModel.cs" />
     <Compile Include="Models\AutoEmailSend.cs" />
-    <Compile Include="Models\ContactUsForm.cs" />
+    <Compile Include="Models\ChangePasswordViewModel.cs" />
+    <Compile Include="Models\ContactUsFormViewModel.cs" />
+    <Compile Include="Models\MyDownloadViewModel.cs" />
     <Compile Include="Models\SearchFilter.cs" />
     <Compile Include="Models\SearchNoteViewModel.cs" />
+    <Compile Include="Models\UserProfileViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebRoleProvider.cs" />
   </ItemGroup>
@@ -183,6 +193,15 @@
     <Content Include="Views\Transaction\_BuyerRequestPartial.cshtml" />
     <Content Include="Views\Home\_SellNotePublishedNotesPartial.cshtml" />
     <Content Include="Views\Home\_SellNoteInProgressNotesPartial.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Account\ChangePassword.cshtml" />
+    <Content Include="Views\Transaction\MyDownloads.cshtml" />
+    <Content Include="Views\Transaction\_MyDownloadsPartial.cshtml" />
+    <Content Include="Views\Transaction\MySoldNotes.cshtml" />
+    <Content Include="Views\Transaction\_MySoldNotesPartial.cshtml" />
+    <Content Include="Views\Transaction\MyRejectedNotes.cshtml" />
+    <Content Include="Views\Transaction\_MyRejectedNotesPartial.cshtml" />
+    <Content Include="Views\Account\UserProfile.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

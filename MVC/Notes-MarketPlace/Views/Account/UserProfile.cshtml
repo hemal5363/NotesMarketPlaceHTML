@@ -1,0 +1,237 @@
+﻿@model Notes_MarketPlace.Models.UserProfileViewModel
+
+@{
+    ViewBag.Title = "UserProfile";
+    Layout = "~/Views/Shared/_RagisterView.cshtml";
+}
+
+<!-- User Profile -->
+<section id="user-profile">
+
+    <!-- User Profile Content -->
+    <div class="search-content">
+        <div class="main-heading-center">
+            <h1> User Profile </h1>
+        </div>
+    </div>
+
+    <!-- User Profile Details -->
+    <div class="content-box-md">
+        <form method="post" action="/Account/UserProfile" enctype="multipart/form-data">
+            @Html.HiddenFor(u => u.UserProfileModel.UserID)
+            @Html.HiddenFor(u => u.UserProfileModel.ID)
+            @Html.HiddenFor(u => u.UserProfileModel.Picture)
+            <div class="add-note-details">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="left-heading">
+                                <h2> Basic Profile Details </h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="login-form">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @*<label for="first-name">First Name *</label>*@
+                                    @*<input type="text" class="form-control" id="first-name" name="first-name" aria- placeholder="Enter your first name">*@
+                                    @Html.LabelFor(u => u.FirstName)
+                                    @Html.TextBoxFor(u => u.FirstName, new { @class = "form-control", placeholder = "Enter your first name" })
+                                    @Html.ValidationMessageFor(u => u.FirstName)
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @*<label for="last-name">Last Name *</label>*@
+                                    @*<input type="text" class="form-control" id="last-name" name="last-name" aria- placeholder="Enter your last name">*@
+                                    @Html.LabelFor(u => u.LastName)
+                                    @Html.TextBoxFor(u => u.LastName, new { @class = "form-control", placeholder = "Enter your last name" })
+                                    @Html.ValidationMessageFor(u => u.LastName)
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @*<label for="email">Email *</label>*@
+                                    @*<input type="email" class="form-control" id="email" name="email" aria- placeholder="Enter your email">*@
+                                    @Html.LabelFor(u => u.Email)
+                                    @Html.TextBoxFor(u => u.Email, new { type = "email", @class = "form-control", placeholder = "Enter your email", @readonly = "readonly" })
+                                    @Html.ValidationMessageFor(u => u.Email)
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @*<label for="date-of-birth">Date of Birth</label>*@
+                                    @*<input type="date" class="form-control" id="date-of-birth" name="date-of-birth" aria- placeholder="Enter your date of birth">*@
+                                    @Html.LabelFor(u => u.UserProfileModel.DOB)
+                                    @if(Model.UserProfileModel.DOB != null)
+                                    {
+                                        @Html.TextBoxFor(u => u.UserProfileModel.DOB, Model.UserProfileModel.DOB.Value.ToString("yyyy-MM-dd"), new { type = "date", @class = "form-control", placeholder = "Enter your date of birth" });
+                                    }
+                                    else
+                                    {
+                                        @Html.TextBoxFor(u => u.UserProfileModel.DOB, new { type = "date", @class = "form-control", placeholder = "Enter your date of birth" });
+                                    }
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @*<label for="gender">Gender</label>
+        <select class="form-control" id="select-gender">
+            <option>Select your gender </option>
+            <option>Male </option>
+            <option>Female </option>
+        </select>*@
+                                    @Html.LabelFor(u => u.UserProfileModel.Gender)
+                                    @Html.DropDownListFor(u => u.UserProfileModel.Gender, new SelectList(Model.GenderList, "ID", "Value"), "Select your gender", new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @*<label for="phone-number">Phone Number</label>*@
+                                    @Html.LabelFor(u => u.UserProfileModel.PhoneNumber)
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            @*<select class="form-control" id="select-phone-number-code">
+                                                <option>+91 </option>
+                                            </select>*@
+                                            @Html.DropDownListFor(u => u.UserProfileModel.PhoneNumber_CountryCode, new SelectList(Model.PhoneCodeList), "00", new { @class = "form-control" })
+                                        </div>
+                                        <div class="col-md-9">
+                                            @*<input type="text" class="form-control" id="phone-number" name="phone-number" aria- placeholder="Enter your phone number">*@
+                                            @Html.TextBoxFor(u => u.UserProfileModel.PhoneNumber, new { @class = "form-control", placeholder = "Enter your phone number" })
+                                        </div>
+                                    </div>
+                                    @Html.ValidationMessageFor(u => u.UserProfileModel.PhoneNumber_CountryCode)
+                                    @Html.ValidationMessageFor(u => u.UserProfileModel.PhoneNumber)
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @*<label for="profile-picture">Profile Picture</label><br>*@
+                                    @Html.LabelFor(u => u.UserProfileModel.ProfilePicture)
+                                    <label class="file-uploader">
+                                        <img src="/Images/upload-file.png">
+                                        <p> Upload a picture</p>
+                                        @*<input type="file" class="form-control" id="profile-picture" name="profile-picture">*@
+                                        @Html.TextBoxFor(u => u.UserProfileModel.ProfilePicture, new { type = "file", @class="form-control", accept = "image/*" })
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="add-note-details">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="left-heading">
+                                <h2> Address Details </h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="login-form">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @*<label for="address-line-1">Address Line 1 *</label>*@
+                                    @*<input type="text" class="form-control" id="address-line-1" name="address-line-1" aria- placeholder="Enter your address">*@
+                                    @Html.LabelFor(u => u.UserProfileModel.AddressLine1)
+                                    @Html.TextBoxFor(u => u.UserProfileModel.AddressLine1, new { @class = "form-control", placeholder = "Enter your address" })
+                                    @Html.ValidationMessageFor(u => u.UserProfileModel.AddressLine1)
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @*<label for="address-line-2">Address Line 2</label>*@
+                                    @*<input type="text" class="form-control" id="address-line-2" name="address-line-2" aria- placeholder="Enter your address">*@
+                                    @Html.LabelFor(u => u.UserProfileModel.AddressLine2)
+                                    @Html.TextBoxFor(u => u.UserProfileModel.AddressLine2, new { @class = "form-control", placeholder = "Enter your address" })
+                                    @Html.ValidationMessageFor(u => u.UserProfileModel.AddressLine2)
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @*<label for="city">City *</label>*@
+                                    @*<input type="text" class="form-control" id="city" name="city" aria- placeholder="Enter your city">*@
+                                    @Html.LabelFor(u => u.UserProfileModel.City)
+                                    @Html.TextBoxFor(u => u.UserProfileModel.City, new { @class = "form-control", placeholder = "Enter your city" })
+                                    @Html.ValidationMessageFor(u => u.UserProfileModel.City)
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @*<label for="state">State *</label>*@
+                                    @*<input type="text" class="form-control" id="state" name="state" aria- placeholder="Enter your state">*@
+                                    @Html.LabelFor(u => u.UserProfileModel.State)
+                                    @Html.TextBoxFor(u => u.UserProfileModel.State, new { @class = "form-control", placeholder = "Enter your state" })
+                                    @Html.ValidationMessageFor(u => u.UserProfileModel.State)
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @*<label for="zipcode">ZipCode *</label>*@
+                                    @*<input type="text" class="form-control" id="zipcode" name="zipcode" aria- placeholder="Enter your zipcode">*@
+                                    @Html.LabelFor(u => u.UserProfileModel.ZipCode)
+                                    @Html.TextBoxFor(u => u.UserProfileModel.ZipCode, new { @class = "form-control", placeholder = "Enter your zipcode" })
+                                    @Html.ValidationMessageFor(u => u.UserProfileModel.ZipCode)
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @*<label for="country">Country *</label>*@
+                                    @*<input type="text" class="form-control" id="country" name="country" aria- placeholder="Enter your country">*@
+                                    @Html.LabelFor(u => u.UserProfileModel.Country)
+                                    @Html.DropDownListFor(u => u.UserProfileModel.Country, new SelectList(Model.CountriesList), "Select your country", new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(u => u.UserProfileModel.Country)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="add-note-details">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="left-heading">
+                                <h2> University and College Information </h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="login-form">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @*<label for="university">University</label>*@
+                                    @*<input type="text" class="form-control" id="university" name="university" aria- placeholder="Enter your university">*@
+                                    @Html.LabelFor(u => u.UserProfileModel.University)
+                                    @Html.TextBoxFor(u => u.UserProfileModel.University, new { @class = "form-control", placeholder = "Enter your university" })
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @*<label for="college">College</label>*@
+                                    @*<input type="text" class="form-control" id="college" name="college" aria- placeholder="Enter your college">*@
+                                    @Html.LabelFor(u => u.UserProfileModel.College)
+                                    @Html.TextBoxFor(u => u.UserProfileModel.College, new { @class = "form-control", placeholder = "Enter your college" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="work-btn">
+                            <button class="btn blue-btn" type="submit" title="Update" role="button"> Update </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+<!-- User Profile Ends -->

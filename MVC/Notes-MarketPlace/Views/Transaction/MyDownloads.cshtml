@@ -1,18 +1,19 @@
-﻿
+﻿@model IEnumerable<ProjectDB.Download>
+
 @{
-    ViewBag.Title = "BuyerRequest";
+    ViewBag.Title = "MyDownloads";
     Layout = "~/Views/Shared/_RagisterView.cshtml";
 }
 
-<!-- Buyer Requests -->
-<section id="buyer-requests" onload="funTableSorter()">
+<!-- My Downloads -->
+<section id="my-downloads">
 
     <div class="content-box">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
                     <div class="left-heading">
-                        <h2> Buyer Requests </h2>
+                        <h2> My Downloads </h2>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -21,24 +22,25 @@
                             <div class="col-md-7">
                                 <div class="search-bar">
                                     <input type="text" class="form-control" id="search-input" aria- placeholder="        search">
-                                </div>
-                                <div class="search-icon">
-                                    <img src="~/Images/search-icon.png">
+                                    <div class="search-icon">
+                                        <img src="/Images/search-icon.png">
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-md-5">
                                 <div class="search-btn">
-                                    <button class="btn blue-btn" title="Add Note" onclick="getRequest()" role="button"> SEARCH </button>
+                                    <button class="btn blue-btn" title="Add Note" onclick="getDownloads()" role="button"> SEARCH </button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-12">
-                    <div id="getBuyerRequest"></div>
+                    <div id="getMyDownload"></div>
                 </div>
             </div>
         </div>
     </div>
 </section>
-<!-- Buyer Requests Ends -->
+<!-- My Downloads Ends -->
+

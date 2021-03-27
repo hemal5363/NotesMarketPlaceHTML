@@ -238,11 +238,17 @@ a:hover {
     margin-bottom: 30px;
 }
 
+#remember-me{
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+#RememberMe,
 .login-form .form-group input:nth-child(1) {
     border: 1px solid #d1d1d1;
     width: 30px;
     height: 30px;
-    margin-top: 20px;
+    /*    margin-top: 20px;*/
 }
 
 .login .login-form .form-group label:nth-child(2) {
@@ -634,7 +640,7 @@ a:hover {
     position: relative;
 }
 
-#email-verification {
+/*#email-verification {
     background-color: #fff;
     padding: 30px;
     width: 600px;
@@ -643,50 +649,51 @@ a:hover {
     left: 50%;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-}
-
+}*/
+/*
 #email-verification-logo {
     margin-bottom: 50px;
 }
-
-#email-verification-heading {
+*/
+/*#email-verification-heading {
     font-size: 26px;
     font-weight: 600;
     line-height: 30px;
     color: #6255a5;
     margin-bottom: 30px;
-}
+}*/
 
-#email-verification-text h4 {
+/*#email-verification-text h4 {
     font-size: 18px;
     font-weight: 600;
     line-height: 22px;
     color: #333;
     margin-bottom: 20px;
-}
+}*/
 
-#email-verification-text p {
+/*#email-verification-text p {
     font-size: 16px;
     font-weight: 400;
     line-height: 20px;
     color: #333;
     margin-bottom: 10px;
-}
+}*/
 
-#email-verification-text {
+/*#email-verification-text {
     margin-bottom: 50px;
 }
-
-#email-btn button {
+*/
+/*#email-btn button {
     width: 540px;
 }
+*/
 
 /* =====================================================
                         Home
 ===================================================== */
 
 #home-content {
-    background-image: url(../images/images/banner-with-overlay2.jpg);
+    background-image: url(../Images/banner-with-overlay2.jpg);
     background-position: center;
     height: 620px;
 }
@@ -841,6 +848,11 @@ a:hover {
     margin-top: 30px;
 }
 
+.book-detials .book-img img {
+    width: 347px;
+    height: 193px;
+}
+
 #search-notes td:nth-child(2) {
     padding: 0 30px;
 }
@@ -908,17 +920,39 @@ a:hover {
     content: url("../Images/star.png");
 }
 
-.rate:not(:checked) > label:hover,
-.rate:not(:checked) > label:hover ~ label {
+#rates .rate:not(:checked) > label:hover,
+#rates .rate:not(:checked) > label:hover ~ label {
     content: url("../Images/star.png");
 }
 
-.rate > input:checked + label:hover,
-.rate > input:checked + label:hover ~ label,
-.rate > input:checked ~ label:hover,
-.rate > input:checked ~ label:hover ~ label,
+#rates .rate > input:checked + label:hover,
+#rates .rate > input:checked + label:hover ~ label,
+#rates .rate > input:checked ~ label:hover,
+#rates .rate > input:checked ~ label:hover ~ label,
 .rate > label:hover ~ input:checked ~ label {
     content: url("../Images/star.png");
+}
+
+#notes-detail #notes-detail-det #rateing-star {
+    margin-left: 20px;
+}
+
+#rateing-star {
+    display: -webkit-box;
+    text-align: right;
+}
+
+#notes-detail #notes-detail-det img {
+    margin-top: 5px;
+}
+
+#rateing-star img {
+    width: 20px;
+}
+
+#notes-detail #notes-detail-det #rateing-star p,
+#rateing-star p {
+    margin-left: 10px;
 }
 
 .page-number {
@@ -964,6 +998,10 @@ a:hover {
 #notes-detail #notes-detail-img {
     max-width: 240px;
     overflow: hidden;
+}
+
+#notes-detail #notes-detail-img img {
+    width: 240px;
 }
 
 #notes-detail .left-heading {
@@ -1083,14 +1121,23 @@ set-box-shadow-cicis-menu-to-go {
     border: 1px solid #d1d1d1;
     border-radius: 3px;
     padding: 30px;
+    height: 570px;
+    overflow-x: scroll;
 }
 
-#costomer-reviews .c-r-text {
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 24px;
-    color: #333;
-}
+    #costomer-reviews .c-r-text {
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+        color: #333;
+        margin-top: 10px;
+    }
+
+    #costomer-reviews .c-r-img img {
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+    }
 
 #costomer-reviews hr {
     margin: 20px 0;
@@ -1254,24 +1301,25 @@ set-box-shadow-cicis-menu-to-go {
                     Add reviews
 ===================================================== */
 
-#add-review-bg {
+.add-review-bg {
     display: none;
     position: absolute;
-    top: 0;
-    left: 0;
+    top: -250px;
+    left: -200px;
     bottom: 0;
     right: 0;
     background-color: rgba(0, 0, 0, .4);
     z-index: 9999;
-    height: 130%;
+    height: 300%;
+    width: 140%;
 }
 
 #add-review-box {
     position: absolute;
-    top: 200px;
+    top: 50%;
     left: 50%;
-    -webkit-transform: translateX(-50%);
-    transform: translateX(-50%);
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
     background-color: #fff;
     padding: 30px 50px;
 }
@@ -1300,28 +1348,29 @@ set-box-shadow-cicis-menu-to-go {
     content: url("../Images/star-white.png");
 }
 
-#comments1 {
-    margin-top: 150px;
+#add-review-box #comments {
+    /*    margin-top: 150px;*/
     margin-bottom: 30px;
+    padding-top: 120px;
     width: 500px;
+}
+
+#review-btn a {
+    color: #fff;
 }
 
 /* =====================================================
                     My Sold Notes
 ===================================================== */
-
 /* =====================================================
                     My Rejected Notes
 ===================================================== */
-
 /* =====================================================
                     Buyer Requests
 ===================================================== */
-
 /* =====================================================
                         FAQ
 ===================================================== */
-
 .FAQ-box {
     border: 1px solid #d1d1d1;
     border-radius: 5px;
@@ -1329,11 +1378,11 @@ set-box-shadow-cicis-menu-to-go {
     padding: 20px;
 }
 
-#g3 .FAQ-box {
+#g2 .FAQ-box {
     margin-bottom: 60px;
 }
 
-#u2 .FAQ-box {
+#u3 .FAQ-box {
     margin-bottom: 60px;
 }
 
@@ -1772,3 +1821,5 @@ ul.social-list li a i {
 #mobile-items .mobile-item a {
     padding-left: 120px;
 }
+
+

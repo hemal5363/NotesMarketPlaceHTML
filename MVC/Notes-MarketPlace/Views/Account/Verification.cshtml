@@ -1,43 +1,54 @@
-﻿@model ProjectDB.User
-
-@{
-    ViewBag.Title = "Verification";
-    Layout = "~/Views/Shared/_AccountView.cshtml";
-}
-
+﻿@using System.Drawing;
 <!-- Email Verification -->
-<div id="email-verification-page">
-    <div id="email-verification">
+<div id="email-verification-page" style="background-color: #fff; height: 100%;">
+    <div id="email-verification" style="background-color: #f4f4f4;padding: 30px;width: 600px;box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.5);">
         <form action="/Account/Verification" method="post">
-            @Html.HiddenFor(u => u.ID)
+            <input type="hidden" value="@ViewData.Model.ID" />
             <table>
                 <tr>
                     <td>
-                        <div id="email-verification-logo">
-                            <img src="~/Images/logo.png" />
+                        <div id="email-verification-logo" style="margin-bottom: 50px;">
+                            @*@{
+                                string base64String;
+                                using (Image image = Image.FromFile("F:/TatvaSoft/trening/project of .net/Notes-MarketPlace/Images/logo.png"))
+                                {
+                                    using (MemoryStream m = new MemoryStream())
+                                    {
+                                        image.Save(m, image.RawFormat);
+                                        byte[] imageBytes = m.ToArray();
+
+                                        // Convert byte[] to Base64 String
+                                        base64String = Convert.ToBase64String(imageBytes);
+
+                                    }
+                                }
+                                var h = "data:image/png;base64," + @base64String;
+                            }*@
+                            <img src="https://i.imgur.com/Fa4vPqE.png" />
+
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <div id="email-verification-heading">
+                        <div id="email-verification-heading" style="margin-bottom: 30px; color: #6255a5; line-height: 30px; font-weight: 600; font-size: 26px;">
                             <h1> Email Verification </h1>
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <div id="email-verification-text">
-                            <h4> Dear @Model.FirstName </h4>
-                            <p> Thanks for signing</p>
-                            <p> Simply click below for email verification. </p>
+                        <div id="email-verification-text" style="margin-bottom: 50px;">
+                            <h4 style="color: #333;margin-bottom: 20px;line-height: 22px;font-weight: 600;font-size: 18px;"> Dear @Model.FirstName </h4>
+                            <p style="margin-bottom: 10px;color: #333;line-height: 20px;font-weight: 400;font-size: 16px;"> Thanks for signing</p>
+                            <p style="margin-bottom: 10px;color: #333;line-height: 20px;font-weight: 400;font-size: 16px;"> Simply click below for email verification. </p>
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td>
                         <div id="email-btn">
-                            <button type="submit" class="btn blue-btn">Verify email address</button>
+                            <button type="submit" style="width: 540px;height: 50px;border-radius: 3px;font-weight: 600;font-size: 18px;color: #fff;background-color: #6255a5;text-transform: uppercase;display: inline-block;text-align: center;vertical-align: middle;">Verify email address</button>
                         </div>
                     </td>
                 </tr>

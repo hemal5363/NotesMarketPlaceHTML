@@ -314,7 +314,7 @@
     }
 
     #add-review-box {
-        top: 150px;
+/*        top: 150px;*/
         padding: 25px 40px;
     }
 
@@ -333,7 +333,8 @@
     }
 
     #comments {
-        margin-top: 110px;
+/*        margin-top: 110px;*/
+        padding-top: 90px;
         width: 400px;
     }
 
@@ -458,6 +459,7 @@
 
     #costomer-reviews {
         padding: 20px;
+        height: 470px;
     }
 
     .c-r-hd h4 {
@@ -508,6 +510,19 @@
     #thank-you-popup .text p:nth-child(1) {
         font-size: 14px;
         margin-bottom: 5px;
+    }
+
+    #notes-detail #notes-detail-det #rateing-star {
+        margin-left: 10px;
+    }
+
+    #rateing-star {
+        display: -webkit-box;
+        text-align: right;
+    }
+
+    #rateing-star img {
+        width: 18px;
     }
 
     /* =====================================================
@@ -604,11 +619,11 @@
         padding: 15px;
     }
 
-    #g3 .FAQ-box {
+    #g2 .FAQ-box {
         margin-bottom: 40px;
     }
 
-    #u2 .FAQ-box {
+    #u3 .FAQ-box {
         margin-bottom: 40px;
     }
 
@@ -750,10 +765,16 @@
         margin-bottom: 20px;
     }
 
+    #remember-me {
+        margin-left: 15px;
+        margin-top: 10px;
+    }
+
+    #RememberMe,
     .login-form .form-group input:nth-child(1) {
         width: 20px;
         height: 20px;
-        margin-top: 25px;
+        margin-top: 11px;
     }
 
     .login-form .form-group label:nth-child(2) {
@@ -786,6 +807,11 @@
         width: 297px;
         margin-top: 25px;
     }
+
+    .book-detials .book-img img {
+    width: 297px;
+    height: 165px;
+}
 
     #search-notes td:nth-child(2) {
         padding: 0 20px;
@@ -1165,7 +1191,7 @@
     }
 
     #add-review-box {
-        top: 120px;
+/*        top: 120px;*/
         padding: 15px 30px;
     }
 
@@ -1194,7 +1220,8 @@
     }
 
     #comments {
-        margin-top: 80px;
+/*        margin-top: 80px;*/
+        padding-top: 70px;
         width: 300px;
     }
 
@@ -1281,6 +1308,24 @@
                         Notes Details
 ===================================================== */
 
+/*    #notes-detail #notes-detail-det #rateing-star {
+        margin-left: 10px;
+    }
+*/
+    #rateing-star {
+        display: -webkit-box;
+        text-align: right;
+    }
+
+    #notes-detail #notes-detail-det #rateing-star p {
+        margin-left: 5px;
+    }
+
+    #rateing-star img {
+        width: 16px;
+    }
+
+
     #notes-detail .col-md-7 {
         margin-bottom: 20px;
     }
@@ -1354,13 +1399,18 @@
         height: 40px;
     }
 
+    #c-r-star img{
+        height: 13px;
+    }
+
     #costomer-reviews {
         padding: 15px;
+        height: 340px;
     }
 
     .c-r-hd h4 {
         font-size: 14px;
-        margin: 0px;
+/*        margin: 0px;*/
     }
 
     #costomer-reviews .c-r-text p {
@@ -1521,11 +1571,11 @@
         padding: 15px;
     }
 
-    #g3 .FAQ-box {
+    #g2 .FAQ-box {
         margin-bottom: 30px;
     }
 
-    #u2 .FAQ-box {
+    #u3 .FAQ-box {
         margin-bottom: 30px;
     }
 
@@ -1670,10 +1720,16 @@
         margin-bottom: 15px;
     }
 
+    #remember-me {
+        margin-left: 10px;
+        margin-top: 10px;
+    }
+
+    #RememberMe,
     .login-form .form-group input:nth-child(1) {
         width: 20px;
         height: 20px;
-        margin-top: 5px;
+/*        margin-top: 5px;*/
     }
 
     .login-form .form-group label:nth-child(2) {
@@ -1712,6 +1768,11 @@
         margin-top: 20px;
     }
 
+    .book-detials .book-img img {
+    width: 220px;
+    height: 122px;
+}
+
     #search-notes td:nth-child(2) {
         padding: 0 15px;
     }
@@ -1741,6 +1802,10 @@
 
     .rate:not(:checked) > label {
         margin: 1px;
+    }
+
+    #rateing-star img {
+        width: 13px;
     }
 
     #admin-dashboard .my-earning-block {
@@ -1876,7 +1941,8 @@
     }
 
     #comments {
-        margin-top: 80px;
+/*        margin-top: 80px;*/
+        padding-top: 70px;
         width: 240px;
         margin-bottom: 0px;
     }
@@ -1970,24 +2036,38 @@
         position: relative;
     }
 
+    #notes-detail #notes-detail-det :nth-child(2n) #rateing-star,
     #notes-detail #notes-detail-det :nth-child(2n) p {
         position: absolute;
         bottom: 20px;
         left: 200px;
     }
 
-    #notes-detail #notes-detail-det .row .col-md-6:nth-child(16) p {
-        bottom: 20px;
-        left: 250px;
+    #notes-detail #notes-detail-det #rateing-star{
+        margin: 0;
     }
 
-    #notes-detail .rate {
-        margin-left: -30px;
-        height: 20px;
-        position: absolute;
-        top: -20px;
-        left: 180px;
+    #notes-detail #notes-detail-det #rateing-star img {
+        height: 13px;
     }
+
+    #notes-detail #notes-detail-det #rateing-star p {
+        margin-left: 65px;
+        width: 50px;
+        bottom: 0px;
+        left: 0px;
+    }
+        /*    #notes-detail #notes-detail-det .row .col-md-6:nth-child(16) p {
+        bottom: 20px;
+        left: 250px;
+    }*/
+        #notes-detail .rate {
+            margin-left: -30px;
+            height: 20px;
+            position: absolute;
+            top: -20px;
+            left: 180px;
+        }
 
     #notes-detail .rate:not(:checked) > label {
         width: 20px;
@@ -2007,12 +2087,13 @@
         padding-bottom: 100%;
     }
 
-    #costomer-reviews img {
+    #costomer-reviews #delete img {
         height: 10px;
         position: absolute;
         right: 20px;
         top: -50px;
     }
+    
 
     #costomer-reviews .c-r-img img {
         height: 40px;

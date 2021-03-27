@@ -180,23 +180,38 @@
                                         <div class="col-md-6">
                                             <p> Rating: </p>
                                         </div>
+                                        @{
+                                            var ratings = market.SellerNotesReviews.Where(r => r.NoteID == Model.ID).OrderByDescending(r => r.Ratings).ToList();
+                                            int rating = 0;
+                                            if (ratings.Count() != 0)
+                                            {
+                                                rating = (int)Math.Ceiling(ratings.Select(r => r.Ratings).Average());
+                                            }
+                                        }
                                         <div class="col-md-6">
-                                            <div class="rate">
-                                                <input type="radio" id="star5" name="rate" value="5" checked>
-                                                <label for="star5" title="text">5 stars</label>
-                                                <input type="radio" id="star4" name="rate" value="4">
-                                                <label for="star4" title="text">4 stars</label>
-                                                <input type="radio" id="star3" name="rate" value="3">
-                                                <label for="star3" title="text">3 stars</label>
-                                                <input type="radio" id="star2" name="rate" value="2">
-                                                <label for="star2" title="text">2 stars</label>
-                                                <input type="radio" id="star1" name="rate" value="1">
-                                                <label for="star1" title="text">1 star</label>
+                                            <div id="rateing-star">
+                                                @for (var j = 1; j <= 5; j++)
+                                                {
+                                                    if (j <= rating)
+                                                    {
+                                                        <img src="~/Images/star.png" />
+                                                    }
+                                                    else
+                                                    {
+                                                        <img src="~/Images/star-white.png" />
+                                                    }
+                                                }
+                                                <p> @ratings.Count() reviews </p>
                                             </div>
-                                            <p> 100 Reviews </p>
                                         </div>
                                         <div class="col-md-12">
-                                            <p> 5 Users Marked this note as inappropriate </p>
+                                            @{
+                                                var issues = market.SellerNotesReportedIssues.Where(r => r.NoteID == Model.ID).ToList();
+                                            }
+                                            @if(issues.Count() != 0)
+                                            { 
+                                                <p> @issues.Count() Users Marked this note as inappropriate </p>
+                                            }
                                         </div>
                                     </div>
                                 </div>
@@ -246,98 +261,63 @@
                             <div class="col-md-7">
                                 <div id="costomer-reviews">
                                     <div class="row">
-                                        <div class="col-md-2">
-                                            <div class="c-r-img">
-                                                <img src="~/Images/reviewer-1.png">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-10">
-                                            <div class="c-r-hd">
-                                                <h4> Richard Brown </h4>
-                                            </div>
-                                            <div class="rate">
-                                                <input type="radio" id="star5" name="rate1" value="5">
-                                                <label for="star5" title="text">5 stars</label>
-                                                <input type="radio" id="star4" name="rate1" value="4" checked>
-                                                <label for="star4" title="text">4 stars</label>
-                                                <input type="radio" id="star3" name="rate1" value="3">
-                                                <label for="star3" title="text">3 stars</label>
-                                                <input type="radio" id="star2" name="rate1" value="2">
-                                                <label for="star2" title="text">2 stars</label>
-                                                <input type="radio" id="star1" name="rate1" value="1">
-                                                <label for="star1" title="text">1 star</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2"></div>
-                                        <div class="col-md-10">
-                                            <div class="c-r-text">
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique eum unde reprehenderit, quasi.</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-1"></div>
-                                        <div class="col-md-10">
-                                            <hr>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="c-r-img">
-                                                <img src="~/Images/reviewer-2.png">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-10">
-                                            <div class="c-r-hd">
-                                                <h4> Alice Ortiaz </h4>
-                                            </div>
-                                            <div class="rate">
-                                                <input type="radio" id="star5" name="rate2" value="5">
-                                                <label for="star5" title="text">5 stars</label>
-                                                <input type="radio" id="star4" name="rate2" value="4">
-                                                <label for="star4" title="text">4 stars</label>
-                                                <input type="radio" id="star3" name="rate2" value="3" checked>
-                                                <label for="star3" title="text">3 stars</label>
-                                                <input type="radio" id="star2" name="rate2" value="2">
-                                                <label for="star2" title="text">2 stars</label>
-                                                <input type="radio" id="star1" name="rate2" value="1">
-                                                <label for="star1" title="text">1 star</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2"></div>
-                                        <div class="col-md-10">
-                                            <div class="c-r-text">
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique eum unde reprehenderit!</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-1"></div>
-                                        <div class="col-md-10">
-                                            <hr>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="c-r-img">
-                                                <img src="~/Images/reviewer-3.png">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-10">
-                                            <div class="c-r-hd">
-                                                <h4> Sara Passmore </h4>
-                                            </div>
-                                            <div class="rate">
-                                                <input type="radio" id="star5" name="rate3" value="5" checked>
-                                                <label for="star5" title="text">5 stars</label>
-                                                <input type="radio" id="star4" name="rate3" value="4">
-                                                <label for="star4" title="text">4 stars</label>
-                                                <input type="radio" id="star3" name="rate3" value="3">
-                                                <label for="star3" title="text">3 stars</label>
-                                                <input type="radio" id="star2" name="rate3" value="2">
-                                                <label for="star2" title="text">2 stars</label>
-                                                <input type="radio" id="star1" name="rate3" value="1">
-                                                <label for="star1" title="text">1 star</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2"></div>
-                                        <div class="col-md-10">
-                                            <div class="c-r-text">
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
-                                            </div>
-                                        </div>
+                                        @{
+                                            if (ratings.Count() == 0)
+                                            {
+                                                <div class="col-md-12" style="text-align: center">
+                                                    <p>No Record Found</p>
+                                                </div>
+                                            }
+                                            foreach(var rate in ratings)
+                                            {
+                                                <div class="col-md-2">
+                                                    <div class="c-r-img">
+                                                        @if (@rate.User.UserProfiles.FirstOrDefault() == null)
+                                                        {
+                                                            <img src="~/Images/reviewer-1.png">
+                                                        }
+                                                        else
+                                                        {
+                                                            if (@rate.User.UserProfiles.FirstOrDefault().ProfilePicture == null)
+                                                            {
+                                                                <img src="~/Images/reviewer-1.png">
+                                                            }
+                                                            <img src='@rate.User.UserProfiles.FirstOrDefault().ProfilePicture'>
+                                                        }
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-10">
+                                                    <div class="c-r-hd">
+                                                        <h4> @rate.User.FirstName @rate.User.LastName </h4>
+                                                    </div>
+                                                    <div id="c-r-star">
+                                                        <div id="rateing-star">
+                                                            @for (var j = 1; j <= 5; j++)
+                                                            {
+                                                                if (j <= (int)rate.Ratings)
+                                                                {
+                                                                    <img src="~/Images/star.png" />
+                                                                }
+                                                                else
+                                                                {
+                                                                    <img src="~/Images/star-white.png" />
+                                                                }
+                                                            }
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2"></div>
+                                                <div class="col-md-10">
+                                                    <div class="c-r-text">
+                                                        <p>@rate.Comments</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-1"></div>
+                                                <div class="col-md-10">
+                                                    <hr>
+                                                </div>
+                                            }
+                                        }
                                     </div>
                                 </div>
                             </div>

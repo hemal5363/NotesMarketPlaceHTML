@@ -8,7 +8,7 @@ $(() => {
     $('#search-input-note').on('keyup', () => {
         getNotes();
     });
-    $('.search-filter').on('click', () => {
+    $('.search-filter').on('change', () => {
         getNotes();
     });
 });
@@ -27,6 +27,7 @@ function getNotes(target) {
             course: $('#searchFilter_course').val(),
             country: $('#searchFilter_country').val(),
             pageNumber: parseInt(target),
+            ratings: $('#searchFilter_reting').val()
         },
         success: function (res) {
             $('#getNoteList').html('').html(res);
@@ -54,6 +55,78 @@ function getRequest(target) {
         },
         success: function (res) {
             $('#getBuyerRequest').html('').html(res);
+        }
+    });
+}
+
+/* =====================================================
+                  My Downloads Functions
+===================================================== */
+
+$(() => {
+    getDownloads();
+});
+
+function getDownloads(target) {
+
+    $.ajax({
+        url: '/Transaction/MyDownloadsPartial',
+        dataType: 'html',
+        method: 'GET',
+        data: {
+            search: $('#search-input').val(),
+            pageNumber: parseInt(target),
+        },
+        success: function (res) {
+            $('#getMyDownload').html('').html(res);
+        }
+    });
+}
+
+/* =====================================================
+                  My Sold Notes Functions
+===================================================== */
+
+$(() => {
+    getSoldNotes();
+});
+
+function getSoldNotes(target) {
+
+    $.ajax({
+        url: '/Transaction/MySoldNotesPartial',
+        dataType: 'html',
+        method: 'GET',
+        data: {
+            search: $('#search-input').val(),
+            pageNumber: parseInt(target),
+        },
+        success: function (res) {
+            $('#getSold').html('').html(res);
+        }
+    });
+}
+
+/* =====================================================
+                  My Rejected Notes Functions
+===================================================== */
+
+$(() => {
+    getRejectedNotes();
+});
+
+function getRejectedNotes(target) {
+
+    $.ajax({
+        url: '/Transaction/MyRejectedNotesPartial',
+        dataType: 'html',
+        method: 'GET',
+        data: {
+            search: $('#search-input').val(),
+            pageNumber: parseInt(target),
+        },
+        success: function (res) {
+            $('#getRejected').html('').html(res);
         }
     });
 }
@@ -237,7 +310,6 @@ $(function () {
 var target = "";
 
 function downloadPopup(target1) {
-    console.log(target1);
     $(target1).toggle();
 
     if (target1 != target) {
@@ -249,20 +321,23 @@ function downloadPopup(target1) {
 /* =====================================================
                         Add Review
 ===================================================== */
+function AddReview(id) {
+    $(".add-review-bg").toggle();
+    $("#getdata").html('').html("<input data-val='true' data-val-number='The field id must be a number.' data-val-required='The id field is required.' id='id' name='id' type='hidden' value=" + id + ">")
+    $(target).hide();
+}
 
-$(function () {
+function closeReview() {
+    $(".add-review-bg").hide();
+    $("#add-review-bg1").hide();
+}
 
-    $("#close-btn").click(function () {
-        $("#add-review-bg").toggle();
-    });
-
-    $(".add-r-f").click(function () {
-        $("#add-review-bg").toggle();
-        $(target).hide();
-    });
-
-});
-
+function AddRemark(id, noteName, noteCategory) {
+    $("#add-review-bg1").toggle();
+    $("#getdataid").html('').html("<input data-val='true' data-val-number='The field id must be a number.' data-val-required='The id field is required.' id='id' name='id' type='hidden' value=" + id + ">");
+    $("#getdataname").html('').html("<div id='add-review-hd' class='heading-md'><h3>" + noteName + " - " + noteCategory + "</h3 ></div >");
+    $(target).hide();
+}
 
 /* =====================================================
                             FAQ

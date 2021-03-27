@@ -1,0 +1,203 @@
+﻿@model Notes_MarketPlace.Models.MyDownloadViewModel
+
+<div class="table-format">
+    <table class="table tablesorter sort-table">
+        <thead>
+            <tr>
+                <th scope="col"> SR. NO. </th>
+                <th scope="col"> NOTE TITLE </th>
+                <th scope="col"> CATEGORY </th>
+                <th scope="col"> SELLER </th>
+                <th scope="col"> SELL TYPE </th>
+                <th scope="col"> PRICE </th>
+                <th scope="col"> DOWNLOADED DATE/TIME </th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                if (Model.Downloads.Count() == 0)
+                {
+                    <tr>
+                        <td colspan="8">No Records Found</td>
+                    </tr>
+                }
+                int i = 1;
+
+                foreach (var download in Model.Downloads)
+                {
+                    var fun1 = "downloadPopup('#mp" + i.ToString() + "')";
+                    string tId = "mp" + i.ToString();
+                    var h = "/Home/NoteDetails/" + download.NoteID.ToString();
+                    <tr>
+                        <th>@i</th>
+                        <td> <a href=@h>@download.NoteTitle</a></td>
+                        <td> @download.NoteCategory </td>
+                        <td> @download.User.FirstName @download.User.LastName </td>
+                        <td>
+                            @if (download.IsPaid == true)
+                            {
+                                <text>Paid</text>
+                            }
+                            else
+                            {
+                                <text>Free</text>
+                            }
+                        </td>
+                        <td> $@download.PurchasedPrice </td>
+                        <td> @download.AttachmentDownloadedDate </td>
+                        <td>
+                            <a href=@h alt="edit"><img src="/Images/eye.png"></a>
+                            <div class="menu-popup">
+                                <a class="menu-check" onclick=@fun1><img src="/Images/dots.png"></a>
+                                <div id=@tId class="menu-popup-show">
+                                    @{ h = "/Transaction/NoteDownload/" + download.ID.ToString(); }
+                                    <p><a href=@h>Download Note</a></p>
+                                    <p> <a onclick="AddReview(@download.ID)">Add Reviews/Feedback </a></p>
+                                    <p><a onclick="AddRemark('@download.ID', '@download.NoteTitle', '@download.NoteCategory')">Report as Inappropriate</a></p>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    i = i + 1;
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+<div class="pager-nav">
+    @{
+        if (!(Model.Downloads.Count() == 0))
+        {
+            var totalPages = Math.Ceiling(ViewBag.totalCount / 10.0);
+
+            var fun = "getDownloads(" + (ViewBag.activePageNumber - 1).ToString() + ")";
+
+            if (ViewBag.activePageNumber != 1)
+            {
+                <img src="~/Images/left-arrow.png" onclick=@fun />
+            }
+
+            for (var totalpage = 1; totalpage <= totalPages; totalpage++)
+            {
+                if (totalpage == ViewBag.activePageNumber)
+                {
+                    <span class="pg-selected">
+                        @{fun = "getDownloads(" + totalpage.ToString() + ")";}
+                        @Html.Label(totalpage.ToString(), new { @class = "pageNumber", target = totalpage.ToString(), onclick = fun })
+                    </span>
+                }
+                else
+                {
+                    <span>
+                        @{fun = "getDownloads(" + totalpage.ToString() + ")";}
+                        @Html.Label(totalpage.ToString(), new { @class = "pageNumber", target = totalpage.ToString(), onclick = fun })
+                    </span>
+                }
+            }
+
+            fun = "getDownloads(" + (ViewBag.activePageNumber + 1).ToString() + ")";
+
+            if (totalPages != ViewBag.activePageNumber)
+            {
+                <img src="~/Images/right-arrow.png" onclick=@fun />
+            }
+        }
+    }
+</div>
+
+<!-- Remarks -->
+<section id="remarks1">
+
+    <div id="add-review-bg1" class="add-review-bg">
+        <div id="add-review-box">
+            <div id="close-btn">
+                <img src="/Images/close.png" onclick="closeReview()">
+            </div>
+            <div id="getdataname">
+                @*<h3> Human Body - Scince </h3>*@
+            </div>
+            <div id="remarks">
+                <div class="login-form">
+                    <form method="post" action="/Transaction/AddReport">
+                        <div id="getdataid">
+                            @*@Html.HiddenFor(r => r.id)*@
+                        </div>
+                        <div class="form-group">
+                            @*<label for="remarks">Remarks</label>*@
+                            @*<textarea class="form-control" id="remark" name="remark" placeholder="write remarks"></textarea>*@
+                            @Html.LabelFor(r => r.SellerNotesReportedIssueModel.Remarks)
+                            @Html.TextAreaFor(r => r.SellerNotesReportedIssueModel.Remarks, new { @class="form-control", placeholder = "write remarks" })
+                        </div>
+                        <div id="review-btn">
+                            <button type="submit" class="btn blue-btn" title="Report" role="button" onclick="return confirm('Are you sure you want to mark this report as spam, you cannot update it later?')"> Report </button>
+                            <a class="btn blue-btn" onclick="closeReview()" title="Download" role="button"> Cancel </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<!-- Remarks Ends -->
+
+
+<!-- Add Review -->
+<section id="add-review">
+    <div class="add-review-bg">
+        <div id="add-review-box">
+            <div id="close-btn">
+                <img src="/Images/close.png" onclick="closeReview()">
+            </div>
+            <div id="add-review-hd" class="heading-md">
+                <h3> Add Review </h3>
+            </div>
+            <div class="login-form">
+                <form method="post" action="/Transaction/AddRating">
+                    <div id="getdata">
+                        @*@Html.HiddenFor(r => r.id)*@
+                    </div>
+                    <div id="rates">
+                        <div class="rate">
+                            @*<input type="radio" id="star5" name="rate" value="5" />*@
+                            @Html.TextBoxFor(r => r.SellerNotesReviewModel.Ratings, "5", new { type = "radio", id = "star5" })
+                            <label for="star5" title="text">5 stars</label>
+                            @*<input type="radio" id="star4" name="rate" value="4" />*@
+                            @Html.TextBoxFor(r => r.SellerNotesReviewModel.Ratings, "4", new { type = "radio", id = "star4" })
+                            <label for="star4" title="text">4 stars</label>
+                            @*<input type="radio" id="star3" name="rate" value="3" />*@
+                            @Html.TextBoxFor(r => r.SellerNotesReviewModel.Ratings, "3", new { type = "radio", id = "star3" })
+                            <label for="star3" title="text">3 stars</label>
+                            @*<input type="radio" id="star2" name="rate" value="2" />*@
+                            @Html.TextBoxFor(r => r.SellerNotesReviewModel.Ratings, "2", new { type = "radio", id = "star2" })
+                            <label for="star2" title="text">2 stars</label>
+                            @*<input type="radio" id="star1" name="rate" value="1" />*@
+                            @Html.TextBoxFor(r => r.SellerNotesReviewModel.Ratings, "1", new { type = "radio", id = "star1" })
+                            <label for="star1" title="text">1 star</label>
+                        </div>
+                    </div>
+                    <div id="comments">
+                        <div class="form-group">
+                            @*<label for="comments">Comments *</label>*@
+                            @*<textarea class="form-control" id="comment" name="comment" placeholder="Comments..."></textarea>*@
+                            @Html.LabelFor(r => r.SellerNotesReviewModel.Comments)
+                            @Html.TextAreaFor(r => r.SellerNotesReviewModel.Comments, new { @class = "form-control", placeholder = "Comments..." })
+                        </div>
+                        <div id="review-btn">
+                            <button class="btn blue-btn" type="submit" title="Download" role="button"> SUBMIT </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</section>
+<!-- Add Review Ends -->
+
+
+<script>funTableSorter();</script>
+
