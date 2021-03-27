@@ -49,7 +49,7 @@ namespace ProjectModels.Models
         public UserRoleModel UserRole { get; set; }
 
         public string Error { get; set; }
-        public string success { get; set; }
+        public string Success { get; set; }
         public bool RememberMe { get; set; }
     }
 }

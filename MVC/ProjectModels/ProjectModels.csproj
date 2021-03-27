@@ -50,7 +50,10 @@
     <Compile Include="Models\ReferenceDataModel.cs" />
     <Compile Include="Models\SellerNoteModel.cs" />
     <Compile Include="Models\SellerNotesAttachementModel.cs" />
+    <Compile Include="Models\SellerNotesReportedIssueModel.cs" />
+    <Compile Include="Models\SellerNotesReviewModel.cs" />
     <Compile Include="Models\UserModel.cs" />
+    <Compile Include="Models\UserProfileModel.cs" />
     <Compile Include="Models\UserRoleModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validation\NotePreviewValidation.cs" />

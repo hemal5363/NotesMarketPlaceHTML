@@ -16,7 +16,7 @@ namespace ProjectModels.Models
         public int SellerID { get; set; }
         public int Status { get; set; }
         public int? ActionedBy { get; set; }
-        public string AdminRemards { get; set; }
+        public string AdminRemarks { get; set; }
         public DateTime? PublishedDate { get; set; }
 
         [DisplayName("Title *")]
