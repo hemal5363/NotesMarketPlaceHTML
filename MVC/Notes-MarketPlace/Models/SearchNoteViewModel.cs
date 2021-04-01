@@ -12,9 +12,9 @@ namespace Notes_MarketPlace.Models
         {
             MarketPlaceEntities marketPlaceEntities = new MarketPlaceEntities();
 
-            types = marketPlaceEntities.NoteTypes.ToList();
-            categories = marketPlaceEntities.NoteCategories.ToList();
-            countries = marketPlaceEntities.Countries.ToList();
+            types = marketPlaceEntities.NoteTypes.Where(n => n.IsActive == true).ToList();
+            categories = marketPlaceEntities.NoteCategories.Where(n => n.IsActive == true).ToList();
+            countries = marketPlaceEntities.Countries.Where(n => n.IsActive == true).ToList();
             retings = new List<int>();
             retings.Add(1);
             retings.Add(2);

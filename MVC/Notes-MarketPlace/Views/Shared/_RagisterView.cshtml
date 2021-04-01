@@ -1,5 +1,7 @@
 ﻿@using ProjectDB
-
+@{ 
+    MarketPlaceEntities market = new MarketPlaceEntities();
+}
 <html>
 
 <head>
@@ -28,183 +30,395 @@
 
 <body class="sticky-header">
 
-    <!-- Header -->
-    <div class="wrapper">
-        <header class="site-header">
-            <div class="header-wrapper">
-                <div class="logo-wrapper">
-                    <a href="/Home/Index" title="Site Logo">
-                        <img src="~/Images/logo.png" alt="logo">
-                    </a>
-                </div>
-                <div class="navigation-wrapper">
-                    <nav class="main-nav">
-                        <ul class="menu-navigation">
-                            <li>
-                                <a href="/Home/SearchNote" id="search-notes1">Search Notes</a>
-                            </li>
-                            <li>
-                                <a href="/Home/SellNote" id="dashboard1">Sell Your Notes</a>
-                            </li>
-                            @if (User.Identity.IsAuthenticated)
-                            {
-                                <li>
-                                    <a href="/Transaction/BuyerRequest" id="buyer-requests1">Buyer Requests</a>
-                                </li>
-                            }
-                            <li>
-                                <a href="/Home/FAQ" id="FAQ1">FAQ</a>
-                            </li>
-                            <li>
-                                <a href="/Home/ContactUs" id="contact-us1">Contact Us</a>
-                            </li>
-                            @if (User.Identity.IsAuthenticated)
-                            {
-                                <li>
-                                    <div class="user-dropdown user-menu" target=".user-menu-bar">
-                                        <a class="" role="button" id="dropdownMenuLink" aria-haspopup="true" aria-expanded="false">
-                                            <div class="user-img">
-                                                @{
-                                                    string h = "/Images/user-img.png";
-
-                                                    MarketPlaceEntities market = new MarketPlaceEntities();
-                                                    var id = Convert.ToInt32(User.Identity.Name);
-
-                                                    var details = market.UserProfiles.FirstOrDefault(u => u.UserID == id);
-                                                    if (details != null)
-                                                    {
-                                                        if (details.ProfilePicture != null)
-                                                        {
-                                                            h = details.ProfilePicture;
-                                                        }
-                                                    }
-                                                }
-                                                <img src='@h'>
-                                            </div>
-                                            <div class="user-menu-bar" aria-labelledby="dropdownMenuLink">
-                                                <a class="user-item" href="/Account/UserProfile">My Profile</a>
-                                                <a class="user-item" href="/Transaction/MyDownloads">My Downloads</a>
-                                                <a class="user-item" href="/Transaction/MySoldNotes">My Sold Notes</a>
-                                                <a class="user-item" href="/Transaction/MyRejectedNotes">My Rejected Notes</a>
-                                                <a class="user-item" href="/Account/ChangePassword">Change Password</a>
-                                                <a class="user-item" href="/Account/Logout" onclick="return confirm('Are you sure, you want to logout?')"><span> Logout </span></a>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div id="login-button">
-                                        <a class="btn login-btn" href="/Account/Logout" title="Login" role="button" onclick="return confirm('Are you sure, you want to logout?')"> Logout </a>
-                                    </div>
-                                </li>
-                            }
-                            else
-                            {
-                                <li>
-                                    <div id="login-button">
-                                        <a class="btn login-btn" href="/Account/Login" title="Login" role="button"> Login </a>
-                                    </div>
-                                </li>
-                            }
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-
-            <!-- mobile menu -->
-            <!-- mobile menu btn -->
-            <div id="mobile-menu-box">
+    @if (User.IsInRole("Admin") || User.IsInRole("Super Admin"))
+    {
+        <!-- Header -->
+        <div class="wrapper">
+            <header class="site-header">
                 <div class="container">
                     <div class="row">
-                        <div class="col-sm-6">
-                            <div id="mobile-img">
+                        <div class="col-md-12">
+                            <div class="header-wrapper">
                                 <div class="logo-wrapper">
-                                    <a href="/Home/Index" title="Site Logo">
-                                        <img src="~/Images/logo.png" alt="logo">
+                                    <a href="/Admin/Index" title="Site Logo">
+                                        <img src="/Images/logo.png" alt="Logo" title="Logo">
                                     </a>
                                 </div>
+                                <div class="navigation-wrapper">
+                                    <nav class="main-nav">
+                                        <ul class="menu-navigation">
+                                            <li>
+                                                <a href="/Admin/Index" id="admin-dashboard1" title="Dashboard">Dashboard</a>
+                                            </li>
+                                            <li>
+                                                <div class="user-dropdown user-menu" target="#notes-menu">
+                                                    <a class="" role="button" id="dropdownMenuLink" aria-haspopup="true" aria-expanded="false" title="Notes">
+                                                        Notes
+                                                        <div id="notes-menu" class="user-menu-bar" aria-labelledby="dropdownMenuLink">
+                                                            <a class="user-item" href="/Admin/NoteUnderReview" id="admin-notes-under-review3" title="Notes Under Review">Notes Under Review </a>
+                                                            <a class="user-item" href="/Admin/PublishedNotes" id="admin-published-notes3" title="Published Notes">Published Notes</a>
+                                                            <a class="user-item" href="/Admin/DownloadedNote" id="admin-downloaded-notes3" title="Downloaded Notes">Downloaded Notes</a>
+                                                            <a class="user-item" href="/Admin/RejectedNotes" id="admin-rejected-notes3" title="Rejected Notes">Rejected Notes</a>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <a href="/Admin/Members" id="admin-members1" title="Members">Members</a>
+                                            </li>
+                                            <li>
+                                                <div class="user-dropdown user-menu" target="#reports-menu">
+                                                    <a class="" role="button" id="dropdownMenuLink" aria-haspopup="true" aria-expanded="false" title="Reports">
+                                                        Reports
+                                                        <div id="reports-menu" class="user-menu-bar" aria-labelledby="dropdownMenuLink">
+                                                            <a class="user-item" href="/Admin/SpamReports" id="admin-spam-reports3" title="Spam Reports"> Spam Reports </a>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="user-dropdown user-menu" target="#setting-menu">
+                                                    <a class="" role="button" id="dropdownMenuLink" aria-haspopup="true" aria-expanded="false" title="Settings">
+                                                        Settings
+                                                        <div id="setting-menu" class="user-menu-bar" aria-labelledby="dropdownMenuLink">
+                                                            @if (User.IsInRole("Super Admin"))
+                                                            {
+                                                                <a class="user-item" href="/Admin/ManageSystemConfiguration" id="admin-manage-system-configuration3" title="Manage System Configuration"> Manage System Configuration </a>
+                                                                <a class="user-item" href="/Admin/ManageAdministrator" id="admin-manage-administrator3" title="Manage Administrator"> Manage Administrator </a>
+                                                            }
+                                                            <a class="user-item" href="/Admin/ManageCategory" id="admin-manage-category3" title="Manage Category"> Manage Category </a>
+                                                            <a class="user-item" href="/Admin/ManageType" id="admin-manage-Type3" title="Manage Type"> Manage Type </a>
+                                                            <a class="user-item" href="/Admin/ManageCountry" id="admin-manage-country3" title="Manage Country"> Manage Country </a>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="user-dropdown user-menu" target="#user-menu-img">
+                                                    <a class="" role="button" id="dropdownMenuLink" aria-haspopup="true" aria-expanded="false">
+                                                        <div class="user-img">
+                                                            @{
+                                                                string h = market.SystemConfigurations.FirstOrDefault(u => u.Key == "Picture").Value;
+
+                                                                var id = Convert.ToInt32(User.Identity.Name);
+
+                                                                var details = market.UserProfiles.FirstOrDefault(u => u.UserID == id);
+                                                                if (details != null)
+                                                                {
+                                                                    if (details.ProfilePicture != null)
+                                                                    {
+                                                                        h = details.ProfilePicture;
+                                                                    }
+                                                                }
+                                                            }
+                                                            <img src='@h' alt="Picture" title="User Pictuer">
+                                                        </div>
+                                                        <div id="user-menu-img" class="user-menu-bar" aria-labelledby="dropdownMenuLink">
+                                                            <a class="user-item" href="/Account/AdminProfile" id="admin-user-profile3" title="Update Profile">Update Profile</a>
+                                                            <a class="user-item" href="/Account/ChangePassword" title="Change Password">Change Password</a>
+                                                            <a class="user-item" href="/Account/Logout" onclick="return confirm('Are you sure, you want to logout?')" title="Logout"><span> Logout </span></a>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div id="login-button">
+                                                    <a class="btn login-btn" href="/Account/Logout" title="Logout" role="button" onclick="return confirm('Are you sure, you want to logout?')"> Logout </a>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div id="menu-icon">
-                                <img src="~/Images/dots.png">
+
+                            <!-- mobile menu -->
+                            <!-- mobile menu btn -->
+                            <div id="mobile-menu-box">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div id="mobile-img">
+                                                <div class="logo-wrapper">
+                                                    <a href="/Admin/Index" title="Site Logo">
+                                                        <img src="/Images/logo.png" alt="Logo" title="Logo">
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div id="menu-icon">
+                                                <img src="/Images/dots.png" alt="Dots" title="Mobile Menu">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+
+                            <!-- mobile menu page -->
+                            <div id="mobile-menu-page">
+                                <div id="mobile-page">
+                                    <div id="mobile-close">
+                                        <img src="/Images/close.png" alt="Close" title="Close">
+                                    </div>
+                                    <div id="mobile-items">
+                                        <a href="/Admin/Index" id="admin-dashboard2" title="Dashboard">Dashboard</a>
+                                        <a class="sub-menu" target="#notes" title="Notes">Notes</a>
+                                        <div class="mobile-item" id="notes">
+                                            <a class="user-item" href="/Admin/NoteUnderReview" id="admin-notes-under-review2" title="Notes Under Review">Notes Under Review </a>
+                                            <a class="user-item" href="/Admin/PublishedNotes" id="admin-published-notes2" title="Published Notes">Published Notes</a>
+                                            <a class="user-item" href="/Admin/DownloadedNote" id="admin-downloaded-notes2" title="Downloaded Notes">Downloaded Notes</a>
+                                            <a class="user-item" href="/Admin/RejectedNotes" id="admin-rejected-notes2" title="Rejected Notes">Rejected Notes</a>
+                                        </div>
+                                        <a href="/Admin/Members" id="admin-members2" title="Members">Members</a>
+                                        <a class="sub-menu" target="#reports" title="Reports">Reports</a>
+                                        <div class="mobile-item" id="reports">
+                                            <a class="user-item" href="/Admin/SpamReports" id="admin-spam-reports2" title="Spam Reports"> Spam Reports </a>
+                                        </div>
+                                        <a class="sub-menu" target="#settings" title="Settings">Settings</a>
+                                        <div class="mobile-item" id="settings">
+                                            @if (User.IsInRole("Super Admin"))
+                                            {
+                                                <a class="user-item" href="/Admin/ManageSystemConfiguration" id="admin-manage-system-configuration2" title="Manage System Conficuration"> Manage System Configuration </a>
+                                                <a class="user-item" href="/Admin/ManageAdministrator" id="admin-manage-administrator2" title="Manage Administrator"> Manage Administrator </a>
+                                            }
+                                            <a class="user-item" href="/Admin/ManageCategory" id="admin-manage-category2" title="Manage Category"> Manage Category </a>
+                                            <a class="user-item" href="/Admin/ManageType" id="admin-manage-Type2" title="Manage Type"> Manage Type </a>
+                                            <a class="user-item" href="/Admin/ManageCountry" id="admin-manage-country2" title="Manage Country"> Manage Country </a>
+                                        </div>
+                                        @{ var detail = market.Users.FirstOrDefault(u => u.ID == id);}
+                                        <a class="sub-menu" target="#user" title="User Menu">@detail.FirstName @detail.LastName</a>
+                                        <div class="mobile-item" id="user">
+                                            <a class="user-item" href="/Account/AdminProfile" id="admin-user-profile2" title="Update Profile">Update Profile</a>
+                                            <a class="user-item" href="/Account/ChangePassword" title="Change Password">Change Password</a>
+                                            <a class="user-item" href="/Account/Logout" onclick="return confirm('Are you sure, you want to logout?')" title="Logout"><span> Logout </span></a>
+                                        </div>
+                                        <a href="/Account/Logout" title="Logout" role="button" onclick="return confirm('Are you sure, you want to logout?')"> Logout </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- mobile menu Ends -->
                         </div>
                     </div>
                 </div>
-            </div>
+            </header>
+        </div>
+        <!-- Header Ends -->
+    }
+    else
+    {
+        <!-- Header -->
+        <div class="wrapper">
+            <header class="site-header">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="header-wrapper">
+                                <div class="logo-wrapper">
+                                    <a href="/Home/Index" title="Site Logo">
+                                        <img src="~/Images/logo.png" alt="Logo" title="Logo">
+                                    </a>
+                                </div>
+                                <div class="navigation-wrapper">
+                                    <nav class="main-nav">
+                                        <ul class="menu-navigation">
+                                            <li>
+                                                <a href="/Home/SearchNote" id="search-notes1" title="Search Notes">Search Notes</a>
+                                            </li>
+                                            <li>
+                                                <a href="/Home/SellNote" id="dashboard1" title="Sell Your Notes">Sell Your Notes</a>
+                                            </li>
+                                            @if (User.Identity.IsAuthenticated && User.IsInRole("Member"))
+                                            {
+                                                <li>
+                                                    <a href="/Transaction/BuyerRequest" id="buyer-requests1" title="Buyer Requests">Buyer Requests</a>
+                                                </li>
+                                            }
+                                            <li>
+                                                <a href="/Home/FAQ" id="FAQ1" title="Frequently Asked Questions">FAQ</a>
+                                            </li>
+                                            <li>
+                                                <a href="/Home/ContactUs" id="contact-us1" title="Contact Us">Contact Us</a>
+                                            </li>
+                                            @if (User.Identity.IsAuthenticated && User.IsInRole("Member"))
+                                            {
+                                                <li>
+                                                    <div class="user-dropdown user-menu" target=".user-menu-bar">
+                                                        <a class="" role="button" id="dropdownMenuLink" aria-haspopup="true" aria-expanded="false">
+                                                            <div class="user-img">
+                                                                @{
+                                                                    string h = market.SystemConfigurations.FirstOrDefault(u => u.Key == "Picture").Value;
 
-            <!-- mobile menu page -->
-            <div id="mobile-menu-page">
-                <div id="mobile-page">
-                    <div id="mobile-close">
-                        <img src="~/Images/close.png">
-                    </div>
-                    <div id="mobile-items">
-                        <a href="/Home/SearchNote" id="search-notes2">Search Notes</a>
-                        <a href="/Home/SellNote" id="dashboard2">Sell Your Notes</a>
-                        @if (User.Identity.IsAuthenticated)
-                        {
-                            <a href="/Transaction/Index" id="buyer-requests2">Buyer Requests</a>
-                        }
-                        <a href="/Home/FAQ" id="FAQ2">FAQ</a>
-                        <a href="/Home/ContactUs" id="contact-us2">Contact Us</a>
-                        @if (User.Identity.IsAuthenticated)
-                        {
-                            MarketPlaceEntities market = new MarketPlaceEntities();
-                            var id = Convert.ToInt32(User.Identity.Name);
+                                                                    var id = Convert.ToInt32(User.Identity.Name);
 
-                            var details = market.Users.FirstOrDefault(u => u.ID == id);
-                            <a class="sub-menu" target="#user">@details.FirstName @details.LastName</a>
-                            <div class="mobile-item" id="user">
-                                <a class="user-item" href="/Account/UserProfile">My Profile</a>
-                                <a class="user-item" href="/Transaction/MyDownloads">My Downloads</a>
-                                <a class="user-item" href="/Transaction/MySoldNotes">My Sold Notes</a>
-                                <a class="user-item" href="/Transaction/MyRejectedNotes">My Rejected Notes</a>
-                                <a class="user-item" href="/Account/ChangePassword">Change Password</a>
-                                <a class="user-item" href="/Account/Logout"><span> Logout </span></a>
+                                                                    var details = market.UserProfiles.FirstOrDefault(u => u.UserID == id);
+                                                                    if (details != null)
+                                                                    {
+                                                                        if (details.ProfilePicture != null)
+                                                                        {
+                                                                            h = details.ProfilePicture;
+                                                                        }
+                                                                    }
+                                                                }
+                                                                <img src='@h' alt="Picture" title="User Picture">
+                                                            </div>
+                                                            <div class="user-menu-bar" aria-labelledby="dropdownMenuLink">
+                                                                <a class="user-item" href="/Account/UserProfile" id="user-profile3" title="My Profile">My Profile</a>
+                                                                <a class="user-item" href="/Transaction/MyDownloads" id="my-downloads3" title="My Downloads">My Downloads</a>
+                                                                <a class="user-item" href="/Transaction/MySoldNotes" id="my-sold-notes3" title="My Sold Notes">My Sold Notes</a>
+                                                                <a class="user-item" href="/Transaction/MyRejectedNotes" id="my-rejected-notes3" title="My Rejected Notes">My Rejected Notes</a>
+                                                                <a class="user-item" href="/Account/ChangePassword" title="Change Password">Change Password</a>
+                                                                <a class="user-item" href="/Account/Logout" onclick="return confirm('Are you sure, you want to logout?')" title="Logout"><span> Logout </span></a>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div id="login-button">
+                                                        <a class="btn login-btn" href="/Account/Logout" title="Logout" role="button" onclick="return confirm('Are you sure, you want to logout?')"> Logout </a>
+                                                    </div>
+                                                </li>
+                                            }
+                                            else
+                                            {
+                                                <li>
+                                                    <div id="login-button">
+                                                        <a class="btn login-btn" href="/Account/Login" title="Login" role="button"> Login </a>
+                                                    </div>
+                                                </li>
+                                            }
+                                        </ul>
+                                    </nav>
+                                </div>
                             </div>
-                            <a href="/Account/Logout" title="Logout" role="button"> Logout </a>
-                        }
-                        else
-                        {
-                            <a href="/Account/Login" title="Login" role="button"> Login </a>
-                        }
+
+                            <!-- mobile menu -->
+                            <!-- mobile menu btn -->
+                            <div id="mobile-menu-box">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div id="mobile-img">
+                                                <div class="logo-wrapper">
+                                                    <a href="/Home/Index" title="Site Logo">
+                                                        <img src="~/Images/logo.png" alt="Logo" title="Logo">
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div id="menu-icon">
+                                                <img src="~/Images/dots.png" alt="Dots" title="Mobile Menu">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- mobile menu page -->
+                            <div id="mobile-menu-page">
+                                <div id="mobile-page">
+                                    <div id="mobile-close">
+                                        <img src="~/Images/close.png" alt="Close" title="Close">
+                                    </div>
+                                    <div id="mobile-items">
+                                        <a href="/Home/SearchNote" id="search-notes2" title="Search Notes">Search Notes</a>
+                                        <a href="/Home/SellNote" id="dashboard2" title="Sell Your Notes">Sell Your Notes</a>
+                                        @if (User.Identity.IsAuthenticated && User.IsInRole("Member"))
+                                        {
+                                            <a href="/Transaction/BuyerRequest" id="buyer-requests2" title="Buyer Requests">Buyer Requests</a>
+                                        }
+                                        <a href="/Home/FAQ" id="FAQ2" title="Frequently Asked Questions">FAQ</a>
+                                        <a href="/Home/ContactUs" id="contact-us2" title="Contact Us">Contact Us</a>
+                                        @if (User.Identity.IsAuthenticated && User.IsInRole("Member"))
+                                        {
+                                            var id = Convert.ToInt32(User.Identity.Name);
+
+                                            var details = market.Users.FirstOrDefault(u => u.ID == id);
+                                            <a class="sub-menu" target="#user" title="User Menu">@details.FirstName @details.LastName</a>
+                                            <div class="mobile-item" id="user">
+                                                <a class="user-item" href="/Account/UserProfile" id="user-profile2" title="My Profile">My Profile</a>
+                                                <a class="user-item" href="/Transaction/MyDownloads" id="my-downloads2" title="My Downloads">My Downloads</a>
+                                                <a class="user-item" href="/Transaction/MySoldNotes" id="my-sold-notes2"title="My Sold Notes">My Sold Notes</a>
+                                                <a class="user-item" href="/Transaction/MyRejectedNotes" id="my-rejected-notes2" title="My Rejected Notes">My Rejected Notes</a>
+                                                <a class="user-item" href="/Account/ChangePassword" title="Change Password">Change Password</a>
+                                                <a class="user-item" href="/Account/Logout" title="Logout"><span> Logout </span></a>
+                                            </div>
+                                            <a href="/Account/Logout" title="Logout" role="button" onclick="return confirm('Are you sure, you want to logout?')"> Logout </a>
+                                        }
+                                        else
+                                        {
+                                            <a href="/Account/Login" title="Login" role="button" onclick="return confirm('Are you sure, you want to logout?')"> Login </a>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- mobile menu Ends -->
+
+                        </div>
                     </div>
                 </div>
-            </div>
-            <!-- mobile menu Ends -->
-
-        </header>
-    </div>
-    <!-- Header Ends -->
+            </header>
+        </div>
+        <!-- Header Ends -->
+    }
 
     @RenderBody()
 
-    <!-- Footer -->
-    <footer id="site-footer">
+    @if (User.IsInRole("Admin") || User.IsInRole("Super Admin"))
+    {
+        <!-- Footer -->
+        <footer id="site-footer">
 
-        <div id="footer-content">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div id="footer-text">
-                            Copyright &copy; TatvaSoft All rights reserved.
+            <div id="admin-footer">
+                <div id="footer-content">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div id="footer-version">
+                                    Version : 1.1.24
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div id="footer-text">
+                                    Copyright &copy; TatvaSoft All rights reserved.
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-6">
-                        <ul class="social-list">
-                            <li> <a href="#"> <img src="~/Images/facebook.png"> </a> </li>
-                            <li> <a href="#"> <img src="~/Images/twitter.png"> </a> </li>
-                            <li> <a href="#"> <img src="~/Images/linkedin.png"> </a> </li>
-                        </ul>
                     </div>
                 </div>
             </div>
-        </div>
 
-    </footer>
-    <!-- Footer Ends -->
+        </footer>
+        <!-- Footer Ends -->
+    }
+    else
+    {
+        <!-- Footer -->
+        <footer id="site-footer">
+
+            <div id="footer-content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div id="footer-text">
+                                Copyright &copy; TatvaSoft All rights reserved.
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="social-list">
+                                <li> <a href=@market.SystemConfigurations.FirstOrDefault(u => u.Key == "Facebook").Value target="_blank" title="Facebook"> <img src="~/Images/facebook.png" alt="Facebook"> </a> </li>
+                                <li> <a href=@market.SystemConfigurations.FirstOrDefault(u => u.Key == "Twitter").Value target="_blank" title="Twitter"> <img src="~/Images/twitter.png" alt="Twitter"> </a> </li>
+                                <li> <a href=@market.SystemConfigurations.FirstOrDefault(u => u.Key == "Linkedin").Value target="_blank" title="Linkedin"> <img src="~/Images/linkedin.png" alt="Linkedin"> </a> </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </footer>
+        <!-- Footer Ends -->
+    }
+
     <!-- JQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 

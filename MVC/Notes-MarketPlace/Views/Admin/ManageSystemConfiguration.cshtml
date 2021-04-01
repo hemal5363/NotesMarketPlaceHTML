@@ -1,0 +1,99 @@
+﻿@model Notes_MarketPlace.Models.SystemConfigurationViewModel
+
+@{
+    ViewBag.Title = "ManageSystemConfiguration";
+    Layout = "~/Views/Shared/_RagisterView.cshtml";
+}
+
+<!-- Admin Manage System Configuration -->
+<section id="admin-manage-system-configuration">
+    <div class="content-box">
+        <div class="add-note-details">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="left-heading">
+                            <h2> Manage System Configuration </h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="login-form">
+                    <form method="post" action="/Admin/ManageSystemConfiguration" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(s => s.SupportEmail)
+                                    @Html.TextBoxFor(s => s.SupportEmail, new { type = "email", @class="form-control", placeholder = "Enter email address" })
+                                    @Html.ValidationMessageFor(s => s.SupportEmail)
+                                </div>
+                            </div>
+                            <div class="col-md-6"></div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(s => s.SupportPhoneNumber)
+                                    @Html.TextBoxFor(s => s.SupportPhoneNumber, new { @class = "form-control", placeholder = "Enter phone number" })
+                                    @Html.ValidationMessageFor(s => s.SupportPhoneNumber)
+                                </div>
+                            </div>
+                            <div class="col-md-6"></div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(s => s.EmailAddress)
+                                    @Html.TextBoxFor(s => s.EmailAddress, new { type = "email", @class = "form-control", placeholder = "Enter email address" })
+                                    @Html.ValidationMessageFor(s => s.EmailAddress)
+                                </div>
+                            </div>
+                            <div class="col-md-6"></div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(s => s.FacebookURL)
+                                    @Html.TextBoxFor(s => s.FacebookURL, new { @class = "form-control", placeholder = "Enter facebook url" })
+                                </div>
+                            </div>
+                            <div class="col-md-6"></div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(s => s.TwitterURL)
+                                    @Html.TextBoxFor(s => s.TwitterURL, new { @class = "form-control", placeholder = "Enter twitter url" })
+                                </div>
+                            </div>
+                            <div class="col-md-6"></div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(s => s.LinkedinURL)
+                                    @Html.TextBoxFor(s => s.LinkedinURL, new { @class = "form-control", placeholder = "Enter linkedin url" })
+                                </div>
+                            </div>
+                            <div class="col-md-6"></div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(s => s.DefaultImageForNote)
+                                    <label class="file-uploader">
+                                        <img src="/Images/upload-file.png" alt="Upload File" title="Upload Defult Image For Note">
+                                        <p> Upload a picture</p>
+                                        @Html.TextBoxFor(s => s.DefaultImageForNote, new { type = "file", @class = "form-control", accept = "image/*" })
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6"></div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(s => s.DefaultProfilePicture)
+                                    <label class="file-uploader">
+                                        <img src="/Images/upload-file.png" alt="Upload File" title="Upload Default Profile Picture">
+                                        <p> Upload a picture</p>
+                                        @Html.TextBoxFor(s => s.DefaultProfilePicture, new { type = "file", @class = "form-control", accept = "image/*" })
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <button class="btn blue-btn" type="submit" title="Submit" role="button"> SUBMIT </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Admin Manage System Configuration Ends-->

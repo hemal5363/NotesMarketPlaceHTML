@@ -16,8 +16,8 @@ namespace Notes_MarketPlace.Models
             MarketPlaceEntities marketPlaceEntities = new MarketPlaceEntities();
 
             GenderList = marketPlaceEntities.ReferenceDatas.Where(g => g.RefCategory == "Gender" && g.IsActive == true).ToList();
-            PhoneCodeList = marketPlaceEntities.Countries.Select(p => p.CountryCode).ToList();
-            CountriesList = marketPlaceEntities.Countries.Select(c => c.Name).ToList();
+            PhoneCodeList = marketPlaceEntities.Countries.Where(n => n.IsActive == true).Select(p => p.CountryCode).ToList();
+            CountriesList = marketPlaceEntities.Countries.Where(n => n.IsActive == true).Select(c => c.Name).ToList();
         }
 
         public UserProfileModel UserProfileModel { get; set; }
@@ -29,10 +29,14 @@ namespace Notes_MarketPlace.Models
         public string Email { get; set; }
 
         [DisplayName("First Name *")]
+        [RegularExpression(@"[a-zA-Z]{2,}",
+        ErrorMessage = "Please enter valid name.")]
         [Required]
         public string FirstName { get; set; }
 
         [DisplayName("Last Name *")]
+        [RegularExpression(@"[a-zA-Z]{2,}",
+        ErrorMessage = "Please enter valid name.")]
         [Required]
         public string LastName { get; set; }
     }

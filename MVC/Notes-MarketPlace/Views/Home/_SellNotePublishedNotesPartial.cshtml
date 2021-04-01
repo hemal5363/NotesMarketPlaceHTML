@@ -13,7 +13,7 @@
             </tr>
         </thead>
         <tbody>
-            @if (Model.Count() == 0 || Model.Where(n => n.Status == 9).Count() == 0)
+            @if (Model.Count() == 0)
             {
                 <tr>
                     <td colspan="6">No Records Found</td>
@@ -21,32 +21,29 @@
             }
             @foreach (var note in Model)
             {
-                if (note.ReferenceData.Value == "Published")
-                {
-                    <tr>
-                        <td> @{ var date = note.PublishedDate?.ToShortDateString(); } @date </td>
-                        <td> @note.Title </td>
-                        <td> @note.NoteCategory.Name </td>
-                        <td>
-                            @{
-                                if (note.IsPaid == false)
-                                {
-                                    <text> Free </text>
-                                }
-                                else
-                                {
-                                    <text> Paid </text>
-
-                                }
+                <tr>
+                    <td> @{ var date = note.PublishedDate?.ToShortDateString(); } @date </td>
+                    <td> @note.Title </td>
+                    <td> @note.NoteCategory.Name </td>
+                    <td>
+                        @{
+                            if (note.IsPaid == false)
+                            {
+                                <text> Free </text>
                             }
-                        </td>
-                        <td> $@note.SellingPrice </td>
-                        <td>
-                            @{ var H = "/Home/NoteDetails/" + note.ID.ToString();}
-                            <a href=@H alt="edit"><img src="~/Images/eye.png"></a>
-                        </td>
-                    </tr>
-                }
+                            else
+                            {
+                                <text> Paid </text>
+
+                            }
+                        }
+                    </td>
+                    <td> $@note.SellingPrice </td>
+                    <td>
+                        @{ var H = "/Home/NoteDetails/" + note.ID.ToString();}
+                        <a href=@H alt="edit"><img src="~/Images/eye.png" alt="View" title="Note Details"></a>
+                    </td>
+                </tr>
             }
         </tbody>
     </table>
@@ -62,7 +59,7 @@
 
             if (ViewBag.activePageNumber != 1)
             {
-                <img src="~/Images/left-arrow.png" onclick=@fun />
+                <img src="~/Images/left-arrow.png" alt="Left Arrow" title="Left" onclick=@fun />
             }
 
             for (var totalpage = 1; totalpage <= totalPages; totalpage++)
@@ -87,7 +84,7 @@
 
             if (totalPages != ViewBag.activePageNumber)
             {
-                <img src="~/Images/right-arrow.png" onclick=@fun />
+                <img src="~/Images/right-arrow.png" alt="Right Arrow" title="Right" onclick=@fun />
             }
         }
     }

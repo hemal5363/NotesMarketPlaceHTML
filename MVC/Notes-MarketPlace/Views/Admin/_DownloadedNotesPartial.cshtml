@@ -1,0 +1,116 @@
+﻿@model IEnumerable<ProjectDB.Download>
+
+<div class="table-format">
+    <table id="pager" class="table wp-list-table widefat striped posts tablesorter sort-table">
+        <thead>
+            <tr>
+                <th scope="col"> SR. NO. </th>
+                <th scope="col"> NOTE TITLE </th>
+                <th scope="col"> CATEGORY </th>
+                <th scope="col"> BUYER </th>
+                <th scope="col"> </th>
+                <th scope="col"> SELLER </th>
+                <th scope="col"> </th>
+                <th scope="col"> SELL TYPE </th>
+                <th scope="col"> PRICE </th>
+                <th scope="col"> DOWNLOADED DATE/TIME </th>
+                <th scope="col"> </th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                if (Model.Count() == 0)
+                {
+                    <tr>
+                        <td colspan="11">No Records Found</td>
+                    </tr>
+                }
+                int i = 1 + 5 * (ViewBag.activePageNumber - 1);
+                foreach (var note in Model)
+                {
+                    var fun1 = "downloadPopup('#mp" + i.ToString() + "')";
+                    string tId = "mp" + i.ToString();
+                    var h = "/Home/NoteDetails/" + note.NoteID.ToString();
+                    <tr>
+                        <th>@i</th>
+                        <td> <a href=@h title="Note Details"> @note.NoteTitle </a></td>
+                        <td> @note.NoteCategory </td>
+                        <td> @note.User1.FirstName @note.User1.LastName </td>
+                        @{var k = "/Admin/MemberDetails/" + note.Downloader.ToString();}
+                        <td> <a href=@k alt="edit"><img src="/Images/eye.png" alt="View" title="View"></a> </td>
+                        <td> @note.User.FirstName @note.User.LastName </td>
+                        @{ k = "/Admin/MemberDetails/" + note.Seller.ToString();}
+                        <td> <a href=@k alt="edit"><img src="/Images/eye.png" alt="View" title="View"></a> </td>
+                        <td>
+                            @if (note.IsPaid == true)
+                            {
+                                <text>Paid</text>
+                            }
+                            else
+                            {
+                                <text>Free</text>
+                            }
+                        </td>
+                        <td> $@note.PurchasedPrice </td>
+                        <td> @note.AttachmentDownloadedDate </td>
+                        <td>
+                            <div class="menu-popup">
+                                <a class="menu-check" onclick=@fun1><img src="/Images/dots.png" alt="Dots" title="Popup Menu"></a>
+                                <div id=@tId class="menu-popup-show">
+                                    @{ k = "/Admin/NoteDownload/" + note.NoteID.ToString();}
+                                    <p><a href=@k title="Download Note">Download Note</a></p>
+                                    <p><a href=@h title="Note Details">View More Details</a></p>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    i += 1;
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+<div class="pager-nav">
+    @{
+        if (!(Model.Count() == 0))
+        {
+            var totalPages = Math.Ceiling(ViewBag.totalCount / 5.0);
+
+            var fun = "getDownloadedNote(" + (ViewBag.activePageNumber - 1).ToString() + ")";
+
+            if (ViewBag.activePageNumber != 1)
+            {
+                <img src="~/Images/left-arrow.png" alt="Left Arrow" title="Left" onclick=@fun />
+            }
+
+            for (var totalpage = 1; totalpage <= totalPages; totalpage++)
+            {
+                if (totalpage == ViewBag.activePageNumber)
+                {
+                    <span class="pg-selected">
+                        @{fun = "getDownloadedNote(" + totalpage.ToString() + ")";}
+                        @Html.Label(totalpage.ToString(), new { @class = "pageNumber", target = totalpage.ToString(), onclick = fun })
+                    </span>
+                }
+                else
+                {
+                    <span>
+                        @{fun = "getDownloadedNote(" + totalpage.ToString() + ")";}
+                        @Html.Label(totalpage.ToString(), new { @class = "pageNumber", target = totalpage.ToString(), onclick = fun })
+                    </span>
+                }
+            }
+
+            fun = "getDownloadedNote(" + (ViewBag.activePageNumber + 1).ToString() + ")";
+
+            if (totalPages != ViewBag.activePageNumber)
+            {
+                <img src="~/Images/right-arrow.png" alt="Right Arrow" title="Right" onclick=@fun />
+            }
+        }
+    }
+</div>
+
+<script>funTableSorter();</script>

@@ -1,0 +1,63 @@
+﻿@model IEnumerable<ProjectDB.SellerNote>
+@using ProjectDB
+@{
+    MarketPlaceEntities market = new MarketPlaceEntities();
+}
+
+@{
+    ViewBag.Title = "PublishedNotes";
+    Layout = "~/Views/Shared/_RagisterView.cshtml";
+}
+
+<!-- Admin Published Notes -->
+<section id="admin-published-notes">
+    <div class="content-box">
+        <div class="add-note-details">
+            <div class="container">
+                <div class="row select-any">
+                    <div class="col-md-12">
+                        <div class="left-heading">
+                            <h2> Published Notes </h2>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="seller">Seller</label>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            @{
+                                var sellerList = Model.OrderBy(s => s.User.FirstName).Select(s => s.User.FirstName).Distinct().ToList();
+                            }
+                            @Html.DropDownList("Seller", new SelectList(sellerList, ViewBag.sellerName), "Select seller", new { @class = "form-control search-filter" })
+                        </div>
+                    </div>
+                    <div class="col-md-4"></div>
+                    <div class="col-md-6">
+                        <div class="search">
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <div class="search-bar">
+                                        <input type="text" class="form-control" id="search-input" aria- placeholder="        search">
+                                    </div>
+                                    <div class="search-icon">
+                                        <img src="/Images/search-icon.png" alt="Search Icon" title="Search">
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="search-btn">
+                                        <button class="btn blue-btn" title="Search" onclick="getPublishedNote()" role="button"> SEARCH </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div id="getPublished"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

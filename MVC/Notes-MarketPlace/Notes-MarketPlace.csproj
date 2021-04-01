@@ -129,6 +129,7 @@
     <Content Include="Images\left-arrow.png" />
     <Content Include="Images\linkedin.png" />
     <Content Include="Images\logo.png" />
+    <Content Include="Images\member.png" />
     <Content Include="Images\minus.png" />
     <Content Include="Images\my-earning.png" />
     <Content Include="Images\pages.png" />
@@ -157,18 +158,23 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TransactionController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AddAdminViewModel.cs" />
     <Compile Include="Models\AddNoteViewModel.cs" />
+    <Compile Include="Models\AdminIndexPublishedNotesViewModel.cs" />
+    <Compile Include="Models\AdminProfileViewModel.cs" />
     <Compile Include="Models\AutoEmailSend.cs" />
     <Compile Include="Models\ChangePasswordViewModel.cs" />
     <Compile Include="Models\ContactUsFormViewModel.cs" />
     <Compile Include="Models\MyDownloadViewModel.cs" />
     <Compile Include="Models\SearchFilter.cs" />
     <Compile Include="Models\SearchNoteViewModel.cs" />
+    <Compile Include="Models\SystemConfigurationViewModel.cs" />
     <Compile Include="Models\UserProfileViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebRoleProvider.cs" />
@@ -179,7 +185,6 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Shared\_AccountView.cshtml" />
     <Content Include="Views\Account\Create.cshtml" />
-    <Content Include="Views\Account\Verification.cshtml" />
     <Content Include="Views\Account\ForgotPassword.cshtml" />
     <Content Include="Views\Transaction\BuyerRequest.cshtml" />
     <Content Include="Views\Shared\_RagisterView.cshtml" />
@@ -202,6 +207,36 @@
     <Content Include="Views\Transaction\MyRejectedNotes.cshtml" />
     <Content Include="Views\Transaction\_MyRejectedNotesPartial.cshtml" />
     <Content Include="Views\Account\UserProfile.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\_IndexPublishedNotesPartial.cshtml" />
+    <Content Include="Views\Admin\NoteUnderReview.cshtml" />
+    <Content Include="Views\Admin\_NoteUnderReviewPartial.cshtml" />
+    <Content Include="Views\Admin\PublishedNotes.cshtml" />
+    <Content Include="Views\Admin\_PublishedNotesPartial.cshtml" />
+    <Content Include="Views\Admin\DownloadedNote.cshtml" />
+    <Content Include="Views\Admin\_DownloadedNotesPartial.cshtml" />
+    <Content Include="Views\Admin\RejectedNotes.cshtml" />
+    <Content Include="Views\Admin\_RejectedNotesPartial.cshtml" />
+    <Content Include="Views\Admin\Members.cshtml" />
+    <Content Include="Views\Admin\_MembersPartial.cshtml" />
+    <Content Include="Views\Admin\MemberDetails.cshtml" />
+    <Content Include="Views\Admin\_MemberDetailsPartial.cshtml" />
+    <Content Include="Views\Admin\SpamReports.cshtml" />
+    <Content Include="Views\Admin\_SpamReportsPartial.cshtml" />
+    <Content Include="Views\Account\AdminProfile.cshtml" />
+    <Content Include="Views\Admin\ManageAdministrator.cshtml" />
+    <Content Include="Views\Admin\_ManageAdministratorPartial.cshtml" />
+    <Content Include="Views\Admin\AddAdministrator.cshtml" />
+    <Content Include="Views\Admin\ManageCategory.cshtml" />
+    <Content Include="Views\Admin\_ManageCategoryPartial.cshtml" />
+    <Content Include="Views\Admin\AddCategory.cshtml" />
+    <Content Include="Views\Admin\ManageType.cshtml" />
+    <Content Include="Views\Admin\_ManageTypePartial.cshtml" />
+    <Content Include="Views\Admin\AddType.cshtml" />
+    <Content Include="Views\Admin\ManageCountry.cshtml" />
+    <Content Include="Views\Admin\_ManageCountryPartial.cshtml" />
+    <Content Include="Views\Admin\AddCountry.cshtml" />
+    <Content Include="Views\Admin\ManageSystemConfiguration.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -211,7 +246,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Members\18\75\Attachements\" />
+    <Folder Include="Members\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ProjectDB\ProjectDB.csproj">

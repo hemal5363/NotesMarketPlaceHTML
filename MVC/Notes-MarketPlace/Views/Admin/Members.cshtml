@@ -1,0 +1,46 @@
+﻿@model IEnumerable<ProjectDB.User>
+
+@{
+    ViewBag.Title = "Members";
+    Layout = "~/Views/Shared/_RagisterView.cshtml";
+}
+
+<!-- Admin Members -->
+<section id="admin-members">
+    <div class="content-box">
+        <div class="add-note-details">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="left-heading">
+                            <h2> Members </h2>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="search">
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <div class="search-bar">
+                                        <input type="text" class="form-control" id="search-input" aria- placeholder="        search">
+                                    </div>
+                                    <div class="search-icon">
+                                        <img src="/Images/search-icon.png" alt="Search Icon" title="Search">
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="search-btn">
+                                        <button class="btn blue-btn" title="Search" onclick="getMembers()" role="button"> SEARCH </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div id="getMember"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Admin Members Ends -->

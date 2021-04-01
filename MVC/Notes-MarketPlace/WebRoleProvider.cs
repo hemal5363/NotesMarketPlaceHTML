@@ -40,7 +40,8 @@ namespace Notes_MarketPlace
         {
             using (var context = new MarketPlaceEntities())
             {
-                var result = context.Users.Where(u => u.ID == Convert.ToInt32(username)).FirstOrDefault().UserRole.Name;
+                var uid = Convert.ToInt32(username);
+                var result = context.Users.Where(u => u.ID == uid).FirstOrDefault().UserRole.Name;
                 string[] results = { result};
                 return results;
             }

@@ -1,0 +1,49 @@
+﻿@model ProjectModels.Models.NoteCategoryModel
+
+@{
+    ViewBag.Title = "AddCategory";
+    Layout = "~/Views/Shared/_RagisterView.cshtml";
+}
+
+<!-- Admin Add Category -->
+<section id="admin-add-category">
+    <div class="content-box">
+        <div class="add-note-details">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="left-heading">
+                            <h2> Add Category </h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="login-form">
+                    <form method="post" action="/Admin/AddCategory">
+                        @Html.HiddenFor(c => c.ID)
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(c => c.Name)
+                                    @Html.TextBoxFor(c => c.Name, new { @class = "form-control", placeholder = "Enter Category name" })
+                                    @Html.ValidationMessageFor(c => c.Name)
+                                </div>
+                            </div>
+                            <div class="col-md-6"></div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(c => c.Description)
+                                    @Html.TextAreaFor(c => c.Description, new { @class = "form-control", placeholder = "Enter your description" })
+                                    @Html.ValidationMessageFor(c => c.Description)
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <button class="btn blue-btn" type="submit" title="Submit" role="button"> SUBMIT </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Admin Add Category Ends-->

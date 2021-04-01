@@ -1,0 +1,104 @@
+﻿@model IEnumerable<ProjectDB.SellerNote>
+
+<div class="table-format">
+    <table id="pager" class="table wp-list-table widefat striped posts tablesorter sort-table">
+        <thead>
+            <tr>
+                <th scope="col"> SR. NO. </th>
+                <th scope="col"> NOTE TITLE </th>
+                <th scope="col"> CATEGORY </th>
+                <th scope="col"> SELLER </th>
+                <th scope="col"> </th>
+                <th scope="col"> DATE ADDED </th>
+                <th scope="col"> REJECTED BY </th>
+                <th scope="col"> REMARK </th>
+                <th scope="col"> </th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                if (Model.Count() == 0)
+                {
+                    <tr>
+                        <td colspan="8">No Records Found</td>
+                    </tr>
+                }
+                int i = 1 + 5 * (ViewBag.activePageNumber - 1);
+                foreach (var note in Model)
+                {
+                    var fun1 = "downloadPopup('#mp" + i.ToString() + "')";
+                    string tId = "mp" + i.ToString();
+                    var h = "/Home/NoteDetails/" + note.ID.ToString();
+                    <tr>
+                        <th>@i</th>
+                        <td> <a href=@h title="Note Details"> @note.Title </a></td>
+                        <td> @note.NoteCategory.Name </td>
+                        <td> @note.User.FirstName @note.User.LastName </td>
+                        @{ var k = "/Admin/MemberDetails/" + note.SellerID.ToString();}
+                        <td> <a href=@k alt="edit"><img src="/Images/eye.png" alt="View" title="Show Member Details"></a> </td>
+                        <td> @note.PublishedDate </td>
+                        <td> @note.User1.FirstName @note.User1.LastName </td>
+                        <td> @note.AdminRemarks </td>
+                        <td>
+                            <div class="menu-popup">
+                                <a class="menu-check" onclick=@fun1><img src="/Images/dots.png" alt="Dots" title="Popup Menu"></a>
+                                <div id=@tId class="menu-popup-show">
+                                    @{ k = "/Admin/ChangerStatus?id=" + note.ID.ToString() + "&status=9";}
+                                    <p><a href=@k onclick="return confirm('If you approve the notes – System will publish the notes over portal. Please press yes to continue.')" title="Approve">Approve</a></p>
+                                    @{ k = "/Admin/NoteDownload/" + note.ID.ToString();}
+                                    <p><a href=@k title="Download Note">Download Note</a></p>
+                                    <p><a href=@h title="Note Details">View More Details</a></p>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    i += 1;
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+<div class="pager-nav">
+    @{
+        if (!(Model.Count() == 0))
+        {
+            var totalPages = Math.Ceiling(ViewBag.totalCount / 5.0);
+
+            var fun = "getRejectNote(" + (ViewBag.activePageNumber - 1).ToString() + ")";
+
+            if (ViewBag.activePageNumber != 1)
+            {
+                <img src="~/Images/left-arrow.png" alt="Left Arrow" title="Left" onclick=@fun />
+            }
+
+            for (var totalpage = 1; totalpage <= totalPages; totalpage++)
+            {
+                if (totalpage == ViewBag.activePageNumber)
+                {
+                    <span class="pg-selected">
+                        @{fun = "getRejectNote(" + totalpage.ToString() + ")";}
+                        @Html.Label(totalpage.ToString(), new { @class = "pageNumber", target = totalpage.ToString(), onclick = fun })
+                    </span>
+                }
+                else
+                {
+                    <span>
+                        @{fun = "getRejectNote(" + totalpage.ToString() + ")";}
+                        @Html.Label(totalpage.ToString(), new { @class = "pageNumber", target = totalpage.ToString(), onclick = fun })
+                    </span>
+                }
+            }
+
+            fun = "getRejectNote(" + (ViewBag.activePageNumber + 1).ToString() + ")";
+
+            if (totalPages != ViewBag.activePageNumber)
+            {
+                <img src="~/Images/right-arrow.png" alt="Right Arrow" title="Right" onclick=@fun />
+            }
+        }
+    }
+</div>
+
+<script>funTableSorter();</script>

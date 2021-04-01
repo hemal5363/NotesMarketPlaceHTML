@@ -1,4 +1,342 @@
 /* =====================================================
+         Admin Index Published Note Functions
+===================================================== */
+
+$(() => {
+    getIndexPublishedNote();
+
+    $('.search-filter').on('change', () => {
+        getIndexPublishedNote();
+    });
+});
+
+function getIndexPublishedNote(target) {
+
+    $.ajax({
+        url: '/Admin/IndexPublishedNotesPartial',
+        dataType: 'html',
+        method: 'GET',
+        data: {
+            search: $('#search-input').val(),
+            month: $('#Months').val(),
+            pageNumber: parseInt(target),
+        },
+        success: function (res) {
+            $('#getIndexPublished').html('').html(res);
+        }
+    });
+}
+
+/* =====================================================
+         Admin Published Note Functions
+===================================================== */
+
+$(() => {
+    getPublishedNote();
+
+    $('.search-filter').on('change', () => {
+        getPublishedNote();
+    });
+});
+
+function getPublishedNote(target) {
+
+    $.ajax({
+        url: '/Admin/PublishedNotesPartial',
+        dataType: 'html',
+        method: 'GET',
+        data: {
+            search: $('#search-input').val(),
+            seller: $('#Seller').val(),
+            pageNumber: parseInt(target),
+        },
+        success: function (res) {
+            $('#getPublished').html('').html(res);
+        }
+    });
+}
+
+/* =====================================================
+         Admin Note Under Review Functions
+===================================================== */
+
+$(() => {
+    getNoteUnderReview();
+
+    $('.search-filter').on('change', () => {
+        getNoteUnderReview();
+    });
+});
+
+function getNoteUnderReview(target) {
+
+    $.ajax({
+        url: '/Admin/NoteUnderReviewPartial',
+        dataType: 'html',
+        method: 'GET',
+        data: {
+            search: $('#search-input').val(),
+            seller: $('#Seller').val(),
+            pageNumber: parseInt(target),
+        },
+        success: function (res) {
+            $('#getNoteUnderReview').html('').html(res);
+        }
+    });
+}
+
+/* =====================================================
+         Admin Downloaded Note Functions
+===================================================== */
+
+$(() => {
+    getDownloadedNote();
+
+    $('.search-filter').on('change', () => {
+        getDownloadedNote();
+    });
+});
+
+function getDownloadedNote(target) {
+
+    $.ajax({
+        url: '/Admin/DownloadedNotesPartial',
+        dataType: 'html',
+        method: 'GET',
+        data: {
+            search: $('#search-input').val(),
+            note: $('#Note').val(),
+            seller: $('#Seller').val(),
+            buyer: $('#Buyer').val(),
+            pageNumber: parseInt(target),
+        },
+        success: function (res) {
+            $('#getDownloaded').html('').html(res);
+        }
+    });
+}
+
+/* =====================================================
+         Admin Reject Note Functions
+===================================================== */
+
+$(() => {
+    getRejectNote();
+
+    $('.search-filter').on('change', () => {
+        getRejectNote();
+    });
+});
+
+function getRejectNote(target) {
+
+    $.ajax({
+        url: '/Admin/RejectedNotesPartial',
+        dataType: 'html',
+        method: 'GET',
+        data: {
+            search: $('#search-input').val(),
+            seller: $('#Seller').val(),
+            pageNumber: parseInt(target),
+        },
+        success: function (res) {
+            $('#getReject').html('').html(res);
+        }
+    });
+}
+
+/* =====================================================
+                Admin Members Functions
+===================================================== */
+
+$(() => {
+    getMembers();
+
+    $('.search-filter').on('change', () => {
+        getMembers();
+    });
+});
+
+function getMembers(target) {
+
+    $.ajax({
+        url: '/Admin/MembersPartial',
+        dataType: 'html',
+        method: 'GET',
+        data: {
+            search: $('#search-input').val(),
+            pageNumber: parseInt(target),
+        },
+        success: function (res) {
+            $('#getMember').html('').html(res);
+        }
+    });
+}
+
+/* =====================================================
+                Admin Members Notes Functions
+===================================================== */
+$(() => {
+    getMembersNotes();
+});
+
+function getMembersNotes(target) {
+
+    $.ajax({
+        url: '/Admin/MemberDetailsPartial',
+        dataType: 'html',
+        method: 'GET',
+        data: {
+            id: $('#ID').val(),
+            pageNumber: parseInt(target),
+        },
+        success: function (res) {
+            $('#getMemberNotes').html('').html(res);
+        }
+    });
+}
+
+/* =====================================================
+                Admin Spam Reports Functions
+===================================================== */
+
+$(() => {
+    getSpamReports();
+
+    $('.search-filter').on('change', () => {
+        getSpamReports();
+    });
+});
+
+function getSpamReports(target) {
+
+    $.ajax({
+        url: '/Admin/SpamReportsPartial',
+        dataType: 'html',
+        method: 'GET',
+        data: {
+            search: $('#search-input').val(),
+            pageNumber: parseInt(target),
+        },
+        success: function (res) {
+            $('#getSpam').html('').html(res);
+        }
+    });
+}
+
+/* =====================================================
+          Admin Manage Administrator Functions
+===================================================== */
+
+$(() => {
+    getManageAdministrator();
+
+    $('.search-filter').on('change', () => {
+        getManageAdministrator();
+    });
+});
+
+function getManageAdministrator(target) {
+
+    $.ajax({
+        url: '/Admin/ManageAdministratorPartial',
+        dataType: 'html',
+        method: 'GET',
+        data: {
+            search: $('#search-input').val(),
+            pageNumber: parseInt(target),
+        },
+        success: function (res) {
+            $('#getAdministrator').html('').html(res);
+        }
+    });
+}
+
+/* =====================================================
+          Admin Manage Category Functions
+===================================================== */
+
+$(() => {
+    getManageCategory();
+
+    $('.search-filter').on('change', () => {
+        getManageCategory();
+    });
+});
+
+function getManageCategory(target) {
+
+    $.ajax({
+        url: '/Admin/ManageCategoryPartial',
+        dataType: 'html',
+        method: 'GET',
+        data: {
+            search: $('#search-input').val(),
+            pageNumber: parseInt(target),
+        },
+        success: function (res) {
+            $('#getCategory').html('').html(res);
+        }
+    });
+}
+
+/* =====================================================
+          Admin Manage Type Functions
+===================================================== */
+
+$(() => {
+    getManageType();
+
+    $('.search-filter').on('change', () => {
+        getManageType();
+    });
+});
+
+function getManageType(target) {
+
+    $.ajax({
+        url: '/Admin/ManageTypePartial',
+        dataType: 'html',
+        method: 'GET',
+        data: {
+            search: $('#search-input').val(),
+            pageNumber: parseInt(target),
+        },
+        success: function (res) {
+            $('#getType').html('').html(res);
+        }
+    });
+}
+
+/* =====================================================
+          Admin Manage Country Functions
+===================================================== */
+
+$(() => {
+    getManageCountry();
+
+    $('.search-filter').on('change', () => {
+        getManageCountry();
+    });
+});
+
+function getManageCountry(target) {
+
+    $.ajax({
+        url: '/Admin/ManageCountryPartial',
+        dataType: 'html',
+        method: 'GET',
+        data: {
+            search: $('#search-input').val(),
+            pageNumber: parseInt(target),
+        },
+        success: function (res) {
+            $('#getCountry').html('').html(res);
+        }
+    });
+}
+
+/* =====================================================
                   Search Note Functions
 ===================================================== */
 
@@ -207,7 +545,6 @@ $(function () {
 
     $(".show-pass").on("click", function () {
 
-        //        $(this).find('[data-fa-i2svg]').toggleClass('fa-eye fa-eye-slash');
         var currentState = $(this).attr("target");
 
         if ($(currentState).attr('type') == "password") {
@@ -255,6 +592,13 @@ jQuery(window).resize(function () {
 $(function () {
     var sid = "#" + $("section").attr("id") + "1";
     $(sid).addClass("active-section");
+});
+
+$(function () {
+    var sid = "#" + $("section").attr("id") + "2";
+    var asid = "#" + $("section").attr("id") + "3";
+    $(sid).addClass("active-menu");
+    $(asid).addClass("active-menu");
 });
 
 /* =====================================================
@@ -339,6 +683,13 @@ function AddRemark(id, noteName, noteCategory) {
     $(target).hide();
 }
 
+function AdminAddRemark(id, noteName, noteCategory) {
+    $(".add-review-bg").toggle();
+    $("#getdataid").html('').html("<input data-val='true' data-val-number='The field id must be a number.' data-val-required='The id field is required.' id='id' name='id' type='hidden' value=" + id + ">");
+    $("#getdataname").html('').html("<div id='add-review-hd' class='heading-md'><h3>" + noteName + " - " + noteCategory + "</h3 ></div >");
+    $(target).hide();
+}
+
 /* =====================================================
                             FAQ
 ===================================================== */
@@ -384,6 +735,12 @@ $(function () {
 ===================================================== */
 
 $(function () {
+
+    $("#search-input-note").keydown(function () {
+        $('.search-icon img').attr('src', "");
+        $(this).attr('placeholder', "");
+    });
+
     $("#search-input").keydown(function () {
         $('.search-icon img').attr('src', "");
         $(this).attr('placeholder', "");
@@ -394,62 +751,6 @@ $(function () {
         $(this).attr('placeholder', "");
     });
 });
-
-
-function myFunction() {
-    var input, filter, table, tr, td, i, txtValue;
-    input = document.getElementById("search-input");
-    filter = input.value.toUpperCase();
-    table = document.getElementById("pager");
-    tr = table.getElementsByTagName("tr");
-    for (i = 0; i < tr.length; i++) {
-        td = tr[i].getElementsByTagName("td")[0];
-        if (td) {
-            txtValue = td.textContent || td.innerText;
-            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                tr[i].style.display = "";
-            } else {
-                tr[i].style.display = "none";
-            }
-        }
-    }
-}
-
-function myFunction1() {
-    var input, filter, table, tr, td, i, txtValue;
-    input = document.getElementById("search-input1");
-    filter = input.value.toUpperCase();
-    table = document.getElementById("pager1");
-    tr = table.getElementsByTagName("tr");
-    for (i = 0; i < tr.length; i++) {
-        td = tr[i].getElementsByTagName("td")[0];
-        if (td) {
-            txtValue = td.textContent || td.innerText;
-            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                tr[i].style.display = "";
-            } else {
-                tr[i].style.display = "none";
-            }
-        }
-    }
-}
-
-//function SearchFun() {
-//    var input, filter, ul, li, a, i, txtValue;
-//    input = document.getElementById("search-input");
-//    filter = input.value.toUpperCase();
-//    ul = document.getElementById("pager");
-//    li = ul.getElementsByTagName("td");
-//    for (i = 0; i < li.length; i++) {
-//        a = li[i].getElementsByTagName("a")[0];
-//        txtValue = a.textContent || a.innerText;
-//        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-//            li[i].style.display = "";
-//        } else {
-//            li[i].style.display = "none";
-//        }
-//    }
-//}
 
 /* =====================================================
                     Table Sorter

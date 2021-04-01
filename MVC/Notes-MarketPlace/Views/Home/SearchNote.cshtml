@@ -35,10 +35,9 @@
                                             <div class="search">
                                                 <div class="form-group">
                                                     <div class="search-bar">
-                                                        @*<input type="text" class="form-control search-bar" id="search-input" onkeyup="SearchFun()" placeholder="       Search Notes Here...">*@
                                                         @Html.TextBoxFor(s => s.searchFilter.searchBar, new { @class = "form-control search-bar", id = "search-input-note", placeholder = "       Search Notes Here..." })
                                                         <div class="search-icon">
-                                                            <img src="~/Images/search-icon.png">
+                                                            <img src="~/Images/search-icon.png" alt="Search Icon" title="Search">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -47,57 +46,31 @@
                                         <div class="col-md-2">
                                             <div class="form-group">
                                                 @Html.DropDownListFor(n => n.searchFilter.type, new SelectList(Model.types, "ID", "Name"), "Select type", new { @class = "form-control search-filter", value = 0 })
-                                                @*<select class="form-control" id="select-type">
-                                                    <option>Select type</option>
-                                                    <option>Handwritten notes</option>
-                                                    <option>University notes</option>
-                                                    <option>Notebook</option>
-                                                    <option>Novel</option>
-                                                </select>*@
                                             </div>
                                         </div>
                                         <div class="col-md-2">
                                             <div class="form-group">
                                                 @Html.DropDownListFor(n => n.searchFilter.category, new SelectList(Model.categories, "ID", "Name"), "Select category", new { @class = "form-control search-filter" })
-                                                @*<select class="form-control" id="select-category">
-                                                    <option>Select category </option>
-                                                    <option>IT</option>
-                                                    <option>CA</option>
-                                                    <option>CS</option>
-                                                    <option>MBA</option>
-                                                </select>*@
                                             </div>
                                         </div>
                                         <div class="col-md-2">
                                             <div class="form-group">
                                                 @Html.DropDownListFor(n => n.searchFilter.univarsity, new SelectList(Model.universitys), "Select university", new { @class = "form-control search-filter" })
-                                                @*<select class="form-control" id="select-university">
-                                                    <option>Select university </option>
-                                                </select>*@
                                             </div>
                                         </div>
                                         <div class="col-md-2">
                                             <div class="form-group">
                                                 @Html.DropDownListFor(n => n.searchFilter.course, new SelectList(Model.courses), "Select course", new { @class = "form-control search-filter" })
-                                                @*<select class="form-control" id="select-course">
-                                                    <option>Select course </option>
-                                                </select>*@
                                             </div>
                                         </div>
                                         <div class="col-md-2">
                                             <div class="form-group">
                                                 @Html.DropDownListFor(n => n.searchFilter.country, new SelectList(Model.countries, "ID", "Name"), "Select country", new { @class = "form-control search-filter" })
-                                                @*<select class="form-control" id="select-country">
-                                                    <option>Select country </option>
-                                                </select>*@
                                             </div>
                                         </div>
                                         <div class="col-md-2">
                                             <div class="form-group">
                                                 @Html.DropDownListFor(n => n.searchFilter.reting, new SelectList(Model.retings), "Select reting", new { @class = "form-control search-filter" })
-                                                @*<select class="form-control" id="select-reting">
-                                                    <option>Select reting </option>
-                                                </select>*@
                                             </div>
                                         </div>
                                     </div>

@@ -1,0 +1,122 @@
+﻿@model ProjectDB.SellerNote
+@using ProjectDB
+@{ 
+    MarketPlaceEntities market = new MarketPlaceEntities();
+}
+
+@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_RagisterView.cshtml";
+}
+
+    <!-- Admin Dashboard -->
+    <section id="admin-dashboard">
+
+        <div class="content-box">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="left-heading">
+                            <h2> Dashboard </h2>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div id="dashboard-my-earning">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="my-earning-block">
+                                        <a href="/Admin/NoteUnderReview" title="Show Notes Under Review">
+                                            <div class="my-earning-heading">
+                                                @{ 
+                                                    var InReviewNotes = market.SellerNotes.Where(i => i.ReferenceData.Value == "In Review" || i.ReferenceData.Value == "Submitted For Review").Count();
+                                                }
+                                                <h2> @InReviewNotes </h2>
+                                            </div>
+                                            <div class="my-earning-text">
+                                                <p>Numbers of Notes in Review for Publish </p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="my-earning-block">
+                                        <a href="/Admin/DownloadedNote" title="Show Downloaded Notes">
+                                            <div class="my-earning-heading">
+                                                @{ 
+                                                    var date = DateTime.Now.AddDays(-7);
+                                                    var NewNotes = market.Downloads.Where(n => n.AttachmentDownloadedDate >= date).Count();
+                                                }
+                                                <h2> @NewNotes </h2>
+                                            </div>
+                                            <div class="my-earning-text">
+                                                <p> Numbers of New Notes Downloaded (Last 7 days) </p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="my-earning-block">
+                                        <a href="/Admin/Members" title="Show Members">
+                                            <div class="my-earning-heading">
+                                                @{ 
+                                                    var NewRegistration = market.Users.Where(r => r.CreatedDate >= date && r.UserRole.Name == "Member").Count();
+                                                }
+                                                <h2> @NewRegistration </h2>
+                                            </div>
+                                            <div class="my-earning-text">
+                                                <p> Numbers of New Registration (Last 7 days) </p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="heading-md">
+                            <h3> Published Notes </h3>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="search">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="search-bar">
+                                        <input type="text" class="form-control" id="search-input" aria- placeholder="        search">
+                                    </div>
+                                    <div class="search-icon">
+                                        <img src="/Images/search-icon.png" alt="Search Icon" title="Search">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="search-btn">
+                                        <button class="btn blue-btn" title="Search" onclick="getIndexPublishedNote()" role="button"> SEARCH </button>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        @{
+                                            List<string> monthList = new List<string>();
+                                            monthList.Add(DateTime.Now.ToString("MMMM").ToString());
+                                            for (var j = -1; j > -6; j--)
+                                            {
+                                                monthList.Add(DateTime.Now.AddMonths(j).ToString("MMMM").ToString());
+                                            }
+                                        }
+                                        @Html.DropDownList("Months", new SelectList(monthList, DateTime.Now.ToString("MMMM").ToString()), "Select month", new { @class = "form-control search-filter" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div id="getIndexPublished"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <!-- Admin Dashboard Ends -->
+    
+    

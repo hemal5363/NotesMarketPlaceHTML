@@ -58,77 +58,51 @@ namespace Notes_MarketPlace.Controllers
         [NonAction]
         public void SendVerificationEmailLink(User user)
         {
-            //var verifyUrl = "/Account/Verification/" + user.ID.ToString();
-            //var link = Request.Url.AbsoluteUri.Replace(Request.Url.PathAndQuery, verifyUrl);
-
-            
-
             var toEmail = new MailAddress(user.EmailID);
             string subject = "Email verification form Notes-MarketPlace";
 
-            //string base64String;
-            //using (Image image = Image.FromFile("F:/TatvaSoft/trening/project of .net/Notes-MarketPlace/Images/logo.png"))
-            //{
-            //    using (MemoryStream m = new MemoryStream())
-            //    {
-            //        image.Save(m, image.RawFormat);
-            //        byte[] imageBytes = m.ToArray();
-
-            //        // Convert byte[] to Base64 String
-            //        base64String = Convert.ToBase64String(imageBytes);
-
-            //    }
-            //}
-
-            //"<html><img alt='' src='data:image/png;base64," + base64String + "'/><html>"
-
-            //string body = "Hello " + user.FirstName + ", <br /><br />" +
-            //       "Thank you for signing up with us.Please click on below link to verify your email address and to do login. <br /><br />" +
-
-            //       "<div id='email-verification-page' style='background-color: #fff; height: 100%;'>" +
-            //            "<div id='email-verification' style='background-color: #f4f4f4;padding: 30px;width: 550px;'>" +
-            //                "<form action='https://localhost:44315/Account/Verification' method='post'>" +
-            //                    "<input data-val='true' data-val-number='The field ID must be a number.' data-val-required='The ID field is required.' id='ID' name='ID' type='hidden' value='" + user.ID.ToString() + "'>" +
-            //                    "<table>" +
-            //                        "<tr>" +
-            //                            "<td>" +
-            //                                "<div id='email-verification-logo' style='margin-bottom: 50px;'>" +
-            //                                    "<img src="+ @"'data:image/png;base64," + base64String + "' alt='img' />" +
-            //                                    //"<img src='https://i.pinimg.com/564x/5a/d1/37/5ad1376064d26001eaa20dc31496060f.jpg' />" +
-            //                                "</div>" +
-            //                            "</td>" +
-            //                        "</tr>" +
-            //                        "<tr>" +
-            //                            "<td>" +
-            //                                "<div id='email-verification-heading' style='margin-bottom: 30px; color: #6255a5; line-height: 30px; font-weight: 600; font-size: 26px;'>" +
-            //                                    "<h1> Email Verification </h1>" +
-            //                                "</div>" +
-            //                            "</td>" +
-            //                        "</tr>" +
-            //                        "<tr>" +
-            //                            "<td>" +
-            //                                "<div id='email-verification-text' style='margin-bottom: 50px;'>" +
-            //                                    "<h4 style='color: #333;margin-bottom: 20px;line-height: 22px;font-weight: 600;font-size: 18px;'> Dear " + user.FirstName + " </h4>" +
-            //                                    "<p style='margin-bottom: 10px;color: #333;line-height: 20px;font-weight: 400;font-size: 16px;'> Thanks for signing</p>" +
-            //                                    "<p style='margin-bottom: 10px;color: #333;line-height: 20px;font-weight: 400;font-size: 16px;'> Simply click below for email verification. </p>" +
-            //                                "</div>" +
-            //                            "</td>" +
-            //                        "</tr>" +
-            //                        "<tr>" +
-            //                            "<td>" +
-            //                                "<div id='email-btn'>" +
-            //                                    "<button type='submit' style='width: 540px;height: 50px;border-radius: 3px;font-weight: 600;font-size: 18px;color: #fff;background-color: #6255a5;text-transform: uppercase;display: inline-block;text-align: center;vertical-align: middle;'>Verify email address</button>" +
-            //                                "</div>" +
-            //                            "</td>" +
-            //                        "</tr>" +
-            //                    "</table>" +
-            //                "</form>" +
-            //            "</div>" +
-            //        "</div> <br /><br />" +
-            //        "Regards, <br />" +
-            //       "Notes Marketplace <br /><br />";
-
-            string body = RenderRazorViewToString("Verification", user);
+            string body = 
+                   "<div id='email-verification-page' style='background-color: #fff; height: 100%;'>" +
+                        "<div id='email-verification' style='background-color: #f4f4f4;padding: 30px;width: 550px;'>" +
+                            "<form action='https://localhost:44315/Account/Verification' method='post'>" +
+                                "<input data-val='true' data-val-number='The field ID must be a number.' data-val-required='The ID field is required.' id='ID' name='ID' type='hidden' value='" + user.ID.ToString() + "'>" +
+                                "<table>" +
+                                    "<tr>" +
+                                        "<td>" +
+                                            "<div id='email-verification-logo' style='margin-bottom: 50px;'>" +
+                                            "<img src='https://i.imgur.com/Fa4vPqE.png' />" +
+                                            "</div>" +
+                                        "</td>" +
+                                    "</tr>" +
+                                    "<tr>" +
+                                        "<td>" +
+                                            "<div id='email-verification-heading' style='margin-bottom: 30px; color: #6255a5; line-height: 30px; font-weight: 600; font-size: 26px;'>" +
+                                                "<h1> Email Verification </h1>" +
+                                            "</div>" +
+                                        "</td>" +
+                                    "</tr>" +
+                                    "<tr>" +
+                                        "<td>" +
+                                            "<div id='email-verification-text' style='margin-bottom: 50px;'>" +
+                                                "<h4 style='color: #333;margin-bottom: 20px;line-height: 22px;font-weight: 600;font-size: 18px;'> Dear " + user.FirstName + " </h4>" +
+                                                "<p style='margin-bottom: 10px;color: #333;line-height: 20px;font-weight: 400;font-size: 16px;'> Thanks for signing</p>" +
+                                                "<p style='margin-bottom: 10px;color: #333;line-height: 20px;font-weight: 400;font-size: 16px;'> Simply click below for email verification. </p>" +
+                                            "</div>" +
+                                        "</td>" +
+                                    "</tr>" +
+                                    "<tr>" +
+                                        "<td>" +
+                                            "<div id='email-btn'>" +
+                                                "<button type='submit' style='width: 540px;height: 50px;border-radius: 3px;font-weight: 600;font-size: 18px;color: #fff;background-color: #6255a5;text-transform: uppercase;display: inline-block;text-align: center;vertical-align: middle;'>Verify email address</button>" +
+                                            "</div>" +
+                                        "</td>" +
+                                    "</tr>" +
+                                "</table>" +
+                            "</form>" +
+                        "</div>" +
+                    "</div> <br /><br />" +
+                    "Regards, <br />" +
+                   "Notes Marketplace <br /><br />";
 
             AutoEmailSend.SendEmail(toEmail, subject, body);
         }
@@ -163,11 +137,10 @@ namespace Notes_MarketPlace.Controllers
                 user.Error = "Your account has deactivated.";
                 return View(user);
             }
-            else if (userEmail.UserRole.Name == "Admin")
+            else if (userEmail.UserRole.Name == "Admin" || userEmail.UserRole.Name == "Super Admin")
             {
-                Session["Admin"] = userEmail.ID;
-                user.Error = "This is Admin";
-                return View(user);
+                FormsAuthentication.SetAuthCookie(userEmail.ID.ToString(), user.RememberMe);
+                return RedirectToAction("Index", "Admin");
             }
 
             FormsAuthentication.SetAuthCookie(userEmail.ID.ToString(), user.RememberMe);
@@ -184,14 +157,6 @@ namespace Notes_MarketPlace.Controllers
             FormsAuthentication.SignOut();
             return View("Login");
         }
-
-        //[HttpGet]
-        //public ActionResult Verification(int ID)
-        //{
-        //    var userEmail = marketPlaceEntities.Users.Where(u => u.ID == ID).FirstOrDefault();
-
-        //    return View(userEmail);
-        //}
 
         [HttpPost]
         public ActionResult Verification(User user)
@@ -227,7 +192,7 @@ namespace Notes_MarketPlace.Controllers
         }
 
         [NonAction]
-        private string CreateRandomPassword(int length = 8)
+        public string CreateRandomPassword(int length = 8)
         {
             // Create a string of characters, numbers, special characters that allowed in the password  
             string validChars = "ABCDEFGHJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*?_-";
@@ -287,7 +252,7 @@ namespace Notes_MarketPlace.Controllers
             return RedirectToAction("Login");
         }
 
-        [Authorize]
+        [Authorize(Roles = "Member")]
         public ActionResult UserProfile()
         {
             var id = Convert.ToInt32(User.Identity.Name);
@@ -299,6 +264,10 @@ namespace Notes_MarketPlace.Controllers
             if(result != null)
             {
                 ViewModel = DBToModel(result);
+            }
+            else
+            {
+                ViewModel.UserID = id;
             }
 
             var ViewResult = new UserProfileViewModel()
@@ -338,7 +307,7 @@ namespace Notes_MarketPlace.Controllers
             return result;
         }
 
-        [Authorize]
+        [Authorize(Roles = "Member")]
         [HttpPost]
         public ActionResult UserProfile(UserProfileViewModel model)
         {
@@ -354,7 +323,7 @@ namespace Notes_MarketPlace.Controllers
                 var path = Server.MapPath(trigger);
                 if (!Directory.Exists(path))
                     Directory.CreateDirectory(path);
-                var fileName = Path.GetFileName(model.UserProfileModel.ProfilePicture.FileName);
+                var fileName = "DP_" + DateTime.Now.ToString("hh-mm-ss") + ".jpg";
                 var fullPath = Path.Combine(path, fileName);
 
                 model.UserProfileModel.ProfilePicture.SaveAs(fullPath);
@@ -376,19 +345,55 @@ namespace Notes_MarketPlace.Controllers
             return RedirectToAction("SearchNote", "Home");
         }
 
-        public string RenderRazorViewToString(string viewName, object model)
+        [Authorize(Roles = "Super Admin,Admin")]
+        public ActionResult AdminProfile()
         {
-            ViewData.Model = model;
-            using (var sw = new StringWriter())
+            var id = Convert.ToInt32(User.Identity.Name);
+            var user = marketPlaceEntities.UserProfiles.FirstOrDefault(u => u.UserID == id);
+
+            AdminProfileViewModel ViewResult = new AdminProfileViewModel()
             {
-                var viewResult = ViewEngines.Engines.FindPartialView(ControllerContext,
-                                                                         viewName);
-                var viewContext = new ViewContext(ControllerContext, viewResult.View,
-                                             ViewData, TempData, sw);
-                viewResult.View.Render(viewContext, sw);
-                viewResult.ViewEngine.ReleaseView(ControllerContext, viewResult.View);
-                return sw.GetStringBuilder().ToString();
+                ID = user.ID,
+                UID = user.UserID,
+                Picture = user.ProfilePicture,
+                FirstName = user.User.FirstName,
+                LastName = user.User.LastName,
+                Email = user.User.EmailID,
+                SecondaryEmail = user.SecondaryEmailAddress,
+                PhoneNumber_CountryCode = user.PhoneNumber_CountryCode,
+                PhoneNumber = user.PhoneNumber
+            };
+
+            return View(ViewResult);
+        }
+
+        [Authorize(Roles = "Super Admin,Admin")]
+        [HttpPost]
+        public ActionResult AdminProfile(AdminProfileViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
             }
+
+            if (model.ProfilePicture != null)
+            {
+                string trigger = "/Members/" + model.UID.ToString();
+
+                var path = Server.MapPath(trigger);
+                if (!Directory.Exists(path))
+                    Directory.CreateDirectory(path);
+                var fileName = "DP_" + DateTime.Now.ToString("hh-mm-ss") + ".jpg";
+                var fullPath = Path.Combine(path, fileName);
+
+                model.ProfilePicture.SaveAs(fullPath);
+
+                model.Picture = trigger + "/" + fileName;
+            }
+
+            repository.EditAdminProfile(model.ID, model.UID, model.FirstName, model.LastName, model.SecondaryEmail, model.PhoneNumber_CountryCode, model.PhoneNumber, model.Picture);
+
+            return RedirectToAction("Index", "Admin");
         }
     }
 }

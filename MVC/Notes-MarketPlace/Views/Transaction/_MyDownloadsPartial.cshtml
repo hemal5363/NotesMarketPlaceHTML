@@ -22,7 +22,7 @@
                         <td colspan="8">No Records Found</td>
                     </tr>
                 }
-                int i = 1;
+                int i = 1 + 10 * (ViewBag.activePageNumber - 1);
 
                 foreach (var download in Model.Downloads)
                 {
@@ -31,7 +31,7 @@
                     var h = "/Home/NoteDetails/" + download.NoteID.ToString();
                     <tr>
                         <th>@i</th>
-                        <td> <a href=@h>@download.NoteTitle</a></td>
+                        <td> <a href=@h title="Note Details">@download.NoteTitle</a></td>
                         <td> @download.NoteCategory </td>
                         <td> @download.User.FirstName @download.User.LastName </td>
                         <td>
@@ -47,14 +47,14 @@
                         <td> $@download.PurchasedPrice </td>
                         <td> @download.AttachmentDownloadedDate </td>
                         <td>
-                            <a href=@h alt="edit"><img src="/Images/eye.png"></a>
+                            <a href=@h alt="edit"><img src="/Images/eye.png" alt="View" title="Note Details"></a>
                             <div class="menu-popup">
-                                <a class="menu-check" onclick=@fun1><img src="/Images/dots.png"></a>
+                                <a class="menu-check" onclick=@fun1><img src="/Images/dots.png" alt="Dots" title="Popup Menu"></a>
                                 <div id=@tId class="menu-popup-show">
                                     @{ h = "/Transaction/NoteDownload/" + download.ID.ToString(); }
-                                    <p><a href=@h>Download Note</a></p>
-                                    <p> <a onclick="AddReview(@download.ID)">Add Reviews/Feedback </a></p>
-                                    <p><a onclick="AddRemark('@download.ID', '@download.NoteTitle', '@download.NoteCategory')">Report as Inappropriate</a></p>
+                                    <p><a href=@h title="Download Note">Download Note</a></p>
+                                    <p> <a onclick="AddReview(@download.ID)" title="Add Reviews / Feedback">Add Reviews/Feedback </a></p>
+                                    <p><a onclick="AddRemark('@download.ID', '@download.NoteTitle', '@download.NoteCategory')" title="Report as Inappropriate">Report as Inappropriate</a></p>
                                 </div>
                             </div>
                         </td>
@@ -77,7 +77,7 @@
 
             if (ViewBag.activePageNumber != 1)
             {
-                <img src="~/Images/left-arrow.png" onclick=@fun />
+                <img src="~/Images/left-arrow.png" alt="Left Arrow" title="Left" onclick=@fun />
             }
 
             for (var totalpage = 1; totalpage <= totalPages; totalpage++)
@@ -102,7 +102,7 @@
 
             if (totalPages != ViewBag.activePageNumber)
             {
-                <img src="~/Images/right-arrow.png" onclick=@fun />
+                <img src="~/Images/right-arrow.png" alt="Right Arrow" title="Right" onclick=@fun />
             }
         }
     }
@@ -114,7 +114,7 @@
     <div id="add-review-bg1" class="add-review-bg">
         <div id="add-review-box">
             <div id="close-btn">
-                <img src="/Images/close.png" onclick="closeReview()">
+                <img src="/Images/close.png" alt="Close" title="Close" onclick="closeReview()">
             </div>
             <div id="getdataname">
                 @*<h3> Human Body - Scince </h3>*@
@@ -126,14 +126,12 @@
                             @*@Html.HiddenFor(r => r.id)*@
                         </div>
                         <div class="form-group">
-                            @*<label for="remarks">Remarks</label>*@
-                            @*<textarea class="form-control" id="remark" name="remark" placeholder="write remarks"></textarea>*@
                             @Html.LabelFor(r => r.SellerNotesReportedIssueModel.Remarks)
                             @Html.TextAreaFor(r => r.SellerNotesReportedIssueModel.Remarks, new { @class="form-control", placeholder = "write remarks" })
                         </div>
                         <div id="review-btn">
                             <button type="submit" class="btn blue-btn" title="Report" role="button" onclick="return confirm('Are you sure you want to mark this report as spam, you cannot update it later?')"> Report </button>
-                            <a class="btn blue-btn" onclick="closeReview()" title="Download" role="button"> Cancel </a>
+                            <a class="btn blue-btn" onclick="closeReview()" title="Cancel" role="button"> Cancel </a>
                         </div>
                     </form>
                 </div>
@@ -150,7 +148,7 @@
     <div class="add-review-bg">
         <div id="add-review-box">
             <div id="close-btn">
-                <img src="/Images/close.png" onclick="closeReview()">
+                <img src="/Images/close.png" alt="Close" title="Close" onclick="closeReview()">
             </div>
             <div id="add-review-hd" class="heading-md">
                 <h3> Add Review </h3>
@@ -162,32 +160,25 @@
                     </div>
                     <div id="rates">
                         <div class="rate">
-                            @*<input type="radio" id="star5" name="rate" value="5" />*@
                             @Html.TextBoxFor(r => r.SellerNotesReviewModel.Ratings, "5", new { type = "radio", id = "star5" })
                             <label for="star5" title="text">5 stars</label>
-                            @*<input type="radio" id="star4" name="rate" value="4" />*@
                             @Html.TextBoxFor(r => r.SellerNotesReviewModel.Ratings, "4", new { type = "radio", id = "star4" })
                             <label for="star4" title="text">4 stars</label>
-                            @*<input type="radio" id="star3" name="rate" value="3" />*@
                             @Html.TextBoxFor(r => r.SellerNotesReviewModel.Ratings, "3", new { type = "radio", id = "star3" })
                             <label for="star3" title="text">3 stars</label>
-                            @*<input type="radio" id="star2" name="rate" value="2" />*@
                             @Html.TextBoxFor(r => r.SellerNotesReviewModel.Ratings, "2", new { type = "radio", id = "star2" })
                             <label for="star2" title="text">2 stars</label>
-                            @*<input type="radio" id="star1" name="rate" value="1" />*@
                             @Html.TextBoxFor(r => r.SellerNotesReviewModel.Ratings, "1", new { type = "radio", id = "star1" })
                             <label for="star1" title="text">1 star</label>
                         </div>
                     </div>
                     <div id="comments">
                         <div class="form-group">
-                            @*<label for="comments">Comments *</label>*@
-                            @*<textarea class="form-control" id="comment" name="comment" placeholder="Comments..."></textarea>*@
                             @Html.LabelFor(r => r.SellerNotesReviewModel.Comments)
                             @Html.TextAreaFor(r => r.SellerNotesReviewModel.Comments, new { @class = "form-control", placeholder = "Comments..." })
                         </div>
                         <div id="review-btn">
-                            <button class="btn blue-btn" type="submit" title="Download" role="button"> SUBMIT </button>
+                            <button class="btn blue-btn" type="submit" title="Submit" role="button"> SUBMIT </button>
                         </div>
                     </div>
                 </form>

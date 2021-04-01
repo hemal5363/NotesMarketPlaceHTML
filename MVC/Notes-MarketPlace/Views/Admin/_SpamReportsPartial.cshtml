@@ -1,0 +1,100 @@
+﻿@model IEnumerable<ProjectDB.SellerNotesReportedIssue>
+
+<div class="table-format">
+    <table id="pager" class="table wp-list-table widefat striped posts tablesorter sort-table">
+        <thead>
+            <tr>
+                <th scope="col"> SR. NO. </th>
+                <th scope="col"> REPORTED BY </th>
+                <th scope="col"> NOTE TITLE </th>
+                <th scope="col"> CATEGORY </th>
+                <th scope="col"> DATE EDITED </th>
+                <th scope="col"> REMARK </th>
+                <th scope="col"> ACTION </th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                if (Model.Count() == 0)
+                {
+                    <tr>
+                        <td colspan="8">No Records Found</td>
+                    </tr>
+                }
+                int i = 1 + 5 * (ViewBag.activePageNumber - 1);
+                foreach (var report in Model)
+                {
+                    var fun1 = "downloadPopup('#mp" + i.ToString() + "')";
+                    string tId = "mp" + i.ToString();
+                    var h = "/Home/NoteDetails/" + report.NoteID.ToString();
+                    <tr>
+                        <th>@i</th>
+                        <td> @report.User.FirstName @report.User.LastName </td>
+                        <td> <a href=@h title="Note Details"> @report.SellerNote.Title </a></td>
+                        <td> @report.SellerNote.NoteCategory.Name </td>
+                        <td> @report.CreatedDate </td>
+                        <td> @report.Remarks </td>
+                        @{ var k = "/Admin/DeleteSpamReport/" + report.ID.ToString();}
+                        <td> <a href=@k alt="edit" onclick="return confirm('Are you sure you want to delete reported issue?')"> <img src="/Images/delete.png" alt="Delete" title="Delete Record"> </a> </td>
+                        <td>
+                            <div class="menu-popup">
+                                <a class="menu-check" onclick=@fun1><img src="/Images/dots.png" alt="Dots" title="Popup Menu"></a>
+                                <div id=@tId class="menu-popup-show">
+                                    @{ k = "/Admin/NoteDownload/" + report.NoteID.ToString();}
+                                    <p><a href=@k title="Download Note">Download Note</a></p>
+                                    <p><a href=@h title="Note Details">View More Details</a></p>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    i += 1;
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+<div class="pager-nav">
+    @{
+        if (!(Model.Count() == 0))
+        {
+            var totalPages = Math.Ceiling(ViewBag.totalCount / 5.0);
+
+            var fun = "getSpamReports(" + (ViewBag.activePageNumber - 1).ToString() + ")";
+
+            if (ViewBag.activePageNumber != 1)
+            {
+                <img src="~/Images/left-arrow.png" alt="Left Arrow" title="Left" onclick=@fun />
+            }
+
+            for (var totalpage = 1; totalpage <= totalPages; totalpage++)
+            {
+                if (totalpage == ViewBag.activePageNumber)
+                {
+                    <span class="pg-selected">
+                        @{fun = "getSpamReports(" + totalpage.ToString() + ")";}
+                        @Html.Label(totalpage.ToString(), new { @class = "pageNumber", target = totalpage.ToString(), onclick = fun })
+                    </span>
+                }
+                else
+                {
+                    <span>
+                        @{fun = "getSpamReports(" + totalpage.ToString() + ")";}
+                        @Html.Label(totalpage.ToString(), new { @class = "pageNumber", target = totalpage.ToString(), onclick = fun })
+                    </span>
+                }
+            }
+
+            fun = "getSpamReports(" + (ViewBag.activePageNumber + 1).ToString() + ")";
+
+            if (totalPages != ViewBag.activePageNumber)
+            {
+                <img src="~/Images/right-arrow.png" alt="Right Arrow" title="Right" onclick=@fun />
+            }
+        }
+    }
+</div>
+
+<script>funTableSorter();</script>

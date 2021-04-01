@@ -13,9 +13,9 @@ namespace Notes_MarketPlace.Models
         public AddNoteViewModel()
         {
             MarketPlaceEntities marketPlaceEntities = new MarketPlaceEntities();
-            NoteCategorieList = marketPlaceEntities.NoteCategories.ToList();
-            NoteTypesList = marketPlaceEntities.NoteTypes.ToList();
-            CountriesList = marketPlaceEntities.Countries.ToList();
+            NoteCategorieList = marketPlaceEntities.NoteCategories.Where(n => n.IsActive == true).ToList();
+            NoteTypesList = marketPlaceEntities.NoteTypes.Where(n => n.IsActive == true).ToList();
+            CountriesList = marketPlaceEntities.Countries.Where(n => n.IsActive == true).ToList();
         }
 
         public SellerNoteModel SellerNote { get; set; }

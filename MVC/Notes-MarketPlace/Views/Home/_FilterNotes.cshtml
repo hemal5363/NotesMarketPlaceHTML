@@ -1,6 +1,10 @@
 ﻿@model Notes_MarketPlace.Models.SearchNoteViewModel
 @using ProjectDB
 
+@{
+    MarketPlaceEntities market = new MarketPlaceEntities();
+}
+
 
 <!-- Total notes -->
 <div id="total-notes">
@@ -11,146 +15,121 @@
                     <h3> Total @Model.totalNotes notes </h3>
                 </div>
             </div>
-            <div class="col-md-12">
-                <table id="pager" class="wp-list-table widefat striped posts">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            @{
-                                int i = 1;
-                                foreach (var note in Model.sellerNotes)
+            @{
+                foreach (var note in Model.sellerNotes)
+                {
+                    <div class="col-md-4 col-sm-6">
+                        <div class="book-detials">
+                            <div class="book-img">
+                                @if (note.DisplayPicture == null)
                                 {
-                                    <td>
-                                        <div class="book-detials">
-                                            <div class="book-img">
-                                                @if(note.DisplayPicture == null)
-                                                {
-                                                    <img src="~/Images/computer-science.png" alt="books" class="img-responsive img-fluid">
-                                                }
-                                                else
-                                                {
-                                                    <img src='@note.DisplayPicture' alt="books" class="img-responsive img-fluid">
-                                                }
-                                            </div>
-                                            <div class="book-detial">
-                                                <div class="book-heading">
-                                                    @{var h = "NoteDetails/" + note.ID.ToString();}
-                                                    <h5> <a href=@h>@note.Title - @note.NoteCategory.Name</a></h5>
-                                                </div>
-                                                <div class="book-det">
-                                                    @if (note.Country != null && note.UniversityName != null)
+                                    <img src='@market.SystemConfigurations.FirstOrDefault(u => u.Key == "Image").Value' alt="Book" title="Note Image" class="img-responsive img-fluid">
+                                }
+                                else
+                                {
+                                    <img src='@note.DisplayPicture' alt="Book" title="Note Image" class="img-responsive img-fluid">
+                                }
+                            </div>
+                            <div class="book-detial">
+                                <div class="book-heading">
+                                    @{var h = "NoteDetails/" + note.ID.ToString();}
+                                    <h5> <a href=@h title="Note Details">@note.Title - @note.NoteCategory.Name</a></h5>
+                                </div>
+                                <div class="book-det">
+                                    @if (note.Country != null && note.UniversityName != null)
+                                    {
+                                        <p> <img src="~/Images/university.png" alt="University" title="University Name"> &nbsp;&nbsp;@note.UniversityName, @note.Country1.Name </p>
+                                    }
+                                    @if (note.NumberofPages != null)
+                                    {
+                                        <p> <img src="~/Images/pages.png" alt="Pages" title="Number of Pages"> &nbsp;&nbsp;@note.NumberofPages Pages </p>
+                                    }
+                                    <p> <img src="~/Images/date.png" alt="Date" title="Published Date"> &nbsp;&nbsp;&nbsp;@note.PublishedDate.Value.ToString("dddd, dd MMMM yyyy") </p>
+                                    @{
+                                        var issues = market.SellerNotesReportedIssues.Where(r => r.NoteID == note.ID).ToList();
+                                    }
+                                    @if (issues.Count() != 0)
+                                    {
+                                        <p> <img src="~/Images/flag.png" alt="Flag" title="Marked as Issues"> <span class="marked"> &nbsp;&nbsp;&nbsp;&nbsp;@issues.Count() Users Marked this note as inappropriate </span></p>
+                                    }
+                                </div>
+                                @{
+                                    var ratings = market.SellerNotesReviews.Where(r => r.NoteID == note.ID).ToList();
+                                    int rating = 0;
+                                    if (ratings.Count() != 0)
+                                    {
+                                        rating = (int)Math.Ceiling(ratings.Select(r => r.Ratings).Average());
+                                    }
+                                }
+                                <div class="book-rate">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="rate" id="rateing-star">
+                                                    @for (var j = 1; j <= 5; j++)
                                                     {
-                                                        <p> <img src="~/Images/university.png"> &nbsp;&nbsp;@note.UniversityName, @note.Country1.Name </p>
+                                                        if (j <= rating)
+                                                        {
+                                                            <img src="~/Images/star.png" alt="Star" title="Ratings" />
+                                                        }
+                                                        else
+                                                        {
+                                                            <img src="~/Images/star-white.png" alt="Star" title="Ratings"  />
+                                                        }
                                                     }
-                                                    @if (note.NumberofPages != null)
-                                                    {
-                                                        <p> <img src="~/Images/pages.png"> &nbsp;&nbsp;@note.NumberofPages Pages </p>
-                                                    }
-                                                    <p> <img src="~/Images/date.png"> &nbsp;&nbsp;&nbsp;@note.PublishedDate.Value.ToString("dddd, dd MMMM yyyy") </p>
-                                                    @{ 
-                                                        MarketPlaceEntities market = new MarketPlaceEntities();
-                                                        var issues = market.SellerNotesReportedIssues.Where(r => r.NoteID == note.ID).ToList();
-                                                    }
-                                                    @if(issues.Count() != 0)
-                                                    { 
-                                                        <p> <img src="~/Images/flag.png"> <span class="marked"> &nbsp;&nbsp;&nbsp;&nbsp;@issues.Count() Users Marked this note as inappropriate </span></p>
-                                                    }
-                                                </div>
-                                                @{ 
-                                                    var ratings = market.SellerNotesReviews.Where(r => r.NoteID == note.ID).ToList();
-                                                    int rating = 0;
-                                                    if (ratings.Count() != 0)
-                                                    {
-                                                        rating = (int)Math.Ceiling(ratings.Select(r => r.Ratings).Average());
-                                                    }
-                                                }
-                                                <div class="book-rate">
-                                                    <div class="container">
-                                                        <div class="row">
-                                                            <div class="col-md-12">
-                                                                <div class="rate" id="rateing-star">
-                                                                    @for(var j=1;j<=5;j++)
-                                                                    {
-                                                                        if(j<=rating)
-                                                                        {
-                                                                            <img src="~/Images/star.png" />
-                                                                        }
-                                                                        else
-                                                                        {
-                                                                            <img src="~/Images/star-white.png" />
-                                                                        }
-                                                                    }
-                                                                <p> @ratings.Count() reviews </p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                    <p> @ratings.Count() reviews </p>
                                                 </div>
                                             </div>
                                         </div>
-                                    </td>
-                                                    i += 1;
-                                                    if (i > 3)
-                                                    {
-                                    <tr>
-                                        @{
-                                            i = 0;
-                                            continue;
-                                        }
-                                    </tr>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+            <div class="col-md-12">
+                <div class="pager-nav">
+                    @{
+                        if (Model.totalNotes != 0)
+                        {
+                            var totalPages = Math.Ceiling(Model.totalNotes / 9.0);
+
+                            var fun = "getNotes(" + (Model.activePageNumber - 1).ToString() + ")";
+
+                            if (Model.activePageNumber != 1)
+                            {
+                                <img src="~/Images/left-arrow.png" alt="Left Arrow" title="Left" onclick=@fun />
+                            }
+
+                            for (var totalpage = 1; totalpage <= totalPages; totalpage++)
+                            {
+                                if (totalpage == Model.activePageNumber)
+                                {
+                                    <span class="pg-selected">
+                                        @{fun = "getNotes(" + totalpage.ToString() + ")";}
+                                        @Html.Label(totalpage.ToString(), new { @class = "pageNumber", target = totalpage.ToString(), onclick = fun })
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span>
+                                        @{fun = "getNotes(" + totalpage.ToString() + ")";}
+                                        @Html.Label(totalpage.ToString(), new { @class = "pageNumber", target = totalpage.ToString(), onclick = fun })
+                                    </span>
                                 }
                             }
-                            }
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="pager-nav">
-                @{
-                    if(Model.totalNotes != 0)
-                    { 
-                        var totalPages = Math.Ceiling(Model.totalNotes / 9.0);
 
-                        var fun = "getNotes(" + (Model.activePageNumber - 1).ToString() + ")";
+                            fun = "getNotes(" + (Model.activePageNumber + 1).ToString() + ")";
 
-                        if (Model.activePageNumber != 1)
-                        {
-                            <img src="~/Images/left-arrow.png" onclick=@fun />
-                        }
-
-                        for (var totalpage = 1; totalpage <= totalPages; totalpage++)
-                        {
-                            if (totalpage == Model.activePageNumber)
+                            if (totalPages != Model.activePageNumber)
                             {
-                                <span class="pg-selected">
-                                    @{fun = "getNotes(" + totalpage.ToString() + ")";}
-                                    @Html.Label(totalpage.ToString(), new { @class = "pageNumber", target = totalpage.ToString(), onclick = fun })
-                                </span>
+                                <img src="~/Images/right-arrow.png" alt="Right Arrow" title="Right" onclick=@fun />
                             }
-                            else
-                            {
-                                <span>
-                                    @{fun = "getNotes(" + totalpage.ToString() + ")";}
-                                    @Html.Label(totalpage.ToString(), new { @class = "pageNumber", target = totalpage.ToString(), onclick = fun })
-                                </span>
-                            }
-                        }
-
-                        fun = "getNotes(" + (Model.activePageNumber + 1).ToString() + ")";
-
-                        if (totalPages != Model.activePageNumber)
-                        {
-                            <img src="~/Images/right-arrow.png" onclick=@fun />
                         }
                     }
-                }
+                </div>
             </div>
         </div>
     </div>
+</div>

@@ -14,7 +14,7 @@ using System.Web.Security;
 
 namespace Notes_MarketPlace.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Member")]
     public class TransactionController : Controller
     {
         MarketPlaceEntities marketPlaceEntities = null;
@@ -171,7 +171,7 @@ namespace Notes_MarketPlace.Controllers
         [NonAction]
         public void SendDownloaderReportsASpam(Download download)
         {
-            var toEmail = new MailAddress(marketPlaceEntities.SystemConfigurations.Where(s => s.Key == "Email").FirstOrDefault().Value);
+            var toEmail = new MailAddress(marketPlaceEntities.SystemConfigurations.Where(s => s.Key == "Email Address").FirstOrDefault().Value);
             string subject = download.User1.FirstName + " Reported an issue for " + download.NoteTitle;
 
             string body = "Hello Admins, <br /><br />" +

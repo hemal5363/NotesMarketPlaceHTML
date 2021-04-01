@@ -15,7 +15,7 @@ using Windows.Storage;
 
 namespace Notes_MarketPlace.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Member")]
     public class HomeController : Controller
     {
         MarketPlaceEntities marketPlaceEntities = null;
@@ -36,23 +36,6 @@ namespace Notes_MarketPlace.Controllers
         [AllowAnonymous]
         public ActionResult FAQ()
         {
-            return View();
-        }
-
-        [AllowAnonymous]
-        public ActionResult ContactUs()
-        {
-            if(User.Identity.IsAuthenticated)
-            {
-                var id = Convert.ToInt32(User.Identity.Name);
-                var result = marketPlaceEntities.Users.FirstOrDefault(u => u.ID == id);
-                var newResult = new ContactUsFormViewModel()
-                {
-                    FullName = result.FirstName + " " + result.LastName,
-                    Email = result.EmailID
-                };
-                return View(newResult);
-            }
             return View();
         }
 
@@ -102,6 +85,23 @@ namespace Notes_MarketPlace.Controllers
             return PartialView("_FilterNotes", result);
         }
 
+        [AllowAnonymous]
+        public ActionResult ContactUs()
+        {
+            if (User.Identity.IsAuthenticated && User.IsInRole("Member"))
+            {
+                var id = Convert.ToInt32(User.Identity.Name);
+                var result = marketPlaceEntities.Users.FirstOrDefault(u => u.ID == id);
+                var newResult = new ContactUsFormViewModel()
+                {
+                    FullName = result.FirstName + " " + result.LastName,
+                    Email = result.EmailID
+                };
+                return View(newResult);
+            }
+            return View();
+        }
+
         [HttpPost]
         public ActionResult ContactUs(ContactUsFormViewModel form)
         {
@@ -119,13 +119,14 @@ namespace Notes_MarketPlace.Controllers
         public void SendContactUsEmail(ContactUsFormViewModel form)
         {
             MarketPlaceEntities marketPlaceEntities = new MarketPlaceEntities();
-            var toEmail = new MailAddress(marketPlaceEntities.SystemConfigurations.Where(s => s.Key == "Email").FirstOrDefault().Value);
+            var toEmail = new MailAddress(marketPlaceEntities.SystemConfigurations.Where(s => s.Key == "Email Address").FirstOrDefault().Value);
             string subject = form.Subject + " - Query";
 
             string body = "Hello, <br /><br />" +
                    form.Comments + " <br /><br />" +
                    "Regards, <br />" +
-                   form.FullName;
+                   form.FullName + "<br />" +
+                   form.Email;
 
             AutoEmailSend.SendEmail(toEmail, subject, body);
         }
@@ -143,7 +144,7 @@ namespace Notes_MarketPlace.Controllers
         {
             var id = Convert.ToInt32(User.Identity.Name);
 
-            var result = marketPlaceEntities.SellerNotes.Where(n => n.SellerID == id && n.IsActive == true).ToList();
+            var result = marketPlaceEntities.SellerNotes.Where(n => n.SellerID == id && n.IsActive == true && n.Status == 9).ToList();
 
             if (search != null)
                 result = result.Where(s => s.Title.ToUpper().Contains(search) || s.Title.ToLower().Contains(search) || s.NoteCategory.Name.ToUpper().Contains(search) || s.NoteCategory.Name.ToLower().Contains(search) || s.SellingPrice.ToString().ToUpper().Contains(search) || s.SellingPrice.ToString().ToLower().Contains(search)).ToList();
@@ -162,7 +163,7 @@ namespace Notes_MarketPlace.Controllers
         {
             var id = Convert.ToInt32(User.Identity.Name);
 
-            var result = marketPlaceEntities.SellerNotes.Where(n => n.SellerID == id && n.IsActive == true).ToList();
+            var result = marketPlaceEntities.SellerNotes.Where(n => n.SellerID == id && n.IsActive == true && (n.Status == 7 || n.Status == 8 || n.Status == 6)).ToList();
 
             if (search != null)
                 result = result.Where(s => s.Title.ToUpper().Contains(search) || s.Title.ToLower().Contains(search) || s.NoteCategory.Name.ToUpper().Contains(search) || s.NoteCategory.Name.ToLower().Contains(search) || s.ReferenceData.Value.ToUpper().Contains(search) || s.ReferenceData.Value.ToLower().Contains(search)).ToList();
@@ -241,7 +242,7 @@ namespace Notes_MarketPlace.Controllers
                     path = Server.MapPath(trigger);
                     if(!Directory.Exists(path))
                         Directory.CreateDirectory(path);
-                    fileName = Path.GetFileName(addNoteView.SellerNote.DisplayPicture.FileName);
+                    fileName = "DP_" + triggerNote.CreatedDate.Value.ToString("hh-mm-ss") + ".jpg";
                     fullPath = Path.Combine(path, fileName);
 
                     addNoteView.SellerNote.DisplayPicture.SaveAs(fullPath);
@@ -254,7 +255,7 @@ namespace Notes_MarketPlace.Controllers
                     path = Server.MapPath(trigger);
                     if (!Directory.Exists(path))
                         Directory.CreateDirectory(path);
-                    fileName = Path.GetFileName(addNoteView.SellerNote.NotesPreview.FileName);
+                    fileName = "Preview_" + triggerNote.CreatedDate.Value.ToString("hh-mm-ss") + ".pdf";
                     fullPath = Path.Combine(path, fileName);
 
                     addNoteView.SellerNote.NotesPreview.SaveAs(fullPath);
@@ -268,21 +269,22 @@ namespace Notes_MarketPlace.Controllers
                 if (!Directory.Exists(path))
                     Directory.CreateDirectory(path);
                 fileName = Path.GetFileName(addNoteView.SellerNotesAttachement.FilePath.FileName);
-                fullPath = Path.Combine(path, fileName);
-
-                addNoteView.SellerNotesAttachement.FilePath.SaveAs(fullPath);
 
                 var triggerPdf = new SellerNotesAttachement();
                 triggerPdf.NoteID = triggerNote.ID;
                 triggerPdf.FileName = fileName;
-                triggerPdf.FilePath = trigger + "/" + fileName;
+                triggerPdf.FilePath = trigger;
                 triggerPdf.CreatedDate = triggerNote.CreatedDate;
                 triggerPdf.CreatedBy = triggerNote.SellerID;
                 triggerPdf.ModifiedDate = triggerNote.ModifiedDate;
                 triggerPdf.ModifiedBy = triggerNote.SellerID;
                 triggerPdf.IsActive = true;
 
-                repository.AddNoteTrigger(triggerNote, triggerPdf);
+                var newNote = repository.AddNoteTrigger(triggerNote, triggerPdf);
+
+                fullPath = Path.Combine(path, newNote.FileName);
+                addNoteView.SellerNotesAttachement.FilePath.SaveAs(fullPath);
+
             }
             else
             {
@@ -293,7 +295,7 @@ namespace Notes_MarketPlace.Controllers
                     path = Server.MapPath(trigger);
                     if (!Directory.Exists(path))
                         Directory.CreateDirectory(path);
-                    fileName = Path.GetFileName(addNoteView.SellerNote.DisplayPicture.FileName);
+                    fileName = "DP_" + addNoteView.SellerNote.ModifiedDate.Value.ToString("hh-mm-ss") + ".jpg";
                     fullPath = Path.Combine(path, fileName);
 
                     addNoteView.SellerNote.DisplayPicture.SaveAs(fullPath);
@@ -306,7 +308,7 @@ namespace Notes_MarketPlace.Controllers
                     path = Server.MapPath(trigger);
                     if (!Directory.Exists(path))
                         Directory.CreateDirectory(path);
-                    fileName = Path.GetFileName(addNoteView.SellerNote.NotesPreview.FileName);
+                    fileName = "Preview_" + addNoteView.SellerNote.ModifiedDate.Value.ToString("hh-mm-ss") + ".pdf";
                     fullPath = Path.Combine(path, fileName);
 
                     addNoteView.SellerNote.NotesPreview.SaveAs(fullPath);
@@ -322,16 +324,16 @@ namespace Notes_MarketPlace.Controllers
                 if (!Directory.Exists(path))
                     Directory.CreateDirectory(path);
                 fileName = Path.GetFileName(addNoteView.SellerNotesAttachement.FilePath.FileName);
-                fullPath = Path.Combine(path, fileName);
-
-                addNoteView.SellerNotesAttachement.FilePath.SaveAs(fullPath);
 
                 triggerPdf.FileName = fileName;
-                triggerPdf.FilePath = trigger + "/" + fileName;
+                triggerPdf.FilePath = trigger;
                 triggerPdf.ModifiedDate = addNoteView.SellerNote.ModifiedDate;
                 triggerPdf.ModifiedBy = addNoteView.SellerNote.SellerID;
 
-                repository.UpdateNote(addNoteView.SellerNote, triggerPdf);
+                var newNote = repository.UpdateNote(addNoteView.SellerNote, triggerPdf);
+
+                fullPath = Path.Combine(path, newNote.FileName);
+                addNoteView.SellerNotesAttachement.FilePath.SaveAs(fullPath);
             }
             return View(addNoteView);
         }
@@ -350,7 +352,7 @@ namespace Notes_MarketPlace.Controllers
         [NonAction]
         public void SendPublishNoteMailToAdmin(SellerNote sellerNote)
         {
-            var toEmail = new MailAddress(marketPlaceEntities.SystemConfigurations.Where(s => s.Key == "Email").FirstOrDefault().Value);
+            var toEmail = new MailAddress(marketPlaceEntities.SystemConfigurations.Where(s => s.Key == "Email Address").FirstOrDefault().Value);
             string subject = sellerNote.User.FirstName.ToString() + " sent his note for review";
 
             string body = "Hello Admins, <br /><br />" +

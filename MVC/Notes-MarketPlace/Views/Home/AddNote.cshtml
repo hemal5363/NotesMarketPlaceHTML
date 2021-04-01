@@ -37,8 +37,6 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    @*<label for="title">Title *</label>*@
-                                    @*<input type="text" class="form-control" id="title" name="title" aria- placeholder="Enter your notes title">*@
                                     @Html.LabelFor(n => n.SellerNote.Title)
                                     @Html.TextBoxFor(n => n.SellerNote.Title, new { @class = "form-control", placeholder = "Enter your notes title" })
                                     @Html.ValidationMessageFor(n => n.SellerNote.Title)
@@ -46,10 +44,6 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    @*<label for="category">Category *</label>
-                                        <select class="form-control" id="select-category">
-                                            <option>Select your category </option>
-                                        </select>*@
                                     @Html.LabelFor(n => n.SellerNote.Category)
                                     @Html.DropDownListFor(n => n.SellerNote.Category, new SelectList(Model.NoteCategorieList, "ID", "Name"), "Select your category", new { @class = "form-control" })
                                     @Html.ValidationMessageFor(n => n.SellerNote.Category)
@@ -57,24 +51,20 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    @*<label for="display-picture">Display Picture</label><br>*@
                                     @Html.LabelFor(n => n.SellerNote.DisplayPicture)
                                     <label class="file-uploader">
-                                        <img src="~/Images/upload-file.png">
+                                        <img src="~/Images/upload-file.png" alt="Upload File" title="Upload Note Image">
                                         <p> Upload a Picktuer</p>
-                                        @*<input type="file" class="form-control" id="display-picture" name="display-picture">*@
                                         @Html.TextBoxFor(n => n.SellerNote.DisplayPicture, new { type = "file", @class = "form-control", accept = "image/*" })
                                     </label>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    @*<label for="upload-notes">Upload Notes *</label><br>*@
                                     @Html.LabelFor(n => n.SellerNotesAttachement.FilePath)
                                     <label class="file-uploader">
-                                        <img src="~/Images/upload-note.png">
+                                        <img src="~/Images/upload-note.png" alt="Upload Note" title="Upload Note PDF">
                                         <p> Upload your notes</p>
-                                        @*<input type="file" class="form-control" id="upload-notes" name="upload-notes">*@
                                         @Html.TextBoxFor(n => n.SellerNotesAttachement.FilePath, new { type = "file", @class = "form-control", accept = ".pdf" })
                                     </label>
                                     @Html.ValidationMessageFor(n => n.SellerNotesAttachement.FilePath)
@@ -82,18 +72,12 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    @*<label for="type">Type</label>
-                                        <select class="form-control" id="select-type">
-                                            <option>Select your note type </option>
-                                        </select>*@
                                     @Html.LabelFor(n => n.SellerNote.NoteType)
                                     @Html.DropDownListFor(n => n.SellerNote.NoteType, new SelectList(Model.NoteTypesList, "ID", "Name"), "Select your note type", new { @class = "form-control" })
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    @*<label for="number-of-pages">Number of Pages</label>*@
-                                    @*<input type="text" class="form-control" id="number-of-pages" name="number-of-pages" aria- placeholder="Enter number of note pages">*@
                                     @Html.LabelFor(n => n.SellerNote.NumberofPages)
                                     @Html.TextBoxFor(n => n.SellerNote.NumberofPages, new { @class = "form-control", placeholder = "Enter number of note pages" })
                                 </div>
@@ -101,8 +85,6 @@
                             <div class="col-md-12">
                                 <div id="note-description">
                                     <div class="form-group">
-                                        @*<label for="description">Description *</label>*@
-                                        @*<textarea class="form-control" id="description" name="description" placeholder="Enter your description"></textarea>*@
                                         @Html.LabelFor(n => n.SellerNote.Description)
                                         @Html.TextAreaFor(n => n.SellerNote.Description, new { @class = "form-control", placeholder = "Enter your description" })
                                         @Html.ValidationMessageFor(n => n.SellerNote.Description)
@@ -126,18 +108,12 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    @*<label for="country">Country</label>
-                                        <select class="form-control" id="select-country">
-                                            <option>Select your country </option>
-                                        </select>*@
                                     @Html.LabelFor(n => n.SellerNote.Country)
                                     @Html.DropDownListFor(n => n.SellerNote.Country, new SelectList(Model.CountriesList, "ID", "Name"), "Select your country", new { @class = "form-control" })
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    @*<label for="institution-name">Institution Name </label>*@
-                                    @*<input type="text" class="form-control" id="institution-name" name="institution-name" aria- placeholder="Enter your institution name">*@
                                     @Html.LabelFor(n => n.SellerNote.UniversityName)
                                     @Html.TextBoxFor(n => n.SellerNote.UniversityName, new { @class = "form-control", placeholder = "Enter your institution name" })
                                 </div>
@@ -159,24 +135,18 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    @*<label for="course-name">Course Name </label>*@
-                                    @*<input type="text" class="form-control" id="course-name" name="course-name" aria- placeholder="Enter your course name">*@
                                     @Html.LabelFor(n => n.SellerNote.Course)
                                     @Html.TextBoxFor(n => n.SellerNote.Course, new { @class = "form-control", placeholder = "Enter your course name" })
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    @*<label for="course-code">Course Code </label>*@
-                                    @*<input type="text" class="form-control" id="course-code" name="course-code" aria- placeholder="Enter your Course code">*@
                                     @Html.LabelFor(n => n.SellerNote.CourseCode)
                                     @Html.TextBoxFor(n => n.SellerNote.CourseCode, new { @class = "form-control", placeholder = "Enter your Course code" })
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    @*<label for="professor-lecturer">Professor / Lecturer </label>*@
-                                    @*<input type="text" class="form-control" id="professor-lecturer" name="professor-lecturer" aria- placeholder="Enter your professor name">*@
                                     @Html.LabelFor(n => n.SellerNote.Professor)
                                     @Html.TextBoxFor(n => n.SellerNote.Professor, new { @class = "form-control", placeholder = "Enter your professor name" })
                                 </div>
@@ -197,22 +167,17 @@
                     <div class="login-form">
                         <div class="row">
                             <div class="col-md-6">
-                                @*<label for="sell-for">Sell For * </label><br>*@
                                 @Html.LabelFor(n => n.SellerNote.IsPaid)<br />
                                 <div class="redio-btn custom-control-inline">
-                                    @*<input type="radio" id="free" name="sell-for" value="free">*@
                                     @Html.RadioButtonFor(n => n.SellerNote.IsPaid, false)
                                     <label for="free">Free</label>
                                     <div class="custom-control custom-radio custom-control-inline">
-                                        @*<input type="radio" id="paid" name="sell-for" value="paid">*@
                                         @Html.RadioButtonFor(n => n.SellerNote.IsPaid, true)
                                         <label for="paid">Paid</label>
                                     </div><br>
                                 </div>
                                 @Html.ValidationMessageFor(n => n.SellerNote.IsPaid)
                                 <div class="form-group">
-                                    @*<label for="sell-price">Sell Price * </label>*@
-                                    @*<input type="text" class="form-control" id="sell-price" name="sell-price" aria- placeholder="Enter your price">*@
                                     @Html.LabelFor(n => n.SellerNote.SellingPrice)
                                     @Html.TextBoxFor(n => n.SellerNote.SellingPrice, new { @class = "form-control", placeholder = "Enter your price" })
                                     @Html.ValidationMessageFor(n => n.SellerNote.SellingPrice)
@@ -220,12 +185,10 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    @*<label for="note-priview">Note Priview</label><br>*@
                                     @Html.LabelFor(n => n.SellerNote.NotesPreview)
                                     <label class="file-uploader">
-                                        <img src="~/Images/upload-file.png">
+                                        <img src="~/Images/upload-file.png" alt="Upload File" title="Upload Note Preview PDF">
                                         <p> Upload a file</p>
-                                        @*<input type="file" class="form-control" id="note-priview" name="note-priview">*@
                                         @Html.TextBoxFor(n => n.SellerNote.NotesPreview, new { type = "file", @class = "form-control", accept = ".pdf" })
                                     </label>
                                     @Html.ValidationMessageFor(n => n.SellerNote.NotesPreview)
@@ -240,14 +203,13 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="custom-control-inline">
-                                @*<a class="btn blue-btn" href="" title="Download" role="button"> SUBMIT </a>*@
-                                <button type="submit" class="btn blue-btn">SAVE</button>
+                                <button type="submit" class="btn blue-btn" title="Save">SAVE</button>
                             </div>
                             @if(Model.SellerNote.ID != 0)
                             {
                                 var Href = "/Home/Publish/" + Model.SellerNote.ID.ToString();
                                 <div class="custom-control-inline">
-                                    <a class="btn blue-btn" href=@Href title="Download" role="button" onclick="return confirm('You will published this note?')"> PUBLISH </a>
+                                    <a class="btn blue-btn" href=@Href title="Publish" role="button" onclick="return confirm('You will published this note?')"> PUBLISH </a>
                                 </div>
                             }
                         </div>

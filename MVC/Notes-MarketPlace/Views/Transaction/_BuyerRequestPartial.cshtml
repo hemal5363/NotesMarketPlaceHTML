@@ -37,7 +37,7 @@
                         <td colspan="9">No Records Found</td>
                     </tr>
                 }
-                int i = 1;
+                int i = 1 + 10 * (ViewBag.activePageNumber - 1);
 
                 foreach (var request in Model)
                 {
@@ -46,7 +46,7 @@
                     <tr>
                         <th>@i</th>
                         @{ var h = "/Home/NoteDetails/" + request.NoteID.ToString();}
-                        <td> <a href=@h>@request.NoteTitle</a></td>
+                        <td> <a href=@h title="Note Details">@request.NoteTitle</a></td>
                         <td> @request.NoteCategory </td>
                         <td> @request.User1.FirstName @request.User1.LastName </td>
                         @if (request.User1.UserProfiles.FirstOrDefault() != null && request.User1.UserProfiles.FirstOrDefault() != null)
@@ -66,14 +66,12 @@
                         <td> $@request.PurchasedPrice </td>
                         <td> @request.CreatedDate </td>
                         <td>
-                            @*<input type="hidden" name="ID" id="ID" value="@request.ID" />*@
-                            <a href=@h alt="edit"><img src="~/Images/eye.png"></a>
+                            <a href=@h alt="edit"><img src="~/Images/eye.png" alt="View" title="Note Details"></a>
                             <div class="menu-popup">
-                                <a class="menu-check"  onclick=@fun1><img src="~/Images/dots.png"></a>
+                                <a class="menu-check"  onclick=@fun1><img src="~/Images/dots.png" alt="Dots" title="Popup Menu"></a>
                                 <div id=@tId class="menu-popup-show">
-                                    @*<p><a type="submit">Allow Download</a></p>*@
                                     @{ h = "/Transaction/AllowedDownload/" + request.ID; }
-                                    <p><a href=@h>Allow Download</a></p>
+                                    <p><a href=@h title="Allow Download">Allow Download</a></p>
                                 </div>
                             </div>
                         </td>
@@ -95,7 +93,7 @@
 
             if (ViewBag.activePageNumber != 1)
             {
-                <img src="~/Images/left-arrow.png" onclick=@fun />
+                <img src="~/Images/left-arrow.png" alt="Left Arrow" title="Left" onclick=@fun />
             }
 
             for (var totalpage = 1; totalpage <= totalPages; totalpage++)
@@ -120,7 +118,7 @@
 
             if (totalPages != ViewBag.activePageNumber)
             {
-                <img src="~/Images/right-arrow.png" onclick=@fun />
+                <img src="~/Images/right-arrow.png" alt="Right Arrow" title="Right" onclick=@fun />
             }
         }
     }

@@ -1,0 +1,93 @@
+﻿@model Notes_MarketPlace.Models.AdminProfileViewModel
+
+@{
+    ViewBag.Title = "AdminProfile";
+    Layout = "~/Views/Shared/_RagisterView.cshtml";
+}
+
+<!-- Admin User Profile -->
+<section id="admin-user-profile">
+    <div class="content-box">
+        <div class="add-note-details">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="left-heading">
+                            <h2> My Profile </h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="login-form">
+                    <form method="post" action="/Account/AdminProfile" enctype="multipart/form-data">
+                        @Html.HiddenFor(u => u.ID)
+                        @Html.HiddenFor(u => u.UID)
+                        @Html.HiddenFor(u => u.Picture)
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(u => u.FirstName)
+                                    @Html.TextBoxFor(u => u.FirstName, new { @class = "form-control", placeholder = "Enter your first name" })
+                                    @Html.ValidationMessageFor(u => u.FirstName)
+                                </div>
+                            </div>
+                            <div class="col-md-6"></div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(u => u.LastName)
+                                    @Html.TextBoxFor(u => u.LastName, new { @class = "form-control", placeholder = "Enter your last name" })
+                                    @Html.ValidationMessageFor(u => u.LastName)
+                                </div>
+                            </div>
+                            <div class="col-md-6"></div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(u => u.Email)
+                                    @Html.TextBoxFor(u => u.Email, new { type = "email", @class = "form-control", @readonly = "readonly" })
+                                </div>
+                            </div>
+                            <div class="col-md-6"></div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(u => u.SecondaryEmail)
+                                    @Html.TextBoxFor(u => u.SecondaryEmail, new { type = "email", @class = "form-control", placeholder = "Enter your email" })
+                                    @Html.ValidationMessageFor(u => u.SecondaryEmail)
+                                </div>
+                            </div>
+                            <div class="col-md-6"></div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(u => u.PhoneNumber)
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            @Html.DropDownListFor(u => u.PhoneNumber_CountryCode, new SelectList(Model.PhoneCountryCode), "00", new { @class = "form-control" })
+                                        </div>
+                                        <div class="col-md-9">
+                                            @Html.TextBoxFor(u => u.PhoneNumber, new { @class = "form-control", placeholder = "Enter your phone number" })
+                                        </div>
+                                    </div>
+                                    @Html.ValidationMessageFor(u => u.PhoneNumber)
+                                </div>
+                            </div>
+                            <div class="col-md-6"></div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(u => u.ProfilePicture)
+                                    <label class="file-uploader">
+                                        <img src="/Images/upload-file.png" alt="Upload File" title="Upload File">
+                                        <p> Upload a picture</p>
+                                        @Html.TextBoxFor(u => u.ProfilePicture, new { type = "file", @class = "form-control", accept = "image/*" })
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6"></div>
+                            <div class="col-md-12">
+                                <button type="submit" class="btn blue-btn" title="Submit" role="button"> SUBMIT </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Admin User Profile Ends-->

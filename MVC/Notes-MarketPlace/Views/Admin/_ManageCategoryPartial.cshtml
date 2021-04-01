@@ -1,0 +1,99 @@
+﻿@model IEnumerable<ProjectDB.NoteCategory>
+
+<div class="table-format">
+    <table id="pager" class="table wp-list-table widefat striped posts tablesorter sort-table">
+        <thead>
+            <tr>
+                <th scope="col"> SR NO. </th>
+                <th scope="col"> CATEGORY </th>
+                <th scope="col"> DESCRIPTION </th>
+                <th scope="col"> DATE ADDED </th>
+                <th scope="col"> ADDED BY </th>
+                <th scope="col"> ACTIVE </th>
+                <th scope="col"> ACTION </th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                if (Model.Count() == 0)
+                {
+                    <tr>
+                        <td colspan="7">No Records Found</td>
+                    </tr>
+                }
+                int i = 1 + 5 * (ViewBag.activePageNumber - 1);
+                foreach (var category in Model)
+                {
+                    <tr>
+                        <th>@i</th>
+                        <td> @category.Name </td>
+                        <td> @category.Description </td>
+                        <td> @category.CreatedDate </td>
+                        <td> @category.User.FirstName @category.User.LastName </td>
+                        <td>
+                            @if (category.IsActive == true)
+                            {
+                                <text>Yes</text>
+                            }
+                            else
+                            {
+                                <text>No</text>
+                            }
+                        </td>
+                        <td>
+                            @{ var h = "/Admin/EditCategory/" + category.ID.ToString();}
+                            <a href=@h alt="edit"><img src="/Images/edit.png" alt="Edit" title="Edit Category"></a>
+                            @{ h = "/Admin/DeleteCategory/" + category.ID.ToString();}
+                            <a href=@h alt="edit" onclick="return confirm('Are you sure you want to make this category inactive?')"> <img src="/Images/delete.png" alt="Delete" title="Delete Category"> </a>
+                        </td>
+                    </tr>
+
+                    i += 1;
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+<div class="pager-nav">
+    @{
+        if (!(Model.Count() == 0))
+        {
+            var totalPages = Math.Ceiling(ViewBag.totalCount / 5.0);
+
+            var fun = "getManageCategory(" + (ViewBag.activePageNumber - 1).ToString() + ")";
+
+            if (ViewBag.activePageNumber != 1)
+            {
+                <img src="~/Images/left-arrow.png" alt="Left Arrow" title="Left" onclick=@fun />
+            }
+
+            for (var totalpage = 1; totalpage <= totalPages; totalpage++)
+            {
+                if (totalpage == ViewBag.activePageNumber)
+                {
+                    <span class="pg-selected">
+                        @{fun = "getManageCategory(" + totalpage.ToString() + ")";}
+                        @Html.Label(totalpage.ToString(), new { @class = "pageNumber", target = totalpage.ToString(), onclick = fun })
+                    </span>
+                }
+                else
+                {
+                    <span>
+                        @{fun = "getManageCategory(" + totalpage.ToString() + ")";}
+                        @Html.Label(totalpage.ToString(), new { @class = "pageNumber", target = totalpage.ToString(), onclick = fun })
+                    </span>
+                }
+            }
+
+            fun = "getManageCategory(" + (ViewBag.activePageNumber + 1).ToString() + ")";
+
+            if (totalPages != ViewBag.activePageNumber)
+            {
+                <img src="~/Images/right-arrow.png" alt="Right Arrow" title="Right" onclick=@fun />
+            }
+        }
+    }
+</div>
+
+<script>funTableSorter();</script>

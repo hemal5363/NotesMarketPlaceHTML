@@ -1,0 +1,51 @@
+﻿@model IEnumerable<ProjectDB.NoteCategory>
+
+@{
+    ViewBag.Title = "ManageCategory";
+    Layout = "~/Views/Shared/_RagisterView.cshtml";
+}
+
+<!-- Admin Manage Category -->
+<section id="admin-manage-category">
+    <div class="content-box">
+        <div class="add-note-details">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="left-heading">
+                            <h2> Manage Category </h2>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div id="add-any-btn">
+                            <a class="btn blue-btn" href="/Admin/AddCategory" title="Add Category" role="button"> Add Category </a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="search">
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <div class="search-bar">
+                                        <input type="text" class="form-control" id="search-input" aria- placeholder="        search">
+                                    </div>
+                                    <div class="search-icon">
+                                        <img src="/Images/search-icon.png" alt="Search Icon" title="Search">
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="search-btn">
+                                        <button class="btn blue-btn" title="Search" onclick="getManageCategory()" role="button"> SEARCH </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div id="getCategory"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Admin Manage Category Ends -->

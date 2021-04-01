@@ -1,0 +1,153 @@
+﻿@model Notes_MarketPlace.Models.AdminIndexPublishedNotesViewModel
+
+
+<div class="table-format">
+    <table id="pager" class="table wp-list-table widefat striped posts tablesorter sort-table">
+        <thead>
+            <tr>
+                <th scope="col"> SR. NO. </th>
+                <th scope="col"> NOTE TITLE </th>
+                <th scope="col"> CATEGORY </th>
+                <th scope="col"> SELL TYPE </th>
+                <th scope="col"> PRICE </th>
+                <th scope="col"> SELLER </th>
+                <th scope="col"> </th>
+                <th scope="col"> PUBLISHED DATE </th>
+                <th scope="col"> APPROVED BY </th>
+                <th scope="col"> NUMBER OF DOWNLOADS </th>
+                <th scope="col"> </th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                if (Model.SellerNote.Count() == 0)
+                {
+                    <tr>
+                        <td colspan="11">No Records Found</td>
+                    </tr>
+                }
+                int i = 1 + 5 * (ViewBag.activePageNumber - 1);
+                foreach (var note in Model.SellerNote)
+                {
+                    var fun1 = "downloadPopup('#mp" + i.ToString() + "')";
+                    string tId = "mp" + i.ToString();
+                    var h = "/Home/NoteDetails/" + note.ID.ToString();
+                    <tr>
+                        <th>@i</th>
+                        <td> <a href=@h title="Note Details"> @note.Title </a></td>
+                        <td> @note.NoteCategory.Name </td>
+                        <td>
+                            @if (note.IsPaid == true)
+                            {
+                                <text>Paid</text>
+                            }
+                            else
+                            {
+                                <text>Free</text>
+                            }
+                        </td>
+                        <td> $@note.SellingPrice </td>
+                        <td> @note.User.FirstName @note.User.LastName </td>
+                        @{var k = "/Admin/MemberDetails/" + note.SellerID.ToString();}
+                        <td> <a href=@k alt="edit"><img src="/Images/eye.png" alt="View" title="Show Member Details"></a> </td>
+                        <td> @note.PublishedDate </td>
+                        <td> @note.User1.FirstName @note.User1.LastName </td>
+                        @{ k = "/Admin/DownloadedNote?noteName=" + note.Title.ToString();}
+                        <td> <a href='@k' title="Show Downloaded Notes"> @note.Downloads.Count()</a> </td>
+                        <td>
+                            <div class="menu-popup">
+                                <a class="menu-check" onclick=@fun1><img src="/Images/dots.png" alt="Dots" title="Popup Menu"></a>
+                                <div id=@tId class="menu-popup-show">
+                                    @{ k = "/Admin/NoteDownload/" + note.ID.ToString();}
+                                    <p><a href='@k' title="Download Note">Download Note</a></p>
+                                    <p><a href=@h title="Note Details">View More Details</a></p>
+                                    <p><a onclick="AdminAddRemark('@note.ID', '@note.Title', '@note.NoteCategory.Name')" title="Unpublish">Unpublish</a></p>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    i += 1;
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+<div class="pager-nav">
+    @{
+        if (!(Model.SellerNote.Count() == 0))
+        {
+            var totalPages = Math.Ceiling(ViewBag.totalCount / 5.0);
+
+            var fun = "getPublishedNote(" + (ViewBag.activePageNumber - 1).ToString() + ")";
+
+            if (ViewBag.activePageNumber != 1)
+            {
+                <img src="~/Images/left-arrow.png" alt="Left Arrow" title="Left" onclick=@fun />
+            }
+
+            for (var totalpage = 1; totalpage <= totalPages; totalpage++)
+            {
+                if (totalpage == ViewBag.activePageNumber)
+                {
+                    <span class="pg-selected">
+                        @{fun = "getPublishedNote(" + totalpage.ToString() + ")";}
+                        @Html.Label(totalpage.ToString(), new { @class = "pageNumber", target = totalpage.ToString(), onclick = fun })
+                    </span>
+                }
+                else
+                {
+                    <span>
+                        @{fun = "getPublishedNote(" + totalpage.ToString() + ")";}
+                        @Html.Label(totalpage.ToString(), new { @class = "pageNumber", target = totalpage.ToString(), onclick = fun })
+                    </span>
+                }
+            }
+
+            fun = "getPublishedNote(" + (ViewBag.activePageNumber + 1).ToString() + ")";
+
+            if (totalPages != ViewBag.activePageNumber)
+            {
+                <img src="~/Images/right-arrow.png" alt="Right Arrow" title="Right" onclick=@fun />
+            }
+        }
+    }
+</div>
+
+<!-- Remarks -->
+<section id="remarks1">
+
+    <div class="add-review-bg" style="top: -400px;">
+        <div id="add-review-box">
+            <div id="close-btn">
+                <img src="/Images/close.png" alt="Close" title="Close" onclick="closeReview()">
+            </div>
+            <div id="getdataname">
+                @*<h3> Human Body - Scince </h3>*@
+            </div>
+            <div id="remarks">
+                <div class="login-form">
+                    <form method="post" action="/Admin/AddUnpublish">
+                        <div id="getdataid">
+                            @*@Html.HiddenFor(r => r.id)*@
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(r => r.Remarks)
+                            @Html.TextAreaFor(r => r.Remarks, new { @class = "form-control", placeholder = "write remarks" })
+                        </div>
+                        <div id="review-btn">
+                            <button type="submit" class="btn blue-btn" title="Unpublish" role="button" onclick="return confirm('Are you sure you want to Unpublish this note?')"> Unpublish </button>
+                            <a class="btn blue-btn" onclick="closeReview()" title="Cancel" role="button"> Cancel </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<!-- Remarks Ends -->
+
+
+<script>funTableSorter();</script>

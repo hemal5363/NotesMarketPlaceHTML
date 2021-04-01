@@ -1,0 +1,101 @@
+﻿@model IEnumerable<ProjectDB.SellerNote>
+
+<div class="table-format">
+    <table id="pager" class="table wp-list-table widefat striped posts tablesorter sort-table">
+        <thead>
+            <tr>
+                <th scope="col"> SR. NO. </th>
+                <th scope="col"> NOTE TITLE </th>
+                <th scope="col"> CATEGORY </th>
+                <th scope="col"> STATUS </th>
+                <th scope="col"> DOWNLOADED NOTES </th>
+                <th scope="col"> TOTAL EARNINGS </th>
+                <th scope="col"> DATE ADDED </th>
+                <th scope="col"> PUBLISHED DATE </th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                if (Model.Count() == 0)
+                {
+                    <tr>
+                        <td colspan="9">No Records Found</td>
+                    </tr>
+                }
+                int i = 1 + 5 * (ViewBag.activePageNumber - 1);
+                foreach (var note in Model)
+                {
+                    var fun1 = "downloadPopup('#mp" + i.ToString() + "')";
+                    string tId = "mp" + i.ToString();
+                    var h = "/Home/NoteDetails/" + note.ID.ToString();
+                    <tr>
+                        <th>@i</th>
+                        <td> <a href=@h title="Note Details"> @note.Title </a></td>
+                        <td> @note.NoteCategory.Name </td>
+                        <td> @note.ReferenceData.Value </td>
+                        @{ var k = "/Admin/DownloadedNote?noteName=" + note.Title.ToString();}
+                        <td> <a href='@k' title="Show Downloaded Notes"> @note.Downloads.Count() </a></td>
+                        <td> $@note.Downloads.Where(n => n.IsAttachmentDownloaded == true).Sum(n => n.PurchasedPrice) </td>
+                        <td> @note.CreatedDate </td>
+                        <td> @note.PublishedDate </td>
+                        <td>
+                            <div class="menu-popup">
+                                <a class="menu-check" onclick=@fun1><img src="/Images/dots.png" alt="Dots" title="Popup Menu"></a>
+                                <div id=@tId class="menu-popup-show">
+                                    @{ k = "/Admin/NoteDownload/" + note.ID.ToString();}
+                                    <p><a href=@k title="Download Note">Download Note</a></p>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    i += 1;
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+<div class="pager-nav">
+    @{
+        if (!(Model.Count() == 0))
+        {
+            var totalPages = Math.Ceiling(ViewBag.totalCount / 5.0);
+
+            var fun = "getMembersNotes(" + (ViewBag.activePageNumber - 1).ToString() + ")";
+
+            if (ViewBag.activePageNumber != 1)
+            {
+                <img src="~/Images/left-arrow.png" alt="Left Arrow" title="Left" onclick=@fun />
+            }
+
+            for (var totalpage = 1; totalpage <= totalPages; totalpage++)
+            {
+                if (totalpage == ViewBag.activePageNumber)
+                {
+                    <span class="pg-selected">
+                        @{fun = "getMembersNotes(" + totalpage.ToString() + ")";}
+                        @Html.Label(totalpage.ToString(), new { @class = "pageNumber", target = totalpage.ToString(), onclick = fun })
+                    </span>
+                }
+                else
+                {
+                    <span>
+                        @{fun = "getMembersNotes(" + totalpage.ToString() + ")";}
+                        @Html.Label(totalpage.ToString(), new { @class = "pageNumber", target = totalpage.ToString(), onclick = fun })
+                    </span>
+                }
+            }
+
+            fun = "getMembersNotes(" + (ViewBag.activePageNumber + 1).ToString() + ")";
+
+            if (totalPages != ViewBag.activePageNumber)
+            {
+                <img src="~/Images/right-arrow.png" alt="Right Arrow" title="Right" onclick=@fun />
+            }
+        }
+    }
+</div>
+
+<script>funTableSorter();</script>

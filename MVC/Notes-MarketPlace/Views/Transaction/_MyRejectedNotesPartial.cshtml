@@ -20,7 +20,7 @@
                         <td colspan="6">No Records Found</td>
                     </tr>
                 }
-                int i = 1;
+                int i = 1 + 10 * (ViewBag.activePageNumber - 1);
 
                 foreach (var note in Model)
                 {
@@ -29,17 +29,17 @@
                     var h = "/Home/NoteDetails/" + note.ID.ToString();
                     <tr>
                         <th>@i</th>
-                        <td> <a href=@h>@note.Title</a></td>
+                        <td> <a href=@h title="Note Details">@note.Title</a></td>
                         <td> @note.NoteCategory.Name </td>
                         <td> @note.AdminRemarks </td>
                         @{ h = "/Home/Edit/" + note.ID.ToString(); }
-                        <td> <a href=@h>Clone</a></td>
+                        <td> <a href=@h title="Clone Note">Clone</a></td>
                         <td>
                             <div class="menu-popup">
-                                <a class="menu-check" onclick=@fun1><img src="/Images/dots.png"></a>
+                                <a class="menu-check" onclick=@fun1><img src="/Images/dots.png" alt="Dots" title="Popup Menu"></a>
                                 <div id=@tId class="menu-popup-show">
                                     @{ h = "/Transaction/NoteDownload?id=" + note.ID.ToString() + "&type=Rejected"; }
-                                    <p><a href=@h>Download Note</a></p>
+                                    <p><a href=@h title="Download Note">Download Note</a></p>
                                 </div>
                             </div>
                         </td>
@@ -62,7 +62,7 @@
 
             if (ViewBag.activePageNumber != 1)
             {
-                <img src="~/Images/left-arrow.png" onclick=@fun />
+                <img src="~/Images/left-arrow.png" alt="Left Arrow" title="Left" onclick=@fun />
             }
 
             for (var totalpage = 1; totalpage <= totalPages; totalpage++)
@@ -87,7 +87,7 @@
 
             if (totalPages != ViewBag.activePageNumber)
             {
-                <img src="~/Images/right-arrow.png" onclick=@fun />
+                <img src="~/Images/right-arrow.png" alt="Right Arrow" title="Right" onclick=@fun />
             }
         }
     }

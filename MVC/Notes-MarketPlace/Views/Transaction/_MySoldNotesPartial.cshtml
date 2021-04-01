@@ -22,7 +22,7 @@
                         <td colspan="8">No Records Found</td>
                     </tr>
                 }
-                int i = 1;
+                int i = 1 + 10 * (ViewBag.activePageNumber - 1);
 
                 foreach (var download in Model)
                 {
@@ -31,7 +31,7 @@
                     var h = "/Home/NoteDetails/" + download.NoteID.ToString();
                     <tr>
                         <th>@i</th>
-                        <td> <a href=@h>@download.NoteTitle</a></td>
+                        <td> <a href=@h title="Note Details">@download.NoteTitle</a></td>
                         <td> @download.NoteCategory </td>
                         <td> @download.User1.FirstName @download.User1.LastName </td>
                         <td>
@@ -47,12 +47,12 @@
                         <td> $@download.PurchasedPrice </td>
                         <td> @download.AttachmentDownloadedDate </td>
                         <td>
-                            <a href=@h alt="View"><img src="/Images/eye.png"></a>
+                            <a href=@h alt="View"><img src="/Images/eye.png" alt="View" title="Note Details"></a>
                             <div class="menu-popup">
-                                <a class="menu-check" onclick=@fun1><img src="/Images/dots.png"></a>
+                                <a class="menu-check" onclick=@fun1><img src="/Images/dots.png" alt="Dots" title="Popup Menu"></a>
                                 <div id=@tId class="menu-popup-show">
                                     @{ h = "/Transaction/NoteDownload/" + download.ID.ToString(); }
-                                    <p><a href=@h>Download Note</a></p>
+                                    <p><a href=@h title="Download Note">Download Note</a></p>
                                 </div>
                             </div>
                         </td>
@@ -75,7 +75,7 @@
 
             if (ViewBag.activePageNumber != 1)
             {
-                <img src="~/Images/left-arrow.png" onclick=@fun />
+                <img src="~/Images/left-arrow.png" alt="Left Arrow" title="Left" onclick=@fun />
             }
 
             for (var totalpage = 1; totalpage <= totalPages; totalpage++)
@@ -100,7 +100,7 @@
 
             if (totalPages != ViewBag.activePageNumber)
             {
-                <img src="~/Images/right-arrow.png" onclick=@fun />
+                <img src="~/Images/right-arrow.png" alt="Right Arrow" title="Right" onclick=@fun />
             }
         }
     }

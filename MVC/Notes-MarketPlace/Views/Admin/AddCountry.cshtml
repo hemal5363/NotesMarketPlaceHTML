@@ -1,0 +1,49 @@
+﻿@model ProjectModels.Models.CountryModel
+
+@{
+    ViewBag.Title = "AddCountry";
+    Layout = "~/Views/Shared/_RagisterView.cshtml";
+}
+
+<!-- Admin Add Country -->
+<section id="admin-add-country">
+    <div class="content-box">
+        <div class="add-note-details">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="left-heading">
+                            <h2> Add Country </h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="login-form">
+                    <form method="post" action="/Admin/AddCountry">
+                        @Html.HiddenFor(c => c.ID)
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(c => c.Name)
+                                    @Html.TextBoxFor(c => c.Name, new { @class = "form-control", placeholder = "Enter country name" })
+                                    @Html.ValidationMessageFor(c => c.Name)
+                                </div>
+                            </div>
+                            <div class="col-md-6"></div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(c => c.CountryCode)
+                                    @Html.TextBoxFor(c => c.CountryCode, new { @class = "form-control", placeholder = "Enter country code" })
+                                    @Html.ValidationMessageFor(c => c.CountryCode)
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <button class="btn blue-btn" type="submit" title="Submit" role="button"> SUBMIT </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Admin Add Country Ends-->

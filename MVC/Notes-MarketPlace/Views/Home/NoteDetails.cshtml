@@ -43,11 +43,11 @@
                                             @{
                                                 if (Model.DisplayPicture == null)
                                                 {
-                                                    <img src="~/Images/computer-science.png">
+                                                    <img src='@market.SystemConfigurations.FirstOrDefault(u => u.Key == "Image").Value' alt="Image" title="Note Image">
                                                 }
                                                 else
                                                 {
-                                                    <img src='@Model.DisplayPicture'>
+                                                    <img src='@Model.DisplayPicture' alt="Image" title="Note Image">
                                                 }
                                             }
                                         </div>
@@ -64,36 +64,32 @@
                                         </div>
                                         <div id="download-book">
                                             @{
-                                                if (id != Model.SellerID)
+                                                if (!User.Identity.IsAuthenticated)
                                                 {
-                                                    if (!User.Identity.IsAuthenticated)
-                                                    {
-                                                        <a href="/Account/Login" class="btn blue-btn" title="Download" role="button" onclick="return confirm('Please sign in/register to download this note.')">
+                                                    <a href="/Account/Login" class="btn blue-btn" title="Download Note" role="button" onclick="return confirm('Please sign in/register to download this note.')">
 
-                                                            @if (Model.IsPaid == true)
-                                                            {
-                                                                <text>Download / $@Model.SellingPrice</text>
-                                                            }
-                                                            else
-                                                            {
-                                                                <text>Download</text>
-                                                            }
-                                                        </a>
-                                                    }
-                                                    else if (Model.IsPaid == true)
-                                                    {
-                                                        @*var h = "/Home/NoteRequest/" + Model.ID.ToString();*@
-                                                        <a class="btn blue-btn" title="Download" role="button" onclick="RequestBtn(@Model.ID)">
-                                                            Download / $@Model.SellingPrice
-                                                        </a>
-                                                    }
-                                                    else
-                                                    {
-                                                        var h = "/Home/NoteDownload/" + Model.ID.ToString();
-                                                        <a href=@h class="btn blue-btn" title="Download" role="button">
-                                                            Download
-                                                        </a>
-                                                    }
+                                                        @if (Model.IsPaid == true)
+                                                        {
+                                                            <text>Download / $@Model.SellingPrice</text>
+                                                        }
+                                                        else
+                                                        {
+                                                            <text>Download</text>
+                                                        }
+                                                    </a>
+                                                }
+                                                else if (Model.IsPaid == true && id != Model.SellerID && !User.IsInRole("Admin") && !User.IsInRole("Super Admin"))
+                                                {
+                                                    <a class="btn blue-btn" title="Download Note" role="button" onclick="RequestBtn(@Model.ID)">
+                                                        Download / $@Model.SellingPrice
+                                                    </a>
+                                                }
+                                                else
+                                                {
+                                                    var h = "/Home/NoteDownload/" + Model.ID.ToString();
+                                                    <a href=@h class="btn blue-btn" title="Download Note" role="button">
+                                                        Download
+                                                    </a>
                                                 }
                                             }
                                         </div>
@@ -194,11 +190,11 @@
                                                 {
                                                     if (j <= rating)
                                                     {
-                                                        <img src="~/Images/star.png" />
+                                                        <img src="~/Images/star.png" alt="Star" title="Rating" />
                                                     }
                                                     else
                                                     {
-                                                        <img src="~/Images/star-white.png" />
+                                                        <img src="~/Images/star-white.png" alt="Star" title="Rating" />
                                                     }
                                                 }
                                                 <p> @ratings.Count() reviews </p>
@@ -268,39 +264,49 @@
                                                     <p>No Record Found</p>
                                                 </div>
                                             }
-                                            foreach(var rate in ratings)
+                                            foreach (var rate in ratings)
                                             {
                                                 <div class="col-md-2">
                                                     <div class="c-r-img">
                                                         @if (@rate.User.UserProfiles.FirstOrDefault() == null)
                                                         {
-                                                            <img src="~/Images/reviewer-1.png">
+                                                            <img src='@market.SystemConfigurations.FirstOrDefault(u => u.Key == "Picture").Value' alt="Picture" title="User Picture">
                                                         }
                                                         else
                                                         {
                                                             if (@rate.User.UserProfiles.FirstOrDefault().ProfilePicture == null)
                                                             {
-                                                                <img src="~/Images/reviewer-1.png">
+                                                                <img src='@market.SystemConfigurations.FirstOrDefault(u => u.Key == "Picture").Value' alt="Picture" title="User Picture">
                                                             }
-                                                            <img src='@rate.User.UserProfiles.FirstOrDefault().ProfilePicture'>
+                                                            <img src='@rate.User.UserProfiles.FirstOrDefault().ProfilePicture' alt="Picture" title="User Picture">
                                                         }
                                                     </div>
                                                 </div>
-                                                <div class="col-md-10">
+                                                <div class="col-md-8">
                                                     <div class="c-r-hd">
                                                         <h4> @rate.User.FirstName @rate.User.LastName </h4>
                                                     </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    @if(User.IsInRole("Admin") || User.IsInRole("Super Admin"))
+                                                    {
+                                                        var h = "/Admin/DeleteReview?id=" + rate.ID.ToString() + "&nid=" + rate.NoteID.ToString();
+                                                        <a href=@h title="Delete"><img src="/Images/delete.png" alt="Delete" title="Delete Review"></a>
+                                                    }
+                                                </div>
+                                                <div class="col-md-2"></div>
+                                                <div class="col-md-10">
                                                     <div id="c-r-star">
                                                         <div id="rateing-star">
                                                             @for (var j = 1; j <= 5; j++)
                                                             {
                                                                 if (j <= (int)rate.Ratings)
                                                                 {
-                                                                    <img src="~/Images/star.png" />
+                                                                    <img src="~/Images/star.png" alt="Star" title="Rating" />
                                                                 }
                                                                 else
                                                                 {
-                                                                    <img src="~/Images/star-white.png" />
+                                                                    <img src="~/Images/star-white.png" alt="Star" title="Rating" />
                                                                 }
                                                             }
                                                         </div>
@@ -335,10 +341,10 @@
 <div id="thank-you-popup">
     <div id="thanks-popup">
         <div id="close-btn">
-            <img src="~/Images/close.png">
+            <img src="~/Images/close.png" alt="Close" title="Close">
         </div>
         <div id="right-img">
-            <img src="~/Images/SUCCESS.png">
+            <img src="~/Images/SUCCESS.png" alt="Success" title="Success">
         </div>
         <div id="thank-heading">
             <h3> Thank you for purchasing! </h3>
@@ -346,7 +352,7 @@
         <div class="text">
             <p> Dear @username, </p>
             <p> As this is paid notes - you need to pay to seller <b> @Model.User.FirstName @Model.User.LastName </b> offline. We vill send him an email that you want to download this note. He may contact you further for payment process completion.</p>
-            <p> In case, you have urgency, <br> Please contact us on <b> +@market.SystemConfigurations.FirstOrDefault(s => s.Key == "Number").Value </b> </p>
+            <p> In case, you have urgency, <br> Please contact us on <b> +@market.SystemConfigurations.FirstOrDefault(s => s.Key == "Support phone number").Value </b> </p>
             <p> Once he receives the payment and acknowledge us - selected notes you can see over my downloads tab for download.</p>
             <p> Have a good day.</p>
         </div>

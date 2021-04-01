@@ -1,0 +1,206 @@
+﻿@model ProjectDB.User
+@using ProjectDB
+@{ 
+    MarketPlaceEntities market = new MarketPlaceEntities();
+}
+
+@{
+    ViewBag.Title = "MemberDetails";
+    Layout = "~/Views/Shared/_RagisterView.cshtml";
+}
+
+<!-- Admin Member Details -->
+<section id="admin-member-details">
+    <div class="content-box">
+        <div class="add-note-details">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="left-heading">
+                            <h2> Member Details </h2>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div id="notes-detail-img">
+                                    @if (Model.UserProfiles.FirstOrDefault() == null)
+                                    {
+                                        <img src='@market.SystemConfigurations.FirstOrDefault(u => u.Key == "Picture").Value' alt="Picture" title="Member Picture">
+                                    }
+                                    else if (Model.UserProfiles.Select(u => u.ProfilePicture).FirstOrDefault() == null)
+                                    {
+                                        <img src='@market.SystemConfigurations.FirstOrDefault(u => u.Key == "Picture").Value' alt="Picture" title="Member Picture">
+                                    }
+                                    else
+                                    {
+                                        var h = Model.UserProfiles.Select(u => u.ProfilePicture).FirstOrDefault();
+                                        <img src='@h' alt="Picture" title="Member Picture">
+                                    }
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div id="member-detail-det">
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            <p> First Name: </p>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <p> @Model.FirstName </p>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <p> Last Name: </p>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <p> @Model.LastName </p>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <p> Email: </p>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <p> @Model.EmailID </p>
+                                        </div>
+                                        @if (Model.UserProfiles.FirstOrDefault() != null)
+                                        {
+                                            if (Model.UserProfiles.Select(u => u.DOB).FirstOrDefault() != null)
+                                            {
+                                                <div class="col-md-5">
+                                                    <p> DOB: </p>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <p> @Model.UserProfiles.Select(u => u.DOB).FirstOrDefault().Value.ToString("dd-MM-yyyy") </p>
+                                                </div>
+                                            }
+                                            if (Model.UserProfiles.Select(u => u.Gender).FirstOrDefault() != null)
+                                            {
+                                                <div class="col-md-5">
+                                                    <p> Gender: </p>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <p> @Model.UserProfiles.Select(u => u.ReferenceData.Value).FirstOrDefault() </p>
+                                                </div>
+                                            }
+                                            if (Model.UserProfiles.Select(u => u.PhoneNumber).FirstOrDefault() != null)
+                                            {
+                                                <div class="col-md-5">
+                                                    <p> Phone Number: </p>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <p> +@Model.UserProfiles.Select(u => u.PhoneNumber_CountryCode).FirstOrDefault() @Model.UserProfiles.Select(u => u.PhoneNumber).FirstOrDefault()</p>
+                                                </div>
+                                            }
+                                            if (Model.UserProfiles.Select(u => u.University).FirstOrDefault() != null)
+                                            {
+                                                <div class="col-md-5">
+                                                    <p> University: </p>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <p> @Model.UserProfiles.Select(u => u.University).FirstOrDefault() </p>
+                                                </div>
+                                            }
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-5">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div id="member-detail-det">
+                                    <div class="row">
+                                        @if (Model.UserProfiles.FirstOrDefault() != null)
+                                        {
+                                            if (Model.UserProfiles.Select(u => u.College).FirstOrDefault() != null)
+                                            {
+                                                <div class="col-md-5">
+                                                    <p> College: </p>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <p> @Model.UserProfiles.Select(u => u.College).FirstOrDefault() </p>
+                                                </div>
+                                            }
+                                            if (Model.UserProfiles.Select(u => u.AddressLine1).FirstOrDefault() != null)
+                                            {
+                                                <div class="col-md-4">
+                                                    <p> Address 1: </p>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <p>@Model.UserProfiles.Select(u => u.AddressLine1).FirstOrDefault()</p>
+                                                </div>
+                                            }
+                                            if (Model.UserProfiles.Select(u => u.AddressLine2).FirstOrDefault() != null)
+                                            {
+                                                <div class="col-md-4">
+                                                    <p> Address 2: </p>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <p> @Model.UserProfiles.Select(u => u.AddressLine2).FirstOrDefault() </p>
+                                                </div>
+                                            }
+                                            if (Model.UserProfiles.Select(u => u.City).FirstOrDefault() != null)
+                                            {
+                                                <div class="col-md-4">
+                                                    <p> City: </p>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <p> @Model.UserProfiles.Select(u => u.City).FirstOrDefault()</p>
+                                                </div>
+                                            }
+                                            if (Model.UserProfiles.Select(u => u.State).FirstOrDefault() != null)
+                                            {
+                                                <div class="col-md-4">
+                                                    <p> State: </p>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <p> @Model.UserProfiles.Select(u => u.State).FirstOrDefault() </p>
+                                                </div>
+                                            }
+                                            if (Model.UserProfiles.Select(u => u.Country).FirstOrDefault() != null)
+                                            {
+                                                <div class="col-md-4">
+                                                    <p> Country: </p>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <p> @Model.UserProfiles.Select(u => u.Country).FirstOrDefault() </p>
+                                                </div>
+                                            }
+                                            if (Model.UserProfiles.Select(u => u.ZipCode).FirstOrDefault() != null)
+                                            {
+                                                <div class="col-md-4">
+                                                    <p> Zip Code: </p>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <p> @Model.UserProfiles.Select(u => u.ZipCode).FirstOrDefault() </p>
+                                                </div>
+                                            }
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                 @if (Model.UserProfiles.FirstOrDefault() != null)
+                 {
+                    <div id="vertical-line"></div>
+                 }
+                <hr>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="heading-md">
+                            <h3> Notes </h3>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        @Html.HiddenFor(u => u.ID)
+                        <div id="getMemberNotes"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Admin Member Details Ends -->
+

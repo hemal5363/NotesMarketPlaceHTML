@@ -1,0 +1,145 @@
+﻿@model Notes_MarketPlace.Models.AdminIndexPublishedNotesViewModel
+
+<div class="table-format">
+    <table id="pager" class="table wp-list-table widefat striped posts tablesorter sort-table">
+        <thead>
+            <tr>
+                <th scope="col"> SR. NO. </th>
+                <th scope="col"> NOTE TITLE </th>
+                <th scope="col"> CATEGORY </th>
+                <th scope="col"> SELLER </th>
+                <th scope="col"> </th>
+                <th scope="col"> DATE ADDED </th>
+                <th scope="col"> STATUS </th>
+                <th scope="col"> ACTION </th>
+                <th scope="col"> </th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                if (Model.SellerNote.Count() == 0)
+                {
+                    <tr>
+                        <td colspan="9">No Records Found</td>
+                    </tr>
+                }
+                int i = 1 + 5 * (ViewBag.activePageNumber - 1);
+                foreach (var note in Model.SellerNote)
+                {
+                    var fun1 = "downloadPopup('#mp" + i.ToString() + "')";
+                    string tId = "mp" + i.ToString();
+                    var h = "/Home/NoteDetails/" + note.ID.ToString();
+                    <tr>
+                        <th>@i</th>
+                        <td> <a href=@h title="Note Details"> @note.Title </a></td>
+                        <td> @note.NoteCategory.Name </td>
+                        <td> @note.User.FirstName @note.User.LastName </td>
+                        @{var k = "/Admin/MemberDetails/" + note.SellerID.ToString();}
+                        <td> <a href=@k alt="edit"><img src="/Images/eye.png" alt="View" title="Show Member Details"></a> </td>
+                        <td> @note.CreatedDate </td>
+                        <td> @note.ReferenceData.Value </td>
+                        <td>
+                            <div class="review-btn">
+                                @{ k = "/Admin/ChangerStatus?id=" + note.ID.ToString() + "&status=9";}
+                                <a class="btn approve-btn" href=@k title="Approve" role="button" onclick="return confirm('If you approve the notes – System will publish the notes over portal. Please press yes to continue.')"> Approve </a>
+                                <a class="btn reject-btn" title="Add Note" role="button" onclick="AdminAddRemark('@note.ID', '@note.Title', '@note.NoteCategory.Name')"> Reject </a>
+                                @{k = "/Admin/ChangerStatus?id=" + note.ID.ToString() + "&status=8";}
+                                <a class="btn inreview-btn" href=@k title="In Review" role="button" onclick="return confirm('Via marking the note In Review – System will let user know that review process has been initiated. Please press yes to continue.')"> InReview </a>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="menu-popup">
+                                <a class="menu-check" onclick=@fun1><img src="/Images/dots.png" alt="Dots" title="Popup Menu"></a>
+                                <div id=@tId class="menu-popup-show">
+                                    <p><a href=@h title="Note Details">View More Details</a></p>
+                                    @{ k = "/Admin/NoteDownload/" + note.ID.ToString();}
+                                    <p><a href=@k title="Download Note">Download Note</a></p>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    i += 1;
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+<div class="pager-nav">
+    @{
+        if (!(Model.SellerNote.Count() == 0))
+        {
+            var totalPages = Math.Ceiling(ViewBag.totalCount / 5.0);
+
+            var fun = "getNoteUnderReview(" + (ViewBag.activePageNumber - 1).ToString() + ")";
+
+            if (ViewBag.activePageNumber != 1)
+            {
+                <img src="~/Images/left-arrow.png" alt="Left Arrow" title="Left" onclick=@fun />
+            }
+
+            for (var totalpage = 1; totalpage <= totalPages; totalpage++)
+            {
+                if (totalpage == ViewBag.activePageNumber)
+                {
+                    <span class="pg-selected">
+                        @{fun = "getNoteUnderReview(" + totalpage.ToString() + ")";}
+                        @Html.Label(totalpage.ToString(), new { @class = "pageNumber", target = totalpage.ToString(), onclick = fun })
+                    </span>
+                }
+                else
+                {
+                    <span>
+                        @{fun = "getNoteUnderReview(" + totalpage.ToString() + ")";}
+                        @Html.Label(totalpage.ToString(), new { @class = "pageNumber", target = totalpage.ToString(), onclick = fun })
+                    </span>
+                }
+            }
+
+            fun = "getNoteUnderReview(" + (ViewBag.activePageNumber + 1).ToString() + ")";
+
+            if (totalPages != ViewBag.activePageNumber)
+            {
+                <img src="~/Images/right-arrow.png" alt="Right Arrow" title="Right" onclick=@fun />
+            }
+        }
+    }
+</div>
+
+<!-- Remarks -->
+<section id="remarks1">
+
+    <div class="add-review-bg" style="top: -400px;">
+        <div id="add-review-box">
+            <div id="close-btn">
+                <img src="/Images/close.png" alt="Close" title="Close" onclick="closeReview()">
+            </div>
+            <div id="getdataname">
+                @*<h3> Human Body - Scince </h3>*@
+            </div>
+            <div id="remarks">
+                <div class="login-form">
+                    <form method="post" action="/Admin/AddUnpublish">
+                        <div id="getdataid">
+                            @*@Html.HiddenFor(r => r.id)*@
+                        </div>
+                        @Html.HiddenFor(r => r.status)
+                        <div class="form-group">
+                            @Html.LabelFor(r => r.Remarks)
+                            @Html.TextAreaFor(r => r.Remarks, new { @class = "form-control", placeholder = "write remarks" })
+                        </div>
+                        <div id="review-btn">
+                            <button type="submit" class="btn blue-btn" title="Reject" role="button" onclick="return confirm('Are you sure you want to reject seller request?')"> Reject </button>
+                            <a class="btn blue-btn" onclick="closeReview()" title="Cancel" role="button"> Cancel </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<!-- Remarks Ends -->
+
+<script>funTableSorter();</script>
