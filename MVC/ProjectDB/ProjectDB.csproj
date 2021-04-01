@@ -53,6 +53,7 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="DBOparetions\AccountRepository.cs" />
+    <Compile Include="DBOparetions\AdminRepository.cs" />
     <Compile Include="DBOparetions\HomeRepository.cs" />
     <Compile Include="DBOparetions\TransactionRepository.cs" />
     <Compile Include="Download.cs">

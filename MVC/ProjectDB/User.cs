@@ -23,6 +23,8 @@ namespace ProjectDB
             this.SellerNotesReportedIssues = new HashSet<SellerNotesReportedIssue>();
             this.SellerNotesReviews = new HashSet<SellerNotesReview>();
             this.UserProfiles = new HashSet<UserProfile>();
+            this.NoteCategories = new HashSet<NoteCategory>();
+            this.NoteTypes = new HashSet<NoteType>();
         }
     
         public int ID { get; set; }
@@ -46,5 +48,7 @@ namespace ProjectDB
         public virtual ICollection<SellerNotesReview> SellerNotesReviews { get; set; }
         public virtual ICollection<UserProfile> UserProfiles { get; set; }
         public virtual UserRole UserRole { get; set; }
+        public virtual ICollection<NoteCategory> NoteCategories { get; set; }
+        public virtual ICollection<NoteType> NoteTypes { get; set; }
     }
 }
