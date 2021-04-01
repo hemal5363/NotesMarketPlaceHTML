@@ -1,0 +1,5 @@
+F:\TatvaSoft\trening\project of .net\ProjectModels\bin\Debug\ProjectModels.dll
+F:\TatvaSoft\trening\project of .net\ProjectModels\bin\Debug\ProjectModels.pdb
+F:\TatvaSoft\trening\project of .net\ProjectModels\obj\Debug\ProjectModels.csproj.CoreCompileInputs.cache
+F:\TatvaSoft\trening\project of .net\ProjectModels\obj\Debug\ProjectModels.dll
+F:\TatvaSoft\trening\project of .net\ProjectModels\obj\Debug\ProjectModels.pdb

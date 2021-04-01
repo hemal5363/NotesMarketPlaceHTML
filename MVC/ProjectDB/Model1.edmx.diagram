@@ -38,6 +38,8 @@
         <AssociationConnector Association="MarketPlaceDB.FK_SellerNotesReviews_Users" ManuallyRouted="false" />
         <AssociationConnector Association="MarketPlaceDB.FK_UserProfile_Users" ManuallyRouted="false" />
         <AssociationConnector Association="MarketPlaceDB.FK_Users_UserRoles" ManuallyRouted="false" />
+        <AssociationConnector Association="MarketPlaceDB.FK_NoteCategory_Users" />
+        <AssociationConnector Association="MarketPlaceDB.FK_NoteType_Users" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

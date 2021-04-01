@@ -66,6 +66,7 @@ namespace ProjectDB.DBOparetions
                     UserID = model.UserID,
                     DOB = model.DOB,
                     Gender = model.Gender,
+                    PhoneNumber_CountryCode = model.PhoneNumber_CountryCode,
                     PhoneNumber = model.PhoneNumber,
                     ProfilePicture = model.Picture,
                     AddressLine1 = model.AddressLine1,
@@ -102,6 +103,7 @@ namespace ProjectDB.DBOparetions
                     profile.DOB = model.DOB;
                 }
                 profile.Gender = model.Gender;
+                profile.PhoneNumber_CountryCode = model.PhoneNumber_CountryCode;
                 profile.PhoneNumber = model.PhoneNumber;
                 profile.ProfilePicture = model.Picture;
                 profile.AddressLine1 = model.AddressLine1;
@@ -123,5 +125,27 @@ namespace ProjectDB.DBOparetions
                 context.SaveChanges();
             };
         }
+
+        public void EditAdminProfile(int id, int uid, string fName, string lName, string sEmail, string pCode, string pNo, string picture)
+        {
+            using (var context = new MarketPlaceEntities())
+            {
+                var profile = context.UserProfiles.FirstOrDefault(u => u.ID == id);
+                profile.User.FirstName = fName;
+                profile.User.LastName = lName;
+                profile.User.ModifiedBy = uid;
+                profile.User.ModifiedDate = DateTime.Now;
+
+                profile.SecondaryEmailAddress = sEmail;
+                profile.PhoneNumber_CountryCode = pCode;
+                profile.PhoneNumber = pNo;
+                profile.ProfilePicture = picture;
+                profile.ModifiedBy = uid;
+                profile.ModifiedDate = DateTime.Now;
+
+                context.SaveChanges();
+            };
+        }
+
     }
 }

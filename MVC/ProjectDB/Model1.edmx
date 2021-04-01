@@ -188,12 +188,12 @@
           <Property Name="PhoneNumber-CountryCode" Type="varchar" MaxLength="5" Nullable="false" />
           <Property Name="PhoneNumber" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="ProfilePicture" Type="varchar" MaxLength="500" />
-          <Property Name="AddressLine1" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="AddressLine2" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="City" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="State" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="ZipCode" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Country" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="AddressLine1" Type="varchar" MaxLength="100" />
+          <Property Name="AddressLine2" Type="varchar" MaxLength="100" />
+          <Property Name="City" Type="varchar" MaxLength="50" />
+          <Property Name="State" Type="varchar" MaxLength="50" />
+          <Property Name="ZipCode" Type="varchar" MaxLength="50" />
+          <Property Name="Country" Type="varchar" MaxLength="50" />
           <Property Name="University" Type="varchar" MaxLength="100" />
           <Property Name="College" Type="varchar" MaxLength="100" />
           <Property Name="CreatedDate" Type="datetime" />
@@ -264,6 +264,30 @@
             </Principal>
             <Dependent Role="Downloads">
               <PropertyRef Name="Downloader" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NoteCategory_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="NoteCategory" Type="Self.NoteCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="NoteCategory">
+              <PropertyRef Name="ModifiedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NoteType_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="NoteType" Type="Self.NoteType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="NoteType">
+              <PropertyRef Name="ModifiedBy" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -486,6 +510,14 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="Downloads" EntitySet="Downloads" />
           </AssociationSet>
+          <AssociationSet Name="FK_NoteCategory_Users" Association="Self.FK_NoteCategory_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="NoteCategory" EntitySet="NoteCategory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NoteType_Users" Association="Self.FK_NoteType_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="NoteType" EntitySet="NoteType" />
+          </AssociationSet>
           <AssociationSet Name="FK_SellerNotes_Countries" Association="Self.FK_SellerNotes_Countries">
             <End Role="Country" EntitySet="Country" />
             <End Role="SellerNotes" EntitySet="SellerNotes" />
@@ -608,6 +640,7 @@
           <Property Name="ModifiedBy" Type="Int32" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="SellerNotes" Relationship="Self.FK_SellerNotes_NoteCategories" FromRole="NoteCategory" ToRole="SellerNotes" />
+          <NavigationProperty Name="User" Relationship="MarketPlaceDB.FK_NoteCategory_Users" FromRole="NoteCategory" ToRole="User" />
         </EntityType>
         <EntityType Name="NoteType">
           <Key>
@@ -622,6 +655,7 @@
           <Property Name="ModifiedBy" Type="Int32" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="SellerNotes" Relationship="Self.FK_SellerNotes_NoteTypes" FromRole="NoteType" ToRole="SellerNotes" />
+          <NavigationProperty Name="User" Relationship="MarketPlaceDB.FK_NoteType_Users" FromRole="NoteType" ToRole="User" />
         </EntityType>
         <EntityType Name="ReferenceData">
           <Key>
@@ -765,12 +799,12 @@
           <Property Name="PhoneNumber_CountryCode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="PhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ProfilePicture" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="AddressLine1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="AddressLine2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ZipCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AddressLine1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="AddressLine2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ZipCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="University" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="College" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
@@ -818,6 +852,8 @@
           <NavigationProperty Name="SellerNotesReviews" Relationship="Self.FK_SellerNotesReviews_Users" FromRole="Users" ToRole="SellerNotesReviews" />
           <NavigationProperty Name="UserProfiles" Relationship="Self.FK_UserProfile_Users" FromRole="Users" ToRole="UserProfile" />
           <NavigationProperty Name="UserRole" Relationship="Self.FK_Users_UserRoles" FromRole="Users" ToRole="UserRoles" />
+          <NavigationProperty Name="NoteCategories" Relationship="MarketPlaceDB.FK_NoteCategory_Users" FromRole="User" ToRole="NoteCategory" />
+          <NavigationProperty Name="NoteTypes" Relationship="MarketPlaceDB.FK_NoteType_Users" FromRole="User" ToRole="NoteType" />
         </EntityType>
         <Association Name="FK_SellerNotes_Countries">
           <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
@@ -1138,7 +1174,39 @@
             <End Role="UserRoles" EntitySet="UserRoles" />
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
+          <AssociationSet Name="FK_NoteCategory_Users" Association="MarketPlaceDB.FK_NoteCategory_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="NoteCategory" EntitySet="NoteCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NoteType_Users" Association="MarketPlaceDB.FK_NoteType_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="NoteType" EntitySet="NoteTypes" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK_NoteCategory_Users">
+          <End Type="MarketPlaceDB.User" Role="User" Multiplicity="0..1" />
+          <End Type="MarketPlaceDB.NoteCategory" Role="NoteCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="NoteCategory">
+              <PropertyRef Name="ModifiedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NoteType_Users">
+          <End Type="MarketPlaceDB.User" Role="User" Multiplicity="0..1" />
+          <End Type="MarketPlaceDB.NoteType" Role="NoteType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="NoteType">
+              <PropertyRef Name="ModifiedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->

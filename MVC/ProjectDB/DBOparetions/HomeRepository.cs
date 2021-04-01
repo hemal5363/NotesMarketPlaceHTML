@@ -19,7 +19,6 @@ namespace ProjectDB.DBOparetions
                     Status = model.Status,
                     Title = model.Title,
                     Category = model.Category,
-                    //DisplayPicture = "123",
                     NoteType = model.NoteType,
                     NumberofPages = model.NumberofPages,
                     Description = model.Description,
@@ -30,7 +29,6 @@ namespace ProjectDB.DBOparetions
                     Professor = model.Professor,
                     IsPaid = model.IsPaid,
                     SellingPrice = model.SellingPrice,
-                    //NotesPreview = "123",
                     CreatedBy = model.CreatedBy,
                     CreatedDate = model.CreatedDate,
                     ModifiedBy = model.ModifiedBy,
@@ -44,7 +42,7 @@ namespace ProjectDB.DBOparetions
             }
         }
 
-        public void AddNoteTrigger(SellerNote model, SellerNotesAttachement attachement)
+        public SellerNotesAttachement AddNoteTrigger(SellerNote model, SellerNotesAttachement attachement)
         {
             using (var context = new MarketPlaceEntities())
             {
@@ -57,11 +55,13 @@ namespace ProjectDB.DBOparetions
 
                 context.SaveChanges();
 
-                //var sellerNotesAttachement = context.SellerNotesAttachements.Where(a => a.NoteID == attachement.NoteID && a.FilePath == attachement.FilePath).FirstOrDefault();
-                //sellerNotesAttachement.FileName = sellerNotesAttachement.ID.ToString() + "_" + sellerNotesAttachement.CreatedDate.Value.ToString("hh:mm:ss") + ".pdf";
-                //sellerNotesAttachement.FilePath = sellerNotesAttachement.FilePath + "/" + sellerNotesAttachement.FileName;
+                var sellerNotesAttachement = context.SellerNotesAttachements.Where(a => a.NoteID == attachement.NoteID && a.FilePath == attachement.FilePath).FirstOrDefault();
+                sellerNotesAttachement.FileName = sellerNotesAttachement.ID.ToString() + "_" + sellerNotesAttachement.CreatedDate.Value.ToString("hh-mm-ss") + ".pdf";
+                sellerNotesAttachement.FilePath = sellerNotesAttachement.FilePath + "/" + sellerNotesAttachement.FileName;
 
-                //context.SaveChanges();
+                context.SaveChanges();
+
+                return sellerNotesAttachement;
             }
         }
 
@@ -76,7 +76,7 @@ namespace ProjectDB.DBOparetions
             }
         }
 
-        public void UpdateNote(SellerNoteModel model, SellerNotesAttachement attachement)
+        public SellerNotesAttachement UpdateNote(SellerNoteModel model, SellerNotesAttachement attachement)
         {
             using (var context = new MarketPlaceEntities())
             {
@@ -102,12 +102,16 @@ namespace ProjectDB.DBOparetions
                 context.SaveChanges();
 
                 var sellerNotesAttachement = context.SellerNotesAttachements.FirstOrDefault(a => a.ID == attachement.ID);
-                sellerNotesAttachement.FileName = attachement.FileName;
-                sellerNotesAttachement.FilePath = attachement.FilePath;
+
+                sellerNotesAttachement.FileName = sellerNotesAttachement.ID.ToString() + "_" + sellerNotesAttachement.ModifiedDate.Value.ToString("hh-mm-ss") + ".pdf";
+                sellerNotesAttachement.FilePath = attachement.FilePath + "/" + sellerNotesAttachement.FileName;
+
                 sellerNotesAttachement.ModifiedBy = attachement.ModifiedBy;
                 sellerNotesAttachement.ModifiedDate = attachement.ModifiedDate;
 
                 context.SaveChanges();
+
+                return sellerNotesAttachement;
             }
         }
 

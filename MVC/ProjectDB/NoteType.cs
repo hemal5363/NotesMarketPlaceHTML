@@ -29,5 +29,6 @@ namespace ProjectDB
         public bool IsActive { get; set; }
     
         public virtual ICollection<SellerNote> SellerNotes { get; set; }
+        public virtual User User { get; set; }
     }
 }
