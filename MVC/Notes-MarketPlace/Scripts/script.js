@@ -337,6 +337,30 @@ function getManageCountry(target) {
 }
 
 /* =====================================================
+          Admin Manage Testimonial Functions
+===================================================== */
+
+$(() => {
+    getManageTestimonial();
+});
+
+function getManageTestimonial(target) {
+
+    $.ajax({
+        url: '/Admin/ManageTestimonialPartial',
+        dataType: 'html',
+        method: 'GET',
+        data: {
+            search: $('#search-input').val(),
+            pageNumber: parseInt(target),
+        },
+        success: function (res) {
+            $('#getTestimonial').html('').html(res);
+        }
+    });
+}
+
+/* =====================================================
                   Search Note Functions
 ===================================================== */
 
@@ -513,6 +537,29 @@ function getSellNoteInProgress(target) {
         },
         success: function (res) {
             $('#getSellInProgressNotes').html('').html(res);
+        }
+    });
+}
+
+/* =====================================================
+            Index Testimonials Functions
+===================================================== */
+
+$(() => {
+    getIndexTestimonials(1);
+});
+
+function getIndexTestimonials(target) {
+
+    $.ajax({
+        url: '/Home/IndexPartial',
+        dataType: 'html',
+        method: 'GET',
+        data: {
+            pageNumber: parseInt(target),
+        },
+        success: function (res) {
+            $('#getTestimonials').html('').html(res);
         }
     });
 }
@@ -751,6 +798,38 @@ $(function () {
         $(this).attr('placeholder', "");
     });
 });
+
+/* =====================================================
+                Show Uploaded File Name
+===================================================== */
+
+$(document).ready(function () {
+    $('input[target = "display picture"]').change(function (e) {
+        var Name = e.target.files[0].name;
+        $("displayPicture").text(Name + ' is the selected file.');
+    });
+    $('input[target = "note pdf"]').change(function (e) {
+        var Name = e.target.files[0].name;
+        $("notepdf").text(Name + ' is the selected file.');
+    });
+    $('input[target = "note preview"]').change(function (e) {
+        var Name = e.target.files[0].name;
+        $("notePreview").text(Name + ' is the selected file.');
+    });
+    $('input[target = "profile picture"]').change(function (e) {
+        var Name = e.target.files[0].name;
+        $("profilePicture").text(Name + ' is the selected file.');
+    });
+});
+
+function ShowPrice() {
+    $('input[placeholder = "Enter your price"]').removeAttr('readonly');
+}
+
+function HidePrice() {
+    console.log("ok");
+    $('input[placeholder = "Enter your price"]').attr('readonly', 'readonly');
+}
 
 /* =====================================================
                     Table Sorter
