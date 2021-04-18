@@ -55,8 +55,9 @@
                                     <label class="file-uploader">
                                         <img src="~/Images/upload-file.png" alt="Upload File" title="Upload Note Image">
                                         <p> Upload a Picktuer</p>
-                                        @Html.TextBoxFor(n => n.SellerNote.DisplayPicture, new { type = "file", @class = "form-control", accept = "image/*" })
+                                        @Html.TextBoxFor(n => n.SellerNote.DisplayPicture, new { type = "file", @class = "form-control", accept = "image/*", target = "display picture" })
                                     </label>
+                                    <displayPicture style="color: green;"></displayPicture>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -65,9 +66,10 @@
                                     <label class="file-uploader">
                                         <img src="~/Images/upload-note.png" alt="Upload Note" title="Upload Note PDF">
                                         <p> Upload your notes</p>
-                                        @Html.TextBoxFor(n => n.SellerNotesAttachement.FilePath, new { type = "file", @class = "form-control", accept = ".pdf" })
+                                        @Html.TextBoxFor(n => n.SellerNotesAttachement.FilePath, new { type = "file", @class = "form-control", accept = ".pdf", target = "note pdf" })
                                     </label>
                                     @Html.ValidationMessageFor(n => n.SellerNotesAttachement.FilePath)
+                                    <notepdf style="color: green;"></notepdf>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -169,17 +171,17 @@
                             <div class="col-md-6">
                                 @Html.LabelFor(n => n.SellerNote.IsPaid)<br />
                                 <div class="redio-btn custom-control-inline">
-                                    @Html.RadioButtonFor(n => n.SellerNote.IsPaid, false)
+                                    @Html.RadioButtonFor(n => n.SellerNote.IsPaid, false, new { onclick = "HidePrice()" })
                                     <label for="free">Free</label>
                                     <div class="custom-control custom-radio custom-control-inline">
-                                        @Html.RadioButtonFor(n => n.SellerNote.IsPaid, true)
+                                        @Html.RadioButtonFor(n => n.SellerNote.IsPaid, true, new { onclick = "ShowPrice()"})
                                         <label for="paid">Paid</label>
                                     </div><br>
                                 </div>
                                 @Html.ValidationMessageFor(n => n.SellerNote.IsPaid)
                                 <div class="form-group">
                                     @Html.LabelFor(n => n.SellerNote.SellingPrice)
-                                    @Html.TextBoxFor(n => n.SellerNote.SellingPrice, new { @class = "form-control", placeholder = "Enter your price" })
+                                    @Html.TextBoxFor(n => n.SellerNote.SellingPrice, new { @class = "form-control", placeholder = "Enter your price", @readonly = "readonly" })
                                     @Html.ValidationMessageFor(n => n.SellerNote.SellingPrice)
                                 </div>
                             </div>
@@ -189,9 +191,10 @@
                                     <label class="file-uploader">
                                         <img src="~/Images/upload-file.png" alt="Upload File" title="Upload Note Preview PDF">
                                         <p> Upload a file</p>
-                                        @Html.TextBoxFor(n => n.SellerNote.NotesPreview, new { type = "file", @class = "form-control", accept = ".pdf" })
+                                        @Html.TextBoxFor(n => n.SellerNote.NotesPreview, new { type = "file", @class = "form-control", accept = ".pdf", target = "note preview" })
                                     </label>
                                     @Html.ValidationMessageFor(n => n.SellerNote.NotesPreview)
+                                    <notePreview style="color: green;"></notePreview>
                                 </div>
                             </div>
                         </div>
