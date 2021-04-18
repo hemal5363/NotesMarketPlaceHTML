@@ -93,8 +93,9 @@
                                     <label class="file-uploader">
                                         <img src="/Images/upload-file.png" alt="Upload File" title="Upload File">
                                         <p> Upload a picture</p>
-                                        @Html.TextBoxFor(u => u.UserProfileModel.ProfilePicture, new { type = "file", @class="form-control", accept = "image/*" })
+                                        @Html.TextBoxFor(u => u.UserProfileModel.ProfilePicture, new { type = "file", @class="form-control", accept = "image/*", target = "profile picture" })
                                     </label>
+                                    <profilePicture style="color: green;"></profilePicture>
                                 </div>
                             </div>
                         </div>
